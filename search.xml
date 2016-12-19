@@ -6,8 +6,7 @@
     <entry>
       <title><![CDATA[github pages + Hexo + 域名绑定]]></title>
       <url>http://www.codingbalian.online/2016/12/19/github-pages-Hexo/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
-<p><strong>环境</strong></p>
+      <content type="html"><![CDATA[<p>本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。<br><a id="more"></a><br><strong>环境</strong></p>
 <ol>
 <li>安装Git<img src="http://oifuxc6w5.bkt.clouddn.com/git.png" alt=""></li>
 <li>安装Node<img src="http://oifuxc6w5.bkt.clouddn.com/NODEJS.png" alt=""></li>
