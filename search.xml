@@ -6,7 +6,8 @@
     <entry>
       <title><![CDATA[github pages + Hexo + 域名绑定]]></title>
       <url>http://www.codingbalian.online/2016/12/19/github-pages-Hexo/</url>
-      <content type="html"><![CDATA[<p>本文介绍如何使用github pages和Hexo搭建自己的博客，包含安装环境到绑定域名的所有内容。<br><a id="more"></a><br><strong>环境</strong></p>
+      <content type="html"><![CDATA[<a id="more"></a>
+<p><strong>环境</strong></p>
 <ol>
 <li>安装Git<img src="http://oifuxc6w5.bkt.clouddn.com/git.png" alt=""></li>
 <li>安装Node<img src="http://oifuxc6w5.bkt.clouddn.com/NODEJS.png" alt=""></li>
