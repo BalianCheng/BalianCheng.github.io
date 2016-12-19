@@ -14,19 +14,24 @@
 <meta name="author" content="Balian Cheng" />
 
 
-    
-    
 
-
-<meta name="description" content="What man is a man who does not make the world better?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Balian's Blog">
-<meta property="og:url" content="http://www.codingbalian.online/index.html">
+<meta name="description" content="+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github pages + Hexo + 域名绑定">
+<meta property="og:url" content="http://www.codingbalian.online/2016/12/19/github-pages-Hexo/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="What man is a man who does not make the world better?">
+<meta property="og:description" content="+">
+<meta property="og:image" content="http://www.codingbalian.online/git.png">
+<meta property="og:image" content="http://www.codingbalian.online/NODEJS.png">
+<meta property="og:image" content="http://www.codingbalian.online/cmd.png">
+<meta property="og:image" content="http://www.codingbalian.online/gitmaven.png">
+<meta property="og:image" content="http://www.codingbalian.online/hexo.png">
+<meta property="og:image" content="http://www.codingbalian.online/newtheme.png">
+<meta property="og:updated_time" content="2016-12-19T15:06:31.478Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Balian's Blog">
-<meta name="twitter:description" content="What man is a man who does not make the world better?">
+<meta name="twitter:title" content="github pages + Hexo + 域名绑定">
+<meta name="twitter:description" content="+">
+<meta name="twitter:image" content="http://www.codingbalian.online/git.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -54,13 +59,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Balian&#39;s Blog</title>
+<title>github pages + Hexo + 域名绑定 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -69,8 +72,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -271,24 +274,13 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-github-pages-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-github-pages-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/12/19/github-pages-Hexo/" class="article-date">
       <time datetime="2016-12-19T15:03:28.000Z" itemprop="datePublished">2016-12-19</time>
 </a>
 
- 
-    <a href="/2016/12/19/github-pages-Hexo/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
-        
-            <span class="ds-thread-count"  data-thread-key="2016/12/19/github-pages-Hexo/" ></span>
-        
-        
-    </a>
 
     </div>
   
@@ -300,138 +292,182 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a>
+    <h1 class="article-title" itemprop="name">
+      github pages + Hexo + 域名绑定
     </h1>
   
 
       </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
     
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p><Excerpt in index | 首页摘要><br>+
-          
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>+<a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""><br>[TOC]<strong>环境</strong></the></p>
+<ol>
+<li>安装Git<img src="git.png" alt=""></li>
+<li>安装Node<img src="NODEJS.png" alt=""></li>
+<li>验证安装<img src="cmd.png" alt=""></li>
+</ol>
+<p>[TOC]<strong>Github Pages</strong><br> 在GitHub创建一个格式为：yourusername.github.io的仓库即可。<br><img src="gitmaven.png" alt=""><br>[TOC]<strong>Hexo</strong><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>建立一个blog文件夹用于存放博客文件,然后右键单击选择“Git Bash”。<br><code>npm install hexo-cli -g</code><br><code>hexo init blog</code><br><code>cd blog</code><br><code>npm install</code><br><code>hexo server</code><br>执行hexo server时，默认端口是4000,如果端口被占用更换即可。<br>如<code>hexo server -p 4001</code><br>访问<code>http://localhost:4000/</code><br><img src="hexo.png" alt=""><br>[TOC]<strong>更换主题</strong><br>exo-theme：<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a><br>hexo-github-theme-list：<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a><br><code>git clone</code>加上主题地址<br>_config.yml中将theme改成刚刚下载的主题<br>修改完成后<code>hexo generate</code>  <code>hexo server</code>重启服务器查看效果<br><img src="newtheme.png" alt=""><br>[TOC]<strong>部署代码到github</strong><br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code>生成SSH秘钥<br>在<a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a> 添加id_rsa.pub中的秘钥<br>安装插件：<br><code>npm install hexo -server --save</code><br><code>npm install hexo-deployer-git --save</code><br>安装其他插件的格式为<code>npm install ... --save</code><br>编辑全局 hexo 的配置文件：<code>_config.yml</code><br>注意<code>:</code>后留一个空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: https://github.com/BalianCheng/BalianCheng.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure></p>
+<p>编辑全局配置后需要重新部署：<br>清除掉已经生成的文件：<code>hexo clean</code><br>再生成静态文件：<code>hexo generate</code><br>预览：<code>hexo server</code><br>打开<code>localhost:4000</code>查看<br>部署：<code>hexo deploy</code><br>生成 40 4页面：<code>hexo new page 404</code><br>生成 about 页面：<code>hexo new page about</code><br>生成 tag 标签云页面：<code>hexo new page tags</code><br>[TOC]<strong>绑定域名</strong><br><code>ping yourname.github.io</code>获得IP地址并使用域名解析<br>进入GitHub项目,进入<code>Settings</code>,在<code>Custom domain</code>写入域名<br>在\blog\public下建立CNAME文件写入域名</p>
+
       
           
-        <p><Excerpt in index | 首页摘要><br>+
+        
+        <p><excerpt in="" index="" |="" 首页摘要=""><br>+<a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""><br>[TOC]<strong>环境</strong></the></p>
+<ol>
+<li>安装Git<img src="git.png" alt=""></li>
+<li>安装Node<img src="NODEJS.png" alt=""></li>
+<li>验证安装<img src="cmd.png" alt=""></li>
+</ol>
+<p>[TOC]<strong>Github Pages</strong><br> 在GitHub创建一个格式为：yourusername.github.io的仓库即可。<br><img src="gitmaven.png" alt=""><br>[TOC]<strong>Hexo</strong><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>建立一个blog文件夹用于存放博客文件,然后右键单击选择“Git Bash”。<br><code>npm install hexo-cli -g</code><br><code>hexo init blog</code><br><code>cd blog</code><br><code>npm install</code><br><code>hexo server</code><br>执行hexo server时，默认端口是4000,如果端口被占用更换即可。<br>如<code>hexo server -p 4001</code><br>访问<code>http://localhost:4000/</code><br><img src="hexo.png" alt=""><br>[TOC]<strong>更换主题</strong><br>exo-theme：<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a><br>hexo-github-theme-list：<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a><br><code>git clone</code>加上主题地址<br>_config.yml中将theme改成刚刚下载的主题<br>修改完成后<code>hexo generate</code>  <code>hexo server</code>重启服务器查看效果<br><img src="newtheme.png" alt=""><br>[TOC]<strong>部署代码到github</strong><br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code>生成SSH秘钥<br>在<a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a> 添加id_rsa.pub中的秘钥<br>安装插件：<br><code>npm install hexo -server --save</code><br><code>npm install hexo-deployer-git --save</code><br>安装其他插件的格式为<code>npm install ... --save</code><br>编辑全局 hexo 的配置文件：<code>_config.yml</code><br>注意<code>:</code>后留一个空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: https://github.com/BalianCheng/BalianCheng.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure></p>
+<p>编辑全局配置后需要重新部署：<br>清除掉已经生成的文件：<code>hexo clean</code><br>再生成静态文件：<code>hexo generate</code><br>预览：<code>hexo server</code><br>打开<code>localhost:4000</code>查看<br>部署：<code>hexo deploy</code><br>生成 40 4页面：<code>hexo new page 404</code><br>生成 about 页面：<code>hexo new page about</code><br>生成 tag 标签云页面：<code>hexo new page tags</code><br>[TOC]<strong>绑定域名</strong><br><code>ping yourname.github.io</code>获得IP地址并使用域名解析<br>进入GitHub项目,进入<code>Settings</code>,在<code>Custom domain</code>写入域名<br>在\blog\public下建立CNAME文件写入域名</p>
+
     
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-        <p class="article-more-link">
-          <a href="/2016/12/19/github-pages-Hexo/#more">阅读全文 >></a>
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
+        <p><span>发布时间:</span>2016-12-19, 23:03:28</p>
+        <p><span>最后更新:</span>2016-12-19, 23:06:31</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/19/github-pages-Hexo/" title="github pages + Hexo + 域名绑定">http://www.codingbalian.online/2016/12/19/github-pages-Hexo/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/19/github-pages-Hexo/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
-    
-  </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/18/hello-world/">
+                    Hello World
+                </a>
+            </div>
+        
+    </nav>
+
   
 </article>
 
-
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/12/18/hello-world/" class="article-date">
-      <time datetime="2016-12-18T15:50:18.136Z" itemprop="datePublished">2016-12-18</time>
-</a>
-
- 
-    <a href="/2016/12/18/hello-world/#comments" title="查看评论">
-        <i class="fa fa-comments-o" aria-hidden="true"></i>
-        <span class="count-comment"></span>
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
         
-            <span class="ds-thread-count"  data-thread-key="2016/12/18/hello-world/" ></span>
+            
         
-        
-    </a>
-
     </div>
-  
-  <div class="article-inner">
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
     
-      <input type="hidden" class="isFancy" />
+<div class="share">
     
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"github pages + Hexo + 域名绑定　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
     
-      <header class="article-header">
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/19/github-pages-Hexo/" data-title="github pages + Hexo + 域名绑定" data-url="http://www.codingbalian.online/2016/12/19/github-pages-Hexo/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"balian"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/18/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-      
+    </script>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <script> loadComment(); </script>
 
-      
-          
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
         
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
 
-    
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/18/hello-world/" title="下一篇: Hello World">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
-    
-    <div class="article-info article-info-index">
-      
-      
 
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/18/hello-world/">Hello World</a></li></ul>
 
 
 
 
-
-
-
-
-
-  
-  
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
@@ -485,31 +521,6 @@
         })
     </script>
 
-
-    
-        <script>
-            if ($(".left-col").is(":visible")) {
-                var duoshuoQuery = {short_name:"balian"};
-                (function() {
-                    var d = document, s = d.createElement('script');
-                    s.src = 'http://static.duoshuo.com/embed.js';
-                    s.async = true; s.charset = 'UTF-8';
-                    (d.head || d.body).appendChild(s);
-                })();
-
-                $(document).ready(function(){
-                    var $duoshuoCount = $(".ds-thread-count");
-                    $duoshuoCount.bind("DOMNodeInserted", function(e) {
-                        var num = $(this).text().replace(/[^0-9]/ig,"");
-                        $(this).siblings(".count-comment").text(num);
-                        $(this).remove();
-                    })
-                })
-            }
-        </script>
-    
-
-     
 
 
 
