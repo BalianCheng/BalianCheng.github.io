@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[Adaboost]]></title>
       <url>http://www.codingbalian.online/2016/12/20/Adaboost/</url>
-      <content type="html"><![CDATA[<p>#Adaboost<br>Adaboost是一种迭代算法，其核心思想是针对同一个训练集训练不同的分类器(弱分类器)，然后把这些弱分类器集合起来，构成一个更强的最终分类器（强分类器）。<br>Adaboost过程：</p>
+      <content type="html"><![CDATA[<p>#Adaboost<br>Adaboost是一种迭代算法，其核心思想是针对同一个训练集训练不同的分类器(弱分类器)，然后把这些弱分类器集合起来，构成一个更强的最终分类器（强分类器）。<br><a id="more"></a><br>Adaboost过程：</p>
 <ol>
 <li>先通过对N个训练样本的学习得到第一个弱分类器；</li>
 <li>将分错的样本和其他的新数据一起构成一个新的N个的训练样本，通过对这个样本的学习得到第二个弱分类器 ；</li>
