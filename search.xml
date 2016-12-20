@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[XML：语法基础]]></title>
       <url>http://www.codingbalian.online/2016/12/20/XML/</url>
-      <content type="html"><![CDATA[<p>XML语法基础的介绍实例<br>&lt;！–more–&gt;</p>
+      <content type="html"><![CDATA[<p>XML语法基础的介绍实例<br><a id="more"></a></p>
 <ul>
 <li>XML声明<br><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot; standalone=&quot;no&quot;?&gt;</code></li>
 <li>version属性规定了XML文档的版本，默认为1.0</li>
