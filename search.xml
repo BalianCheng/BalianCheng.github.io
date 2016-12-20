@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title><![CDATA[XML：语法基础]]></title>
+      <url>http://www.codingbalian.online/2016/12/20/XML/</url>
+      <content type="html"><![CDATA[<p>XML语法基础的介绍实例<br>&lt;！–more–&gt;</p>
+<p>###XML声明<br><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot; standalone=&quot;no&quot;?&gt;</code></p>
+<ul>
+<li>version属性规定了XML文档的版本，默认为1.0</li>
+<li>encoding属性表示XML文档使用的字符编码，默认为UTF-8</li>
+<li>standalone属性定义是否可以在不读取其他文件的情况下处理改文档，默认为no，若没有引用其他文件可以设置为yes</li>
+</ul>
+<p>###XML注释<br><code>&lt;!--注释--&gt;</code></p>
+<ol>
+<li>注释内不能包含<code>-</code>和<code>--</code>。</li>
+<li>不能放在元素标记内。</li>
+<li>注释不能嵌套。</li>
+<li>元素开始结束标签不能被注释掉。</li>
+</ol>
+<p>###XML元素<br><code>&lt;标记名&gt;内容&lt;/标记名&gt;</code></p>
+<ol>
+<li>标记名为元素名称。</li>
+<li>名称不能以数字可标点开头。</li>
+<li>不能以XML开头。</li>
+<li>名称不能包含空格。</li>
+<li>不要使用”:”<br>空元素:<br><code>&lt;title&gt;&lt;/title&gt;</code>或<code>&lt;title/&gt;</code><br>空元素也可以携带属性：<br><code>&lt;书籍 作者=&quot;作者&quot; /&gt;</code></li>
+</ol>
+<p>###XML属性<br><code>&lt;标记名 属性1=&quot;属性&quot; 属性2=&quot;属性&quot;&gt;内容&lt;/标记名&gt;</code><br><code>&lt;空标记 属性=&quot;属性&quot;/&gt;</code></p>
+<ol>
+<li>CSS来显示XML的时候不会显示属性。</li>
+<li>属性值中有<code>&#39;&#39;</code>时需要用<code>&quot;&quot;</code>括起来，反之亦然。</li>
+<li>属性值不能包含<code>&lt;&gt;&amp;</code>等。</li>
+</ol>
+<p>###CDATA<br>包括的内容都当做纯文本解析，为<code>&lt;&gt;&amp;</code>等符号设计。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;![CDATA[</div><div class="line">	内容</div><div class="line">]]&gt;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>不能嵌套。</li>
+<li><code>]]&gt;</code>前不能有空格。</li>
+<li>必须在元素内容内。</li>
+</ol>
+<p>###XML命名空间<br><code>&lt;标记名 xmlns: 标识符=&quot;URI&quot;&gt;</code> </p>
+<ol>
+<li>标识符唯一。</li>
+<li>URI在Web上归属于URL或URN。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;DocumentElement xmlns:books=&quot;http:www.aa.com&quot; xmlns:person=&quot;http:www.cc.com&quot;&gt;</div><div class="line">&lt;book&gt;</div><div class="line">&lt;books:NAME&gt;耶路撒冷三千年&lt;/books:NAME&gt;</div><div class="line">&lt;person:NAME&gt;贝里昂&lt;/person:NAME&gt;</div><div class="line">&lt;price&gt;20&lt;/price&gt;</div><div class="line">&lt;/book&gt;</div><div class="line">&lt;/DocumentElement&gt;</div></pre></td></tr></table></figure>
+<p>DocumentElement定义了book和person的标识符为命名空间，在文档元素前添加特定的命名空间可以加以区分。<br>也可在属性中使用命名空间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;DocumentElement xmlns:books=&quot;http:www.aa.com&quot; xmlns:person=&quot;http:www.cc.com&quot;&gt;</div><div class="line">&lt;book books:NAME&gt;耶路撒冷三千年</div><div class="line">&lt;person:NAME&gt;贝里昂&lt;/person:NAME&gt;</div><div class="line">&lt;price&gt;20&lt;/price&gt;</div><div class="line">&lt;/book&gt;</div><div class="line">&lt;/DocumentElement&gt;</div></pre></td></tr></table></figure>
+<p>默认命名空间<code>&lt;标记名 xmlns=&quot;URI&quot;&gt;</code> 指定后所有未标识命名空间的元素都归属于默认命名空间。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;DocumentElement xmlns=&quot;http:www.aa.com&quot; xmlns:person=&quot;http:www.cc.com&quot;&gt;</div><div class="line">&lt;book&gt;</div><div class="line">&lt;NAME&gt;耶路撒冷三千年&lt;/NAME&gt;</div><div class="line">&lt;person:NAME&gt;贝里昂&lt;/person:NAME&gt;</div><div class="line">&lt;price&gt;20&lt;/price&gt;</div><div class="line">&lt;/book&gt;</div><div class="line">&lt;/DocumentElement&gt;</div></pre></td></tr></table></figure></p>
+<p>###空白字符<br><code>&lt;DocumentElement xml:space=&quot;preserve/default&quot;&gt;</code><br>默认不处理无意空白字符，使用<code>xml:space=&quot;preserve</code>可以保留空白字符。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Github教程]]></title>
       <url>http://www.codingbalian.online/2016/12/20/Github-Tutorial/</url>
       <content type="html"><![CDATA[<p>Github 部分功能使用教程<br><a id="more"></a><br>上传：<br>在GitHub上创建仓库<br>使用Git Bush进入本地仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">touch README</div><div class="line">git add .</div><div class="line">git commit -m &apos;first commit&apos;</div><div class="line">git remote add origin git@github.com:yourname/yourrepositoryname.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure></p>
@@ -73,7 +123,7 @@ Adaboost过程：</li>
 <li>验证安装<img src="http://oifuxc6w5.bkt.clouddn.com/cmd.png" alt=""></li>
 </ol>
 <p><strong>Github Pages</strong><br> 在GitHub创建一个格式为：yourusername.github.io的仓库即可。<br><img src="http://oifuxc6w5.bkt.clouddn.com/gitmaven.png" alt=""><br><strong>Hexo</strong><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>建立一个blog文件夹用于存放博客文件,然后右键单击选择“Git Bash”。<br><code>npm install hexo-cli -g</code><br><code>hexo init blog</code><br><code>cd blog</code><br><code>npm install</code><br><code>hexo server</code><br>执行hexo server时，默认端口是4000,如果端口被占用更换即可。<br>如<code>hexo server -p 4001</code><br>访问<code>http://localhost:4000/</code><br><img src="http://oifuxc6w5.bkt.clouddn.com/hexo.png" alt=""><br><strong>更换主题</strong><br>exo-theme：<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a><br>hexo-github-theme-list：<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a><br><code>git clone</code>加上主题地址<br>_config.yml中将theme改成刚刚下载的主题<br>修改完成后<code>hexo generate</code>  <code>hexo server</code>重启服务器查看效果<br><img src="http://oifuxc6w5.bkt.clouddn.com/newtheme.png" alt=""><br><strong>部署代码到github</strong><br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code>生成SSH秘钥<br>在<a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a> 添加id_rsa.pub中的秘钥<br>安装插件：<br><code>npm install hexo -server --save</code><br><code>npm install hexo-deployer-git --save</code><br>安装其他插件的格式为<code>npm install ... --save</code><br>编辑全局 hexo 的配置文件：<code>_config.yml</code><br>注意<code>:</code>后留一个空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: https://github.com/BalianCheng/BalianCheng.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure></p>
-<p>编辑全局配置后需要重新部署：<br>清除掉已经生成的文件：<code>hexo clean</code><br>再生成静态文件：<code>hexo generate</code><br>预览：<code>hexo server</code><br>打开<code>localhost:4000</code>查看<br>部署：<code>hexo deploy</code><br>生成 40 4页面：<code>hexo new page 404</code><br>生成 about 页面：<code>hexo new page about</code><br>生成 tag 标签云页面：<code>hexo new page tags</code><br><strong>绑定域名</strong><br><code>ping yourname.github.io</code>获得IP地址并使用域名解析<br>进入GitHub项目,进入<code>Settings</code>,在<code>Custom domain</code>写入域名<br>在\blog\public下建立CNAME文件写入域名</p>
+<p>编辑全局配置后需要重新部署：<br>清除掉已经生成的文件：<code>hexo clean</code><br>再生成静态文件：<code>hexo generate</code><br>预览：<code>hexo server</code><br>打开<code>localhost:4000</code>查看<br>部署：<code>hexo deploy</code><br>生成 40 4页面：<code>hexo new page 404</code><br>生成 about 页面：<code>hexo new page about</code><br>生成 tag 标签云页面：<code>hexo new page tags</code><br><strong>绑定域名</strong><br><code>ping yourname.github.io</code>获得IP地址并使用域名解析<br>进入GitHub项目,进入<code>Settings</code>,在<code>Custom domain</code>写入域名<br>在\blog\public下建立CNAME文件写入域名<br>将CNAME放入\blog\source\中避免重复操作</p>
 ]]></content>
     </entry>
     
