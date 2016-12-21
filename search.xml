@@ -4,6 +4,171 @@
   
     
     <entry>
+      <title><![CDATA[XML:DTD]]></title>
+      <url>http://www.codingbalian.online/2016/12/20/XML-DTD/</url>
+      <content type="html"><![CDATA[<p>XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。<br><a id="more"></a><br><strong>DTD作用</strong></p>
+<ol>
+<li>指定文档结构的规则</li>
+<li>验证文档有效性</li>
+<li>可以被共享</li>
+<li>可以在描述的文档中与外部的URL链接</li>
+</ol>
+<p><strong>DTD结构</strong></p>
+<ol>
+<li><code>&lt;!DOCTYPE</code>开头<code>]&gt;</code>结尾</li>
+<li><code>&lt;!ELEMENT&gt;</code>声明元素</li>
+<li><code>&lt;!ATTLIST&gt;</code> 声明元素属性</li>
+<li><code>&lt;!ENTITY&gt;</code>声明实体，可以用来存储常用的文字区块，或将非XML的数据包括在文档中</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;</div><div class="line">&lt;!--DTD定义--&gt;</div><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">&lt;!--元素定义--&gt;</div><div class="line">&lt;!ELEMENT 公司 (雇员)+&gt;</div><div class="line">&lt;!ELEMENT 雇员 (姓名,雇佣日期,项目清单,说明)&gt;</div><div class="line">&lt;!ELEMENT 姓名 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 雇佣日期 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 项目清单 (项目)*&gt;</div><div class="line">&lt;!ELEMENT 项目 (产品,价格)&gt;</div><div class="line">&lt;!ELEMENT 产品 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 价格 (#PCDATA)&gt;</div><div class="line">&lt;!--属性定义--&gt;</div><div class="line">&lt;!ATTLIST 项目清单 数量 CDATA #REQUIRED&gt;</div><div class="line">&lt;!ATTLIST 雇员</div><div class="line">    部门 CDATA #IMPLIED</div><div class="line">    全职 CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ENTITY  note  &quot;这里是备注信息&quot;&gt;</div><div class="line">]&gt;</div><div class="line">&lt;!--内容定义--&gt;</div><div class="line">&lt;公司&gt;</div><div class="line">    &lt;雇员 部门=&quot;市场部&quot; 全职=&quot;是&quot;&gt;</div><div class="line">        &lt;姓名&gt;李东&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-01-15&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;2&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;打印机&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $111.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;笔记本&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $998.00&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line">    &lt;雇员 部门=&quot;客服部&quot;&gt;</div><div class="line">        &lt;姓名&gt;王权&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-10-2&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;1&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;扫描仪&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $200.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line"> &lt;/公司&gt;</div></pre></td></tr></table></figure>
+<p>在IE中运行显示&lt;!DOCTYPE 公司 (View Source of full doctype……)&gt;说明是内部DTD</p>
+<p><strong>DTD元素类型</strong></p>
+<ol>
+<li>空元素<code>&lt;!ELEMENT 元素 EMPTY&gt;</code>对应XML<code>&lt;元素/&gt;</code></li>
+<li>ANY类型<code>&lt;!ELEMENT 元素 ANY&gt;</code>表明元素可以包含定义的其他任意内容或任意内容的组合</li>
+<li>#PCDATA(可解析文本)，不能再包含子元素</li>
+<li>子元素<code>&lt;!ELEMENT 元素 (子元素列表)&gt;</code>包括序列与选择两种结构<code>&lt;!ELEMENT 元素 (元素1,元素2)&gt;</code>表示顺序，<code>&lt;!ELEMENT 元素 (元素1|元素2)&gt;</code>表示选择，至少选其一</li>
+<li>混合类型<code>&lt;!ELEMENT 元素 (#PCDATA|子元素1|子元素2)*&gt;</code></li>
+</ol>
+<p><strong>元素限定符</strong></p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th style="text-align:center">用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>()</td>
+<td style="text-align:center">分组</td>
+</tr>
+<tr>
+<td>&brvbar;</td>
+<td style="text-align:center">选择</td>
+</tr>
+<tr>
+<td>+</td>
+<td style="text-align:center">最少出现一次</td>
+</tr>
+<tr>
+<td>*</td>
+<td style="text-align:center">允许出现任意多次</td>
+</tr>
+<tr>
+<td>?</td>
+<td style="text-align:center">出现0~1次</td>
+</tr>
+<tr>
+<td>,</td>
+<td style="text-align:center">必须按指定顺序出现</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DTD属性</strong></p>
+<ul>
+<li>设定元素属性与名称</li>
+<li>设定属性数据类型</li>
+<li>设定是否可选，是否属性固定，以及默认值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!ATTLIST ELEMENT_name</div><div class="line">    Attribute_name TYPE [add_declare]&gt;</div></pre></td></tr></table></figure>
+<p>属性类型</p>
+<table>
+<thead>
+<tr>
+<th>类型名称</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CDATA</td>
+<td style="text-align:center">值为普通的字符</td>
+</tr>
+<tr>
+<td>ID</td>
+<td style="text-align:center">值在文档中是唯一的</td>
+</tr>
+<tr>
+<td>IDREF</td>
+<td style="text-align:center">值参考了文档中另一个ID属性</td>
+</tr>
+<tr>
+<td>IDREFS</td>
+<td style="text-align:center">值参考了用空格隔开的多个文档中的ID属性</td>
+</tr>
+<tr>
+<td>ENTITY</td>
+<td style="text-align:center">值是一个外部实体</td>
+</tr>
+<tr>
+<td>ENTITIES</td>
+<td style="text-align:center">值包含了多个外部实体，用空格隔开</td>
+</tr>
+<tr>
+<td>NMTOKEN</td>
+<td style="text-align:center">值只能由字母、数字、下划线、连字符、圆点、冒号等字符组成</td>
+</tr>
+<tr>
+<td>NMTOKENS</td>
+<td style="text-align:center">值由多个nmtoken组成，用空格隔开</td>
+</tr>
+<tr>
+<td>NOTATION</td>
+<td style="text-align:center">值是在DTD中声明过的注解名称</td>
+</tr>
+<tr>
+<td>Enumerated</td>
+<td style="text-align:center">列出能够赋予该属性的各种值的列表，只能从中选定一个属性值</td>
+</tr>
+</tbody>
+</table>
+<p>在DTD中声明一个NOTATION类型的属性时，必须首先声明一个具体的NOTATION用来指向应用软件所在的位置，声明的方式有两种:<br>一种是使用MIME类型，格式为：<br><code>&lt;!NOTATION 记号名 SYSTEM &quot;MIME类型&quot;&gt;</code><br>另一种是使用URL路径，指定一个处理程序的路径，格式为：<br><code>&lt;!NOTATION 记号名 SYSTEM  &quot;URL&quot;&gt;</code></p>
+<p>属性的附加声明<br>added_declare是属性定义中的可选内容。附加声明指明了该属性是必要的还是可选的，是预设的固定属性值还是当属性值被省略时的默认值</p>
+<table>
+<thead>
+<tr>
+<th>附加声明</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#REQUIRED</td>
+<td>必须给出属性值</td>
+</tr>
+<tr>
+<td>#IMPLIIED</td>
+<td>可以不出现</td>
+</tr>
+<tr>
+<td>#FIXED AttValue</td>
+<td>固定值</td>
+</tr>
+<tr>
+<td>Default_Value</td>
+<td>默认</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DTD引用</strong></p>
+<p>内部DTD</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">	声明语句</div><div class="line">]&gt;</div></pre></td></tr></table></figure>
+<p>外部DTD</p>
+<p>引用私有DTD：<br><code>&lt;!DOCTYPE  RootElementName  SYSTEM  DTD_URL&gt;</code><br>引用公有DTD：<br><code>&lt;!DOCTYPE RootElementName PUBLIC DTD_name  DTD_URL&gt;</code></p>
+<ul>
+<li>RootElementName根源素</li>
+<li>SYSTEM 私有</li>
+<li>PUBLIC 公用</li>
+<li>DTD_name DTD文件名</li>
+<li>DTD_URL DTD文件路径</li>
+</ul>
+<p><strong>DTD实体</strong></p>
+<p>普通实体<br>用来插入文本。<br>内部普通实体<br><code>&lt;!ENTITY Entity_Name Entity_Value&gt;</code><br>外部普通实体<br><code>&lt;!ENTITY Entity_Name SYSTEM Entity_URL&gt;</code><br>SYSTEM是定义外部实体的关键字<br>引用<code>&amp;Enitiy_Name;</code><br>参数实体<br>不仅可以包含文本，还可以包含元素类型声明、属性列表声明、一般实体声明、标签声明、处理指令或注释等，只能在DTD中引用，并且通常情况下只能在外部DTD文档中引用。<br>内部参数实体<br><code>&lt;!ENTITY % Entity_Name Entity_Value&gt;</code><br>外部参数实体<br><code>&lt;!ENTITY % Entity_Name SYSTEM Entity_URL&gt;</code><br>引用<code>&amp;Enitiy_Name;</code><br>不可解析实体<br>二进制文件，如图形、声音等非字符型数据，唯一可以出现不可解析实体的地方就是属性值且不能进行引用<br>链接是XML文档:<br><code>&lt;!ENTITY name SYSTEM &quot;URI&quot;&gt;</code><br>不是XML文档<br><code>&lt;!ENTITY name SYSTEM “URI”NDATA  type&gt;</code></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[XML：语法基础]]></title>
       <url>http://www.codingbalian.online/2016/12/20/XML/</url>
       <content type="html"><![CDATA[<p>XML语法基础的介绍实例<br><a id="more"></a></p>
