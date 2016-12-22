@@ -269,6 +269,282 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-XML-XSL" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/22/XML-XSL/" class="article-date">
+      <time datetime="2016-12-22T14:34:33.000Z" itemprop="datePublished">2016-12-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/22/XML-XSL/">XML:XSL</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-XML-CSS" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/22/XML-CSS/" class="article-date">
+      <time datetime="2016-12-22T12:11:40.000Z" itemprop="datePublished">2016-12-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/22/XML-CSS/">用CSS显示XML</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <a id="more"></a>
+<p>CSS的定义语法由三部分构成：选择器(selector)，属性(property)，属性值(value)<br>基本格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>CSS可以设置多个元素的选择器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector1, selector2, selector3&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>selector1、selector2、selector3公用同一种样式<br>类(class)选择器可以为同名的元素设置不同的样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Tag.class&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#XML</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;book.css&quot;?&gt;</div><div class="line">&lt;DocumentElement&gt;</div><div class="line">	&lt;book Class=&quot;1&quot;&gt;</div><div class="line">		&lt;name&gt;数据挖掘&lt;/name&gt;</div><div class="line">		&lt;price&gt;16&lt;/price&gt;</div><div class="line">	&lt;/book&gt;</div><div class="line">	&lt;book Class=&quot;2&quot;&gt;</div><div class="line">		&lt;name&gt;机器学习&lt;/name&gt;</div><div class="line">		&lt;price&gt;18&lt;/price&gt;</div><div class="line">	&lt;/book&gt;</div><div class="line">&lt;/DocumentElement&gt;</div><div class="line">#CSS</div><div class="line">	book&#123;</div><div class="line">		display:block;</div><div class="line">		margin-top:16px</div><div class="line">		&#125;</div><div class="line">	name&#123;</div><div class="line">		display:block;</div><div class="line">		font-weight:bold</div><div class="line">		&#125;</div><div class="line">	book.1&#123;</div><div class="line">		font-size:18px</div><div class="line">		&#125;</div><div class="line">	book.2&#123;</div><div class="line">		font-style:italic;</div><div class="line">		font-size:16px</div><div class="line">		&#125;</div><div class="line">	name,price&#123;</div><div class="line">		margin:16px</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+<p>标识(ID)选择器：唯一标识一个元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Tag#ID&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>CSS属性<br>display常用属性</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>不显示</td>
+</tr>
+<tr>
+<td>block</td>
+<td>块级元素，换行与别的元素分开</td>
+</tr>
+<tr>
+<td>inline</td>
+<td>默认，同一行显示</td>
+</tr>
+<tr>
+<td>list-item</td>
+<td>作为列表显示</td>
+</tr>
+</tbody>
+</table>
+<p>font常用属性</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>font-family</td>
+<td>字体</td>
+</tr>
+<tr>
+<td>font-size</td>
+<td>尺寸</td>
+</tr>
+<tr>
+<td>font-style</td>
+<td>字形样式</td>
+</tr>
+<tr>
+<td>font-variant</td>
+<td>大小写</td>
+</tr>
+<tr>
+<td>font-weight</td>
+<td>粗细</td>
+</tr>
+</tbody>
+</table>
+<p>CSS可以使用color指定元素字体颜色</p>
+<p>CSS允许添加边框</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>无边框</td>
+</tr>
+<tr>
+<td>dotted</td>
+<td>点状边框</td>
+</tr>
+<tr>
+<td>dashed</td>
+<td>虚线</td>
+</tr>
+<tr>
+<td>solid</td>
+<td>实线</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双线</td>
+</tr>
+<tr>
+<td>groove</td>
+<td>3D 凹槽边框</td>
+</tr>
+<tr>
+<td>ridge</td>
+<td>3D 垄状边框</td>
+</tr>
+<tr>
+<td>inset</td>
+<td>3D inset 边框</td>
+</tr>
+<tr>
+<td>outset</td>
+<td>3D outset 边框</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>从父元素继承</td>
+</tr>
+</tbody>
+</table>
+<p>XML背景属性</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>background-color</td>
+<td>背景颜色</td>
+</tr>
+<tr>
+<td>background-position</td>
+<td>背景图像的位置</td>
+</tr>
+<tr>
+<td>background-size</td>
+<td>规定背景图片的尺寸</td>
+</tr>
+<tr>
+<td>background-repeat</td>
+<td>规定如何重复背景图像</td>
+</tr>
+<tr>
+<td>background-origin</td>
+<td>背景图片的定位区域</td>
+</tr>
+<tr>
+<td>background-clip</td>
+<td>规定背景的绘制区域</td>
+</tr>
+<tr>
+<td>background-attachment</td>
+<td>规定背景图像是否固定</td>
+</tr>
+<tr>
+<td>background-image</td>
+<td>背景图像</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>从父元素继承</td>
+</tr>
+</tbody>
+</table>
+<p>更多属性参考<a href="http://www.w3school.com.cn/cssref/index.asp#font" target="_blank" rel="external">CSS参考手册</a></p>
+<p>链接样式：在xml中加入<code>&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;样式名.css&quot;?&gt;</code><br>或者<code>@import url(stylesheetURL)</code><br>无需链接的内部CSS<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml-stylesheet type=&quot;text/css&quot;?&gt;</div><div class="line">&lt;根源素 xmlns:HTML=&quot;URL&quot;&gt;</div><div class="line">	&lt;HTML:STYLE&gt;</div><div class="line">		&lt;!--CSS--&gt;</div><div class="line">	&lt;/HTML:STYLE&gt;</div><div class="line">	&lt;!--XML子元素--&gt;</div><div class="line">&lt;/根源素&gt;</div></pre></td></tr></table></figure></p>
+<p>CSS中的注释:<code>/*注释内容*/</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-XML-Schema" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
