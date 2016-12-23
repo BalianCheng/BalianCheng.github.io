@@ -38,14 +38,10 @@
 </ul>
 </li>
 <li><p>xsl:attribute</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">``` </div><div class="line"> * name规定创建属性的名称</div><div class="line"> * namespace规定名称空间URI</div><div class="line"></div><div class="line">3. xsl:text</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">``` </div><div class="line"> * name规定创建属性的名称</div><div class="line"> * namespace规定名称空间URI</div><div class="line">  </div><div class="line">3. xsl:text</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p><xsl:text disable-output-escaping="yes|no"><br>    <!--content--><br></xsl:text><br>```</p>
-<ul>
-<li>用于输出文本节点包括文本、#PCDATA等</li>
-<li>disable-output-escaping默认为no，输出时将对文本进行转义。如&lt;输出为\&amp;lt</li>
-</ul>
 ]]></content>
     </entry>
     
@@ -736,7 +732,7 @@ Adaboost过程：</li>
 <li>将1和2都分错了的样本加上其他的新样本构成另一个新的N个的训练样本，通过对这个样本的学习得到第三个弱分类器；</li>
 <li>最终经过提升的强分类器。即某个数据被分为哪一类要由各分类器权值决定。</li>
 </ol>
-<p>训练数据中的每个样本，并赋予其一个权重，这些权重构成了向量D。一开始，这些权重都初始化成相等值。首先在训练数据上训练出一个弱分类器并计算该分类器的错误率，然后在同一数据集上再次训练弱分类器。在分类器的第二次训练当中，将会重新调整每个样本的权重，其中第一次分对的样本的权重将会降低，而第一次分错的样本的权重将会提高。为了从所有弱分类器中得到最终的分类结果，AdaBoost为每个分类器都分配了一个权重值alpha，这些alpha值是基于每个弱分类器的错误率进行计算的。<br>错误率ε的定义为<br>$$ε=\frac{未正确分类的样本数}{所有样本数}$$<br>alpha：<br>$$α=\frac{1}{2}ln\frac{1-ε}{ε}$$<br><img src="http://i1.piimg.com/567571/f46e6188192028b6.png" alt=""><br>AdaBoost算法的示意图。左边是数据集，其中直方图的不同宽度表示每个样例上的不同权重。在经过一个分类器之后，加权的预测结果会通过三角形中的alpha值进行加权。每个三角形中输出的加权结果在圆形中求和，从而得到最终的输出结果计算出alpha值之后，可以对权重向量D进行更新，以使得那些正确分类的样本的权重降低而错分样本的权重升高。<br>D的计算方法如下:<br>如果某个样本被正确分类，那么该样本的权重更改为：<br>$$D_i^{(t+1)}=\frac{D_i^{(t)}e^(-α)}{Sum(D)}$$<br>而如果某个样本被错分，那么该样本的权重更改为：<br>$$D_i^{(t+1)}=\frac{D_i^{(t)}e^α}{Sum(D)}$$<br>在计算出D之后，AdaBoost又开始进入下一轮迭代。AdaBoost算法会不断地重复训练和调整权重的过程，直到训练错误率为0或者弱分类器的数目达到用户的指定值为止。</p>
+<p>训练数据中的每个样本，并赋予其一个权重，这些权重构成了向量D。一开始，这些权重都初始化成相等值。首先在训练数据上训练出一个弱分类器并计算该分类器的错误率，然后在同一数据集上再次训练弱分类器。在分类器的第二次训练当中，将会重新调整每个样本的权重，其中第一次分对的样本的权重将会降低，而第一次分错的样本的权重将会提高。为了从所有弱分类器中得到最终的分类结果，AdaBoost为每个分类器都分配了一个权重值alpha，这些alpha值是基于每个弱分类器的错误率进行计算的。<br>错误率ε的定义为<br>$$ε=\frac{未正确分类的样本数}{所有样本数}$$<br>alpha：<br>$$α=\frac{1}{2}ln\frac{1-ε}{ε}$$<br><img src="http://i1.piimg.com/567571/f46e6188192028b6.png" alt=""><br>AdaBoost算法的示意图。左边是数据集，其中直方图的不同宽度表示每个样例上的不同权重。在经过一个分类器之后，加权的预测结果会通过三角形中的alpha值进行加权。每个三角形中输出的加权结果在圆形中求和，从而得到最终的输出结果计算出alpha值之后，可以对权重向量D进行更新，以使得那些正确分类的样本的权重降低而错分样本的权重升高。<br>D的计算方法如下:<br>如果某个样本被正确分类，那么该样本的权重更改为：<br>$$D_i^{(t+1)}=\frac{D_i^{(t)}e^-α}{Sum(D)}$$<br>而如果某个样本被错分，那么该样本的权重更改为：<br>$$D_i^{(t+1)}=\frac{D_i^{(t)}e^α}{Sum(D)}$$<br>在计算出D之后，AdaBoost又开始进入下一轮迭代。AdaBoost算法会不断地重复训练和调整权重的过程，直到训练错误率为0或者弱分类器的数目达到用户的指定值为止。</p>
 <ul>
 <li>自适应数据加载函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def loadDataSet(filename):  </div><div class="line">    numFeat = len(open(filename).readline().split(&apos;\t&apos;))  </div><div class="line">    dataMat = []  </div><div class="line">    labelMat=[]  </div><div class="line">    fr = open(filename)  </div><div class="line">    for line in fr.readlines():  </div><div class="line">        lineArr= []  </div><div class="line">        curLine = line.strip(&apos;\n&apos;).split(&apos;\t&apos;)  </div><div class="line">        for i in range(numFeat - 1):  </div><div class="line">            lineArr.append(float(curLine[i]))  </div><div class="line">        dataMat.append(lineArr)  </div><div class="line">        labelMat.append(float(curLine[-1]))  </div><div class="line">    fr.close()  </div><div class="line">    return dataMat, labelMat</div></pre></td></tr></table></figure>
 </li>
