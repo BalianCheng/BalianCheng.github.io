@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Balian Cheng" />
+
+
+
+<meta name="description" content="AdaboostAdaboost是一种迭代算法，其核心思想是针对同一个训练集训练不同的分类器(弱分类器)，然后把这些弱分类器集合起来，构成一个更强的最终分类器（强分类器）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Adaboost">
+<meta property="og:url" content="http://www.codingbalian.online/2016/12/20/Adaboost/index.html">
+<meta property="og:site_name" content="Balian's Blog">
+<meta property="og:description" content="AdaboostAdaboost是一种迭代算法，其核心思想是针对同一个训练集训练不同的分类器(弱分类器)，然后把这些弱分类器集合起来，构成一个更强的最终分类器（强分类器）。">
+<meta property="og:image" content="http://i1.piimg.com/567571/f46e6188192028b6.png">
+<meta property="og:updated_time" content="2016-12-23T12:51:15.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Adaboost">
+<meta name="twitter:description" content="AdaboostAdaboost是一种迭代算法，其核心思想是针对同一个训练集训练不同的分类器(弱分类器)，然后把这些弱分类器集合起来，构成一个更强的最终分类器（强分类器）。">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/f46e6188192028b6.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Balian&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Adaboost | Balian&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="https://avatars0.githubusercontent.com/u/17884783?v=3&amp;s=460" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Balian Cheng</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:393418737@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/BalianCheng" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.Studaholic.online/">Studaholic</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">前端新人</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Balian Cheng</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="https://avatars0.githubusercontent.com/u/17884783?v=3&amp;s=460" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Balian Cheng</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:393418737@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/BalianCheng" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-Adaboost" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/20/Adaboost/" class="article-date">
+      <time datetime="2016-12-19T16:35:57.000Z" itemprop="datePublished">2016-12-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Adaboost
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>Adaboost<br>Adaboost是一种迭代算法，其核心思想是针对同一个训练集训练不同的分类器(弱分类器)，然后把这些弱分类器集合起来，构成一个更强的最终分类器（强分类器）。<a id="more"></a>
+Adaboost过程：</li>
+</ul>
+<ol>
+<li>先通过对N个训练样本的学习得到第一个弱分类器；</li>
+<li>将分错的样本和其他的新数据一起构成一个新的N个的训练样本，通过对这个样本的学习得到第二个弱分类器 ；</li>
+<li>将1和2都分错了的样本加上其他的新样本构成另一个新的N个的训练样本，通过对这个样本的学习得到第三个弱分类器；</li>
+<li>最终经过提升的强分类器。即某个数据被分为哪一类要由各分类器权值决定。</li>
+</ol>
+<p>训练数据中的每个样本，并赋予其一个权重，这些权重构成了向量D。一开始，这些权重都初始化成相等值。首先在训练数据上训练出一个弱分类器并计算该分类器的错误率，然后在同一数据集上再次训练弱分类器。在分类器的第二次训练当中，将会重新调整每个样本的权重，其中第一次分对的样本的权重将会降低，而第一次分错的样本的权重将会提高。为了从所有弱分类器中得到最终的分类结果，AdaBoost为每个分类器都分配了一个权重值alpha，这些alpha值是基于每个弱分类器的错误率进行计算的。<br>错误率ε的定义为<br>$$ε=\frac{未正确分类的样本数}{所有样本数}$$<br>alpha：<br>$$α=\frac{1}{2}ln\frac{1-ε}{ε}$$<br><img src="http://i1.piimg.com/567571/f46e6188192028b6.png" alt=""><br>AdaBoost算法的示意图。左边是数据集，其中直方图的不同宽度表示每个样例上的不同权重。在经过一个分类器之后，加权的预测结果会通过三角形中的alpha值进行加权。每个三角形中输出的加权结果在圆形中求和，从而得到最终的输出结果计算出alpha值之后，可以对权重向量D进行更新，以使得那些正确分类的样本的权重降低而错分样本的权重升高。<br>D的计算方法如下:<br>如果某个样本被正确分类，那么该样本的权重更改为：<br>$$D_i^{(t+1)}=\frac{D_i^{(t)}e^-α}{Sum(D)}$$<br>而如果某个样本被错分，那么该样本的权重更改为：<br>$$D_i^{(t+1)}=\frac{D_i^{(t)}e^α}{Sum(D)}$$<br>在计算出D之后，AdaBoost又开始进入下一轮迭代。AdaBoost算法会不断地重复训练和调整权重的过程，直到训练错误率为0或者弱分类器的数目达到用户的指定值为止。</p>
+<ul>
+<li>自适应数据加载函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def loadDataSet(filename):  </div><div class="line">    numFeat = len(open(filename).readline().split(&apos;\t&apos;))  </div><div class="line">    dataMat = []  </div><div class="line">    labelMat=[]  </div><div class="line">    fr = open(filename)  </div><div class="line">    for line in fr.readlines():  </div><div class="line">        lineArr= []  </div><div class="line">        curLine = line.strip(&apos;\n&apos;).split(&apos;\t&apos;)  </div><div class="line">        for i in range(numFeat - 1):  </div><div class="line">            lineArr.append(float(curLine[i]))  </div><div class="line">        dataMat.append(lineArr)  </div><div class="line">        labelMat.append(float(curLine[-1]))  </div><div class="line">    fr.close()  </div><div class="line">    return dataMat, labelMat</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>并不指定每个文件中的特征数目，可以自动检测，并假定最后一个特征是类别标签</p>
+</blockquote>
+<ul>
+<li>单层决策树生成函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">def stumpClassify(dataMatrix, dimen, threshVal, threshIneq):  </div><div class="line">    retArray = ones((shape(dataMatrix)[0],1))  </div><div class="line">    if threshIneq == &apos;lt&apos;:  </div><div class="line">        retArray[dataMatrix[:,dimen]&lt;threshVal] = -1.0  </div><div class="line">    else:  </div><div class="line">        retArray[dataMatrix[:,dimen]&lt;threshVal] = -1.0  </div><div class="line">    return retArray  </div><div class="line"></div><div class="line">def buildStump(dataArr, classLabels, D):  </div><div class="line">    dataMatrix = mat(dataArr); labelMat = mat(classLabels).T  </div><div class="line">    m,n = shape(dataMatrix)  </div><div class="line">    numSteps = 10.0; bestStump = &#123;&#125;; #定义一个空字典，用于存储给定权重向量D时所得到的最佳单层决策树的相关信息  </div><div class="line">	bestClassEst = mat(zeros((m,1)))  </div><div class="line">    minError = inf  #最小错误率初始化为无穷大</div><div class="line">    for i in range(n):  #在所有数据集的所有特征上遍历  </div><div class="line">        rangeMin = dataMatrix[:,i].min(); rangeMax = dataMatrix[:,i].max();  </div><div class="line">        stepSize = (rangeMax - rangeMin)/numSteps #通过计算特征的最小值和最大值来计算步长，numSteps越大，步长越小   </div><div class="line">        for j in range(-1, int(numSteps)+1):  #按分的步长总数进行循环</div><div class="line">            for inequal in [&apos;lt&apos;,&apos;gt&apos;]:  </div><div class="line">                threshVal = (rangeMin + float(j)*stepSize)  </div><div class="line">                predictedVals = stumpClassify(dataMatrix, i, threshVal, inequal)  </div><div class="line">                errArr = mat(ones((m,1)))   #构建错误数组  errArr，如果predict-edVals中的值不等于labelMat中的真正类别标签值，那么errArr的相应位置为1</div><div class="line">                errArr[predictedVals == labelMat] = 0  </div><div class="line">                weightedError = D.T * errArr           #这里的error是错误向量errArr和权重向量D的相应元素相乘得到的即加权错误率  </div><div class="line">                #print &quot;split: dim %d, thresh %.2f, thresh inequal: %s, the weighted error is %.3f&quot; %(i, threshVal, inequal, weightedError)  </div><div class="line">                if weightedError &lt; minError:  </div><div class="line">                    minError = weightedError  </div><div class="line">                    bestClassEst = predictedVals.copy()  </div><div class="line">                    bestStump[&apos;dim&apos;] = i  </div><div class="line">                    bestStump[&apos;thresh&apos;] = threshVal  </div><div class="line">                    bestStump[&apos;ineq&apos;] = inequal  </div><div class="line">    return bestStump, minError, bestClassEst #返回分类的最小错误率</div></pre></td></tr></table></figure>
+<blockquote>
+<p>stumpClassify()通过阈值比较进行分类，可以通过数组过滤实现，首先将返回的元素全部设置为1，不满足等式的元素设置为为-1。<br>buildStump()有三层循环构建了单层决策树，最外层循环为遍历特征，次外层循环为遍历的步长，最内层为是否大于或小于阀值。构建的最小错误率为加权错误率，这就是为什么增加分错样本的权重，因为分错样本的权重增加了，下次如果继续分错，加权错误率会很大，这就不满足算法最小化加权错误率了。此外，加权错误率在每次迭代过程中一定是逐次降低的。<br>单层决策树的生成函数是决策树的一个简化版本。它就是所谓的弱学习器，即弱分类算法。</p>
+</blockquote>
+<ul>
+<li>基于单层决策树的adaboost训练过程  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">def adaBoostTrainDS(dataArr, classLabels, numIt = 40):  </div><div class="line">    weakClassArr = []  #建立一个单层决策树数组</div><div class="line">    m = shape(dataArr)[0]  #得到数据点的数目</div><div class="line">    D = mat(ones((m,1))/m) #向量D非常重要，它包含了每个数据点的权重 </div><div class="line">    aggClassEst = mat(zeros((m,1)))#列向量aggClassEst，记录每个数据点的类别估计累计值  </div><div class="line">    for i in range(numIt):  </div><div class="line">        bestStump, error, classEst = buildStump(dataArr, classLabels, D)  #bestStump=字典,error=分类错误率,classEst=列向量，预测之后的分类列表</div><div class="line">       # print &quot;D:&quot;, D.T  </div><div class="line">        alpha = float(0.5 * log((1.0 - error)/max(error, 1e-16)))   #确保在没有错误时不会发生除零溢出  </div><div class="line">        bestStump[&apos;alpha&apos;] = alpha  </div><div class="line">        weakClassArr.append(bestStump)  </div><div class="line">        #print &quot;classEst:&quot;, classEst.T  </div><div class="line">        expon = multiply(-1 * alpha * mat(classLabels).T, classEst)    #乘法用于区分是否正确或者错误样本,样本被正确分类的话expon为负，错误分类的话为正,其中第一次分对的样本的权重将会降低，而第一次分错的样本的权重将会提高  </div><div class="line">        D = multiply(D, exp(expon))  #计算新权重向量D  </div><div class="line">        D = D/D.sum()            # 归一化用的  </div><div class="line">        aggClassEst += alpha * classEst    #累加变成强分类器  </div><div class="line">        aggErrors = multiply(sign(aggClassEst) != mat(classLabels).T, ones((m,1)))  </div><div class="line">        errorRate = aggErrors.sum()/m  </div><div class="line">        print &quot;total error: &quot;, errorRate, &quot;\n&quot;  </div><div class="line">        if errorRate == 0.0: break  </div><div class="line">    return weakClassArr, aggClassEst</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>对每次迭代：<br>  利用buildStump()函数找到最佳的单层决策树<br>  将最佳单层决策树加入到单层决策树数组<br>  计算alpha<br>  计算新的权重向量D<br>  更新累计类别估计值<br>  如果错误率等于0.0，则退出循环<br>我们假定迭代次数设为9，如果算法在第三次迭代之后错误率为0，那么就会退出迭代过程，因此，此时就不需要执行所有的9次迭代过程。每次迭代的中间结果都会通过print语句进行输出。</p>
+</blockquote>
+<ul>
+<li>adaboost分类函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def adaClassify(datToClass, classifierArr):  </div><div class="line">    dataMatrix = mat(datToClass)  </div><div class="line">    m = shape(dataMatrix)[0]  </div><div class="line">    aggClassEst = mat(zeros((m,1)))  </div><div class="line">    for i in range(len(classifierArr)):  </div><div class="line">        classEst = stumpClassify(dataMatrix, classifierArr[i][&apos;dim&apos;], classifierArr[i][&apos;thresh&apos;], classifierArr[i][&apos;ineq&apos;])  </div><div class="line">        aggClassEst += classifierArr[i][&apos;alpha&apos;]*classEst  </div><div class="line">        print aggClassEst  </div><div class="line">    return sign(aggClassEst)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>adaClassify()函数就是利用训练出的多个弱分类器进行分类的函数。该函数的输入是由一个或者多个待分类样例datToClass以及多个弱分类器组成的数组classifierArr。程序返回aggClassEst的符号，即如果aggClassEst大于0则返回+1，而如果小于0则返回-1。</p>
+</blockquote>
+<ul>
+<li><p>画决策树的图 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">def plot_Fig(xMat,yMat,weakClassArr):  </div><div class="line">    xMat = mat(xMat)  </div><div class="line">    fig = plt.figure()  </div><div class="line">    ax = fig.add_subplot(111)  </div><div class="line">    for i in range(len(yMat)):  </div><div class="line">        if yMat[i] == -1.0: #如果标签为-1，则将数据点标为蓝色方块  </div><div class="line">            ax.scatter(xMat[i,0],xMat[i,1],color=&apos;b&apos;,marker=&apos;s&apos;) #注意flatten的用法  </div><div class="line">        else:  #如果标签为1，则将数据点标为红色圆形  </div><div class="line">            ax.scatter(xMat[i,0],xMat[i,1],color=&apos;r&apos;,marker=&apos;o&apos;)  </div><div class="line">    for i in range(len(weakClassArr)): #根据弱分类器数组画出决策树图形  </div><div class="line">        if weakClassArr[i].get(&quot;dim&quot;) == 0:   </div><div class="line">            y = arange(0.0,3.0,0.1)  </div><div class="line">            x = weakClassArr[i].get(&quot;thresh&quot;) #得到阈值  </div><div class="line">            x = repeat(x,len(y))  </div><div class="line">            ax.plot(x,y)  </div><div class="line">        if weakClassArr[i].get(&quot;dim&quot;) == 1:  </div><div class="line">            x = arange(0.0,3.0,0.1)  </div><div class="line">            y = weakClassArr[i].get(&quot;thresh&quot;)  </div><div class="line">            y = repeat(y,len(x))  </div><div class="line">            ax.plot(x,y)   </div><div class="line">    plt.show()</div></pre></td></tr></table></figure>
+</li>
+<li><p>ROC曲线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">def plotROC(predStrengths, classLabels):  </div><div class="line">    import matplotlib.pyplot as plt  </div><div class="line">    cur = (1.0,1.0) #cursor绘制光标的位置  </div><div class="line">    ySum = 0.0 #variable to calculate AUC；用于计算AUC的值  </div><div class="line">    numPosClas = sum(array(classLabels)==1.0) #计算正例的数目  </div><div class="line">    yStep = 1/float(numPosClas); #确定y坐标轴上的步长，因为当y为1时，对应的正例个数为numPosClas  </div><div class="line">    xStep = 1/float(len(classLabels)-numPosClas) #计算x坐标轴上的步长，因为当x为1时，对应的负例个数为总数减去numPosClas  </div><div class="line">    sortedIndicies = predStrengths.argsort()#get sorted index, it&apos;s reverse  </div><div class="line">    fig = plt.figure()  </div><div class="line">    fig.clf()  </div><div class="line">    ax = plt.subplot(111)  </div><div class="line">    #loop through all the values, drawing a line segment at each point  </div><div class="line">    for index in sortedIndicies.tolist()[0]: #利用tolist()转化为列表，  </div><div class="line">        if classLabels[index] == 1.0: #每得到一个标签为1.0的类，沿着y轴的方向下降一个步长，即不断降低真阳率（好好体会为什么这样做）  </div><div class="line">            delX = 0; delY = yStep;  </div><div class="line">        else:  </div><div class="line">            delX = xStep; delY = 0; #类似   </div><div class="line">            ySum += cur[1] #先对所有矩形的高度进行累加（当y值下降时不累加），最后再乘以xStep就是其总面积。  </div><div class="line">        #draw line from cur to (cur[0]-delX,cur[1]-delY)  </div><div class="line">        ax.plot([cur[0],cur[0]-delX],[cur[1],cur[1]-delY], c=&apos;b&apos;)  </div><div class="line">        cur = (cur[0]-delX,cur[1]-delY) #更新绘制光标的位置  </div><div class="line">    ax.plot([0,1],[0,1],&apos;b--&apos;)  </div><div class="line">    plt.xlabel(&apos;False positive rate&apos;); plt.ylabel(&apos;True positive rate&apos;)  </div><div class="line">    plt.title(&apos;ROC curve for AdaBoost horse colic detection system&apos;)  </div><div class="line">    ax.axis([0,1,0,1])  </div><div class="line">    print &quot;the Area Under the Curve is: &quot;,ySum*xStep  </div><div class="line">    plt.show()</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/12/20/Adaboost/">Adaboost</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
+        <p><span>发布时间:</span>2016-12-20, 00:35:57</p>
+        <p><span>最后更新:</span>2016-12-23, 20:51:15</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/20/Adaboost/" title="Adaboost">http://www.codingbalian.online/2016/12/20/Adaboost/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/20/Adaboost/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/20/Github-Tutorial/">
+                    Github教程
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/19/github-pages-Hexo/">
+                    github pages + Hexo + 域名绑定
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Adaboost　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/20/Adaboost/" data-title="Adaboost" data-url="http://www.codingbalian.online/2016/12/20/Adaboost/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"balian"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/12/20/Github-Tutorial/" title="上一篇: Github教程">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/19/github-pages-Hexo/" title="下一篇: github pages + Hexo + 域名绑定">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-XSL-XPath/">XML:XSL与XPath</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 Balian Cheng
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
