@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://www.codingbalian.online/2016/12/22/XML-XSL/index.html">
 <meta property="og:site_name" content="Balian's Blog">
 <meta property="og:description" content="XSL是基于XML的语言，用于显示XML的规范。">
-<meta property="og:updated_time" content="2016-12-23T13:31:55.734Z">
+<meta property="og:updated_time" content="2016-12-23T13:38:55.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XML:XSL转换">
 <meta name="twitter:description" content="XSL是基于XML的语言，用于显示XML的规范。">
@@ -364,7 +364,14 @@
 <li><xsl:value-of>具体输出指定子节点内容</xsl:value-of></li>
 </ul>
 </li>
-<li>输出内容排序</li>
+<li>输出内容排序<br><code>&lt;xsl:sort select=&quot;元素名&quot; order=&quot;ascending|descending&quot; case-order=&quot;upper-first|lower-first&quot; data-type=&quot;text|number|qname&quot; /&gt;</code><ul>
+<li>xsl:sort作为xsl:apply-template或者xsl:for-each的子元素出现</li>
+<li>data-type标书排序数据类型</li>
+<li>select定义关键字</li>
+<li>order设置升降序</li>
+<li>case-order设置大小写字母排序<br><strong>XPath</strong></li>
+</ul>
+</li>
 </ol>
 
       
@@ -377,7 +384,7 @@
         <p><span>本文标题:</span><a href="/2016/12/22/XML-XSL/">XML:XSL转换</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2016-12-22, 22:34:33</p>
-        <p><span>最后更新:</span>2016-12-23, 21:31:55</p>
+        <p><span>最后更新:</span>2016-12-23, 21:38:55</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/22/XML-XSL/" title="XML:XSL转换">http://www.codingbalian.online/2016/12/22/XML-XSL/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/22/XML-XSL/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

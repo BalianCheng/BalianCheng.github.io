@@ -71,7 +71,14 @@
 <li><xsl:value-of>具体输出指定子节点内容</xsl:value-of></li>
 </ul>
 </li>
-<li>输出内容排序</li>
+<li>输出内容排序<br><code>&lt;xsl:sort select=&quot;元素名&quot; order=&quot;ascending|descending&quot; case-order=&quot;upper-first|lower-first&quot; data-type=&quot;text|number|qname&quot; /&gt;</code><ul>
+<li>xsl:sort作为xsl:apply-template或者xsl:for-each的子元素出现</li>
+<li>data-type标书排序数据类型</li>
+<li>select定义关键字</li>
+<li>order设置升降序</li>
+<li>case-order设置大小写字母排序<br><strong>XPath</strong></li>
+</ul>
+</li>
 </ol>
 ]]></content>
     </entry>
