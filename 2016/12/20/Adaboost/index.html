@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="Balian's Blog">
 <meta property="og:description" content="AdaboostAdaboost是一种迭代算法，其核心思想是针对同一个训练集训练不同的分类器(弱分类器)，然后把这些弱分类器集合起来，构成一个更强的最终分类器（强分类器）。">
 <meta property="og:image" content="http://i1.piimg.com/567571/f46e6188192028b6.png">
-<meta property="og:updated_time" content="2016-12-23T07:55:09.515Z">
+<meta property="og:updated_time" content="2016-12-23T12:43:17.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Adaboost">
 <meta name="twitter:description" content="AdaboostAdaboost是一种迭代算法，其核心思想是针对同一个训练集训练不同的分类器(弱分类器)，然后把这些弱分类器集合起来，构成一个更强的最终分类器（强分类器）。">
@@ -311,13 +311,13 @@ Adaboost过程：</li>
 <li>将1和2都分错了的样本加上其他的新样本构成另一个新的N个的训练样本，通过对这个样本的学习得到第三个弱分类器；</li>
 <li>最终经过提升的强分类器。即某个数据被分为哪一类要由各分类器权值决定。</li>
 </ol>
-<p>训练数据中的每个样本，并赋予其一个权重，这些权重构成了向量D。一开始，这些权重都初始化成相等值。首先在训练数据上训练出一个弱分类器并计算该分类器的错误率，然后在同一数据集上再次训练弱分类器。在分类器的第二次训练当中，将会重新调整每个样本的权重，其中第一次分对的样本的权重将会降低，而第一次分错的样本的权重将会提高。为了从所有弱分类器中得到最终的分类结果，AdaBoost为每个分类器都分配了一个权重值alpha，这些alpha值是基于每个弱分类器的错误率进行计算的。<br>错误率ε的定义为<br>$$ε=\frac{未正确分类的样本数}{所有样本数}$$<br>alpha：<br>$$α=\frac{1}{2}ln\frac{1-ε}{ε}$$<br><img src="http://i1.piimg.com/567571/f46e6188192028b6.png" alt=""><br>AdaBoost算法的示意图。左边是数据集，其中直方图的不同宽度表示每个样例上的不同权重。在经过一个分类器之后，加权的预测结果会通过三角形中的alpha值进行加权。每个三角形中输出的加权结果在圆形中求和，从而得到最终的输出结果计算出alpha值之后，可以对权重向量D进行更新，以使得那些正确分类的样本的权重降低而错分样本的权重升高。<br>D的计算方法如下:<br>如果某个样本被正确分类，那么该样本的权重更改为：<br>$$D_i^{(t+1)}=\frac{D_i^{(t)}e^-α}{Sum(D)}$$<br>而如果某个样本被错分，那么该样本的权重更改为：<br>$$D_i^{(t+1)}=\frac{D_i^{(t)}e^α}{Sum(D)}$$<br>在计算出D之后，AdaBoost又开始进入下一轮迭代。Ad-aBoost算法会不断地重复训练和调整权重的过程，直到训练错误率为0或者弱分类器的数目达到用户的指定值为止。</p>
+<p>训练数据中的每个样本，并赋予其一个权重，这些权重构成了向量D。一开始，这些权重都初始化成相等值。首先在训练数据上训练出一个弱分类器并计算该分类器的错误率，然后在同一数据集上再次训练弱分类器。在分类器的第二次训练当中，将会重新调整每个样本的权重，其中第一次分对的样本的权重将会降低，而第一次分错的样本的权重将会提高。为了从所有弱分类器中得到最终的分类结果，AdaBoost为每个分类器都分配了一个权重值alpha，这些alpha值是基于每个弱分类器的错误率进行计算的。<br>错误率ε的定义为<br>$$ε=\frac{未正确分类的样本数}{所有样本数}$$<br>alpha：<br>$$α=\frac{1}{2}ln\frac{1-ε}{ε}$$<br><img src="http://i1.piimg.com/567571/f46e6188192028b6.png" alt=""><br>AdaBoost算法的示意图。左边是数据集，其中直方图的不同宽度表示每个样例上的不同权重。在经过一个分类器之后，加权的预测结果会通过三角形中的alpha值进行加权。每个三角形中输出的加权结果在圆形中求和，从而得到最终的输出结果计算出alpha值之后，可以对权重向量D进行更新，以使得那些正确分类的样本的权重降低而错分样本的权重升高。<br>D的计算方法如下:<br>如果某个样本被正确分类，那么该样本的权重更改为：<br>$$D_i^{(t+1)}=\frac{D_i^{(t)}e^(-α)}{Sum(D)}$$<br>而如果某个样本被错分，那么该样本的权重更改为：<br>$$D_i^{(t+1)}=\frac{D_i^{(t)}e^α}{Sum(D)}$$<br>在计算出D之后，AdaBoost又开始进入下一轮迭代。AdaBoost算法会不断地重复训练和调整权重的过程，直到训练错误率为0或者弱分类器的数目达到用户的指定值为止。</p>
 <ul>
 <li>自适应数据加载函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def loadDataSet(filename):  </div><div class="line">    numFeat = len(open(filename).readline().split(&apos;\t&apos;))  </div><div class="line">    dataMat = []  </div><div class="line">    labelMat=[]  </div><div class="line">    fr = open(filename)  </div><div class="line">    for line in fr.readlines():  </div><div class="line">        lineArr= []  </div><div class="line">        curLine = line.strip(&apos;\n&apos;).split(&apos;\t&apos;)  </div><div class="line">        for i in range(numFeat - 1):  </div><div class="line">            lineArr.append(float(curLine[i]))  </div><div class="line">        dataMat.append(lineArr)  </div><div class="line">        labelMat.append(float(curLine[-1]))  </div><div class="line">    fr.close()  </div><div class="line">    return dataMat, labelMat</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <blockquote>
-<p>并不指定每个文件中的特特征树木，可以自动检测，并假定最后一个特征是类别标签</p>
+<p>并不指定每个文件中的特征数目，可以自动检测，并假定最后一个特征是类别标签</p>
 </blockquote>
 <ul>
 <li>单层决策树生成函数</li>
@@ -358,7 +358,7 @@ Adaboost过程：</li>
         <p><span>本文标题:</span><a href="/2016/12/20/Adaboost/">Adaboost</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2016-12-20, 00:35:57</p>
-        <p><span>最后更新:</span>2016-12-23, 15:55:09</p>
+        <p><span>最后更新:</span>2016-12-23, 20:43:17</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/20/Adaboost/" title="Adaboost">http://www.codingbalian.online/2016/12/20/Adaboost/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/20/Adaboost/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
