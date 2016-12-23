@@ -76,10 +76,11 @@
 <li>data-type标书排序数据类型</li>
 <li>select定义关键字</li>
 <li>order设置升降序</li>
-<li>case-order设置大小写字母排序<br><strong>XPath</strong></li>
+<li>case-order设置大小写字母排序</li>
 </ul>
 </li>
 </ol>
+<p><strong>XPath</strong></p>
 ]]></content>
     </entry>
     
