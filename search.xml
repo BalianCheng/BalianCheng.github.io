@@ -80,7 +80,11 @@
 </ul>
 </li>
 </ol>
-<p><strong>XPath</strong></p>
+<p><strong>XPath</strong><br>XPath用于XML文字导航，将节点划分成8种节点类型</p>
+<ol>
+<li>根节点：唯一，最上层。根源素是根节点的第一层子节点，一般包括两个子节点：xsl-stylesheet处理指令和根源素。</li>
+<li>元素节点：</li>
+</ol>
 ]]></content>
     </entry>
     
