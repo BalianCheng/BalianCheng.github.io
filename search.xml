@@ -27,20 +27,14 @@
 </ul>
 </li>
 </ul>
-<p><strong>常用属性</strong></p>
-<ol>
-<li><p>xsl:element 用于在输出文档创建节点</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:element name=&quot;name&quot; namespace=&quot;URI&quot; use-attribute-sets=&quot;namelist&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:element&gt;</div></pre></td></tr></table></figure>
+<p><strong>常用属性</strong><br>xsl:element 用于在输出文档创建节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:element name=&quot;name&quot; namespace=&quot;URI&quot; use-attribute-sets=&quot;namelist&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:element&gt;</div></pre></td></tr></table></figure></p>
 <ul>
 <li>name规定创建元素的名称</li>
 <li>namespace规定名称空间的URI</li>
 <li>use-attribute-sets空格分隔属性集，包含需要向元素添加的属性</li>
 </ul>
-</li>
-<li><p>xsl:attribute</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">``` </div><div class="line"> * name规定创建属性的名称</div><div class="line"> * namespace规定名称空间URI</div><div class="line">  </div><div class="line">3. xsl:text</div></pre></td></tr></table></figure>
+<p>xsl:attribute</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">``` </div><div class="line"> * name规定创建属性的名称</div><div class="line"> * namespace规定名称空间URI</div><div class="line">  </div><div class="line">xsl:text</div></pre></td></tr></table></figure>
 <p><xsl:text disable-output-escaping="yes|no"><br>    <!--content--><br></xsl:text><br>```</p>
 <ul>
 <li>用于输出文本节点包括文本、#PCDATA等</li>
