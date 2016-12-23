@@ -4,9 +4,18 @@
   
     
     <entry>
-      <title><![CDATA[XML:XSL]]></title>
+      <title><![CDATA[XML:XSL转换]]></title>
       <url>http://www.codingbalian.online/2016/12/22/XML-XSL/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p>XSL是基于XML的语言，用于显示XML的规范。<br><a id="more"></a></p>
+<p><strong>XSL转换原理</strong><br>XSL样式表对XML文档转化的过程：</p>
+<ol>
+<li>根据XML文档构造源树，根据XSL规则将源树转化成结果树，转换协议为XSLT。</li>
+<li>生成结果树后进行解释，产生一种社和显示的格式（格式化）。</li>
+</ol>
+<p>XSL处理器负责转换成。XML文档先被解析成DOM树存放在内存中，接着进行分析，每一个DOM树的节点都与一个模式相比较，匹配上按模板进行转换否则继续往下匹配。<br><strong>XSL文档结构</strong><br>XSL是扩展名为xsl的文本文件使用XML，其基本结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</div><div class="line">&lt;xsl:template match=&quot;/&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">&lt;xsl:template match=&quot;指定的XML元素&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:stylesheet&gt;</div></pre></td></tr></table></figure></p>
+<p>把XSL样式表链接到XML文档:<code>&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;文件名.xsl&quot;?&gt;</code></p>
+<p><strong>XSL模板</strong></p>
+]]></content>
     </entry>
     
     <entry>
@@ -174,7 +183,7 @@
 </tr>
 </tbody>
 </table>
-<p>更多属性参考<a href="http://www.w3school.com.cn/cssref/index.asp#font" target="_blank" rel="external">CSS参考手册</a></p>
+<p>更多属性参考<a href="http://www.w3school.com.cn/cssref/index.asp" target="_blank" rel="external">CSS参考手册</a></p>
 <p>链接样式：在xml中加入<code>&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;样式名.css&quot;?&gt;</code><br>或者<code>@import url(stylesheetURL)</code><br>无需链接的内部CSS<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml-stylesheet type=&quot;text/css&quot;?&gt;</div><div class="line">&lt;根源素 xmlns:HTML=&quot;URL&quot;&gt;</div><div class="line">	&lt;HTML:STYLE&gt;</div><div class="line">		&lt;!--CSS--&gt;</div><div class="line">	&lt;/HTML:STYLE&gt;</div><div class="line">	&lt;!--XML子元素--&gt;</div><div class="line">&lt;/根源素&gt;</div></pre></td></tr></table></figure></p>
 <p>CSS中的注释:<code>/*注释内容*/</code></p>
 ]]></content>
