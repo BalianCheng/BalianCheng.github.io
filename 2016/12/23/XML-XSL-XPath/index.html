@@ -15,23 +15,16 @@
 
 
 
-<meta name="description" content="本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。">
+<meta name="description" content="继续记录XSL的内容与XPath">
 <meta property="og:type" content="article">
-<meta property="og:title" content="github pages + Hexo + 域名绑定">
-<meta property="og:url" content="http://www.codingbalian.online/2016/12/19/github-pages-Hexo/index.html">
+<meta property="og:title" content="XML:XSL&XPath">
+<meta property="og:url" content="http://www.codingbalian.online/2016/12/23/XML-XSL-XPath/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/git.png">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/NODEJS.png">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/cmd.png">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/gitmaven.png">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/hexo.png">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/newtheme.png">
-<meta property="og:updated_time" content="2016-12-20T13:17:12.040Z">
+<meta property="og:description" content="继续记录XSL的内容与XPath">
+<meta property="og:updated_time" content="2016-12-23T13:02:55.239Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github pages + Hexo + 域名绑定">
-<meta name="twitter:description" content="本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。">
-<meta name="twitter:image" content="http://oifuxc6w5.bkt.clouddn.com/git.png">
+<meta name="twitter:title" content="XML:XSL&XPath">
+<meta name="twitter:description" content="继续记录XSL的内容与XPath">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -63,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>github pages + Hexo + 域名绑定 | Balian&#39;s Blog</title>
+<title>XML:XSL&amp;XPath | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -270,11 +263,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-github-pages-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-XML-XSL-XPath" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/19/github-pages-Hexo/" class="article-date">
-      <time datetime="2016-12-19T15:03:28.000Z" itemprop="datePublished">2016-12-19</time>
+      <a href="/2016/12/23/XML-XSL-XPath/" class="article-date">
+      <time datetime="2016-12-23T12:59:35.000Z" itemprop="datePublished">2016-12-23</time>
 </a>
 
 
@@ -289,7 +282,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      github pages + Hexo + 域名绑定
+      XML:XSL&amp;XPath
     </h1>
   
 
@@ -306,14 +299,25 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。<br><a id="more"></a><br><strong>环境</strong></p>
+        <p>继续记录XSL的内容与XPath<br><a id="more"></a><br><strong>常用属性</strong></p>
 <ol>
-<li>安装Git<img src="http://oifuxc6w5.bkt.clouddn.com/git.png" alt=""></li>
-<li>安装Node<img src="http://oifuxc6w5.bkt.clouddn.com/NODEJS.png" alt=""></li>
-<li>验证安装<img src="http://oifuxc6w5.bkt.clouddn.com/cmd.png" alt=""></li>
+<li><p>xsl:element 用于在输出文档创建节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:element name=&quot;name&quot; namespace=&quot;URI&quot; use-attribute-sets=&quot;namelist&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:element&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>name规定创建元素的名称</li>
+<li>namespace规定名称空间的URI</li>
+<li>use-attribute-sets空格分隔属性集，包含需要向元素添加的属性</li>
+</ul>
+</li>
+<li>xsl:attribute<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">``` </div><div class="line"> * name规定创建属性的名称</div><div class="line"> * namespace规定名称空间URI</div><div class="line">3. xsl:text</div></pre></td></tr></table></figure>
+</li>
 </ol>
-<p><strong>Github Pages</strong><br> 在GitHub创建一个格式为：yourusername.github.io的仓库即可。<br><img src="http://oifuxc6w5.bkt.clouddn.com/gitmaven.png" alt=""><br><strong>Hexo</strong><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>建立一个blog文件夹用于存放博客文件,然后右键单击选择“Git Bash”。<br><code>npm install hexo-cli -g</code><br><code>hexo init blog</code><br><code>cd blog</code><br><code>npm install</code><br><code>hexo server</code><br>执行hexo server时，默认端口是4000,如果端口被占用更换即可。<br>如<code>hexo server -p 4001</code><br>访问<code>http://localhost:4000/</code><br><img src="http://oifuxc6w5.bkt.clouddn.com/hexo.png" alt=""><br><strong>更换主题</strong><br>exo-theme：<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a><br>hexo-github-theme-list：<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a><br><code>git clone</code>加上主题地址<br>_config.yml中将theme改成刚刚下载的主题<br>修改完成后<code>hexo generate</code>  <code>hexo server</code>重启服务器查看效果<br><img src="http://oifuxc6w5.bkt.clouddn.com/newtheme.png" alt=""><br><strong>部署代码到github</strong><br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code>生成SSH秘钥<br>在<a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a> 添加id_rsa.pub中的秘钥<br>安装插件：<br><code>npm install hexo -server --save</code><br><code>npm install hexo-deployer-git --save</code><br>安装其他插件的格式为<code>npm install ... --save</code><br>编辑全局 hexo 的配置文件：<code>_config.yml</code><br>注意<code>:</code>后留一个空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: https://github.com/BalianCheng/BalianCheng.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure></p>
-<p>编辑全局配置后需要重新部署：<br>清除掉已经生成的文件：<code>hexo clean</code><br>再生成静态文件：<code>hexo generate</code><br>预览：<code>hexo server</code><br>打开<code>localhost:4000</code>查看<br>部署：<code>hexo deploy</code><br>生成 40 4页面：<code>hexo new page 404</code><br>生成 about 页面：<code>hexo new page about</code><br>生成 tag 标签云页面：<code>hexo new page tags</code><br><strong>绑定域名</strong><br><code>ping yourname.github.io</code>获得IP地址并使用域名解析<br>进入GitHub项目,进入<code>Settings</code>,在<code>Custom domain</code>写入域名<br>在\blog\public下建立CNAME文件写入域名<br>将CNAME放入\blog\source\中避免重复操作</p>
+<p><xsl:text disable-output-escaping="yes|no"><br>    <!--content--><br></xsl:text><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"> * 用于输出文本节点包括文本、#PCDATA等</div><div class="line"> * disable-output-escaping默认为no，输出时将对文本进行转义。如&lt;输出为\&amp;lt</div><div class="line"></div><div class="line">**XSL节点选择**</div><div class="line">XSL样式表中有一个根模板，从根模板开始匹配XML文档，处理时调用其他模板，要匹配模板和标记时要设计“标记匹配模式”。</div><div class="line">1. 使用元素名匹配</div><div class="line">XSL处理器根据match提供的元素名称去XML文档提取该节点的数据，需要用到`xsl:value-of`元素，用于选取文档中某个元素的值并输出。</div><div class="line">`&lt;xsl:value-of select=&quot;expression&quot; disable-output-escaping=&quot;yes|no&quot;&gt;`</div><div class="line"> * select属性值是XPath表达式，规定从哪个节点或属性来提取</div><div class="line">2. 使用路径匹配</div><div class="line">通过详细的路径选择节点，即模板中的标记匹配模式可以由子标记、根标记、/、//共同组成。</div><div class="line">`&lt;xsl:template match=&quot;图书/书名&quot;&gt;`表示匹配图书下的任意书名子节点。</div><div class="line">`&lt;xsl:template match=&quot;//书名&quot;&gt;`表示匹配任意节点下的书名子节点。</div><div class="line"></div><div class="line">3. 使用匹配字符匹配</div><div class="line"> * 根节点匹配符`&lt;xsl:template match=&quot;/&quot;&gt;`</div><div class="line"> * 根源素匹配符`&lt;xsl:template match=&quot;/*&quot;&gt;`</div><div class="line"> * 当前节点`&lt;xsl:template match=&quot;.&quot;&gt;`父节点`&lt;xsl:template match=&quot;..&quot;&gt;`</div><div class="line"></div><div class="line">4. 使用元素属性匹配</div><div class="line">使用`标记[@属性]`或`标记[@属性=&apos;属性值&apos;]`进行筛选匹配。</div></pre></td></tr></table></figure></p>
+<p>#xml文档<br>&lt;?xml version=”1.0” encoding=”GB2312”?&gt;<br>&lt;名单&gt;<br>    &lt;姓名&gt;张三&lt;/姓名&gt;<br>    &lt;姓名 ID=”1”&gt;李四&lt;/姓名&gt;<br>&lt;/名单&gt;</p>
+<p>#获得李四数据</p>
+<p><xsl:template match="名单/姓名[@ID='1']"><br>    <!--模板内容--><br></xsl:template><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">**XSL控制指令**</div><div class="line"></div><div class="line">1. 简单判断指令`&lt;xsl:if&gt;`</div><div class="line"> * 以元素名为条件`&lt;xsl:if match=&quot;元素名&quot;&gt;`</div><div class="line"> * 以元素内容为条件`&lt;xsl:if test=&quot;元素名[.=元素内容]&quot;&gt;`</div><div class="line"> * 以元素属性为条件`&lt;xsl:if match=&quot;.[@属性名称=&apos;属性值&apos;]&quot;&gt;`</div><div class="line"> * 以元素属性为条件`&lt;xsl:if test=&quot;.[@属性名称=&apos;属性值&apos;]&quot;&gt;`</div><div class="line">2. 多条件判断指令</div></pre></td></tr></table></figure></p>
+<p><xsl:choose><br>    <xsl:when test="pattern"><br>        <!--样式定义语句--><br>    </xsl:when><br>    <xsl:when test="pattern"><br>        <!--样式定义语句--><br>    </xsl:when><br>    ……<br>    <xsl:otherwise><br>        <!--样式定义语句--><br>    </xsl:otherwise><br></xsl:choose><br>```</p>
+<p>3.循环处理指令</p>
 
       
     </div>
@@ -322,13 +326,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/23/XML-XSL-XPath/">XML:XSL&amp;XPath</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2016-12-19, 23:03:28</p>
-        <p><span>最后更新:</span>2016-12-20, 21:17:12</p>
+        <p><span>发布时间:</span>2016-12-23, 20:59:35</p>
+        <p><span>最后更新:</span>2016-12-23, 21:02:55</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/19/github-pages-Hexo/" title="github pages + Hexo + 域名绑定">http://www.codingbalian.online/2016/12/19/github-pages-Hexo/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/19/github-pages-Hexo/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/23/XML-XSL-XPath/" title="XML:XSL&amp;XPath">http://www.codingbalian.online/2016/12/23/XML-XSL-XPath/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/23/XML-XSL-XPath/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -340,12 +344,12 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/20/Adaboost/">
-                    Adaboost
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/22/XML-XSL/">
+                    XML:XSL转换
                 </a>
             </div>
-        
         
     </nav>
 
@@ -391,7 +395,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"github pages + Hexo + 域名绑定　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"XML:XSL&XPath　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -407,7 +411,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/19/github-pages-Hexo/" data-title="github pages + Hexo + 域名绑定" data-url="http://www.codingbalian.online/2016/12/19/github-pages-Hexo/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/23/XML-XSL-XPath/" data-title="XML:XSL&amp;XPath" data-url="http://www.codingbalian.online/2016/12/23/XML-XSL-XPath/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -430,15 +434,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/20/Adaboost/" title="上一篇: Adaboost">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/12/22/XML-XSL/" title="下一篇: XML:XSL转换">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
