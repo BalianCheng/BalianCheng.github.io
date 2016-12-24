@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2016-12-24T09:06:25.828Z</updated>
+  <updated>2016-12-24T09:09:42.854Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -20,12 +20,21 @@
     <link href="http://www.codingbalian.online/2016/12/24/XML-DOM-Test/"/>
     <id>http://www.codingbalian.online/2016/12/24/XML-DOM-Test/</id>
     <published>2016-12-24T09:06:23.000Z</published>
-    <updated>2016-12-24T09:06:25.828Z</updated>
+    <updated>2016-12-24T09:09:42.854Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用JAXP操作XML文档的实例。<br><a id="more"></a></p>
+]]></content>
     
     <summary type="html">
     
+      &lt;p&gt;使用JAXP操作XML文档的实例。&lt;br&gt;
+    
     </summary>
     
+      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
+    
+    
+      <category term="DOM" scheme="http://www.codingbalian.online/tags/DOM/"/>
     
   </entry>
   

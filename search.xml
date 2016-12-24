@@ -6,7 +6,8 @@
     <entry>
       <title><![CDATA[XML:DOM Test]]></title>
       <url>http://www.codingbalian.online/2016/12/24/XML-DOM-Test/</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p>使用JAXP操作XML文档的实例。<br><a id="more"></a></p>
+]]></content>
     </entry>
     
     <entry>
