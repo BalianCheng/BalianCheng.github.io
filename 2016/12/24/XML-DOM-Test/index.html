@@ -17,14 +17,15 @@
 
 <meta name="description" content="使用JAXP操作XML文档的实例。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XML:JAXP操作XML实例">
+<meta property="og:title" content="XML:JAXP操作XML实例1">
 <meta property="og:url" content="http://www.codingbalian.online/2016/12/24/XML-DOM-Test/index.html">
 <meta property="og:site_name" content="Balian's Blog">
 <meta property="og:description" content="使用JAXP操作XML文档的实例。">
 <meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/%E7%A4%BA%E4%BE%8B1.PNG">
-<meta property="og:updated_time" content="2016-12-24T10:01:12.727Z">
+<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/%E7%A4%BA%E4%BE%8B2.PNG">
+<meta property="og:updated_time" content="2016-12-24T10:29:03.153Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XML:JAXP操作XML实例">
+<meta name="twitter:title" content="XML:JAXP操作XML实例1">
 <meta name="twitter:description" content="使用JAXP操作XML文档的实例。">
 <meta name="twitter:image" content="http://oifuxc6w5.bkt.clouddn.com/%E7%A4%BA%E4%BE%8B1.PNG">
 
@@ -58,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>XML:JAXP操作XML实例 | Balian&#39;s Blog</title>
+<title>XML:JAXP操作XML实例1 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -284,7 +285,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      XML:JAXP操作XML实例
+      XML:JAXP操作XML实例1
     </h1>
   
 
@@ -313,7 +314,9 @@
 <p></p><h2 id="1">遍历XML文档</h2><br>book.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;图书列表&gt;</div><div class="line">	&lt;图书&gt;</div><div class="line">		&lt;书名&gt;三国演义&lt;/书名&gt;</div><div class="line">		&lt;作者&gt;罗贯中&lt;/作者&gt;</div><div class="line">		&lt;价格&gt;38.00元&lt;/价格&gt;</div><div class="line">		&lt;出版社&gt;人民文学出版社&lt;/出版社&gt;</div><div class="line">	&lt;/图书&gt;</div><div class="line">	&lt;图书&gt;</div><div class="line">		&lt;书名&gt;西游记&lt;/书名&gt;</div><div class="line">		&lt;作者&gt;吴承恩&lt;/作者&gt;</div><div class="line">		&lt;价格&gt;48.00元&lt;/价格&gt;</div><div class="line">		&lt;出版社&gt;人民文学出版社&lt;/出版社&gt;</div><div class="line">	&lt;/图书&gt;</div><div class="line">&lt;/图书列表&gt;</div></pre></td></tr></table></figure><p></p>
 <p>bookxml.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">import javax.xml.parsers.*;</div><div class="line">import org.w3c.dom.*;</div><div class="line">public class bookxml&#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		try&#123;</div><div class="line">			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); #获得工厂实例</div><div class="line">			DocumentBuilder builder = factory.newDocumentBuilder();  #获得DOM解析器</div><div class="line">			Document doc = builder.parse(&quot;book.xml&quot;); #将需要解析的XML文档读入DOM</div><div class="line">			System.out.println(doc.getImplementation());</div><div class="line">            NodeList nl = doc.getElementsByTagName(&quot;图书&quot;);  #获得“图书”元素的节点列表</div><div class="line">            for (int i = 0; i &lt; nl.getLength(); i++) &#123;  #遍历</div><div class="line">				Element node=(Element)nl.item(i);</div><div class="line">				System.out.print(&quot;书名&quot;);</div><div class="line">				System.out.println(node.getElementsByTagName(&quot;书名&quot;).item(0).getFirstChild().getNodeValue());</div><div class="line">				System.out.print(&quot;作者&quot;);</div><div class="line">				System.out.println(node.getElementsByTagName(&quot;作者&quot;).item(0).getFirstChild().getNodeValue());</div><div class="line">				System.out.print(&quot;价格&quot;);</div><div class="line">				System.out.println(node.getElementsByTagName(&quot;价格&quot;).item(0).getFirstChild().getNodeValue());</div><div class="line">				System.out.print(&quot;出版社&quot;);</div><div class="line">				System.out.println(node.getElementsByTagName(&quot;出版社&quot;).item(0).getFirstChild().getNodeValue());</div><div class="line">            &#125;</div><div class="line">		&#125;</div><div class="line">		catch(Exception e)&#123;</div><div class="line">				e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>运行结果：<br><img src="http://oifuxc6w5.bkt.clouddn.com/%E7%A4%BA%E4%BE%8B1.PNG" alt=""></p>
-<p></p><h2 id="2">访问属性节点</h2><br>book.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;图书列表&gt;</div><div class="line">	&lt;图书 作者=&quot;罗贯中&quot; 价格=&quot;38.00元&quot; 出版社=&quot;人民文学出版社&quot;&gt;</div><div class="line">		三国演义</div><div class="line">	&lt;/图书&gt;</div><div class="line">	&lt;图书 作者=&quot;吴承恩&quot; 价格=&quot;48.00元&quot; 出版社=&quot;人民文学出版社&quot;&gt;</div><div class="line">		西游记</div><div class="line">	&lt;/图书&gt;</div><div class="line">&lt;/图书列表&gt;</div></pre></td></tr></table></figure><p></p>
+<p></p><h2 id="1">访问属性节点</h2><br>book.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;图书列表&gt;</div><div class="line">	&lt;图书 作者=&quot;罗贯中&quot; 价格=&quot;38.00元&quot; 出版社=&quot;人民文学出版社&quot;&gt;</div><div class="line">		三国演义</div><div class="line">	&lt;/图书&gt;</div><div class="line">	&lt;图书 作者=&quot;吴承恩&quot; 价格=&quot;48.00元&quot; 出版社=&quot;人民文学出版社&quot;&gt;</div><div class="line">		西游记</div><div class="line">	&lt;/图书&gt;</div><div class="line">&lt;/图书列表&gt;</div></pre></td></tr></table></figure><p></p>
+<p>bookxml.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">import javax.xml.parsers.*;</div><div class="line">import org.w3c.dom.*;</div><div class="line">public class bookxml&#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		try&#123;</div><div class="line">			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); </div><div class="line">			DocumentBuilder builder = factory.newDocumentBuilder(); </div><div class="line">			Document doc = builder.parse(&quot;book.xml&quot;); </div><div class="line">			Element root=doc.getDocumentElement();</div><div class="line">			String rootName=root.getNodeName();</div><div class="line">			System.out.println(&quot;XML文件根节点命名为：&quot;+rootName);</div><div class="line">			NodeList nl = root.getElementsByTagName(&quot;图书&quot;); #获取图书节点对象集合</div><div class="line">			for (int i = 0; i &lt; nl.getLength(); i++) &#123;</div><div class="line">				Node node=nl.item(i);</div><div class="line">				String name=node.getNodeName(); #获取节点名</div><div class="line">				NamedNodeMap map=node.getAttributes(); #获取每个节点的属性集合</div><div class="line">				String content =node.getTextContent(); #获取节点中包含的数据</div><div class="line">				System.out.print(name);</div><div class="line">				for(int k = 0;k&lt;map.getLength();k++)&#123; #获取节点长度，输出属性集合的名称和值</div><div class="line">					Attr attrNode=(Attr)map.item(k);</div><div class="line">					String attName=attrNode.getName(); #获得属性名称</div><div class="line">					String attValue=attrNode.getValue(); #获得属性值</div><div class="line">					System.out.print(&quot; &quot;+attName+&quot;=&quot;+attValue);</div><div class="line">				&#125;</div><div class="line">				System.out.print(content);</div><div class="line">            &#125;</div><div class="line">		&#125;</div><div class="line">		catch(Exception e)&#123;</div><div class="line">				e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>运行结果：<br><img src="http://oifuxc6w5.bkt.clouddn.com/%E7%A4%BA%E4%BE%8B2.PNG" alt=""></p>
 
       
     </div>
@@ -322,12 +325,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/24/XML-DOM-Test/">XML:JAXP操作XML实例</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/24/XML-DOM-Test/">XML:JAXP操作XML实例1</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2016-12-24, 17:06:23</p>
-        <p><span>最后更新:</span>2016-12-24, 18:01:12</p>
+        <p><span>最后更新:</span>2016-12-24, 18:29:03</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/24/XML-DOM-Test/" title="XML:JAXP操作XML实例">http://www.codingbalian.online/2016/12/24/XML-DOM-Test/</a>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/24/XML-DOM-Test/" title="XML:JAXP操作XML实例1">http://www.codingbalian.online/2016/12/24/XML-DOM-Test/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/24/XML-DOM-Test/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -339,6 +342,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/12/24/XML-DOM-Test2/">
+                    XML:JAXP操作XML实例2
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -355,7 +364,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">遍历XML文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">访问属性节点</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">遍历XML文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">2.</span> <span class="toc-text">访问属性节点</span></a></li></ol>
         
     </div>
     <style>
@@ -391,7 +400,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"XML:JAXP操作XML实例　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"XML:JAXP操作XML实例1　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -407,7 +416,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/24/XML-DOM-Test/" data-title="XML:JAXP操作XML实例" data-url="http://www.codingbalian.online/2016/12/24/XML-DOM-Test/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/24/XML-DOM-Test/" data-title="XML:JAXP操作XML实例1" data-url="http://www.codingbalian.online/2016/12/24/XML-DOM-Test/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -430,7 +439,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/12/24/XML-DOM-Test2/" title="上一篇: XML:JAXP操作XML实例2">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -442,7 +453,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/XML-DOM-Test/">XML:JAXP操作XML实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/XML-DOM-Test2/">XML:JAXP操作XML实例2</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/XML-DOM-Test/">XML:JAXP操作XML实例1</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
 
 
 
