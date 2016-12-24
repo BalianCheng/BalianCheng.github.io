@@ -15,23 +15,16 @@
 
 
 
-<meta name="description" content="本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="github pages + Hexo + 域名绑定">
-<meta property="og:url" content="http://www.codingbalian.online/2016/12/19/github-pages-Hexo/index.html">
+<meta name="description" content="What man is a man who does not make the world better?">
+<meta property="og:type" content="website">
+<meta property="og:title" content="catalages">
+<meta property="og:url" content="http://www.codingbalian.online/catalages/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/git.png">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/NODEJS.png">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/cmd.png">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/gitmaven.png">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/hexo.png">
-<meta property="og:image" content="http://oifuxc6w5.bkt.clouddn.com/newtheme.png">
-<meta property="og:updated_time" content="2016-12-20T13:17:12.040Z">
+<meta property="og:description" content="What man is a man who does not make the world better?">
+<meta property="og:updated_time" content="2016-12-24T03:15:07.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="github pages + Hexo + 域名绑定">
-<meta name="twitter:description" content="本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。">
-<meta name="twitter:image" content="http://oifuxc6w5.bkt.clouddn.com/git.png">
+<meta name="twitter:title" content="catalages">
+<meta name="twitter:description" content="What man is a man who does not make the world better?">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -63,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>github pages + Hexo + 域名绑定 | Balian&#39;s Blog</title>
+<title>catalages | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -73,7 +66,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
+        isPost: false,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -270,11 +263,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-github-pages-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/19/github-pages-Hexo/" class="article-date">
-      <time datetime="2016-12-19T15:03:28.000Z" itemprop="datePublished">2016-12-19</time>
+      <a href="/catalages/index.html" class="article-date">
+      <time datetime="2016-12-24T03:15:07.000Z" itemprop="datePublished">2016-12-24</time>
 </a>
 
 
@@ -289,7 +282,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      github pages + Hexo + 域名绑定
+      catalages
     </h1>
   
 
@@ -306,74 +299,36 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。<br><a id="more"></a><br><strong>环境</strong></p>
-<ol>
-<li>安装Git<img src="http://oifuxc6w5.bkt.clouddn.com/git.png" alt=""></li>
-<li>安装Node<img src="http://oifuxc6w5.bkt.clouddn.com/NODEJS.png" alt=""></li>
-<li>验证安装<img src="http://oifuxc6w5.bkt.clouddn.com/cmd.png" alt=""></li>
-</ol>
-<p><strong>Github Pages</strong><br> 在GitHub创建一个格式为：yourusername.github.io的仓库即可。<br><img src="http://oifuxc6w5.bkt.clouddn.com/gitmaven.png" alt=""><br><strong>Hexo</strong><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>建立一个blog文件夹用于存放博客文件,然后右键单击选择“Git Bash”。<br><code>npm install hexo-cli -g</code><br><code>hexo init blog</code><br><code>cd blog</code><br><code>npm install</code><br><code>hexo server</code><br>执行hexo server时，默认端口是4000,如果端口被占用更换即可。<br>如<code>hexo server -p 4001</code><br>访问<code>http://localhost:4000/</code><br><img src="http://oifuxc6w5.bkt.clouddn.com/hexo.png" alt=""><br><strong>更换主题</strong><br>exo-theme：<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a><br>hexo-github-theme-list：<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a><br><code>git clone</code>加上主题地址<br>_config.yml中将theme改成刚刚下载的主题<br>修改完成后<code>hexo generate</code>  <code>hexo server</code>重启服务器查看效果<br><img src="http://oifuxc6w5.bkt.clouddn.com/newtheme.png" alt=""><br><strong>部署代码到github</strong><br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code>生成SSH秘钥<br>在<a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a> 添加id_rsa.pub中的秘钥<br>安装插件：<br><code>npm install hexo -server --save</code><br><code>npm install hexo-deployer-git --save</code><br>安装其他插件的格式为<code>npm install ... --save</code><br>编辑全局 hexo 的配置文件：<code>_config.yml</code><br>注意<code>:</code>后留一个空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: https://github.com/BalianCheng/BalianCheng.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure></p>
-<p>编辑全局配置后需要重新部署：<br>清除掉已经生成的文件：<code>hexo clean</code><br>再生成静态文件：<code>hexo generate</code><br>预览：<code>hexo server</code><br>打开<code>localhost:4000</code>查看<br>部署：<code>hexo deploy</code><br>生成 40 4页面：<code>hexo new page 404</code><br>生成 about 页面：<code>hexo new page about</code><br>生成 tag 标签云页面：<code>hexo new page tags</code><br><strong>绑定域名</strong><br><code>ping yourname.github.io</code>获得IP地址并使用域名解析<br>进入GitHub项目,进入<code>Settings</code>,在<code>Custom domain</code>写入域名<br>在\blog\public下建立CNAME文件写入域名<br>将CNAME放入\blog\source\中避免重复操作</p>
+              <style>
+    .article-meta { display: none; }
+    #container .article .article-title { padding-right: 0; }
+    .article-header {
+        padding: 0;
+        padding-top: 26px;
+        border-left: none;
+        text-align: center;
+    }
+    .article-header:hover { border-left: none; }
+    .article-title { font-size: 1.6em }
+    .article-entry hr { margin: 0;}
+    .article-meta,
+    #container .article-info-post.article-info { display: none;}
+    #container .article .article-title { padding: 0; }
+</style>
 
+
+          
+        
       
     </div>
     
   </div>
   
     
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2016-12-19, 23:03:28</p>
-        <p><span>最后更新:</span>2016-12-20, 21:17:12</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/19/github-pages-Hexo/" title="github pages + Hexo + 域名绑定">http://www.codingbalian.online/2016/12/19/github-pages-Hexo/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/19/github-pages-Hexo/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
 
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/20/Adaboost/">
-                    Adaboost
-                </a>
-            </div>
-        
-        
-    </nav>
 
   
 </article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
 
 
 
@@ -391,7 +346,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"github pages + Hexo + 域名绑定　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"catalages　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -407,7 +362,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/19/github-pages-Hexo/" data-title="github pages + Hexo + 域名绑定" data-url="http://www.codingbalian.online/2016/12/19/github-pages-Hexo/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="catalages/index.html" data-title="catalages" data-url="http://www.codingbalian.online/catalages/index.html"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -425,24 +380,6 @@
 </div>
     
 
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2016/12/20/Adaboost/" title="上一篇: Adaboost">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
 
 
 

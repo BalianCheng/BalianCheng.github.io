@@ -1,22 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Balian&#39;s Blog</title>
   
+  <link href="/atom.xml" rel="self"/>
   
+  <link href="http://www.codingbalian.online/"/>
+  <updated>2016-12-23T15:53:56.774Z</updated>
+  <id>http://www.codingbalian.online/</id>
+  
+  <author>
+    <name>Balian Cheng</name>
+    <email>393418737@qq.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XML:DOM</title>
+    <link href="http://www.codingbalian.online/2016/12/23/XML-DOM/"/>
+    <id>http://www.codingbalian.online/2016/12/23/XML-DOM/</id>
+    <published>2016-12-23T14:48:22.000Z</published>
+    <updated>2016-12-23T15:53:56.774Z</updated>
     
-    <entry>
-      <title><![CDATA[XML:DOM]]></title>
-      <url>http://www.codingbalian.online/2016/12/23/XML-DOM/</url>
-      <content type="html"><![CDATA[<p>本篇介绍DOM来解析XML文档内容。</p>
+    <content type="html"><![CDATA[<p>本篇介绍DOM来解析XML文档内容。</p>
 <blockquote>
 <p>DOM基于树或基于对象，方便应用程序对数据和结构进行更改，且任何时候可以在树种上下导航。<br><a id="more"></a></p>
 </blockquote>
 ]]></content>
-    </entry>
     
-    <entry>
-      <title><![CDATA[XML:XSL转换]]></title>
-      <url>http://www.codingbalian.online/2016/12/22/XML-XSL/</url>
-      <content type="html"><![CDATA[<p>XSL是基于XML的语言，用于显示XML的规范。<br><a id="more"></a></p>
+    <summary type="html">
+    
+      &lt;p&gt;本篇介绍DOM来解析XML文档内容。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DOM基于树或基于对象，方便应用程序对数据和结构进行更改，且任何时候可以在树种上下导航。&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>XML:XSL转换</title>
+    <link href="http://www.codingbalian.online/2016/12/22/XML-XSL/"/>
+    <id>http://www.codingbalian.online/2016/12/22/XML-XSL/</id>
+    <published>2016-12-22T14:34:33.000Z</published>
+    <updated>2016-12-23T14:46:10.040Z</updated>
+    
+    <content type="html"><![CDATA[<p>XSL是基于XML的语言，用于显示XML的规范。<br><a id="more"></a></p>
 <p><strong>XSL转换原理</strong><br>XSL样式表对XML文档转化的过程：</p>
 <ol>
 <li>根据XML文档构造源树，根据XSL规则将源树转化成结果树，转换协议为XSLT。</li>
@@ -253,12 +283,24 @@
 </table>
 <p>XPath标准函数:参考<a href="http://www.w3school.com.cn/xpath/xpath_functions.asp" target="_blank" rel="external">XPath、XQuery以及XSLT函数</a></p>
 ]]></content>
-    </entry>
     
-    <entry>
-      <title><![CDATA[用CSS显示XML]]></title>
-      <url>http://www.codingbalian.online/2016/12/22/XML-CSS/</url>
-      <content type="html"><![CDATA[<p>在XML里用到过的CSS的一点点基础内容<br><a id="more"></a><br>CSS的定义语法由三部分构成：选择器(selector)，属性(property)，属性值(value)<br>基本格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+    <summary type="html">
+    
+      &lt;p&gt;XSL是基于XML的语言，用于显示XML的规范。&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>用CSS显示XML</title>
+    <link href="http://www.codingbalian.online/2016/12/22/XML-CSS/"/>
+    <id>http://www.codingbalian.online/2016/12/22/XML-CSS/</id>
+    <published>2016-12-22T12:11:40.000Z</published>
+    <updated>2016-12-22T14:41:18.381Z</updated>
+    
+    <content type="html"><![CDATA[<p>在XML里用到过的CSS的一点点基础内容<br><a id="more"></a><br>CSS的定义语法由三部分构成：选择器(selector)，属性(property)，属性值(value)<br>基本格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>CSS可以设置多个元素的选择器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector1, selector2, selector3&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>selector1、selector2、selector3公用同一种样式<br>类(class)选择器可以为同名的元素设置不同的样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Tag.class&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#XML</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;book.css&quot;?&gt;</div><div class="line">&lt;DocumentElement&gt;</div><div class="line">	&lt;book Class=&quot;1&quot;&gt;</div><div class="line">		&lt;name&gt;数据挖掘&lt;/name&gt;</div><div class="line">		&lt;price&gt;16&lt;/price&gt;</div><div class="line">	&lt;/book&gt;</div><div class="line">	&lt;book Class=&quot;2&quot;&gt;</div><div class="line">		&lt;name&gt;机器学习&lt;/name&gt;</div><div class="line">		&lt;price&gt;18&lt;/price&gt;</div><div class="line">	&lt;/book&gt;</div><div class="line">&lt;/DocumentElement&gt;</div><div class="line">#CSS</div><div class="line">	book&#123;</div><div class="line">		display:block;</div><div class="line">		margin-top:16px</div><div class="line">		&#125;</div><div class="line">	name&#123;</div><div class="line">		display:block;</div><div class="line">		font-weight:bold</div><div class="line">		&#125;</div><div class="line">	book.1&#123;</div><div class="line">		font-size:18px</div><div class="line">		&#125;</div><div class="line">	book.2&#123;</div><div class="line">		font-style:italic;</div><div class="line">		font-size:16px</div><div class="line">		&#125;</div><div class="line">	name,price&#123;</div><div class="line">		margin:16px</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
@@ -424,12 +466,24 @@
 <p>链接样式：在xml中加入<code>&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;样式名.css&quot;?&gt;</code><br>或者<code>@import url(stylesheetURL)</code><br>无需链接的内部CSS<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml-stylesheet type=&quot;text/css&quot;?&gt;</div><div class="line">&lt;根源素 xmlns:HTML=&quot;URL&quot;&gt;</div><div class="line">	&lt;HTML:STYLE&gt;</div><div class="line">		&lt;!--CSS--&gt;</div><div class="line">	&lt;/HTML:STYLE&gt;</div><div class="line">	&lt;!--XML子元素--&gt;</div><div class="line">&lt;/根源素&gt;</div></pre></td></tr></table></figure></p>
 <p>CSS中的注释:<code>/*注释内容*/</code></p>
 ]]></content>
-    </entry>
     
-    <entry>
-      <title><![CDATA[XML Schema]]></title>
-      <url>http://www.codingbalian.online/2016/12/21/XML-Schema/</url>
-      <content type="html"><![CDATA[<p>XML Schema为详细规定XML文档数据类型与组织结构的标准，且基于XML语法，更加规范。</p>
+    <summary type="html">
+    
+      &lt;p&gt;在XML里用到过的CSS的一点点基础内容&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>XML Schema</title>
+    <link href="http://www.codingbalian.online/2016/12/21/XML-Schema/"/>
+    <id>http://www.codingbalian.online/2016/12/21/XML-Schema/</id>
+    <published>2016-12-21T10:58:19.000Z</published>
+    <updated>2016-12-23T13:27:12.243Z</updated>
+    
+    <content type="html"><![CDATA[<p>XML Schema为详细规定XML文档数据类型与组织结构的标准，且基于XML语法，更加规范。</p>
 <blockquote>
 <p>本篇介绍W3C标准</p>
 </blockquote>
@@ -691,12 +745,27 @@
 </ul>
 <p>引用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#已定义目标命名空间</div><div class="line">&lt;根源素名 xmlns=&quot;www.studaholic.online/xml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema&quot; </div><div class="line">xsi:schemaLocation=&quot;www.studaholic.online/xml/文档名.xsd&quot;</div><div class="line">/&gt;</div><div class="line">#未定义目标命名空间</div><div class="line">&lt;根源素名 xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema&quot; </div><div class="line">xsi:noNamespaceSchemaLocation=&quot;文档名.xsd&quot; 属性名=&quot;&quot;</div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
 ]]></content>
-    </entry>
     
-    <entry>
-      <title><![CDATA[XML:DTD]]></title>
-      <url>http://www.codingbalian.online/2016/12/20/XML-DTD/</url>
-      <content type="html"><![CDATA[<p>XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。<br><a id="more"></a><br><strong>DTD作用</strong></p>
+    <summary type="html">
+    
+      &lt;p&gt;XML Schema为详细规定XML文档数据类型与组织结构的标准，且基于XML语法，更加规范。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本篇介绍W3C标准&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>XML:DTD</title>
+    <link href="http://www.codingbalian.online/2016/12/20/XML-DTD/"/>
+    <id>http://www.codingbalian.online/2016/12/20/XML-DTD/</id>
+    <published>2016-12-20T13:24:43.000Z</published>
+    <updated>2016-12-21T10:54:32.456Z</updated>
+    
+    <content type="html"><![CDATA[<p>XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。<br><a id="more"></a><br><strong>DTD作用</strong></p>
 <ol>
 <li>指定文档结构的规则</li>
 <li>验证文档有效性</li>
@@ -856,12 +925,24 @@
 <p><strong>DTD实体</strong></p>
 <p>普通实体<br>用来插入文本。<br>内部普通实体<br><code>&lt;!ENTITY Entity_Name Entity_Value&gt;</code><br>外部普通实体<br><code>&lt;!ENTITY Entity_Name SYSTEM Entity_URL&gt;</code><br>SYSTEM是定义外部实体的关键字<br>引用<code>&amp;Enitiy_Name;</code><br>参数实体<br>不仅可以包含文本，还可以包含元素类型声明、属性列表声明、一般实体声明、标签声明、处理指令或注释等，只能在DTD中引用，并且通常情况下只能在外部DTD文档中引用。<br>内部参数实体<br><code>&lt;!ENTITY % Entity_Name Entity_Value&gt;</code><br>外部参数实体<br><code>&lt;!ENTITY % Entity_Name SYSTEM Entity_URL&gt;</code><br>引用<code>&amp;Enitiy_Name;</code><br>不可解析实体<br>二进制文件，如图形、声音等非字符型数据，唯一可以出现不可解析实体的地方就是属性值且不能进行引用<br>链接是XML文档:<br><code>&lt;!ENTITY name SYSTEM &quot;URI&quot;&gt;</code><br>不是XML文档<br><code>&lt;!ENTITY name SYSTEM “URI”NDATA  type&gt;</code></p>
 ]]></content>
-    </entry>
     
-    <entry>
-      <title><![CDATA[XML：语法基础]]></title>
-      <url>http://www.codingbalian.online/2016/12/20/XML/</url>
-      <content type="html"><![CDATA[<p>XML语法基础的介绍实例<br><a id="more"></a></p>
+    <summary type="html">
+    
+      &lt;p&gt;XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>XML：语法基础</title>
+    <link href="http://www.codingbalian.online/2016/12/20/XML/"/>
+    <id>http://www.codingbalian.online/2016/12/20/XML/</id>
+    <published>2016-12-20T11:10:43.000Z</published>
+    <updated>2016-12-20T13:23:07.667Z</updated>
+    
+    <content type="html"><![CDATA[<p>XML语法基础的介绍实例<br><a id="more"></a></p>
 <ul>
 <li>XML声明<br><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot; standalone=&quot;no&quot;?&gt;</code></li>
 <li>version属性规定了XML文档的版本，默认为1.0</li>
@@ -919,16 +1000,34 @@
 <li>空白字符<br><code>&lt;DocumentElement xml:space=&quot;preserve/default&quot;&gt;</code><br>默认不处理无意空白字符，使用<code>xml:space=&quot;preserve</code>可以保留空白字符。</li>
 </ul>
 ]]></content>
-    </entry>
     
-    <entry>
-      <title><![CDATA[Github教程]]></title>
-      <url>http://www.codingbalian.online/2016/12/20/Github-Tutorial/</url>
-      <content type="html"><![CDATA[<p>Github 部分功能使用教程<br><a id="more"></a><br>上传：<br>在GitHub上创建仓库<br>使用Git Bush进入本地仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">touch README</div><div class="line">git add .</div><div class="line">git commit -m &apos;first commit&apos;</div><div class="line">git remote add origin git@github.com:yourname/yourrepositoryname.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure></p>
+    <summary type="html">
+    
+      &lt;p&gt;XML语法基础的介绍实例&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Github教程</title>
+    <link href="http://www.codingbalian.online/2016/12/20/Github-Tutorial/"/>
+    <id>http://www.codingbalian.online/2016/12/20/Github-Tutorial/</id>
+    <published>2016-12-20T03:17:56.000Z</published>
+    <updated>2016-12-20T03:29:32.659Z</updated>
+    
+    <content type="html"><![CDATA[<p>Github 部分功能使用教程<br><a id="more"></a><br>上传：<br>在GitHub上创建仓库<br>使用Git Bush进入本地仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">touch README</div><div class="line">git add .</div><div class="line">git commit -m &apos;first commit&apos;</div><div class="line">git remote add origin git@github.com:yourname/yourrepositoryname.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure></p>
 <p>上传至master分支<br>在本地新建分支： <code>git branch Branch</code><br>切换分支: <code>git checkout Branch</code><br>将新分支发布： <code>git push origin Branch</code><br>在本地删除分支： <code>git branch -d Branch</code><br>在github远程端删除分支： <code>git push origin :Branch</code><br>取回仓库并与本地合并<code>git pull origin</code><br>克隆仓库<code>git clone https://github.com/BalianCheng/BalianCheng.github.io.git</code></p>
 ]]></content>
-    </entry>
     
+    <summary type="html">
+    
+      &lt;p&gt;Github 部分功能使用教程&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
-  
-</search>
+</feed>
