@@ -25,7 +25,7 @@ DOM基于树或基于对象，方便应用程序对数据和结构进行更改�
 <meta property="og:description" content="本篇介绍DOM来解析XML文档内容。暂时应该不会再更新XML的内容了。
 
 DOM基于树或基于对象，方便应用程序对数据和结构进行更改，且任何时候可以在树种上下导航。">
-<meta property="og:updated_time" content="2016-12-24T09:05:29.367Z">
+<meta property="og:updated_time" content="2016-12-24T09:14:08.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XML:DOM">
 <meta name="twitter:description" content="本篇介绍DOM来解析XML文档内容。暂时应该不会再更新XML的内容了。
@@ -322,19 +322,52 @@ DOM基于树或基于对象，方便应用程序对数据和结构进行更改�
  </em> 每个XML标记是一个元素节点<br> <em> 包含在XML元素中的文本都是文本节点
  </em> 每一个XML属性是一个属性节点<br> <em> 注释属于注释节点<br><br>一个节点树中的所有节点彼此都是有关系的，一个节点树可以将一个XML文档战术为一个节点集以及他们之间的链接。在一棵节点树中，最顶端节点作为根，除根外每一个节点都有父节点，一个节点可以有无限的子节点，但叶节点无子节点，拥有相同父节点的节点称为同级节点。<br><h3 id="1.3">DOM对象</h3><br>DOM作为API接口存放着不同的未实例化的对象，对应着XML文档中不同类型的节点和数据。
 
-</em> 基本接口<br> 1. Document接口：文档树的根，提供对文档数据的最初（或最顶层）的访问入口。由于元素节点、文本节点、注释、处理指令等均无法存在于文档之外，Document 对象也提供了创建这些对象的方法。通过其创造ID节点对象都有ownerDocument属性。Document节点可以有多个注释、处理指令节点，但是文档类型节点和根节点都是唯一的。<br> 2. Node接口：Node 是整个文档对象的主要数据类型，表示文档树中的单个节点。DOM中很大一部分的接口是从Node接口中继承过来的，提供了访问DOM树中元素内容的途径，给出了遍历的支持。<br> 3. NodeList接口：节点列表中的节点可以通过其对应的索引数字（从 0 开始计数）进行访问。节点列表可保持其自身的更新。如果节点列表或 XML 文档中的某个元素被删除或添加，列表也会被自动更新。<br> 4. NamedNodeMap接口：包含可以通过名字访问一组节点的集合，且是无序的不能通过索引来访问，主要用于属性节点的表示，与NodeList一样其对象也是自动更新的。<br> 5. Element接口：继承于NodeList接口，表示文档中的一个元素标记，可包含属性、其他元素或文本。如果元素含有文本，则在文本节点中表示该文本。可以使用attribute来获得元素的所有属性集合。<br> 6. Text接口：Text 节点继承了CharacterData接口，通过从CharacterData接口继承的data属性或从Node接口继承的 nadevalue 属性，可以访问Text节点的文本内容。<br> 更多对象接口参考<a herf="http://www.w3school.com.cn/xmldom/xmldom_reference.asp">XML DOM 参考手册</a><br><br><em> DOM对象<br> 1. XML文档对象：代表整个XML文档，由Document对象实现，由根源素和子元素组成。对XML进行操作就要先获取XML文档对象。<br> 2. XML节点对象：代表XML文档中单个节点,由Node接口实现。<br> 3. XML节点列表对象：XML文档模块列表代表节点的集合由NodeList接口实现。<br> 4. 对XML文档操作就是创建不同的对象来进行操作。<br><br><h2 id="2">DOM的使用</h2><br>对XML文档进行操作需要先创建一个DOM对象并以此为句柄把XML文档对象加载到内存中的节点树进行操作。<br><h3 id="2.1">JAXP简介、类和方法</h3><br>JAXP(Java API for XMLParsing)是解析XML文件的API。包括此法分析器、标注NSAX，可以选择事件流或者建立对象来解析数据，且提供XSLT标准支持、名称空间支持、在没有命名冲突的情况下使用DTD。<br><h3 id="2.2">JAXP的类和方法</h3><br>1. 解析器工厂类(DocumentBuliderFactory)：要使用DOM对XML文档进行操作先要建立一个解析器工厂实例，通过它来获得一个具体的解析器对象。<br><code>DocumentBuliderFactory dbf=DocumentBuliderFactory.newInstance();</code><br>2. 解析器类(DocumentBulider)：开发者可以使用它从XML文档获取DOM实例。<br><code>DocumentBulider db=dbf.newDocumentBulider();</code><br>3. 文档树模型(Document)：代表一个XML文档树模型，其中的所有节点都以一定顺序包含在Document对象内，之后的所有操作都与解析器无关，直接对Document对象操作即可。<br>使用DocumentBuilder的parse()方法接受一个XML文档名作为输入参数，返回一个Document实例：<code>Document doc=db.parse(&quot;example.xml&quot;);</code><br>把XML文档转化为输入流，作为parse()方法的参数，一遍DOM解析器解析：<br><code>InputStream is=new FileInputStream(&quot;example.xml&quot;);Document DOC=DB.PARSE(is);</code><br>从得到Document对象开始就可以使用DOM操作XML文档。使用Document对象的getElementsByTagsName()方法可以得到一个NodeList对象：<code>NodeList nl=doc.getElementByTagsName(&quot;example&quot;)</code> 
- </em> createAttribute(String)：用给定的属性名创建一个Attr对象，并可在其后使用setAttributeNode方法来放置在某一个Element对象上面。<br> <em> createElement(String)：用给定的标签名创建一个Element对象，代表XML文档中的一个标签，然后就可以在这个Element对象上添加属性或进行其它的操作。 
- </em> createTextNode(String)：用给定的字符串创建一个Text对象，Text对象代表了标签或者属性中所包含的纯文本字符串。如果在一个标签内没有其它的标签，那么标签内的文本所代表的Text对象是这个Element对象的唯一子对象。<br> <em> getElementsByTagName(String)：返回一个NodeList对象，它包含了所有给定标签名字的标签。 
- </em> getDocumentElement()：返回一个代表这个DOM树的根节点的Element对象，也就是代表XML文档根元素的那个对象。<br>4. 节点类(Node):Node是最基本的对象，代表文档树中一个抽象的节点，实际操作中很少用到，而是使用其子对象来进行操作。<br> <em> appendChild(org.w3c.dom.Node)：为这个节点添加一个子节点，并放在所有子节点的最后，如果这个子节点已经存在，则先把它删掉再添加进去。 
- </em> getFirstChild()：如果节点存在子节点，则返回第一个子节点，对等的，还有getLastChild()方法返回最后一个子节点。<br> <em> getNextSibling()：返回在DOM树中这个节点的下一个兄弟节点，对等的，还有getPreviousSibling()方法返回其前一个兄弟节点。 
- </em> getNodeName()：根据节点的类型返回节点的名称。<br> <em> getNodeType()：返回节点的类型。 
- </em> getNodeValue()：返回节点的值。<br> <em> hasChildNodes()：判断是不是存在有子节点。 
- </em> hasAttributes()：判断这个节点是否存在有属性。<br> <em> getOwnerDocument()：返回节点所处的Document对象。 
- </em> insertBefore(org.w3c.dom.Node new，org.w3c.dom.Node ref)：在给定的一个子对象前再插入一个子对象。<br> <em> removeChild(org.w3c.dom.Node)：删除给定的子节点对象。 
- </em> replaceChild(org.w3c.dom.Node new，org.w3c.dom.Node old)：用一个新的Node对象代替给定的子节点对象。<br>5. 节点列表类(NodeList)：代表一个包含Node的列表，可以简单的看成Node数组。<br> <em> GetLength():返回列表长度
- </em> Item(int):返回指定位置的Node对象。<br>6. 元素类(Element)：代表XML文档中的标记元素，继承于Node，有存取标记属性的方法，任何Node定义的方法可以用到Element对象上。<br> <em> getElementsByTagName(String)：返回一个NodeList对象，它包含了在这个标签中其下的子孙节点中具有给定标签名字的标签。 
- </em> getTagName()：返回一个代表这个标签名字的字符串。<br> <em> getAttribute(String)：返回标签中给定属性名称的属性的值。在这儿需要主要的是，应为XML文档中允许有实体属性出现，而这个方法对这些实体属性并不适用。这时候需要用到getAttributeNodes()方法来得到一个Attr对象来进行进一步的操作。
- </em> getAttributeNode(String)：返回一个代表给定属性名称的Attr对象。<br><br>7. 属性类(Attr)：代表每个标记中的属性。不能做为DOM树中单独的一个节点出现。<br>8. 更多类与方法参考<a herf="https://jaxp.java.net/">Project JAXP</a><br><br><h3 id="2.3">附：JAXP套件</h3>
+</em> 基本接口<br> 1. Document接口：文档树的根，提供对文档数据的最初（或最顶层）的访问入口。由于元素节点、文本节点、注释、处理指令等均无法存在于文档之外，Document 对象也提供了创建这些对象的方法。通过其创造ID节点对象都有ownerDocument属性。Document节点可以有多个注释、处理指令节点，但是文档类型节点和根节点都是唯一的。<br> 2. Node接口：Node 是整个文档对象的主要数据类型，表示文档树中的单个节点。DOM中很大一部分的接口是从Node接口中继承过来的，提供了访问DOM树中元素内容的途径，给出了遍历的支持。<br> 3. NodeList接口：节点列表中的节点可以通过其对应的索引数字（从 0 开始计数）进行访问。节点列表可保持其自身的更新。如果节点列表或 XML 文档中的某个元素被删除或添加，列表也会被自动更新。<br> 4. NamedNodeMap接口：包含可以通过名字访问一组节点的集合，且是无序的不能通过索引来访问，主要用于属性节点的表示，与NodeList一样其对象也是自动更新的。<br> 5. Element接口：继承于NodeList接口，表示文档中的一个元素标记，可包含属性、其他元素或文本。如果元素含有文本，则在文本节点中表示该文本。可以使用attribute来获得元素的所有属性集合。<br> 6. Text接口：Text 节点继承了CharacterData接口，通过从CharacterData接口继承的data属性或从Node接口继承的 nadevalue 属性，可以访问Text节点的文本内容。<br> 更多对象接口参考<a herf="http://www.w3school.com.cn/xmldom/xmldom_reference.asp">XML DOM 参考手册</a><br><br>* DOM对象<br> 1. XML文档对象：代表整个XML文档，由Document对象实现，由根源素和子元素组成。对XML进行操作就要先获取XML文档对象。<br> 2. XML节点对象：代表XML文档中单个节点,由Node接口实现。<br> 3. XML节点列表对象：XML文档模块列表代表节点的集合由NodeList接口实现。<br> 4. 对XML文档操作就是创建不同的对象来进行操作。<br><br><h2 id="2">DOM的使用</h2><br>对XML文档进行操作需要先创建一个DOM对象并以此为句柄把XML文档对象加载到内存中的节点树进行操作。<br><h3 id="2.1">JAXP简介、类和方法</h3><br>JAXP(Java API for XMLParsing)是解析XML文件的API。包括此法分析器、标注NSAX，可以选择事件流或者建立对象来解析数据，且提供XSLT标准支持、名称空间支持、在没有命名冲突的情况下使用DTD。<br><h3 id="2.2">JAXP的类和方法</h3>
+
+<ol>
+<li>解析器工厂类(DocumentBuliderFactory)：要使用DOM对XML文档进行操作先要建立一个解析器工厂实例，通过它来获得一个具体的解析器对象。<br><code>DocumentBuliderFactory dbf=DocumentBuliderFactory.newInstance();</code></li>
+<li>解析器类(DocumentBulider)：开发者可以使用它从XML文档获取DOM实例。<br><code>DocumentBulider db=dbf.newDocumentBulider();</code></li>
+<li>文档树模型(Document)：代表一个XML文档树模型，其中的所有节点都以一定顺序包含在Document对象内，之后的所有操作都与解析器无关，直接对Document对象操作即可。<br>使用DocumentBuilder的parse()方法接受一个XML文档名作为输入参数，返回一个Document实例：<code>Document doc=db.parse(&quot;example.xml&quot;);</code><br>把XML文档转化为输入流，作为parse()方法的参数，一遍DOM解析器解析：<br><code>InputStream is=new FileInputStream(&quot;example.xml&quot;);Document DOC=DB.PARSE(is);</code><br>从得到Document对象开始就可以使用DOM操作XML文档。使用Document对象的getElementsByTagsName()方法可以得到一个NodeList对象：<code>NodeList nl=doc.getElementByTagsName(&quot;example&quot;)</code> <ul>
+<li>createAttribute(String)：用给定的属性名创建一个Attr对象，并可在其后使用setAttributeNode方法来放置在某一个Element对象上面。 </li>
+<li>createElement(String)：用给定的标签名创建一个Element对象，代表XML文档中的一个标签，然后就可以在这个Element对象上添加属性或进行其它的操作。 </li>
+<li>createTextNode(String)：用给定的字符串创建一个Text对象，Text对象代表了标签或者属性中所包含的纯文本字符串。如果在一个标签内没有其它的标签，那么标签内的文本所代表的Text对象是这个Element对象的唯一子对象。 </li>
+<li>getElementsByTagName(String)：返回一个NodeList对象，它包含了所有给定标签名字的标签。 </li>
+<li>getDocumentElement()：返回一个代表这个DOM树的根节点的Element对象，也就是代表XML文档根元素的那个对象。 </li>
+</ul>
+</li>
+<li>节点类(Node):Node是最基本的对象，代表文档树中一个抽象的节点，实际操作中很少用到，而是使用其子对象来进行操作。<ul>
+<li>appendChild(org.w3c.dom.Node)：为这个节点添加一个子节点，并放在所有子节点的最后，如果这个子节点已经存在，则先把它删掉再添加进去。 </li>
+<li>getFirstChild()：如果节点存在子节点，则返回第一个子节点，对等的，还有getLastChild()方法返回最后一个子节点。 </li>
+<li>getNextSibling()：返回在DOM树中这个节点的下一个兄弟节点，对等的，还有getPreviousSibling()方法返回其前一个兄弟节点。 </li>
+<li>getNodeName()：根据节点的类型返回节点的名称。 </li>
+<li>getNodeType()：返回节点的类型。 </li>
+<li>getNodeValue()：返回节点的值。 </li>
+<li>hasChildNodes()：判断是不是存在有子节点。 </li>
+<li>hasAttributes()：判断这个节点是否存在有属性。 </li>
+<li>getOwnerDocument()：返回节点所处的Document对象。 </li>
+<li>insertBefore(org.w3c.dom.Node new，org.w3c.dom.Node ref)：在给定的一个子对象前再插入一个子对象。 </li>
+<li>removeChild(org.w3c.dom.Node)：删除给定的子节点对象。 </li>
+<li>replaceChild(org.w3c.dom.Node new，org.w3c.dom.Node old)：用一个新的Node对象代替给定的子节点对象。 </li>
+</ul>
+</li>
+<li>节点列表类(NodeList)：代表一个包含Node的列表，可以简单的看成Node数组。<ul>
+<li>GetLength():返回列表长度</li>
+<li>Item(int):返回指定位置的Node对象。</li>
+</ul>
+</li>
+<li><p>元素类(Element)：代表XML文档中的标记元素，继承于Node，有存取标记属性的方法，任何Node定义的方法可以用到Element对象上。</p>
+<ul>
+<li>getElementsByTagName(String)：返回一个NodeList对象，它包含了在这个标签中其下的子孙节点中具有给定标签名字的标签。 </li>
+<li>getTagName()：返回一个代表这个标签名字的字符串。 </li>
+<li>getAttribute(String)：返回标签中给定属性名称的属性的值。在这儿需要主要的是，应为XML文档中允许有实体属性出现，而这个方法对这些实体属性并不适用。这时候需要用到getAttributeNodes()方法来得到一个Attr对象来进行进一步的操作。</li>
+<li>getAttributeNode(String)：返回一个代表给定属性名称的Attr对象。 </li>
+</ul>
+</li>
+<li><p>属性类(Attr)：代表每个标记中的属性。不能做为DOM树中单独的一个节点出现。</p>
+</li>
+</ol>
+<p>更多类与方法参考：<a herf="https://jaxp.java.net/">Project JAXP</a><br>实例参考：<a herf="http://baliancheng.github.io/2016/12/24/XML-DOM-Test/">JAXP操作XML实例</a></p>
+<h3 id="2.3">附：JAXP套件</h3>
 
 <table>
 <thead>
@@ -377,7 +410,7 @@ DOM基于树或基于对象，方便应用程序对数据和结构进行更改�
         <p><span>本文标题:</span><a href="/2016/12/23/XML-DOM/">XML:DOM</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2016-12-23, 22:48:22</p>
-        <p><span>最后更新:</span>2016-12-24, 17:05:29</p>
+        <p><span>最后更新:</span>2016-12-24, 17:14:08</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/23/XML-DOM/" title="XML:DOM">http://www.codingbalian.online/2016/12/23/XML-DOM/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/23/XML-DOM/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -394,7 +427,7 @@ DOM基于树或基于对象，方便应用程序对数据和结构进行更改�
         
             <div id="article-nav-newer" class="article-nav-title">
                 <a href="/2016/12/24/XML-DOM-Test/">
-                    XML:DOM Test
+                    JAXP操作XML实例
                 </a>
             </div>
         
@@ -488,7 +521,7 @@ DOM基于树或基于对象，方便应用程序对数据和结构进行更改�
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/24/XML-DOM-Test/" title="上一篇: XML:DOM Test">
+            <a href="/2016/12/24/XML-DOM-Test/" title="上一篇: JAXP操作XML实例">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -502,7 +535,7 @@ DOM基于树或基于对象，方便应用程序对数据和结构进行更改�
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/XML-DOM-Test/">XML:DOM Test</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/XML-DOM-Test/">JAXP操作XML实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
 
 
 
