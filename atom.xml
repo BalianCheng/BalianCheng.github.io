@@ -1142,33 +1142,40 @@ Adaboost过程：</li>
     <link href="http://www.codingbalian.online/2016/12/19/github-pages-Hexo/"/>
     <id>http://www.codingbalian.online/2016/12/19/github-pages-Hexo/</id>
     <published>2016-12-19T15:03:28.000Z</published>
-    <updated>2016-12-24T05:41:59.655Z</updated>
+    <updated>2016-12-24T05:47:36.725Z</updated>
     
-    <content type="html"><![CDATA[<p>本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。<br><a id="more"></a></p>
-<ol>
-<li><p>环境</p>
+    <content type="html"><![CDATA[<p><a href="#1">1.一级目录</a><br>　<a href="#1.1">1.1二级目录</a><br>　　<a href="#1.1.1">1.1.1三级目录</a></p>
+<h2 id="1"> 一级目录 </h2>
+
+<h4 id="1.1"> 二级目录 </h4>
+
+<h5 id="1.1.1"> 三级目录 </h5>
+
+<p>作者：高天林<br>链接：<a href="https://www.zhihu.com/question/21907056/answer/94041510" target="_blank" rel="external">https://www.zhihu.com/question/21907056/answer/94041510</a><br>来源：知乎<br>著作权归作者所有，转载请联系作者获得授权。<br>本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。<br><a id="more"></a></p>
+<p></p><h2 id="1">环境</h2><p></p>
 <ol>
 <li>安装Git<img src="http://oifuxc6w5.bkt.clouddn.com/git.png" alt=""></li>
 <li>安装Node<img src="http://oifuxc6w5.bkt.clouddn.com/NODEJS.png" alt=""></li>
 <li>验证安装<img src="http://oifuxc6w5.bkt.clouddn.com/cmd.png" alt=""></li>
 </ol>
-</li>
-<li><p>Github Pages<br>在GitHub创建一个格式为：yourusername.github.io的仓库即可。<br><img src="http://oifuxc6w5.bkt.clouddn.com/gitmaven.png" alt=""></p>
-</li>
-<li>Hexo<br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>建立一个blog文件夹用于存放博客文件,然后右键单击选择“Git Bash”。<br><code>npm install hexo-cli -g</code><br><code>hexo init blog</code><br><code>cd blog</code><br><code>npm install</code><br><code>hexo server</code><br>执行hexo server时，默认端口是4000,如果端口被占用更换即可。<br>如<code>hexo server -p 4001</code><br>访问<code>http://localhost:4000/</code><br><img src="http://oifuxc6w5.bkt.clouddn.com/hexo.png" alt=""></li>
-<li>更换主题<br>exo-theme：<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a><br>hexo-github-theme-list：<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a><br><code>git clone</code>加上主题地址<br>_config.yml中将theme改成刚刚下载的主题<br>修改完成后<code>hexo generate</code>  <code>hexo server</code>重启服务器查看效果<br><img src="http://oifuxc6w5.bkt.clouddn.com/newtheme.png" alt=""></li>
-<li>部署代码到github<br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code>生成SSH秘钥<br>在<a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a> 添加id_rsa.pub中的秘钥<br>安装插件：<br><code>npm install hexo -server --save</code><br><code>npm install hexo-deployer-git --save</code><br>安装其他插件的格式为<code>npm install ... --save</code><br>编辑全局 hexo 的配置文件：<code>_config.yml</code><br>注意<code>:</code>后留一个空格<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: https://github.com/BalianCheng/BalianCheng.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p></p><h2 id="2">Github Pages</h2><br> 在GitHub创建一个格式为：yourusername.github.io的仓库即可。<br><img src="http://oifuxc6w5.bkt.clouddn.com/gitmaven.png" alt=""><p></p>
+<p></p><h2 id="3">Hexo</h2><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>建立一个blog文件夹用于存放博客文件,然后右键单击选择“Git Bash”。<br><code>npm install hexo-cli -g</code><br><code>hexo init blog</code><br><code>cd blog</code><br><code>npm install</code><br><code>hexo server</code><br>执行hexo server时，默认端口是4000,如果端口被占用更换即可。<br>如<code>hexo server -p 4001</code><br>访问<code>http://localhost:4000/</code><br><img src="http://oifuxc6w5.bkt.clouddn.com/hexo.png" alt=""><p></p>
+<p></p><h2 id="4">更换主题</h2><br>exo-theme：<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a><br>hexo-github-theme-list：<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a><br><code>git clone</code>加上主题地址<br>_config.yml中将theme改成刚刚下载的主题<br>修改完成后<code>hexo generate</code>  <code>hexo server</code>重启服务器查看效果<br><img src="http://oifuxc6w5.bkt.clouddn.com/newtheme.png" alt=""><p></p>
+<p></p><h2 id="5">部署代码到github</h2><br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code>生成SSH秘钥<br>在<a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a> 添加id_rsa.pub中的秘钥<br>安装插件：<br><code>npm install hexo -server --save</code><br><code>npm install hexo-deployer-git --save</code><br>安装其他插件的格式为<code>npm install ... --save</code><br>编辑全局 hexo 的配置文件：<code>_config.yml</code><br>注意<code>:</code>后留一个空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: https://github.com/BalianCheng/BalianCheng.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure><p></p>
 <p>编辑全局配置后需要重新部署：<br>清除掉已经生成的文件：<code>hexo clean</code><br>再生成静态文件：<code>hexo generate</code><br>预览：<code>hexo server</code><br>打开<code>localhost:4000</code>查看<br>部署：<code>hexo deploy</code><br>生成 40 4页面：<code>hexo new page 404</code><br>生成 about 页面：<code>hexo new page about</code><br>生成 tag 标签云页面：<code>hexo new page tags</code><br>安装RSS订阅：<code>npm install hexo-generator-feed --save</code>安装插件，自动生成atom.xml，提供订阅</p>
-<ol>
-<li>绑定域名<br><code>ping yourname.github.io</code>获得IP地址并使用域名解析<br>进入GitHub项目,进入<code>Settings</code>,在<code>Custom domain</code>写入域名<br>在\blog\public下建立CNAME文件写入域名<br>将CNAME放入\blog\source\中避免重复操作</li>
-</ol>
+<p></p><h2 id="6">绑定域名</h2><br><code>ping yourname.github.io</code>获得IP地址并使用域名解析<br>进入GitHub项目,进入<code>Settings</code>,在<code>Custom domain</code>写入域名<br>在\blog\public下建立CNAME文件写入域名<br>将CNAME放入\blog\source\中避免重复操作<p></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。&lt;br&gt;
+      &lt;p&gt;&lt;a href=&quot;#1&quot;&gt;1.一级目录&lt;/a&gt;&lt;br&gt;　&lt;a href=&quot;#1.1&quot;&gt;1.1二级目录&lt;/a&gt;&lt;br&gt;　　&lt;a href=&quot;#1.1.1&quot;&gt;1.1.1三级目录&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#39;1&#39;&gt; 一级目录 &lt;/h2&gt;
+
+&lt;h4 id=&#39;1.1&#39;&gt; 二级目录 &lt;/h4&gt;
+
+&lt;h5 id=&#39;1.1.1&#39;&gt; 三级目录 &lt;/h5&gt;
+
+&lt;p&gt;作者：高天林&lt;br&gt;链接：&lt;a href=&quot;https://www.zhihu.com/question/21907056/answer/94041510&quot;&gt;https://www.zhihu.com/question/21907056/answer/94041510&lt;/a&gt;&lt;br&gt;来源：知乎&lt;br&gt;著作权归作者所有，转载请联系作者获得授权。&lt;br&gt;本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。&lt;br&gt;
     
     </summary>
     
