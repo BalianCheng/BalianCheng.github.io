@@ -984,14 +984,7 @@ Adaboost过程：</li>
     <entry>
       <title><![CDATA[github pages + Hexo + 域名绑定]]></title>
       <url>http://www.codingbalian.online/2016/12/19/github-pages-Hexo/</url>
-      <content type="html"><![CDATA[<p><a href="#1">1.一级目录</a><br>　<a href="#1.1">1.1二级目录</a><br>　　<a href="#1.1.1">1.1.1三级目录</a></p>
-<h2 id="1"> 一级目录 </h2>
-
-<h4 id="1.1"> 二级目录 </h4>
-
-<h5 id="1.1.1"> 三级目录 </h5>
-
-<p>作者：高天林<br>链接：<a href="https://www.zhihu.com/question/21907056/answer/94041510" target="_blank" rel="external">https://www.zhihu.com/question/21907056/answer/94041510</a><br>来源：知乎<br>著作权归作者所有，转载请联系作者获得授权。<br>本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<p>本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。<br><a id="more"></a></p>
 <p></p><h2 id="1">环境</h2><p></p>
 <ol>
 <li>安装Git<img src="http://oifuxc6w5.bkt.clouddn.com/git.png" alt=""></li>
