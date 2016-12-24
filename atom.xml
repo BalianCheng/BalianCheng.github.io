@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2016-12-23T15:53:56.774Z</updated>
+  <updated>2016-12-24T03:41:28.228Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.codingbalian.online/2016/12/23/XML-DOM/"/>
     <id>http://www.codingbalian.online/2016/12/23/XML-DOM/</id>
     <published>2016-12-23T14:48:22.000Z</published>
-    <updated>2016-12-23T15:53:56.774Z</updated>
+    <updated>2016-12-24T03:41:28.228Z</updated>
     
     <content type="html"><![CDATA[<p>本篇介绍DOM来解析XML文档内容。</p>
 <blockquote>
@@ -36,6 +36,12 @@
     
     </summary>
     
+      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
+    
+    
+      <category term="XML" scheme="http://www.codingbalian.online/tags/XML/"/>
+    
+      <category term="DOM" scheme="http://www.codingbalian.online/tags/DOM/"/>
     
   </entry>
   
@@ -44,7 +50,7 @@
     <link href="http://www.codingbalian.online/2016/12/22/XML-XSL/"/>
     <id>http://www.codingbalian.online/2016/12/22/XML-XSL/</id>
     <published>2016-12-22T14:34:33.000Z</published>
-    <updated>2016-12-23T14:46:10.040Z</updated>
+    <updated>2016-12-24T03:42:02.829Z</updated>
     
     <content type="html"><![CDATA[<p>XSL是基于XML的语言，用于显示XML的规范。<br><a id="more"></a></p>
 <p><strong>XSL转换原理</strong><br>XSL样式表对XML文档转化的过程：</p>
@@ -290,6 +296,12 @@
     
     </summary>
     
+      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
+    
+    
+      <category term="XML" scheme="http://www.codingbalian.online/tags/XML/"/>
+    
+      <category term="XSL" scheme="http://www.codingbalian.online/tags/XSL/"/>
     
   </entry>
   
@@ -298,7 +310,7 @@
     <link href="http://www.codingbalian.online/2016/12/22/XML-CSS/"/>
     <id>http://www.codingbalian.online/2016/12/22/XML-CSS/</id>
     <published>2016-12-22T12:11:40.000Z</published>
-    <updated>2016-12-22T14:41:18.381Z</updated>
+    <updated>2016-12-24T03:41:15.383Z</updated>
     
     <content type="html"><![CDATA[<p>在XML里用到过的CSS的一点点基础内容<br><a id="more"></a><br>CSS的定义语法由三部分构成：选择器(selector)，属性(property)，属性值(value)<br>基本格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>CSS可以设置多个元素的选择器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector1, selector2, selector3&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -473,6 +485,12 @@
     
     </summary>
     
+      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
+    
+    
+      <category term="XML" scheme="http://www.codingbalian.online/tags/XML/"/>
+    
+      <category term="CSS" scheme="http://www.codingbalian.online/tags/CSS/"/>
     
   </entry>
   
@@ -481,7 +499,7 @@
     <link href="http://www.codingbalian.online/2016/12/21/XML-Schema/"/>
     <id>http://www.codingbalian.online/2016/12/21/XML-Schema/</id>
     <published>2016-12-21T10:58:19.000Z</published>
-    <updated>2016-12-23T13:27:12.243Z</updated>
+    <updated>2016-12-24T03:41:52.129Z</updated>
     
     <content type="html"><![CDATA[<p>XML Schema为详细规定XML文档数据类型与组织结构的标准，且基于XML语法，更加规范。</p>
 <blockquote>
@@ -755,6 +773,12 @@
     
     </summary>
     
+      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
+    
+    
+      <category term="XML" scheme="http://www.codingbalian.online/tags/XML/"/>
+    
+      <category term="Schema" scheme="http://www.codingbalian.online/tags/Schema/"/>
     
   </entry>
   
@@ -763,7 +787,7 @@
     <link href="http://www.codingbalian.online/2016/12/20/XML-DTD/"/>
     <id>http://www.codingbalian.online/2016/12/20/XML-DTD/</id>
     <published>2016-12-20T13:24:43.000Z</published>
-    <updated>2016-12-21T10:54:32.456Z</updated>
+    <updated>2016-12-24T03:41:37.894Z</updated>
     
     <content type="html"><![CDATA[<p>XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。<br><a id="more"></a><br><strong>DTD作用</strong></p>
 <ol>
@@ -932,6 +956,12 @@
     
     </summary>
     
+      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
+    
+    
+      <category term="XML" scheme="http://www.codingbalian.online/tags/XML/"/>
+    
+      <category term="DTD" scheme="http://www.codingbalian.online/tags/DTD/"/>
     
   </entry>
   
@@ -940,7 +970,7 @@
     <link href="http://www.codingbalian.online/2016/12/20/XML/"/>
     <id>http://www.codingbalian.online/2016/12/20/XML/</id>
     <published>2016-12-20T11:10:43.000Z</published>
-    <updated>2016-12-20T13:23:07.667Z</updated>
+    <updated>2016-12-24T03:40:56.715Z</updated>
     
     <content type="html"><![CDATA[<p>XML语法基础的介绍实例<br><a id="more"></a></p>
 <ul>
@@ -1007,6 +1037,10 @@
     
     </summary>
     
+      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
+    
+    
+      <category term="XML" scheme="http://www.codingbalian.online/tags/XML/"/>
     
   </entry>
   
@@ -1015,7 +1049,7 @@
     <link href="http://www.codingbalian.online/2016/12/20/Github-Tutorial/"/>
     <id>http://www.codingbalian.online/2016/12/20/Github-Tutorial/</id>
     <published>2016-12-20T03:17:56.000Z</published>
-    <updated>2016-12-20T03:29:32.659Z</updated>
+    <updated>2016-12-24T03:40:43.761Z</updated>
     
     <content type="html"><![CDATA[<p>Github 部分功能使用教程<br><a id="more"></a><br>上传：<br>在GitHub上创建仓库<br>使用Git Bush进入本地仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">touch README</div><div class="line">git add .</div><div class="line">git commit -m &apos;first commit&apos;</div><div class="line">git remote add origin git@github.com:yourname/yourrepositoryname.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure></p>
 <p>上传至master分支<br>在本地新建分支： <code>git branch Branch</code><br>切换分支: <code>git checkout Branch</code><br>将新分支发布： <code>git push origin Branch</code><br>在本地删除分支： <code>git branch -d Branch</code><br>在github远程端删除分支： <code>git push origin :Branch</code><br>取回仓库并与本地合并<code>git pull origin</code><br>克隆仓库<code>git clone https://github.com/BalianCheng/BalianCheng.github.io.git</code></p>
@@ -1027,6 +1061,10 @@
     
     </summary>
     
+      <category term="github" scheme="http://www.codingbalian.online/categories/github/"/>
+    
+    
+      <category term="github" scheme="http://www.codingbalian.online/tags/github/"/>
     
   </entry>
   
