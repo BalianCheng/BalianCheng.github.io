@@ -17,50 +17,18 @@
       <title><![CDATA[XML:XSL转换]]></title>
       <url>http://www.codingbalian.online/2016/12/22/XML-XSL/</url>
       <content type="html"><![CDATA[<p>XSL是基于XML的语言，用于显示XML的规范。<br><a id="more"></a></p>
-<p><strong>XSL转换原理</strong><br>XSL样式表对XML文档转化的过程：</p>
-<ol>
-<li>根据XML文档构造源树，根据XSL规则将源树转化成结果树，转换协议为XSLT。</li>
-<li>生成结果树后进行解释，产生一种社和显示的格式（格式化）。</li>
-</ol>
-<p>XSL处理器负责转换成。XML文档先被解析成DOM树存放在内存中，接着进行分析，每一个DOM树的节点都与一个模式相比较，匹配上按模板进行转换否则继续往下匹配。<br><strong>XSL文档结构</strong><br>XSL是扩展名为xsl的文本文件使用XML，其基本结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</div><div class="line">&lt;xsl:template match=&quot;/&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">&lt;xsl:template match=&quot;指定的XML元素&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:stylesheet&gt;</div></pre></td></tr></table></figure></p>
-<p>把XSL样式表链接到XML文档:<code>&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;文件名.xsl&quot;?&gt;</code></p>
-<p><strong>XSL模板</strong><br>XSL模板由两部分组成：匹配模式和执行，匹配模式指定文档中节点处理，执行定义输出。</p>
-<ul>
-<li><p>定义模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:template match=&quot;pattern&quot; name=&quot;name&quot; priority=&quot;number&quot; mode=&quot;mode&quot;&gt;</div><div class="line">	&lt;!--具体执行内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>match属性的pattern指定为<code>/</code>表示与根节点匹配，指定为为*表示与所有未指定规则的节点匹配。<br><code>match=&quot;(title|author)&quot;</code>表示匹配所有title和author元素，<code>match=&quot;(title/author)</code>表示匹配所有父节点为title的author元素</p>
-</li>
-<li><p>xsl:apply-template：处理当前节点的所有子节点，总是包含在xsl:template元素中。<br><code>&lt;xsl:apply-template select=&quot;expression&quot; mode=&quot;nam&quot;/&gt;</code></p>
-<ul>
-<li>select属性是一个Xpath表达式，规定要用模板来处理节点。值为*时去整个节点集，省略则是整个节点的子节点与模板比较选择匹配的处理。</li>
-<li>mode选择同元素定义的多种处理方法。</li>
-</ul>
-</li>
-</ul>
-<p><strong>常用属性</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#xsl:element 用于在输出文档创建节点</div><div class="line">&lt;xsl:element name=&quot;name&quot; namespace=&quot;URI&quot; use-attribute-sets=&quot;namelist&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:element&gt;</div><div class="line">#xsl:attribute</div><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">#xsl:text</div><div class="line">&lt;xsl:text disable-output-escaping=&quot;yes|no&quot;&gt;</div><div class="line">	&lt;!--content--&gt;</div><div class="line">&lt;/xsl:text&gt;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>name规定创建元素的名称</li>
-<li>namespace规定名称空间的URI</li>
-<li>use-attribute-sets空格分隔属性集，包含需要添加的属性</li>
-<li><code>xsl:text</code>用于输出文本节点包括文本、#PCDATA等</li>
-<li>disable-output-escaping默认为no，输出时将对文本进行转义。如<code>&lt;</code>输出为<code>&amp;lt</code></li>
-</ul>
-<p><strong>XSL节点选择</strong><br>XSL样式表中有一个根模板，从根模板开始匹配XML文档，处理时调用其他模板，要匹配模板和标记时要设计“标记匹配模式”。<br>使用元素名匹配<br>XSL处理器根据match提供的元素名称去XML文档提取该节点的数据，需要用到<code>xsl:value-of</code>元素，用于选取文档中某个元素的值并输出。<br><code>&lt;xsl:value-of select=&quot;expression&quot; disable-output-escaping=&quot;yes|no&quot;&gt;</code></p>
-<ul>
-<li>select属性值是XPath表达式，规定从哪个节点或属性来提取<br>使用路径匹配<br>通过详细的路径选择节点，即模板中的标记匹配模式可以由子标记、根标记、/、//共同组成。<br><code>&lt;xsl:template match=&quot;图书/书名&quot;&gt;</code>表示匹配图书下的任意书名子节点。<br><code>&lt;xsl:template match=&quot;//书名&quot;&gt;</code>表示匹配任意节点下的书名子节点。</li>
-</ul>
-<p>使用匹配字符匹配</p>
-<ul>
-<li>根节点匹配符<code>&lt;xsl:template match=&quot;/&quot;&gt;</code></li>
-<li>根源素匹配符<code>&lt;xsl:template match=&quot;/*&quot;&gt;</code></li>
-<li>当前节点<code>&lt;xsl:template match=&quot;.&quot;&gt;</code>父节点<code>&lt;xsl:template match=&quot;..&quot;&gt;</code></li>
-</ul>
-<ol>
-<li>使用元素属性匹配<br>使用<code>标记[@属性]</code>或<code>标记[@属性=&#39;属性值&#39;]</code>进行筛选匹配。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#xml文档</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;名单&gt;</div><div class="line">	&lt;姓名&gt;张三&lt;/姓名&gt;</div><div class="line">	&lt;姓名 ID=&quot;1&quot;&gt;李四&lt;/姓名&gt;</div><div class="line">&lt;/名单&gt;</div><div class="line">#获得李四数据</div><div class="line">&lt;xsl:template match=&quot;名单/姓名[@ID=&apos;1&apos;]&quot;&gt;</div><div class="line">	&lt;!--模板内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure>
-<p><strong>XSL控制指令</strong></p>
+<h2 id="1">XSL转换原理</h2><br>XSL样式表对XML文档转化的过程：<br>1. 根据XML文档构造源树，根据XSL规则将源树转化成结果树，转换协议为XSLT。<br>2. 生成结果树后进行解释，产生一种社和显示的格式（格式化）。<br><br>XSL处理器负责转换成。XML文档先被解析成DOM树存放在内存中，接着进行分析，每一个DOM树的节点都与一个模式相比较，匹配上按模板进行转换否则继续往下匹配。<br><h2 id="1">XSL文档结构<strong><br>XSL是扩展名为xsl的文本文件使用XML，其基本结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</div><div class="line">&lt;xsl:template match=&quot;/&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">&lt;xsl:template match=&quot;指定的XML元素&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:stylesheet&gt;</div></pre></td></tr></table></figure><br><br>把XSL样式表链接到XML文档:<code>&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;文件名.xsl&quot;?&gt;</code><br><br><h2 id="1">XSL模板</h2></strong><br>XSL模板由两部分组成：匹配模式和执行，匹配模式指定文档中节点处理，执行定义输出。<br><em> 定义模板：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:template match=&quot;pattern&quot; name=&quot;name&quot; priority=&quot;number&quot; mode=&quot;mode&quot;&gt;</div><div class="line">	&lt;!--具体执行内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure>
+
+</em> match属性的pattern指定为<code>/</code>表示与根节点匹配，指定为为<em>表示与所有未指定规则的节点匹配。<br><code>match=&quot;(title|author)&quot;</code>表示匹配所有title和author元素，<code>match=&quot;(title/author)</code>表示匹配所有父节点为title的author元素
+
+</em> xsl:apply-template：处理当前节点的所有子节点，总是包含在xsl:template元素中。<br><code>&lt;xsl:apply-template select=&quot;expression&quot; mode=&quot;nam&quot;/&gt;</code><br> <em> select属性是一个Xpath表达式，规定要用模板来处理节点。值为</em>时去整个节点集，省略则是整个节点的子节点与模板比较选择匹配的处理。<br> <em> mode选择同元素定义的多种处理方法。<br><br><h2 id="2">常用属性</h2><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#xsl:element 用于在输出文档创建节点</div><div class="line">&lt;xsl:element name=&quot;name&quot; namespace=&quot;URI&quot; use-attribute-sets=&quot;namelist&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:element&gt;</div><div class="line">#xsl:attribute</div><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">#xsl:text</div><div class="line">&lt;xsl:text disable-output-escaping=&quot;yes|no&quot;&gt;</div><div class="line">	&lt;!--content--&gt;</div><div class="line">&lt;/xsl:text&gt;</div></pre></td></tr></table></figure>
+
+ </em> name规定创建元素的名称<br> <em> namespace规定名称空间的URI
+ </em> use-attribute-sets空格分隔属性集，包含需要添加的属性<br> <em> <code>xsl:text</code>用于输出文本节点包括文本、#PCDATA等
+ </em> disable-output-escaping默认为no，输出时将对文本进行转义。如<code>&lt;</code>输出为<code>&amp;lt</code><br><br><h2 id="3">XSL节点选择</h2><br>XSL样式表中有一个根模板，从根模板开始匹配XML文档，处理时调用其他模板，要匹配模板和标记时要设计“标记匹配模式”。<br>使用元素名匹配<br>XSL处理器根据match提供的元素名称去XML文档提取该节点的数据，需要用到<code>xsl:value-of</code>元素，用于选取文档中某个元素的值并输出。<br><code>&lt;xsl:value-of select=&quot;expression&quot; disable-output-escaping=&quot;yes|no&quot;&gt;</code><br> <em> select属性值是XPath表达式，规定从哪个节点或属性来提取<br>使用路径匹配<br>通过详细的路径选择节点，即模板中的标记匹配模式可以由子标记、根标记、/、//共同组成。<br><code>&lt;xsl:template match=&quot;图书/书名&quot;&gt;</code>表示匹配图书下的任意书名子节点。<br><code>&lt;xsl:template match=&quot;//书名&quot;&gt;</code>表示匹配任意节点下的书名子节点。<br><br>使用匹配字符匹配
+ </em> 根节点匹配符<code>&lt;xsl:template match=&quot;/&quot;&gt;</code><br> <em> 根源素匹配符`&lt;xsl:template match=”/</em>“&gt;<code>* 当前节点</code><xsl:template match="."><code>父节点</code><xsl:template match=".."><code>4. 使用元素属性匹配
+使用</code>标记[@属性]<code>或</code>标记[@属性=’属性值’]`进行筛选匹配。<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#xml文档</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;名单&gt;</div><div class="line">	&lt;姓名&gt;张三&lt;/姓名&gt;</div><div class="line">	&lt;姓名 ID=&quot;1&quot;&gt;李四&lt;/姓名&gt;</div><div class="line">&lt;/名单&gt;</div><div class="line">#获得李四数据</div><div class="line">&lt;xsl:template match=&quot;名单/姓名[@ID=&apos;1&apos;]&quot;&gt;</div><div class="line">	&lt;!--模板内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure><br><br><h2 id="4">XSL控制指令</h2>
+
 <ol>
 <li>简单判断指令<code>&lt;xsl:if&gt;</code><ul>
 <li>以元素名为条件<code>&lt;xsl:if match=&quot;元素名&quot;&gt;</code></li>
@@ -90,7 +58,7 @@
 </ul>
 </li>
 </ol>
-<p><strong>XPath</strong><br>XPath用于XML文字导航，将节点划分成8种节点类型</p>
+<p></p><h2 id="5">XPath</h2><br>XPath用于XML文字导航，将节点划分成8种节点类型<p></p>
 <ol>
 <li>根节点：唯一，最上层。根源素是根节点的第一层子节点，一般包括两个子节点：xsl-stylesheet处理指令和根源素。</li>
 <li>元素节点：对应文档中的每一元素，可以定义唯一的标识ID，可以有扩展：命名空间URI、本地命名。</li>
@@ -101,7 +69,7 @@
 <li>注释节点：对应文档中的注释。 </li>
 <li>上下文节点：是将要查询的XML文档树种的一个特定节点，可以认为是查询的起点。</li>
 </ol>
-<p><strong>XPath路径表达式</strong><br>位置路径可以是绝对的，也可以是相对的。绝对路径起始于正斜杠( / )。都包含位置步。<br>绝对位置路径:<code>/step/step/...</code><br>相对位置路径:<code>step/step/...</code><br>步的语法：<code>轴名称::节点测试[谓语]</code><br>步包括：</p>
+<p></p><h2 id="6">XPath路径表达式</h2><br>位置路径可以是绝对的，也可以是相对的。绝对路径起始于正斜杠( / )。都包含位置步。<br>绝对位置路径:<code>/step/step/...</code><br>相对位置路径:<code>step/step/...</code><br>步的语法：<code>轴名称::节点测试[谓语]</code><br>步包括：<p></p>
 <ul>
 <li>轴:定义所选节点与当前节点之间的树关系</li>
 <li>节点测试:识别某个轴内部的节点</li>
@@ -252,18 +220,19 @@
 </tbody>
 </table>
 <p>XPath标准函数:参考<a href="http://www.w3school.com.cn/xpath/xpath_functions.asp" target="_blank" rel="external">XPath、XQuery以及XSLT函数</a></p>
-]]></content>
+</xsl:template></xsl:template></h2>]]></content>
     </entry>
     
     <entry>
       <title><![CDATA[用CSS显示XML]]></title>
       <url>http://www.codingbalian.online/2016/12/22/XML-CSS/</url>
-      <content type="html"><![CDATA[<p>在XML里用到过的CSS的一点点基础内容<br><a id="more"></a><br>CSS的定义语法由三部分构成：选择器(selector)，属性(property)，属性值(value)<br>基本格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+      <content type="html"><![CDATA[<p>在XML里用到过的CSS的一点点基础内容<br><a id="more"></a></p>
+<p></p><h2 id="1">CSS基础</h2><br>CSS的定义语法由三部分构成：选择器(selector)，属性(property)，属性值(value)<br>基本格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure><p></p>
 <p>CSS可以设置多个元素的选择器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector1, selector2, selector3&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>selector1、selector2、selector3公用同一种样式<br>类(class)选择器可以为同名的元素设置不同的样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Tag.class&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#XML</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;book.css&quot;?&gt;</div><div class="line">&lt;DocumentElement&gt;</div><div class="line">	&lt;book Class=&quot;1&quot;&gt;</div><div class="line">		&lt;name&gt;数据挖掘&lt;/name&gt;</div><div class="line">		&lt;price&gt;16&lt;/price&gt;</div><div class="line">	&lt;/book&gt;</div><div class="line">	&lt;book Class=&quot;2&quot;&gt;</div><div class="line">		&lt;name&gt;机器学习&lt;/name&gt;</div><div class="line">		&lt;price&gt;18&lt;/price&gt;</div><div class="line">	&lt;/book&gt;</div><div class="line">&lt;/DocumentElement&gt;</div><div class="line">#CSS</div><div class="line">	book&#123;</div><div class="line">		display:block;</div><div class="line">		margin-top:16px</div><div class="line">		&#125;</div><div class="line">	name&#123;</div><div class="line">		display:block;</div><div class="line">		font-weight:bold</div><div class="line">		&#125;</div><div class="line">	book.1&#123;</div><div class="line">		font-size:18px</div><div class="line">		&#125;</div><div class="line">	book.2&#123;</div><div class="line">		font-style:italic;</div><div class="line">		font-size:16px</div><div class="line">		&#125;</div><div class="line">	name,price&#123;</div><div class="line">		margin:16px</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
 <p>标识(ID)选择器：唯一标识一个元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Tag#ID&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>CSS属性<br>display常用属性</p>
+<p></p><h2 id="2">CSS属性</h2><br>display常用属性<p></p>
 <table>
 <thead>
 <tr>
@@ -434,10 +403,10 @@
 <p>本篇介绍W3C标准</p>
 </blockquote>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:schema xmlns:xsd=”http://www.w3.org/2001/XMLSchema”&gt;</div><div class="line">    &lt;xsd:element name=&quot;name&quot;&gt;</div><div class="line">        &lt;xsd:complexType&gt;</div><div class="line">            &lt;xsd:sequence&gt;</div><div class="line">                &lt;xsd:element name=&quot;example&quot; type=&quot;xsd:string&quot;/&gt;</div><div class="line">            &lt;/xsd:sequence&gt;</div><div class="line">        &lt;/xsd:complexType&gt;</div><div class="line">    &lt;/xsd:element&gt;</div><div class="line">&lt;/xsd:schema&gt;</div></pre></td></tr></table></figure>
+<p></p><h2 id="1">Schema格式</h2><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:schema xmlns:xsd=”http://www.w3.org/2001/XMLSchema”&gt;</div><div class="line">    &lt;xsd:element name=&quot;name&quot;&gt;</div><div class="line">        &lt;xsd:complexType&gt;</div><div class="line">            &lt;xsd:sequence&gt;</div><div class="line">                &lt;xsd:element name=&quot;example&quot; type=&quot;xsd:string&quot;/&gt;</div><div class="line">            &lt;/xsd:sequence&gt;</div><div class="line">        &lt;/xsd:complexType&gt;</div><div class="line">    &lt;/xsd:element&gt;</div><div class="line">&lt;/xsd:schema&gt;</div></pre></td></tr></table></figure><p></p>
 <p>schema以<code>&lt;xsd:schema xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;</code>开头<code>&lt;/xsd:schema&gt;</code>结尾</p>
 <p>complexTypey用来定义复杂类型（包含子元素或者带有属性）<br>type定义数据类型，包括string,int,double,dateTime,Boolean,long,integer,float等<br>sequence规定元素需要依次出现</p>
-<p><strong>元素声明</strong><br>schema必须且只能声明一个schema以根元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:schema xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;</div><div class="line">...</div><div class="line">...</div><div class="line">&lt;/xsd:schema&gt;</div></pre></td></tr></table></figure></p>
+<p></p><h2 id="2">元素声明</h2><br>schema必须且只能声明一个schema以根元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:schema xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;</div><div class="line">...</div><div class="line">...</div><div class="line">&lt;/xsd:schema&gt;</div></pre></td></tr></table></figure><p></p>
 <p>element声明元素</p>
 <table>
 <thead>
@@ -551,7 +520,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">XML</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;person xmlns:xsi&quot;http://www.w3.org/2001/XMLSchema&quot; xsi:noNamespaceSchemaLocation=&quot;person.xsd&quot;&gt;</div><div class="line">	&lt;name&gt;Cheng&lt;/name&gt;</div><div class="line">	&lt;phone&gt;</div><div class="line">		&lt;number&gt;123456&lt;/number&gt;</div><div class="line">	&lt;/phone&gt;</div><div class="line">&lt;/person&gt;</div></pre></td></tr></table></figure>
 <p>元素替换<br><code>&lt;xs:element name=&quot;&quot; substitutionGroup=&quot;name&quot;/&gt;</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;xsd:schema xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;</div><div class="line">	&lt;xsd:element name=&quot;person&quot;&gt;</div><div class="line">		&lt;xsd:complexType&gt;</div><div class="line">            &lt;xsd:sequence&gt;</div><div class="line">                &lt;xsd:element name=&quot;name&quot; type=&quot;xsd:string&quot;/&gt;</div><div class="line">				&lt;xsd:element ref=&quot;phone&quot;/&gt;</div><div class="line">            &lt;/xsd:sequence&gt;</div><div class="line">        &lt;/xsd:complexType&gt;</div><div class="line">    &lt;/xsd:element&gt;</div><div class="line">	&lt;xsd:element name=&quot;phone&quot;&gt;</div><div class="line">    &lt;xsd:element name=&quot;number&quot; type=&quot;xsd:string&quot; substitutionGroup=&quot;phone&quot;/&gt;</div><div class="line">&lt;/xsd:schema&gt;</div></pre></td></tr></table></figure>
-<p><strong>数据类型</strong><br>内置数据类型<br><code>&lt;xsd:element name=&quot;&quot; type=&quot;&quot;&gt;</code></p>
+<p></p><h2 id="3">数据类型</h2><br>内置数据类型<br><code>&lt;xsd:element name=&quot;&quot; type=&quot;&quot;&gt;</code><p></p>
 <table>
 <thead>
 <tr>
@@ -682,7 +651,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:group minOccurs=&quot;&quot; maxOccurs=&quot;&quot; name=&quot;&quot; ref=&quot;组名&quot;&gt;</div><div class="line">&lt;!--声明--&gt;</div><div class="line">&lt;/xsd:group&gt;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><strong>命名空间</strong></p>
+<p></p><h2 id="4">命名空间</h2><p></p>
 <p><xsd: schema="" targetnamespace="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns=""></xsd:></p>
 <ul>
 <li>targetNamespace目标命名空间，schema规定在其中有效</li>
@@ -696,31 +665,9 @@
     <entry>
       <title><![CDATA[XML:DTD]]></title>
       <url>http://www.codingbalian.online/2016/12/20/XML-DTD/</url>
-      <content type="html"><![CDATA[<p>XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。<br><a id="more"></a><br><strong>DTD作用</strong></p>
-<ol>
-<li>指定文档结构的规则</li>
-<li>验证文档有效性</li>
-<li>可以被共享</li>
-<li>可以在描述的文档中与外部的URL链接</li>
-</ol>
-<p><strong>DTD结构</strong></p>
-<ol>
-<li><code>&lt;!DOCTYPE</code>开头<code>]&gt;</code>结尾</li>
-<li><code>&lt;!ELEMENT&gt;</code>声明元素</li>
-<li><code>&lt;!ATTLIST&gt;</code> 声明元素属性</li>
-<li><code>&lt;!ENTITY&gt;</code>声明实体，可以用来存储常用的文字区块，或将非XML的数据包括在文档中</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;</div><div class="line">&lt;!--DTD定义--&gt;</div><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">&lt;!--元素定义--&gt;</div><div class="line">&lt;!ELEMENT 公司 (雇员)+&gt;</div><div class="line">&lt;!ELEMENT 雇员 (姓名,雇佣日期,项目清单,说明)&gt;</div><div class="line">&lt;!ELEMENT 姓名 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 雇佣日期 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 项目清单 (项目)*&gt;</div><div class="line">&lt;!ELEMENT 项目 (产品,价格)&gt;</div><div class="line">&lt;!ELEMENT 产品 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 价格 (#PCDATA)&gt;</div><div class="line">&lt;!--属性定义--&gt;</div><div class="line">&lt;!ATTLIST 项目清单 数量 CDATA #REQUIRED&gt;</div><div class="line">&lt;!ATTLIST 雇员</div><div class="line">    部门 CDATA #IMPLIED</div><div class="line">    全职 CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ENTITY  note  &quot;这里是备注信息&quot;&gt;</div><div class="line">]&gt;</div><div class="line">&lt;!--内容定义--&gt;</div><div class="line">&lt;公司&gt;</div><div class="line">    &lt;雇员 部门=&quot;市场部&quot; 全职=&quot;是&quot;&gt;</div><div class="line">        &lt;姓名&gt;李东&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-01-15&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;2&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;打印机&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $111.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;笔记本&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $998.00&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line">    &lt;雇员 部门=&quot;客服部&quot;&gt;</div><div class="line">        &lt;姓名&gt;王权&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-10-2&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;1&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;扫描仪&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $200.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line"> &lt;/公司&gt;</div></pre></td></tr></table></figure>
-<p>在IE中运行显示&lt;!DOCTYPE 公司 (View Source of full doctype……)&gt;说明是内部DTD</p>
-<p><strong>DTD元素类型</strong></p>
-<ol>
-<li>空元素<code>&lt;!ELEMENT 元素 EMPTY&gt;</code>对应XML<code>&lt;元素/&gt;</code></li>
-<li>ANY类型<code>&lt;!ELEMENT 元素 ANY&gt;</code>表明元素可以包含定义的其他任意内容或任意内容的组合</li>
-<li>#PCDATA(可解析文本)，不能再包含子元素</li>
-<li>子元素<code>&lt;!ELEMENT 元素 (子元素列表)&gt;</code>包括序列与选择两种结构<code>&lt;!ELEMENT 元素 (元素1,元素2)&gt;</code>表示顺序，<code>&lt;!ELEMENT 元素 (元素1|元素2)&gt;</code>表示选择，至少选其一</li>
-<li>混合类型<code>&lt;!ELEMENT 元素 (#PCDATA|子元素1|子元素2)*&gt;</code></li>
-</ol>
-<p><strong>元素限定符</strong></p>
+      <content type="html"><![CDATA[<p>XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。<br><a id="more"></a></p>
+<h2 id="1">DTD作用</h2><br>1. 指定文档结构的规则<br>2. 验证文档有效性<br>3. 可以被共享<br>4. 可以在描述的文档中与外部的URL链接<br><br><h2 id="2">DTD结构</h2><br>1. <code>&lt;!DOCTYPE</code>开头<code>]&gt;</code>结尾<br>2. <code>&lt;!ELEMENT&gt;</code>声明元素<br>3. <code>&lt;!ATTLIST&gt;</code> 声明元素属性<br>4. <code>&lt;!ENTITY&gt;</code>声明实体，可以用来存储常用的文字区块，或将非XML的数据包括在文档中<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;</div><div class="line">&lt;!--DTD定义--&gt;</div><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">&lt;!--元素定义--&gt;</div><div class="line">&lt;!ELEMENT 公司 (雇员)+&gt;</div><div class="line">&lt;!ELEMENT 雇员 (姓名,雇佣日期,项目清单,说明)&gt;</div><div class="line">&lt;!ELEMENT 姓名 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 雇佣日期 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 项目清单 (项目)*&gt;</div><div class="line">&lt;!ELEMENT 项目 (产品,价格)&gt;</div><div class="line">&lt;!ELEMENT 产品 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 价格 (#PCDATA)&gt;</div><div class="line">&lt;!--属性定义--&gt;</div><div class="line">&lt;!ATTLIST 项目清单 数量 CDATA #REQUIRED&gt;</div><div class="line">&lt;!ATTLIST 雇员</div><div class="line">    部门 CDATA #IMPLIED</div><div class="line">    全职 CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ENTITY  note  &quot;这里是备注信息&quot;&gt;</div><div class="line">]&gt;</div><div class="line">&lt;!--内容定义--&gt;</div><div class="line">&lt;公司&gt;</div><div class="line">    &lt;雇员 部门=&quot;市场部&quot; 全职=&quot;是&quot;&gt;</div><div class="line">        &lt;姓名&gt;李东&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-01-15&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;2&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;打印机&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $111.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;笔记本&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $998.00&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line">    &lt;雇员 部门=&quot;客服部&quot;&gt;</div><div class="line">        &lt;姓名&gt;王权&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-10-2&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;1&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;扫描仪&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $200.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line"> &lt;/公司&gt;</div></pre></td></tr></table></figure><br><br>在IE中运行显示&lt;!DOCTYPE 公司 (View Source of full doctype……)&gt;说明是内部DTD<br><br><h2 id="3">DTD元素类型</h2><br>1. 空元素<code>&lt;!ELEMENT 元素 EMPTY&gt;</code>对应XML<code>&lt;元素/&gt;</code><br>2. ANY类型<code>&lt;!ELEMENT 元素 ANY&gt;</code>表明元素可以包含定义的其他任意内容或任意内容的组合<br>3. #PCDATA(可解析文本)，不能再包含子元素<br>4. 子元素<code>&lt;!ELEMENT 元素 (子元素列表)&gt;</code>包括序列与选择两种结构<code>&lt;!ELEMENT 元素 (元素1,元素2)&gt;</code>表示顺序，<code>&lt;!ELEMENT 元素 (元素1|元素2)&gt;</code>表示选择，至少选其一<br>5. 混合类型<code>&lt;!ELEMENT 元素 (#PCDATA|子元素1|子元素2)*&gt;</code><br><br><h2 id="4">元素限定符</h2>
+
 <table>
 <thead>
 <tr>
@@ -755,7 +702,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>DTD属性</strong></p>
+<p>**DTD属性</p>
 <ul>
 <li>设定元素属性与名称</li>
 <li>设定属性数据类型</li>
@@ -841,7 +788,8 @@
 </tr>
 </tbody>
 </table>
-<p><strong>DTD引用</strong></p>
+<h2 id="5">DTD引用</h2>
+
 <p>内部DTD</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">	声明语句</div><div class="line">]&gt;</div></pre></td></tr></table></figure>
 <p>外部DTD</p>
@@ -853,7 +801,8 @@
 <li>DTD_name DTD文件名</li>
 <li>DTD_URL DTD文件路径</li>
 </ul>
-<p><strong>DTD实体</strong></p>
+<h2 id="6">DTD实体</h2>
+
 <p>普通实体<br>用来插入文本。<br>内部普通实体<br><code>&lt;!ENTITY Entity_Name Entity_Value&gt;</code><br>外部普通实体<br><code>&lt;!ENTITY Entity_Name SYSTEM Entity_URL&gt;</code><br>SYSTEM是定义外部实体的关键字<br>引用<code>&amp;Enitiy_Name;</code><br>参数实体<br>不仅可以包含文本，还可以包含元素类型声明、属性列表声明、一般实体声明、标签声明、处理指令或注释等，只能在DTD中引用，并且通常情况下只能在外部DTD文档中引用。<br>内部参数实体<br><code>&lt;!ENTITY % Entity_Name Entity_Value&gt;</code><br>外部参数实体<br><code>&lt;!ENTITY % Entity_Name SYSTEM Entity_URL&gt;</code><br>引用<code>&amp;Enitiy_Name;</code><br>不可解析实体<br>二进制文件，如图形、声音等非字符型数据，唯一可以出现不可解析实体的地方就是属性值且不能进行引用<br>链接是XML文档:<br><code>&lt;!ENTITY name SYSTEM &quot;URI&quot;&gt;</code><br>不是XML文档<br><code>&lt;!ENTITY name SYSTEM “URI”NDATA  type&gt;</code></p>
 ]]></content>
     </entry>

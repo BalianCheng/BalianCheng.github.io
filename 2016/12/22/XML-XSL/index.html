@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://www.codingbalian.online/2016/12/22/XML-XSL/index.html">
 <meta property="og:site_name" content="Balian's Blog">
 <meta property="og:description" content="XSL是基于XML的语言，用于显示XML的规范。">
-<meta property="og:updated_time" content="2016-12-24T03:42:02.829Z">
+<meta property="og:updated_time" content="2016-12-24T06:03:29.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XML:XSL转换">
 <meta name="twitter:description" content="XSL是基于XML的语言，用于显示XML的规范。">
@@ -308,50 +308,18 @@
       
           
         <p>XSL是基于XML的语言，用于显示XML的规范。<br><a id="more"></a></p>
-<p><strong>XSL转换原理</strong><br>XSL样式表对XML文档转化的过程：</p>
-<ol>
-<li>根据XML文档构造源树，根据XSL规则将源树转化成结果树，转换协议为XSLT。</li>
-<li>生成结果树后进行解释，产生一种社和显示的格式（格式化）。</li>
-</ol>
-<p>XSL处理器负责转换成。XML文档先被解析成DOM树存放在内存中，接着进行分析，每一个DOM树的节点都与一个模式相比较，匹配上按模板进行转换否则继续往下匹配。<br><strong>XSL文档结构</strong><br>XSL是扩展名为xsl的文本文件使用XML，其基本结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</div><div class="line">&lt;xsl:template match=&quot;/&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">&lt;xsl:template match=&quot;指定的XML元素&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:stylesheet&gt;</div></pre></td></tr></table></figure></p>
-<p>把XSL样式表链接到XML文档:<code>&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;文件名.xsl&quot;?&gt;</code></p>
-<p><strong>XSL模板</strong><br>XSL模板由两部分组成：匹配模式和执行，匹配模式指定文档中节点处理，执行定义输出。</p>
-<ul>
-<li><p>定义模板：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:template match=&quot;pattern&quot; name=&quot;name&quot; priority=&quot;number&quot; mode=&quot;mode&quot;&gt;</div><div class="line">	&lt;!--具体执行内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>match属性的pattern指定为<code>/</code>表示与根节点匹配，指定为为*表示与所有未指定规则的节点匹配。<br><code>match=&quot;(title|author)&quot;</code>表示匹配所有title和author元素，<code>match=&quot;(title/author)</code>表示匹配所有父节点为title的author元素</p>
-</li>
-<li><p>xsl:apply-template：处理当前节点的所有子节点，总是包含在xsl:template元素中。<br><code>&lt;xsl:apply-template select=&quot;expression&quot; mode=&quot;nam&quot;/&gt;</code></p>
-<ul>
-<li>select属性是一个Xpath表达式，规定要用模板来处理节点。值为*时去整个节点集，省略则是整个节点的子节点与模板比较选择匹配的处理。</li>
-<li>mode选择同元素定义的多种处理方法。</li>
-</ul>
-</li>
-</ul>
-<p><strong>常用属性</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#xsl:element 用于在输出文档创建节点</div><div class="line">&lt;xsl:element name=&quot;name&quot; namespace=&quot;URI&quot; use-attribute-sets=&quot;namelist&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:element&gt;</div><div class="line">#xsl:attribute</div><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">#xsl:text</div><div class="line">&lt;xsl:text disable-output-escaping=&quot;yes|no&quot;&gt;</div><div class="line">	&lt;!--content--&gt;</div><div class="line">&lt;/xsl:text&gt;</div></pre></td></tr></table></figure></p>
-<ul>
-<li>name规定创建元素的名称</li>
-<li>namespace规定名称空间的URI</li>
-<li>use-attribute-sets空格分隔属性集，包含需要添加的属性</li>
-<li><code>xsl:text</code>用于输出文本节点包括文本、#PCDATA等</li>
-<li>disable-output-escaping默认为no，输出时将对文本进行转义。如<code>&lt;</code>输出为<code>&amp;lt</code></li>
-</ul>
-<p><strong>XSL节点选择</strong><br>XSL样式表中有一个根模板，从根模板开始匹配XML文档，处理时调用其他模板，要匹配模板和标记时要设计“标记匹配模式”。<br>使用元素名匹配<br>XSL处理器根据match提供的元素名称去XML文档提取该节点的数据，需要用到<code>xsl:value-of</code>元素，用于选取文档中某个元素的值并输出。<br><code>&lt;xsl:value-of select=&quot;expression&quot; disable-output-escaping=&quot;yes|no&quot;&gt;</code></p>
-<ul>
-<li>select属性值是XPath表达式，规定从哪个节点或属性来提取<br>使用路径匹配<br>通过详细的路径选择节点，即模板中的标记匹配模式可以由子标记、根标记、/、//共同组成。<br><code>&lt;xsl:template match=&quot;图书/书名&quot;&gt;</code>表示匹配图书下的任意书名子节点。<br><code>&lt;xsl:template match=&quot;//书名&quot;&gt;</code>表示匹配任意节点下的书名子节点。</li>
-</ul>
-<p>使用匹配字符匹配</p>
-<ul>
-<li>根节点匹配符<code>&lt;xsl:template match=&quot;/&quot;&gt;</code></li>
-<li>根源素匹配符<code>&lt;xsl:template match=&quot;/*&quot;&gt;</code></li>
-<li>当前节点<code>&lt;xsl:template match=&quot;.&quot;&gt;</code>父节点<code>&lt;xsl:template match=&quot;..&quot;&gt;</code></li>
-</ul>
-<ol>
-<li>使用元素属性匹配<br>使用<code>标记[@属性]</code>或<code>标记[@属性=&#39;属性值&#39;]</code>进行筛选匹配。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#xml文档</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;名单&gt;</div><div class="line">	&lt;姓名&gt;张三&lt;/姓名&gt;</div><div class="line">	&lt;姓名 ID=&quot;1&quot;&gt;李四&lt;/姓名&gt;</div><div class="line">&lt;/名单&gt;</div><div class="line">#获得李四数据</div><div class="line">&lt;xsl:template match=&quot;名单/姓名[@ID=&apos;1&apos;]&quot;&gt;</div><div class="line">	&lt;!--模板内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure>
-<p><strong>XSL控制指令</strong></p>
+<h2 id="1">XSL转换原理</h2><br>XSL样式表对XML文档转化的过程：<br>1. 根据XML文档构造源树，根据XSL规则将源树转化成结果树，转换协议为XSLT。<br>2. 生成结果树后进行解释，产生一种社和显示的格式（格式化）。<br><br>XSL处理器负责转换成。XML文档先被解析成DOM树存放在内存中，接着进行分析，每一个DOM树的节点都与一个模式相比较，匹配上按模板进行转换否则继续往下匹配。<br><h2 id="1">XSL文档结构<strong><br>XSL是扩展名为xsl的文本文件使用XML，其基本结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</div><div class="line">&lt;xsl:template match=&quot;/&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">&lt;xsl:template match=&quot;指定的XML元素&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:stylesheet&gt;</div></pre></td></tr></table></figure><br><br>把XSL样式表链接到XML文档:<code>&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;文件名.xsl&quot;?&gt;</code><br><br><h2 id="1">XSL模板</h2></strong><br>XSL模板由两部分组成：匹配模式和执行，匹配模式指定文档中节点处理，执行定义输出。<br><em> 定义模板：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:template match=&quot;pattern&quot; name=&quot;name&quot; priority=&quot;number&quot; mode=&quot;mode&quot;&gt;</div><div class="line">	&lt;!--具体执行内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure>
+
+</em> match属性的pattern指定为<code>/</code>表示与根节点匹配，指定为为<em>表示与所有未指定规则的节点匹配。<br><code>match=&quot;(title|author)&quot;</code>表示匹配所有title和author元素，<code>match=&quot;(title/author)</code>表示匹配所有父节点为title的author元素
+
+</em> xsl:apply-template：处理当前节点的所有子节点，总是包含在xsl:template元素中。<br><code>&lt;xsl:apply-template select=&quot;expression&quot; mode=&quot;nam&quot;/&gt;</code><br> <em> select属性是一个Xpath表达式，规定要用模板来处理节点。值为</em>时去整个节点集，省略则是整个节点的子节点与模板比较选择匹配的处理。<br> <em> mode选择同元素定义的多种处理方法。<br><br><h2 id="2">常用属性</h2><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#xsl:element 用于在输出文档创建节点</div><div class="line">&lt;xsl:element name=&quot;name&quot; namespace=&quot;URI&quot; use-attribute-sets=&quot;namelist&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:element&gt;</div><div class="line">#xsl:attribute</div><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">#xsl:text</div><div class="line">&lt;xsl:text disable-output-escaping=&quot;yes|no&quot;&gt;</div><div class="line">	&lt;!--content--&gt;</div><div class="line">&lt;/xsl:text&gt;</div></pre></td></tr></table></figure>
+
+ </em> name规定创建元素的名称<br> <em> namespace规定名称空间的URI
+ </em> use-attribute-sets空格分隔属性集，包含需要添加的属性<br> <em> <code>xsl:text</code>用于输出文本节点包括文本、#PCDATA等
+ </em> disable-output-escaping默认为no，输出时将对文本进行转义。如<code>&lt;</code>输出为<code>&amp;lt</code><br><br><h2 id="3">XSL节点选择</h2><br>XSL样式表中有一个根模板，从根模板开始匹配XML文档，处理时调用其他模板，要匹配模板和标记时要设计“标记匹配模式”。<br>使用元素名匹配<br>XSL处理器根据match提供的元素名称去XML文档提取该节点的数据，需要用到<code>xsl:value-of</code>元素，用于选取文档中某个元素的值并输出。<br><code>&lt;xsl:value-of select=&quot;expression&quot; disable-output-escaping=&quot;yes|no&quot;&gt;</code><br> <em> select属性值是XPath表达式，规定从哪个节点或属性来提取<br>使用路径匹配<br>通过详细的路径选择节点，即模板中的标记匹配模式可以由子标记、根标记、/、//共同组成。<br><code>&lt;xsl:template match=&quot;图书/书名&quot;&gt;</code>表示匹配图书下的任意书名子节点。<br><code>&lt;xsl:template match=&quot;//书名&quot;&gt;</code>表示匹配任意节点下的书名子节点。<br><br>使用匹配字符匹配
+ </em> 根节点匹配符<code>&lt;xsl:template match=&quot;/&quot;&gt;</code><br> <em> 根源素匹配符`&lt;xsl:template match=”/</em>“&gt;<code>* 当前节点</code><xsl:template match="."><code>父节点</code><xsl:template match=".."><code>4. 使用元素属性匹配
+使用</code>标记[@属性]<code>或</code>标记[@属性=’属性值’]`进行筛选匹配。<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#xml文档</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;名单&gt;</div><div class="line">	&lt;姓名&gt;张三&lt;/姓名&gt;</div><div class="line">	&lt;姓名 ID=&quot;1&quot;&gt;李四&lt;/姓名&gt;</div><div class="line">&lt;/名单&gt;</div><div class="line">#获得李四数据</div><div class="line">&lt;xsl:template match=&quot;名单/姓名[@ID=&apos;1&apos;]&quot;&gt;</div><div class="line">	&lt;!--模板内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure><br><br><h2 id="4">XSL控制指令</h2>
+
 <ol>
 <li>简单判断指令<code>&lt;xsl:if&gt;</code><ul>
 <li>以元素名为条件<code>&lt;xsl:if match=&quot;元素名&quot;&gt;</code></li>
@@ -381,7 +349,7 @@
 </ul>
 </li>
 </ol>
-<p><strong>XPath</strong><br>XPath用于XML文字导航，将节点划分成8种节点类型</p>
+<p></p><h2 id="5">XPath</h2><br>XPath用于XML文字导航，将节点划分成8种节点类型<p></p>
 <ol>
 <li>根节点：唯一，最上层。根源素是根节点的第一层子节点，一般包括两个子节点：xsl-stylesheet处理指令和根源素。</li>
 <li>元素节点：对应文档中的每一元素，可以定义唯一的标识ID，可以有扩展：命名空间URI、本地命名。</li>
@@ -392,7 +360,7 @@
 <li>注释节点：对应文档中的注释。 </li>
 <li>上下文节点：是将要查询的XML文档树种的一个特定节点，可以认为是查询的起点。</li>
 </ol>
-<p><strong>XPath路径表达式</strong><br>位置路径可以是绝对的，也可以是相对的。绝对路径起始于正斜杠( / )。都包含位置步。<br>绝对位置路径:<code>/step/step/...</code><br>相对位置路径:<code>step/step/...</code><br>步的语法：<code>轴名称::节点测试[谓语]</code><br>步包括：</p>
+<p></p><h2 id="6">XPath路径表达式</h2><br>位置路径可以是绝对的，也可以是相对的。绝对路径起始于正斜杠( / )。都包含位置步。<br>绝对位置路径:<code>/step/step/...</code><br>相对位置路径:<code>step/step/...</code><br>步的语法：<code>轴名称::节点测试[谓语]</code><br>步包括：<p></p>
 <ul>
 <li>轴:定义所选节点与当前节点之间的树关系</li>
 <li>节点测试:识别某个轴内部的节点</li>
@@ -543,7 +511,7 @@
 </tbody>
 </table>
 <p>XPath标准函数:参考<a href="http://www.w3school.com.cn/xpath/xpath_functions.asp" target="_blank" rel="external">XPath、XQuery以及XSLT函数</a></p>
-
+</xsl:template></xsl:template></h2>
       
     </div>
     
@@ -554,7 +522,7 @@
         <p><span>本文标题:</span><a href="/2016/12/22/XML-XSL/">XML:XSL转换</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2016-12-22, 22:34:33</p>
-        <p><span>最后更新:</span>2016-12-24, 11:42:02</p>
+        <p><span>最后更新:</span>2016-12-24, 14:03:29</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/22/XML-XSL/" title="XML:XSL转换">http://www.codingbalian.online/2016/12/22/XML-XSL/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/22/XML-XSL/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -590,7 +558,210 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">XSL转换原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">2.</span> <span class="toc-text">XSL文档结构XSL是扩展名为xsl的文本文件使用XML，其基本结构：12345678910<?xml version="1.0" encoding="GB2312"?><xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><xsl:template match="/">	.....</xsl:template><xsl:template match="指定的XML元素">	.....</xsl:template>	.....</xsl:stylesheet>把XSL样式表链接到XML文档:<?xml-stylesheet type="text/xsl" href="文件名.xsl"?>XSL模板XSL模板由两部分组成：匹配模式和执行，匹配模式指定文档中节点处理，执行定义输出。 定义模板：123<xsl:template match="pattern" name="name" priority="number" mode="mode">	<!--具体执行内容--></xsl:template>
+
+ match属性的pattern指定为/表示与根节点匹配，指定为为表示与所有未指定规则的节点匹配。match="(title|author)"表示匹配所有title和author元素，match="(title/author)表示匹配所有父节点为title的author元素
+
+ xsl:apply-template：处理当前节点的所有子节点，总是包含在xsl:template元素中。<xsl:apply-template select="expression" mode="nam"/>  select属性是一个Xpath表达式，规定要用模板来处理节点。值为时去整个节点集，省略则是整个节点的子节点与模板比较选择匹配的处理。  mode选择同元素定义的多种处理方法。常用属性123456789101112#xsl:element 用于在输出文档创建节点<xsl:element name="name" namespace="URI" use-attribute-sets="namelist">	<!--template--></xsl:element>#xsl:attribute<xsl:attribute name="attributename" namespace="URI">	<!--template--></xsl:attribute>#xsl:text<xsl:text disable-output-escaping="yes|no">	<!--content--></xsl:text>
+
+  name规定创建元素的名称  namespace规定名称空间的URI
+  use-attribute-sets空格分隔属性集，包含需要添加的属性  xsl:text用于输出文本节点包括文本、#PCDATA等
+  disable-output-escaping默认为no，输出时将对文本进行转义。如<输出为&ltXSL节点选择XSL样式表中有一个根模板，从根模板开始匹配XML文档，处理时调用其他模板，要匹配模板和标记时要设计“标记匹配模式”。使用元素名匹配XSL处理器根据match提供的元素名称去XML文档提取该节点的数据，需要用到xsl:value-of元素，用于选取文档中某个元素的值并输出。<xsl:value-of select="expression" disable-output-escaping="yes|no">  select属性值是XPath表达式，规定从哪个节点或属性来提取使用路径匹配通过详细的路径选择节点，即模板中的标记匹配模式可以由子标记、根标记、/、//共同组成。<xsl:template match="图书/书名">表示匹配图书下的任意书名子节点。<xsl:template match="//书名">表示匹配任意节点下的书名子节点。使用匹配字符匹配
+  根节点匹配符<xsl:template match="/">  根源素匹配符`<xsl:template match=”/“>* 当前节点父节点4. 使用元素属性匹配
+使用标记[@属性]或标记[@属性=’属性值’]`进行筛选匹配。12345678910#xml文档<?xml version="1.0" encoding="GB2312"?><名单>	<姓名>张三</姓名>	<姓名 ID="1">李四</姓名></名单>#获得李四数据<xsl:template match="名单/姓名[@ID='1']">	<!--模板内容--></xsl:template>XSL控制指令
+
+
+简单判断指令<xsl:if>
+以元素名为条件<xsl:if match="元素名">
+以元素内容为条件<xsl:if test="元素名[.=元素内容]">
+以元素属性为条件<xsl:if match=".[@属性名称='属性值']">
+以元素属性为条件<xsl:if test=".[@属性名称='属性值']">
+
+
+多条件判断指令
+123456789101112<xsl:choose>	<xsl:when test="pattern">		<!--样式定义语句-->	</xsl:when>	<xsl:when test="pattern">		<!--样式定义语句-->	</xsl:when>	......	<xsl:otherwise>		<!--样式定义语句-->	</xsl:otherwise></xsl:choose>
+
+循环处理指令
+123<xsl:for-each select="pattern" order-by="patternlist">	<xsl:value-of../></xsl:for-each>
+
+用于对多个节点继续相同的处理
+select选择需要循环输出的节点元素
+order-by默认与+使用升序，-使用降序
+具体输出指定子节点内容
+
+
+输出内容排序<xsl:sort select="元素名" order="ascending|descending" case-order="upper-first|lower-first" data-type="text|number|qname" />
+xsl:sort作为xsl:apply-template或者xsl:for-each的子元素出现
+data-type标书排序数据类型
+select定义关键字
+order设置升降序
+case-order设置大小写字母排序
+
+
+
+XPathXPath用于XML文字导航，将节点划分成8种节点类型
+
+根节点：唯一，最上层。根源素是根节点的第一层子节点，一般包括两个子节点：xsl-stylesheet处理指令和根源素。
+元素节点：对应文档中的每一元素，可以定义唯一的标识ID，可以有扩展：命名空间URI、本地命名。
+文本节点：包含一组数据即CDATA包含的字符，没有紧邻的兄弟文本节点，没有扩展名。
+属性节点：元素节点有一个关联的属性节点的集合，元素是属性节点的父节点，但属性节点却不是其父元素的子节点。通过查找元素的子节点可以单向匹配出元素的属性节点，且不同的元素节点不共有同一个属性节点。 
+命名空间节点：每一个元素节点都有一个相关的命名空间节点集。在XML文档中，命名空间是通过保留属性声明的，它们与父元素之间的关系是单向的，并且不具有共享性。 
+处理指令节点：对应于XML文档中的每一条处理指令。它也有扩展名，扩展名的本地命名指向处理对象，而命名空间部分为空。
+注释节点：对应文档中的注释。 
+上下文节点：是将要查询的XML文档树种的一个特定节点，可以认为是查询的起点。
+
+XPath路径表达式位置路径可以是绝对的，也可以是相对的。绝对路径起始于正斜杠( / )。都包含位置步。绝对位置路径:/step/step/...相对位置路径:step/step/...步的语法：轴名称::节点测试[谓语]步包括：
+
+轴:定义所选节点与当前节点之间的树关系
+节点测试:识别某个轴内部的节点
+谓词:更深入地提炼所选的节点集
+
+
+
+
+轴
+说明
+
+
+
+
+ancestor
+选取当前节点的所有先辈
+
+
+ancestor-or-self
+选取当前节点的所有先辈以及当前节点本身
+
+
+attribute
+选取当前节点的所有属性
+
+
+child
+选取当前节点的所有子元素
+
+
+descendant
+选取当前节点的所有后代元素
+
+
+descendant-or-self
+选取当前节点的所有后代元素以及当前节点本身
+
+
+following
+选取文档中当前节点的结束标签之后的所有节点
+
+
+namespace
+选取当前节点的所有命名空间节点
+
+
+parent
+选取当前节点的父节点
+
+
+preceding
+选取文档中当前节点的开始标签之前的所有节点
+
+
+preceding-sibling
+选取当前节点之前的所有同级节点
+
+
+self
+选取当前节点
+
+
+
+节点测试允许从轴中选择特定的元素或者节点类型
+
+元素名称节点测试：指定与具有名称的节点匹配
+“*”节点测试:指定轴中的所有元素
+node()节点测试:指定轴中的所有元素
+comment()节点测试：指定轴中的所有注释
+text()指定轴中的所有文本
+processing-instruction()节点测试：指定轴中所有的处理指令元素
+
+谓词用于对节点集进行更神的过滤，用于查找特定节点
+
+
+
+谓词
+说明
+
+
+
+
+[position()=n]
+选取当前节点的第n个节点
+
+
+[last()]
+选取当前节点的最后一个节点
+
+
+[attribute::name]
+选择所有拥有name属性的节点
+
+
+[attribute::name1 and attribute::name2]
+选取所有拥有名为name1、name2属性的节点
+
+
+[nodename=value]
+选取所有nodename子元素的值为value的节点
+
+
+[count()]
+返回符合条件的节点个数
+
+
+
+路径缩写表达式
+
+
+
+表达式
+描述
+原语法
+
+
+
+
+nodename
+选取此节点的所有子节点
+child::nodename
+
+
+/
+从根节点选取
+..
+
+
+//
+从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置
+/descendant-or-self::node()/
+
+
+.
+选取当前节点
+self::node()
+
+
+..
+选取当前节点的父节点
+parent::node()
+
+
+@
+选取属性
+attribute::
+
+
+
+XPath标准函数:参考XPath、XQuery以及XSLT函数
+</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">3.</span> <span class="toc-text">XSL模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">4.</span> <span class="toc-text">常用属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">5.</span> <span class="toc-text">XSL节点选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">6.</span> <span class="toc-text">XSL控制指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-number">7.</span> <span class="toc-text">XPath</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6"><span class="toc-number">8.</span> <span class="toc-text">XPath路径表达式</span></a></li></ol>
         
     </div>
     <style>
