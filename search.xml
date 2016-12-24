@@ -4,6 +4,13 @@
   
     
     <entry>
+      <title><![CDATA[操作系统概述]]></title>
+      <url>http://www.codingbalian.online/2016/12/25/OS-introduction/</url>
+      <content type="html"><![CDATA[<p>简单介绍操作系统中的内容。<br><a id="more"></a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[XML:JAXP操作XML实例2]]></title>
       <url>http://www.codingbalian.online/2016/12/24/XML-DOM-Test2/</url>
       <content type="html"><![CDATA[<p>使用JAXP创建XML文档、操作节点。<br><a id="more"></a></p>
