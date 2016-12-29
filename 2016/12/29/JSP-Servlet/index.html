@@ -17,13 +17,13 @@
 
 <meta name="description" content="Servlet是Java编写的服务器端程序，动态的生成Web内容。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JSP:Servlet">
+<meta property="og:title" content="JSP中Servlet的应用">
 <meta property="og:url" content="http://www.codingbalian.online/2016/12/29/JSP-Servlet/index.html">
 <meta property="og:site_name" content="Balian's Blog">
 <meta property="og:description" content="Servlet是Java编写的服务器端程序，动态的生成Web内容。">
-<meta property="og:updated_time" content="2016-12-29T09:16:50.948Z">
+<meta property="og:updated_time" content="2016-12-29T09:38:34.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JSP:Servlet">
+<meta name="twitter:title" content="JSP中Servlet的应用">
 <meta name="twitter:description" content="Servlet是Java编写的服务器端程序，动态的生成Web内容。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JSP:Servlet | Balian&#39;s Blog</title>
+<title>JSP中Servlet的应用 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -282,7 +282,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JSP:Servlet
+      JSP中Servlet的应用
     </h1>
   
 
@@ -333,14 +333,15 @@
 <ol>
 <li>客户端发送请求至服务器。</li>
 <li>服务器启动并调用Servlet，根据客户端请求生成响应内容并传到服务器。</li>
-<li>服务器将响应返回客户端。<br><h3 id="1.1">GenericServlet</h3><br>一般通用Servlet由javax.servle的GenericServlet实现Servlet接口。它定义了一个通用独立于底层协议的Servlet。通过使用或者继承来实现Servlet应用。<br>GenericServlet的主要方法：<ul>
+<li>服务器将响应返回客户端。</li>
+</ol>
+<p></p><h3 id="1.1">GenericServlet</h3><br>一般通用Servlet由javax.servle的GenericServlet实现Servlet接口。它定义了一个通用独立于底层协议的Servlet。通过使用或者继承来实现Servlet应用。<br>GenericServlet的主要方法：<p></p>
+<ul>
 <li>String getInitParameter(String name):返回具有指定名称的初始化参数。</li>
 <li>ServletConfig getServletConfig():返回传递到init()方法的ServletConfig对象。</li>
 <li>ServletContext gerServletContext():返回在config对象中引用的ServletContext。</li>
 <li>String getServletName():返回在web应用发布描述器(web.xml)中指定的Servlet名字。</li>
 </ul>
-</li>
-</ol>
 <p></p><h3 id="1.2">HttpServlet</h3><br>javax.servle.http.HttpServlet实现了专门相应HTTP请求的Servlet。提供doGet(),doPost(),doDelete(),doOptions(),doPut(),doTrace()方法响应请求。<br>Web容器创建HttpServlet对象，并把HTTP请求封装到HttpServlet对象中。其相应web客户端的流程：<p></p>
 <ol>
 <li>web客户向web容器发送http请求</li>
@@ -366,7 +367,7 @@
 <li>destory():当Servlet对象生命结束时释放占用的资源。</li>
 </ul>
 <p>Servlet只会在第一次请求到来时被加载和实例化。一旦被加载一般不会被删除，除非应用服务器关闭或者重新启动。当容器做内存回收动作时Servlet可能被删除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*初始化Servlet*/</div><div class="line">public void init(ServletConfig config) throws ServletException&#123;</div><div class="line">	...</div><div class="line">&#125;</div><div class="line">/*init(ServletConfig)代表配置信息在web.xml中修改。*/</div><div class="line">/*响应客户端请求*/</div><div class="line">public void doPost(ServletRequest request, ServletResponse response)throws ServletException, IOException &#123;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p></p><h2 id="1">Servlet实例</h2><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure><p></p>
+<p></p><h2 id="2">Servlet实例</h2><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure><p></p>
 
       
     </div>
@@ -375,12 +376,12 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/29/JSP-Servlet/">JSP:Servlet</a></p>
+        <p><span>本文标题:</span><a href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2016-12-29, 16:04:09</p>
-        <p><span>最后更新:</span>2016-12-29, 17:16:50</p>
+        <p><span>最后更新:</span>2016-12-29, 17:38:34</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/29/JSP-Servlet/" title="JSP:Servlet">http://www.codingbalian.online/2016/12/29/JSP-Servlet/</a>
+            <span>原始链接:</span><a class="post-url" href="/2016/12/29/JSP-Servlet/" title="JSP中Servlet的应用">http://www.codingbalian.online/2016/12/29/JSP-Servlet/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/29/JSP-Servlet/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -408,7 +409,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">Servlet包的构成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">GenericServlet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">HttpServlet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.3.</span> <span class="toc-text">Servlet生命周期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">2.</span> <span class="toc-text">Servlet实例</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">Servlet包的构成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">GenericServlet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">HttpServlet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.3.</span> <span class="toc-text">Servlet生命周期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">Servlet实例</span></a></li></ol>
         
     </div>
     <style>
@@ -444,7 +445,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JSP:Servlet　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"JSP中Servlet的应用　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -460,7 +461,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/29/JSP-Servlet/" data-title="JSP:Servlet" data-url="http://www.codingbalian.online/2016/12/29/JSP-Servlet/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/29/JSP-Servlet/" data-title="JSP中Servlet的应用" data-url="http://www.codingbalian.online/2016/12/29/JSP-Servlet/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -495,7 +496,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP:Servlet</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-introduction/">操作系统概述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/XML-DOM-Test/">XML:JAXP操作XML实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-introduction/">操作系统概述</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/XML-DOM-Test/">XML:JAXP操作XML实例</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
 
 
 
