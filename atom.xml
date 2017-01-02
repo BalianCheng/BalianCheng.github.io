@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2016-12-29T09:38:34.966Z</updated>
+  <updated>2017-01-02T05:49:03.965Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.codingbalian.online/2016/12/29/JSP-Servlet/"/>
     <id>http://www.codingbalian.online/2016/12/29/JSP-Servlet/</id>
     <published>2016-12-29T08:04:09.000Z</published>
-    <updated>2016-12-29T09:38:34.966Z</updated>
+    <updated>2017-01-02T05:49:03.965Z</updated>
     
     <content type="html"><![CDATA[<p>Servlet是Java编写的服务器端程序，动态的生成Web内容。<br><a id="more"></a></p>
 <p></p><h2 id="1">Servlet包的构成</h2><br>Servlet由服务器进行加载，是实现javax.servlet.Servlet接口的对象。大多数Servlet通过GenericServlet或者HttpServlet类来扩展实现。<br>Servlet API包含于javax.servlet和javax.servlet.http两个包中。javax.servlet包中定义了所有Servlet类都必须实现的接口和类：<p></p>
@@ -82,7 +82,7 @@
 <li>destory():当Servlet对象生命结束时释放占用的资源。</li>
 </ul>
 <p>Servlet只会在第一次请求到来时被加载和实例化。一旦被加载一般不会被删除，除非应用服务器关闭或者重新启动。当容器做内存回收动作时Servlet可能被删除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*初始化Servlet*/</div><div class="line">public void init(ServletConfig config) throws ServletException&#123;</div><div class="line">	...</div><div class="line">&#125;</div><div class="line">/*init(ServletConfig)代表配置信息在web.xml中修改。*/</div><div class="line">/*响应客户端请求*/</div><div class="line">public void doPost(ServletRequest request, ServletResponse response)throws ServletException, IOException &#123;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p></p><h2 id="2">Servlet实例</h2><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure><p></p>
+<p></p><h3 id="1.4">配置web.xml</h3><br>建立mainServlet.java，配置web.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">	xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee</div><div class="line">                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;</div><div class="line">	version=&quot;3.1&quot;&gt;</div><div class="line">	&lt;display-name&gt;&lt;/display-name&gt;</div><div class="line">	&lt;!-- Servlet可以被外部访问 访问它需要一个地址 通过WEB的地址映射解决 --&gt;</div><div class="line">	&lt;servlet&gt;</div><div class="line">		&lt;servlet-name&gt;mainServlet&lt;/servlet-name&gt; &lt;!--定义Servlet应用名字 --&gt;</div><div class="line">		&lt;servlet-class&gt;cn.edu.ccnu.imd.mainServlet&lt;/servlet-class&gt;&lt;!--自定义的Servlet应用名字对应的具体Servlet文件 --&gt;</div><div class="line">	&lt;/servlet&gt;</div><div class="line"></div><div class="line">	&lt;servlet-mapping&gt; &lt;!--地址映射 --&gt;</div><div class="line">		&lt;servlet-name&gt;mainServlet&lt;/servlet-name&gt;</div><div class="line">		&lt;url-pattern&gt;/service.do&lt;/url-pattern&gt;&lt;!--地址名 --&gt;</div><div class="line">	&lt;/servlet-mapping&gt;</div><div class="line">	&lt;!--输入地址：http://localhost:端口号/service.do定位servlet--&gt;</div><div class="line">&lt;/web-app&gt;</div></pre></td></tr></table></figure><p></p>
 ]]></content>
     
     <summary type="html">
