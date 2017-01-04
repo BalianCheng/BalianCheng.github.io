@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2017-01-04T11:38:50.713Z</updated>
+  <updated>2017-01-04T11:40:57.630Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.codingbalian.online/2017/01/04/OS-Deadlock/"/>
     <id>http://www.codingbalian.online/2017/01/04/OS-Deadlock/</id>
     <published>2017-01-04T08:43:56.000Z</published>
-    <updated>2017-01-04T11:38:50.713Z</updated>
+    <updated>2017-01-04T11:40:57.630Z</updated>
     
     <content type="html"><![CDATA[<p>关于死锁的简单内容。<br><a id="more"></a></p>
 <h2 id="1">处理机调度</h2>
@@ -66,6 +66,12 @@
     
       <category term="操作系统" scheme="http://www.codingbalian.online/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
+    
+      <category term="处理机" scheme="http://www.codingbalian.online/tags/%E5%A4%84%E7%90%86%E6%9C%BA/"/>
+    
+      <category term="调度" scheme="http://www.codingbalian.online/tags/%E8%B0%83%E5%BA%A6/"/>
+    
+      <category term="死锁" scheme="http://www.codingbalian.online/tags/%E6%AD%BB%E9%94%81/"/>
     
   </entry>
   
@@ -157,7 +163,7 @@
     <link href="http://www.codingbalian.online/2016/12/25/OS-Process/"/>
     <id>http://www.codingbalian.online/2016/12/25/OS-Process/</id>
     <published>2016-12-24T16:37:07.000Z</published>
-    <updated>2017-01-04T08:38:06.851Z</updated>
+    <updated>2017-01-04T11:40:32.561Z</updated>
     
     <content type="html"><![CDATA[<p>简单介绍操作系统中的进程管理机制。<br><a id="more"></a></p>
 <h2 id="1">进程特征</h2>
@@ -508,6 +514,10 @@
       <category term="操作系统" scheme="http://www.codingbalian.online/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
+      <category term="进程管理" scheme="http://www.codingbalian.online/tags/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="进程" scheme="http://www.codingbalian.online/tags/%E8%BF%9B%E7%A8%8B/"/>
+    
   </entry>
   
   <entry>
@@ -515,7 +525,7 @@
     <link href="http://www.codingbalian.online/2016/12/24/OS-Storage%20Management/"/>
     <id>http://www.codingbalian.online/2016/12/24/OS-Storage Management/</id>
     <published>2016-12-24T09:06:23.000Z</published>
-    <updated>2017-01-04T11:39:13.307Z</updated>
+    <updated>2017-01-04T11:40:46.441Z</updated>
     
     <summary type="html">
     
@@ -523,6 +533,8 @@
     
       <category term="操作系统" scheme="http://www.codingbalian.online/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
+    
+      <category term="存储管理" scheme="http://www.codingbalian.online/tags/%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
