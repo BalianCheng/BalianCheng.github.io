@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://www.codingbalian.online/2016/12/25/OS-Process/index.html">
 <meta property="og:site_name" content="Balian's Blog">
 <meta property="og:description" content="简单介绍操作系统中的进程管理机制。">
-<meta property="og:updated_time" content="2017-01-04T07:05:06.907Z">
+<meta property="og:updated_time" content="2017-01-04T08:38:06.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统：进程管理">
 <meta name="twitter:description" content="简单介绍操作系统中的进程管理机制。">
@@ -520,7 +520,7 @@
 </ul>
 <h3 id="6.3">信号与P.V操作</h3>
 
-<p>信号量semaphore：是一个数据结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">定义： </div><div class="line"> struc semaphore </div><div class="line"> &#123;</div><div class="line">	int value; #信号量</div><div class="line">	pointer_PCB queue; #队列操作</div><div class="line">  &#125;</div><div class="line">声明：</div><div class="line">  semaphore s;</div></pre></td></tr></table></figure></p>
+<p>信号量semaphore：是一个数据结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">定义： </div><div class="line"> struc semaphore </div><div class="line"> &#123;</div><div class="line">	int value; //信号量</div><div class="line">	pointer_PCB queue; //队列操作</div><div class="line">  &#125;</div><div class="line">声明：</div><div class="line">  semaphore s;</div></pre></td></tr></table></figure></p>
 <p>P操作：请求分配一个单位资源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">P(s)</div><div class="line">&#123;</div><div class="line">  s.value = s.value --;</div><div class="line">  if (s.value &lt; 0)</div><div class="line">  &#123;</div><div class="line">	 该进程状态置为等待状态</div><div class="line">   将该进程的PCB插入相应的等待队列末尾s.queue;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>V操作：意味着释放一个单位资源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">V(s)</div><div class="line">&#123;</div><div class="line">  s.value = s.value ++;</div><div class="line">  if (s.value &lt; = 0)</div><div class="line">  &#123;</div><div class="line">   唤醒相应等待队列s.queue中等待的一个进程</div><div class="line">   改变其状态为就绪态，并将其插入就绪队列</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>信号量必须且只能置一次非负的初值，且只能进行PV操作。</p>
@@ -530,11 +530,118 @@
 <li>信号量的初值应该大于等于0</li>
 <li>S&gt;0表示有S个资源可用</li>
 <li>S=0表示无资源可用</li>
-<li>S&lt;0则| S |表示等待队列中的进程个数S个 </li>
+<li>S&lt;0则|S|表示等待队列中的进程个数S个 </li>
 </ul>
+<p>P.V操作必须成对出现，有一个P操作就一定有一个V操作</p>
+<ul>
+<li>当为互斥操作时，它们同处于同一进程</li>
+<li>当为同步操作时，则不在同一进程中出现</li>
+<li>如果P(S1)和P(S2)两个操作在一起，那么P操作的顺序至关重要，一个同步P操作与一个互斥P操作在一起时同步P操作在互斥P操作前</li>
+</ul>
+<h3 id="6.4">AND信号量集</h3>
+
+<p>AND型信号量集是指同时需要多种资源,将进程在整个运行过程中需要的所有资源，一次性全部地分配给进程，待进程使用完后再一起释放。只要有一个资源未能分配给进程，其他的资源也都不分配。对若干个临界资源的分配，要么全部分配到进程，要么一个也不分配。 这样就可避免上述死锁情况的发生。为此，在wait操作中，增加了一个“AND”条件，故称为AND同步。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Swait(S1, S2, …, Sn)&#123;AND型信号量P原语；</div><div class="line">	while (TRUE)&#123;</div><div class="line">		if (S1 &gt;=1 &amp;&amp; S2 &gt;= 1 &amp;&amp; … &amp;&amp; Sn &gt;= 1)&#123;//满足资源要求时的处理；</div><div class="line">	   		for (i = 1; i &lt;= n; ++i) -–Si;</div><div class="line">    //注：与P的处理不同，这里是在确信可满足资源要求时，才进行减1操作；</div><div class="line">			break;</div><div class="line">		&#125;</div><div class="line">		else&#123;	//某些资源不够时的处理；</div><div class="line">   			调用进程进入第一个小于1信号量的等待队列Sj.queue;</div><div class="line">   			阻塞调用进程;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Ssignal(S1, S2, …, Sn)//V操作</div><div class="line">&#123;</div><div class="line">for (i = 1; i &lt;= n; ++i)</div><div class="line">  &#123;</div><div class="line">    ++Si;		//释放占用的资源；</div><div class="line">    for (在Si.queue中等待的每一个进程P)</div><div class="line">    //检查每种资源的等待队列的所有进程；</div><div class="line">    &#123;</div><div class="line">    从等待队列Si.queue中取出进程P;</div><div class="line">    if (判断进程P是否通过Swait中的测试)</div><div class="line">       //注：与signal不同，这里要进行重新判断；</div><div class="line">      &#123;//通过检查（资源够用）时的处理；</div><div class="line">      进程P进入就绪队列;</div><div class="line">      &#125;</div><div class="line">    else</div><div class="line">      &#123;//未通过检查（资源不够用）时的处理；</div><div class="line">      进程P进入某等待队列；</div><div class="line">      &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="6.5">一般信号量集</h3>
+
+<ol>
+<li>一般信号量集是指同时需要多种资源、每种占用的数目不同、且可分配的资源还存在一个临界值时的信号量处理 </li>
+<li>一般信号量集的基本思路就是在AND型信号量集的基础上进行扩充，在一次原语操作中完成所有的资源申请。</li>
+</ol>
+<p>进程对信号量Si：</p>
+<ul>
+<li>测试值为ti（表示信号量的判断条件，要求Si &gt;= ti；即当资源数量低于ti时，便不予分配）</li>
+<li>占用值为di（表示资源的申请量，即Si = Si - di）</li>
+</ul>
+<p>对应的P、V原语格式为：<br><code>Swait(S1, t1, d1; ...; Sn, tn, dn);</code><br><code>Ssignal(S1, d1; ...; Sn, dn);</code></p>
+<p>几种特殊情况:<br><code>Swait(S, d, d)</code>表示每次申请d个资源，当少于d个时，便不分配<br><code>Swait(S, 1, 1)</code>表示互斥信号量<br><code>Swait(S, 1, 0)</code>可作为一个可控开关（当S&gt;=1时，允许多个进程进入临界区；当S=0时，禁止任何进程进入临界区）</p>
+<p>P.V机制的缺点：</p>
+<ol>
+<li>易读性差，因为要了解对于一组共享变量及信号量的操作是否正确，则必须通读整个系统或者并发程序</li>
+<li>不利于修改和维护，因为程序的局部性很差，所以任一组变量或一段代码的修改都可能影响全局</li>
+<li>正确性难以保证，因为操作系统或并发程序通常很大，要保证这样一个复杂的系统没有逻辑错误是很难的</li>
+</ol>
 <h2 id="7">管程机制</h2>
 
+<h3 id="7.1">管程概念</h3>
+
+<blockquote>
+<p>管程是关于共享资源的数据及在其上操作的一组过程或共享数据结构及其规定的所有操作。<br>系统按资源管理的观点分解成若干模块，用数据表示抽象系统资源，同时分析了共享资源和专用资源在管理上的差别，按不同的管理方式定义模块的类型和结构，使同步操作相对集中，从而增加了模块的相对独立性。</p>
+</blockquote>
+<h3 id="7.2">管程组成</h3>
+
+<ul>
+<li>名称</li>
+<li>数据结构说明</li>
+<li>对该数据结构进行操作的一组过程/函数</li>
+<li>初始化语句</li>
+</ul>
+<h3 id="7.3">管程的特性</h3>
+
+<ul>
+<li>模块化:一个管程是一个基本程序单位，可以单独编译</li>
+<li>抽象数据类型:管程是一种特殊的数据类型，其中不仅有数据，而且有对数据进行操作的代码</li>
+<li>信息掩蔽:管程是半透明的，管程中的局部过程（函数）实现了某些功能，至于这些功能是怎样实现的，在其外部则是不可见的</li>
+</ul>
+<h3 id="7.4">管程的要素</h3>
+
+<ul>
+<li>管程中的共享变量在管程外部是不可见的，外部只能通过调用管程中所说明的外部过程（函数）来间接地访问管程中的共享变量</li>
+<li>为了保证管程共享变量的数据完整性，规定管程互斥进入</li>
+<li>管程通常是用来管理资源的，因而在管程中应当设有进程等待队列以及相应的等待及唤醒操作</li>
+</ul>
+<p>在管程内部可以说明和使用一种特殊类型的变量，称作条件变量：<code>VAR C:condition</code><br>对于条件型变量，可以执行wait和signal操作：<br>wait（c）：如果紧急等待队列非空，则唤醒第一个等待者；否则释放管程的互斥权，执行此操作的进程的PCB入c链尾部<br>signal（c）：如果c链为空，则相当于空操作，执行此操作的进程继续；否则唤醒第一个等待者，执行此操作的进程的PCB入紧急等待队列的尾部</p>
+<h3 id="7.5">管程实现</h3>
+
+<ol>
+<li>直接构造(效率高)</li>
+<li>间接构造，即用某种已经实现的同步机制去构造</li>
+</ol>
+<h3 id="7.5">管程和进程的异同</h3>
+
+<ol>
+<li>设置进程和管程的目的不同</li>
+<li>系统管理数据结构:进程：PCB;管程：等待队列</li>
+<li>管程被进程调用</li>
+<li>管程是操作系统的固有成分，无创建和撤消</li>
+</ol>
 <h2 id="8">进程通信</h2>
+
+
+<blockquote>
+<p>P.V操作实现的是进程之间的低级通讯，只能传递简单的信号,如果要在进程间传递大量信息则要用Send/Receive原语。</p>
+</blockquote>
+<h3 id="8.1">实现进程通信的方式</h3>
+
+<ul>
+<li>共享存储器系统(Shared-Memory System)<ul>
+<li>共享数据结构方式</li>
+<li>共享存储区方式</li>
+</ul>
+</li>
+<li>消息传递系统(Message passing system)</li>
+<li>管道(Pipe)通信<ul>
+<li>用于连接一个读进程和一个写进程以实现他们之间通信的一个共享文件 </li>
+<li>写进程以字符流形式将大量的数据送入管道，读进程从管道中接收数据</li>
+</ul>
+</li>
+</ul>
+<h3 id="8.2">通信实现的方式</h3>
+
+<ol>
+<li><p>直接通信方式<br>指发送进程利用OS所提供的发送命令，直接把消息发送给目标进程<br><code>Send(Receiver, message);</code>发送一个消息给接收进程<br><code>Receive(Sender, message);</code>接收Sender发来的消息</p>
+</li>
+<li><p>间接通信方式<br>进程间通过中间媒介：信箱实现通信。</p>
+</li>
+</ol>
+<p>信箱包括：</p>
+<ul>
+<li>私用信箱</li>
+<li>公用信箱</li>
+<li>共享信箱<br><code>Send(mailbox, message);</code>将一个消息发送到指定信箱<br><code>Receive(mailbox, message);</code>从指定信箱中接收一个消息</li>
+</ul>
+
       
     </div>
     
@@ -545,7 +652,7 @@
         <p><span>本文标题:</span><a href="/2016/12/25/OS-Process/">操作系统：进程管理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2016-12-25, 00:37:07</p>
-        <p><span>最后更新:</span>2017-01-04, 15:05:06</p>
+        <p><span>最后更新:</span>2017-01-04, 16:38:06</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/12/25/OS-Process/" title="操作系统：进程管理">http://www.codingbalian.online/2016/12/25/OS-Process/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/25/OS-Process/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -581,7 +688,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">进程特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">进程状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">进程控制块PCB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">进程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4.1"><span class="toc-number">4.1.</span> <span class="toc-text">创建原语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.2"><span class="toc-number">4.2.</span> <span class="toc-text">撤销原语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.3"><span class="toc-number">4.3.</span> <span class="toc-text">阻塞原语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.4"><span class="toc-number">4.4.</span> <span class="toc-text">唤醒原语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.5"><span class="toc-number">4.5.</span> <span class="toc-text">挂起与激活原语</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-number">5.</span> <span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5.1"><span class="toc-number">5.1.</span> <span class="toc-text">线程简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.2"><span class="toc-number">5.2.</span> <span class="toc-text">线程的实现机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6"><span class="toc-number">6.</span> <span class="toc-text">进程同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6.1"><span class="toc-number">6.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6.2"><span class="toc-number">6.2.</span> <span class="toc-text">使用互斥区的原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6.3"><span class="toc-number">6.3.</span> <span class="toc-text">信号与P.V操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7"><span class="toc-number">7.</span> <span class="toc-text">管程机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8"><span class="toc-number">8.</span> <span class="toc-text">进程通信</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">进程特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">进程状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">进程控制块PCB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">进程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4.1"><span class="toc-number">4.1.</span> <span class="toc-text">创建原语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.2"><span class="toc-number">4.2.</span> <span class="toc-text">撤销原语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.3"><span class="toc-number">4.3.</span> <span class="toc-text">阻塞原语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.4"><span class="toc-number">4.4.</span> <span class="toc-text">唤醒原语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.5"><span class="toc-number">4.5.</span> <span class="toc-text">挂起与激活原语</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-number">5.</span> <span class="toc-text">线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5.1"><span class="toc-number">5.1.</span> <span class="toc-text">线程简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.2"><span class="toc-number">5.2.</span> <span class="toc-text">线程的实现机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6"><span class="toc-number">6.</span> <span class="toc-text">进程同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6.1"><span class="toc-number">6.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6.2"><span class="toc-number">6.2.</span> <span class="toc-text">使用互斥区的原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6.3"><span class="toc-number">6.3.</span> <span class="toc-text">信号与P.V操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6.4"><span class="toc-number">6.4.</span> <span class="toc-text">AND信号量集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6.5"><span class="toc-number">6.5.</span> <span class="toc-text">一般信号量集</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7"><span class="toc-number">7.</span> <span class="toc-text">管程机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7.1"><span class="toc-number">7.1.</span> <span class="toc-text">管程概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7.2"><span class="toc-number">7.2.</span> <span class="toc-text">管程组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7.3"><span class="toc-number">7.3.</span> <span class="toc-text">管程的特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7.4"><span class="toc-number">7.4.</span> <span class="toc-text">管程的要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7.5"><span class="toc-number">7.5.</span> <span class="toc-text">管程实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7.5"><span class="toc-number">7.6.</span> <span class="toc-text">管程和进程的异同</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8"><span class="toc-number">8.</span> <span class="toc-text">进程通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8.1"><span class="toc-number">8.1.</span> <span class="toc-text">实现进程通信的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8.2"><span class="toc-number">8.2.</span> <span class="toc-text">通信实现的方式</span></a></li></ol></li></ol>
         
     </div>
     <style>
