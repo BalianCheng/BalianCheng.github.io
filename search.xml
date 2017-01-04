@@ -4,6 +4,12 @@
   
     
     <entry>
+      <title><![CDATA[操作系统：处理机调度与死锁]]></title>
+      <url>http://www.codingbalian.online/2017/01/04/OS-Deadlock/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JSP中Servlet的应用]]></title>
       <url>http://www.codingbalian.online/2016/12/29/JSP-Servlet/</url>
       <content type="html"><![CDATA[<p>Servlet是Java编写的服务器端程序，动态的生成Web内容。<br><a id="more"></a></p>

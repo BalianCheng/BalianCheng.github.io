@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2017-01-02T05:49:03.965Z</updated>
+  <updated>2017-01-04T08:45:48.435Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -14,6 +14,22 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统：处理机调度与死锁</title>
+    <link href="http://www.codingbalian.online/2017/01/04/OS-Deadlock/"/>
+    <id>http://www.codingbalian.online/2017/01/04/OS-Deadlock/</id>
+    <published>2017-01-04T08:43:56.000Z</published>
+    <updated>2017-01-04T08:45:48.435Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="操作系统" scheme="http://www.codingbalian.online/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>JSP中Servlet的应用</title>
