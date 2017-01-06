@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://www.codingbalian.online/2017/01/04/OS-Deadlock/index.html">
 <meta property="og:site_name" content="Balian's Blog">
 <meta property="og:description" content="关于死锁的简单内容。">
-<meta property="og:updated_time" content="2017-01-05T02:24:44.278Z">
+<meta property="og:updated_time" content="2017-01-05T10:29:59.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统：处理机调度与死锁">
 <meta name="twitter:description" content="关于死锁的简单内容。">
@@ -190,7 +190,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DTD/">DTD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAXP/">JAXP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Schema/">Schema</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSL/">XSL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/处理机/">处理机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储管理/">存储管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/死锁/">死锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调度/">调度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进程/">进程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进程管理/">进程管理</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DTD/">DTD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAXP/">JAXP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Schema/">Schema</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSL/">XSL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/处理机/">处理机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储管理/">存储管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/死锁/">死锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设备管理/">设备管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调度/">调度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进程/">进程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进程管理/">进程管理</a></li></ul>
                     </div>
                 </section>
                 
@@ -420,8 +420,10 @@
 <p>常用算法：<br>最早截止时间优先即EDF算法：只考虑了进程的截止时间，未考虑其运行时间<br>最低松弛度优先(LLF)算法：该算法是根据任务紧急(或松弛)的程度，来确定任务的优先级。该算法主要用于可抢占调度方式中。<br>松弛度=必须完成时间-其本身的运行时间-当前时间 </p>
 <h3 id="3.2">多处理机系统中的调度</h3>
 
-<p>多处理器系统的类型<br>紧密耦合(Tightly Coupted)MPS:<br>通过高速总线或高速交叉开关，来实现多个处理器之间的互连的。它们共享主存储器系统和I/O设备，并要求将主存储器划分为若干个能独立访问的存储器模块，以便多个处理机能同时对主存进行访问。系统中的所有资源和进程，都由操作系统实施统一的控制和管理<br>松散耦合(Loosely Coupled)MPS:<br>通过通道或通信线路，来实现多台计算机之间的互连。每台计算机都有自己的存储器和I/O设备，并配置了OS来管理本地资源和在本地运行的进程,每一台计算机都能独立地工作， 必要时可通过通信线路与其它计算机交换信息，以及协调它们之间的工作<br>对称多处理器系统:<br>系统中所包含的各处理器单元，在功能和结构上都是相同的<br>非对称多处理器系统:<br>在系统中有多种类型的处理单元， 它们的功能和结构各不相同，其中只有一个主处理器<br>进程分配方式:<br>对称多处理器系统中的进程分配方式：<br>静态分配(Static Assigenment)方式<br>动态分配(Dynamic Assgement)方式<br>非对称MPS中的进程分配方式</p>
 <ol>
+<li>多处理器系统的类型<br>紧密耦合(Tightly Coupted)MPS:<br>通过高速总线或高速交叉开关，来实现多个处理器之间的互连的。它们共享主存储器系统和I/O设备，并要求将主存储器划分为若干个能独立访问的存储器模块，以便多个处理机能同时对主存进行访问。系统中的所有资源和进程，都由操作系统实施统一的控制和管理<br>松散耦合(Loosely Coupled)MPS:<br>通过通道或通信线路，来实现多台计算机之间的互连。每台计算机都有自己的存储器和I/O设备，并配置了OS来管理本地资源和在本地运行的进程,每一台计算机都能独立地工作， 必要时可通过通信线路与其它计算机交换信息，以及协调它们之间的工作</li>
+<li>对称多处理器系统:<br>系统中所包含的各处理器单元，在功能和结构上都是相同的<br>非对称多处理器系统:<br>在系统中有多种类型的处理单元， 它们的功能和结构各不相同，其中只有一个主处理器</li>
+<li>进程分配方式:<br>对称多处理器系统中的进程分配方式：<br>静态分配(Static Assigenment)方式<br>动态分配(Dynamic Assgement)方式<br>非对称MPS中的进程分配方式</li>
 <li>进程(线程)调度方式<br>自调度(Self-Scheduling)方式<br>成组调度(Gang Scheduling)方式</li>
 </ol>
 <h2 id="4">死锁</h2>
@@ -488,7 +490,7 @@
         <p><span>本文标题:</span><a href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2017-01-04, 16:43:56</p>
-        <p><span>最后更新:</span>2017-01-05, 10:24:44</p>
+        <p><span>最后更新:</span>2017-01-05, 18:29:59</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/01/04/OS-Deadlock/" title="操作系统：处理机调度与死锁">http://www.codingbalian.online/2017/01/04/OS-Deadlock/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/01/04/OS-Deadlock/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -502,6 +504,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/01/05/OS-Device Management/">
+                    操作系统:设备管理
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -593,7 +601,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/01/05/OS-Device Management/" title="上一篇: 操作系统:设备管理">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -605,7 +615,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-Process/">操作系统：进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/OS-Storage Management/">操作系统:存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/OS-Device Management/">操作系统:设备管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-Process/">操作系统：进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/OS-Storage Management/">操作系统:存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
 
 
 
