@@ -6,7 +6,7 @@
     <entry>
       <title><![CDATA[操作系统：文件管理]]></title>
       <url>http://www.codingbalian.online/2017/01/06/OS-File%20Management/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
+      <content type="html"><![CDATA[<p>操作系统中文件管理功能的概述。<br><a id="more"></a></p>
 <h2 id="1">文件和文件系统</h2>
 
 <p>文件是数据的一种组织形式，由数据项和记录构成。<br>数据项包括基本数据项和组合数据项。用于描述对象的某个属性。<br>记录是一组相关数据项的集合。<br>文件在文件系统中是一个最大的数据单位。</p>
