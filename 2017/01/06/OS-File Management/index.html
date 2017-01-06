@@ -15,16 +15,37 @@
 
 
 
-<meta name="description" content="XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。">
+<meta name="description" content="文件和文件系统
+
+文件是数据的一种组织形式，由数据项和记录构成。数据项包括基本数据项和组合数据项。用于描述对象的某个属性。记录是一组相关数据项的集合。文件在文件系统中是一个最大的数据单位。
+文件分类
+
+文件的分类可以更好地管理和使用，提高了文件的存取速度，对文件的共享和保护也有利。一般系统级与用户级要进行不同的管理。按性质和用途分：
+
+系统文件：由系统软件构成的文件，只允许用户通过系统调用或系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XML:DTD">
-<meta property="og:url" content="http://www.codingbalian.online/2016/12/20/XML-DTD/index.html">
+<meta property="og:title" content="操作系统：文件管理">
+<meta property="og:url" content="http://www.codingbalian.online/2017/01/06/OS-File Management/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。">
-<meta property="og:updated_time" content="2016-12-24T06:08:12.303Z">
+<meta property="og:description" content="文件和文件系统
+
+文件是数据的一种组织形式，由数据项和记录构成。数据项包括基本数据项和组合数据项。用于描述对象的某个属性。记录是一组相关数据项的集合。文件在文件系统中是一个最大的数据单位。
+文件分类
+
+文件的分类可以更好地管理和使用，提高了文件的存取速度，对文件的共享和保护也有利。一般系统级与用户级要进行不同的管理。按性质和用途分：
+
+系统文件：由系统软件构成的文件，只允许用户通过系统调用或系统">
+<meta property="og:updated_time" content="2017-01-06T12:01:19.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XML:DTD">
-<meta name="twitter:description" content="XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。">
+<meta name="twitter:title" content="操作系统：文件管理">
+<meta name="twitter:description" content="文件和文件系统
+
+文件是数据的一种组织形式，由数据项和记录构成。数据项包括基本数据项和组合数据项。用于描述对象的某个属性。记录是一组相关数据项的集合。文件在文件系统中是一个最大的数据单位。
+文件分类
+
+文件的分类可以更好地管理和使用，提高了文件的存取速度，对文件的共享和保护也有利。一般系统级与用户级要进行不同的管理。按性质和用途分：
+
+系统文件：由系统软件构成的文件，只允许用户通过系统调用或系统">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +77,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>XML:DTD | Balian&#39;s Blog</title>
+<title>操作系统：文件管理 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +284,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-XML-DTD" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-OS-File Management" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/20/XML-DTD/" class="article-date">
-      <time datetime="2016-12-20T13:24:43.000Z" itemprop="datePublished">2016-12-20</time>
+      <a href="/2017/01/06/OS-File Management/" class="article-date">
+      <time datetime="2017-01-06T08:18:29.000Z" itemprop="datePublished">2017-01-06</time>
 </a>
 
 
@@ -282,7 +303,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      XML:DTD
+      操作系统：文件管理
     </h1>
   
 
@@ -291,13 +312,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/XML/">XML</a>
+    <a class="article-category-link" href="/categories/操作系统/">操作系统</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DTD/">DTD</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件管理/">文件管理</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -307,145 +328,133 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。<br><a id="more"></a></p>
-<h2 id="1">DTD作用</h2><br>1. 指定文档结构的规则<br>2. 验证文档有效性<br>3. 可以被共享<br>4. 可以在描述的文档中与外部的URL链接<br><br><h2 id="2">DTD结构</h2><br>1. <code>&lt;!DOCTYPE</code>开头<code>]&gt;</code>结尾<br>2. <code>&lt;!ELEMENT&gt;</code>声明元素<br>3. <code>&lt;!ATTLIST&gt;</code> 声明元素属性<br>4. <code>&lt;!ENTITY&gt;</code>声明实体，可以用来存储常用的文字区块，或将非XML的数据包括在文档中<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;</div><div class="line">&lt;!--DTD定义--&gt;</div><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">&lt;!--元素定义--&gt;</div><div class="line">&lt;!ELEMENT 公司 (雇员)+&gt;</div><div class="line">&lt;!ELEMENT 雇员 (姓名,雇佣日期,项目清单,说明)&gt;</div><div class="line">&lt;!ELEMENT 姓名 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 雇佣日期 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 项目清单 (项目)*&gt;</div><div class="line">&lt;!ELEMENT 项目 (产品,价格)&gt;</div><div class="line">&lt;!ELEMENT 产品 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 价格 (#PCDATA)&gt;</div><div class="line">&lt;!--属性定义--&gt;</div><div class="line">&lt;!ATTLIST 项目清单 数量 CDATA #REQUIRED&gt;</div><div class="line">&lt;!ATTLIST 雇员</div><div class="line">    部门 CDATA #IMPLIED</div><div class="line">    全职 CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ENTITY  note  &quot;这里是备注信息&quot;&gt;</div><div class="line">]&gt;</div><div class="line">&lt;!--内容定义--&gt;</div><div class="line">&lt;公司&gt;</div><div class="line">    &lt;雇员 部门=&quot;市场部&quot; 全职=&quot;是&quot;&gt;</div><div class="line">        &lt;姓名&gt;李东&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-01-15&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;2&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;打印机&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $111.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;笔记本&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $998.00&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line">    &lt;雇员 部门=&quot;客服部&quot;&gt;</div><div class="line">        &lt;姓名&gt;王权&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-10-2&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;1&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;扫描仪&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $200.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line"> &lt;/公司&gt;</div></pre></td></tr></table></figure><br><br>在IE中运行显示&lt;!DOCTYPE 公司 (View Source of full doctype……)&gt;说明是内部DTD<br><br><h2 id="3">DTD元素类型</h2><br>1. 空元素<code>&lt;!ELEMENT 元素 EMPTY&gt;</code>对应XML<code>&lt;元素/&gt;</code><br>2. ANY类型<code>&lt;!ELEMENT 元素 ANY&gt;</code>表明元素可以包含定义的其他任意内容或任意内容的组合<br>3. #PCDATA(可解析文本)，不能再包含子元素<br>4. 子元素<code>&lt;!ELEMENT 元素 (子元素列表)&gt;</code>包括序列与选择两种结构<code>&lt;!ELEMENT 元素 (元素1,元素2)&gt;</code>表示顺序，<code>&lt;!ELEMENT 元素 (元素1|元素2)&gt;</code>表示选择，至少选其一<br>5. 混合类型<code>&lt;!ELEMENT 元素 (#PCDATA|子元素1|子元素2)*&gt;</code><br><br><h2 id="4">元素限定符</h2>
+        <a id="more"></a>
+<h2 id="1">文件和文件系统</h2>
 
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th style="text-align:center">用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>()</td>
-<td style="text-align:center">分组</td>
-</tr>
-<tr>
-<td>&brvbar;</td>
-<td style="text-align:center">选择</td>
-</tr>
-<tr>
-<td>+</td>
-<td style="text-align:center">最少出现一次</td>
-</tr>
-<tr>
-<td>*</td>
-<td style="text-align:center">允许出现任意多次</td>
-</tr>
-<tr>
-<td>?</td>
-<td style="text-align:center">出现0~1次</td>
-</tr>
-<tr>
-<td>,</td>
-<td style="text-align:center">必须按指定顺序出现</td>
-</tr>
-</tbody>
-</table>
-<p>**DTD属性</p>
+<p>文件是数据的一种组织形式，由数据项和记录构成。<br>数据项包括基本数据项和组合数据项。用于描述对象的某个属性。<br>记录是一组相关数据项的集合。<br>文件在文件系统中是一个最大的数据单位。</p>
+<h3 id="1.1">文件分类</h3>
+
+<p>文件的分类可以更好地管理和使用，提高了文件的存取速度，对文件的共享和保护也有利。<br>一般系统级与用户级要进行不同的管理。<br>按性质和用途分：</p>
 <ul>
-<li>设定元素属性与名称</li>
-<li>设定属性数据类型</li>
-<li>设定是否可选，是否属性固定，以及默认值</li>
+<li>系统文件：由系统软件构成的文件，只允许用户通过系统调用或系统提供的专用命今来执行它们，不允许对其进行读写和修改。</li>
+<li>库文件：文件允许用户对其进行读取和执行，但不允许对其进行修改。</li>
+<li>用户文件：是用户通过操作系统保存的用户文件，由文件的所有者或所有者授权的用户才能使用。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!ATTLIST ELEMENT_name</div><div class="line">    Attribute_name TYPE [add_declare]&gt;</div></pre></td></tr></table></figure>
-<p>属性类型</p>
-<table>
-<thead>
-<tr>
-<th>类型名称</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CDATA</td>
-<td style="text-align:center">值为普通的字符</td>
-</tr>
-<tr>
-<td>ID</td>
-<td style="text-align:center">值在文档中是唯一的</td>
-</tr>
-<tr>
-<td>IDREF</td>
-<td style="text-align:center">值参考了文档中另一个ID属性</td>
-</tr>
-<tr>
-<td>IDREFS</td>
-<td style="text-align:center">值参考了用空格隔开的多个文档中的ID属性</td>
-</tr>
-<tr>
-<td>ENTITY</td>
-<td style="text-align:center">值是一个外部实体</td>
-</tr>
-<tr>
-<td>ENTITIES</td>
-<td style="text-align:center">值包含了多个外部实体，用空格隔开</td>
-</tr>
-<tr>
-<td>NMTOKEN</td>
-<td style="text-align:center">值只能由字母、数字、下划线、连字符、圆点、冒号等字符组成</td>
-</tr>
-<tr>
-<td>NMTOKENS</td>
-<td style="text-align:center">值由多个nmtoken组成，用空格隔开</td>
-</tr>
-<tr>
-<td>NOTATION</td>
-<td style="text-align:center">值是在DTD中声明过的注解名称</td>
-</tr>
-<tr>
-<td>Enumerated</td>
-<td style="text-align:center">列出能够赋予该属性的各种值的列表，只能从中选定一个属性值</td>
-</tr>
-</tbody>
-</table>
-<p>在DTD中声明一个NOTATION类型的属性时，必须首先声明一个具体的NOTATION用来指向应用软件所在的位置，声明的方式有两种:<br>一种是使用MIME类型，格式为：<br><code>&lt;!NOTATION 记号名 SYSTEM &quot;MIME类型&quot;&gt;</code><br>另一种是使用URL路径，指定一个处理程序的路径，格式为：<br><code>&lt;!NOTATION 记号名 SYSTEM  &quot;URL&quot;&gt;</code></p>
-<p>属性的附加声明<br>added_declare是属性定义中的可选内容。附加声明指明了该属性是必要的还是可选的，是预设的固定属性值还是当属性值被省略时的默认值</p>
-<table>
-<thead>
-<tr>
-<th>附加声明</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>#REQUIRED</td>
-<td>必须给出属性值</td>
-</tr>
-<tr>
-<td>#IMPLIIED</td>
-<td>可以不出现</td>
-</tr>
-<tr>
-<td>#FIXED AttValue</td>
-<td>固定值</td>
-</tr>
-<tr>
-<td>Default_Value</td>
-<td>默认</td>
-</tr>
-</tbody>
-</table>
-<h2 id="5">DTD引用</h2>
-
-<p>内部DTD</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">	声明语句</div><div class="line">]&gt;</div></pre></td></tr></table></figure>
-<p>外部DTD</p>
-<p>引用私有DTD：<br><code>&lt;!DOCTYPE  RootElementName  SYSTEM  DTD_URL&gt;</code><br>引用公有DTD：<br><code>&lt;!DOCTYPE RootElementName PUBLIC DTD_name  DTD_URL&gt;</code></p>
+<p>按操作保护分类：</p>
 <ul>
-<li>RootElementName根源素</li>
-<li>SYSTEM 私有</li>
-<li>PUBLIC 公用</li>
-<li>DTD_name DTD文件名</li>
-<li>DTD_URL DTD文件路径</li>
+<li>可执行文件：允许调用而不允许读写</li>
+<li>只读文件：可读不可写</li>
+<li>可读可写文件</li>
 </ul>
-<h2 id="6">DTD实体</h2>
+<p>按使用情况分类：</p>
+<ul>
+<li>临时文件：用于系统在工作过程中产生的中间文件，一般有暂存目录，工作完毕会自动删除。</li>
+<li>永久文件: 受系统管理的各种系统和用户文件。</li>
+<li>档案文件: 系统或一些实用工具软件包在工作过程中记录在案的文挡资料文件，以便查阅历史档案。</li>
+</ul>
+<p>按用户观点分类：</p>
+<ul>
+<li>普通文件：字符流组成的无结构文件</li>
+<li>目录文件：文件的目录信息构成的特殊文件</li>
+<li>特殊文件（设备驱动程序）</li>
+</ul>
+<p>按存取的物理结构分类：</p>
+<ul>
+<li>顺序文件：文件中的纪录，顺序地存储到连续的物理盘块中</li>
+<li>链接文件：文件中的纪录可存储在并不相邻接的各个物理块中，通过物理块中的链接指针组成一个链表管理，形成一个完整的文件</li>
+<li>索引文件：文件中的纪录可存储在并不相邻接的各个物理块中，纪录和物理块之间通过索引表项按关键字存取文件，通过物理块中的索引表管理，形成一个完整的文件</li>
+</ul>
+<p>按文件的逻辑存储结构分类：</p>
+<ul>
+<li>有结构文件：由若干个记录所构成的文件</li>
+<li>无结构文件：这是直接由字符序列所构成的文件</li>
+</ul>
+<p>按文件中的数据形式分类：</p>
+<ul>
+<li>源文件：由源程序和数据构成的文件</li>
+<li>目标文件：由源程序经过编译，但尚未经过链接程序链接的目标代码所形成的文件</li>
+</ul>
+<h3 id="1.2">文件系统</h3>
 
-<p>普通实体<br>用来插入文本。<br>内部普通实体<br><code>&lt;!ENTITY Entity_Name Entity_Value&gt;</code><br>外部普通实体<br><code>&lt;!ENTITY Entity_Name SYSTEM Entity_URL&gt;</code><br>SYSTEM是定义外部实体的关键字<br>引用<code>&amp;Enitiy_Name;</code><br>参数实体<br>不仅可以包含文本，还可以包含元素类型声明、属性列表声明、一般实体声明、标签声明、处理指令或注释等，只能在DTD中引用，并且通常情况下只能在外部DTD文档中引用。<br>内部参数实体<br><code>&lt;!ENTITY % Entity_Name Entity_Value&gt;</code><br>外部参数实体<br><code>&lt;!ENTITY % Entity_Name SYSTEM Entity_URL&gt;</code><br>引用<code>&amp;Enitiy_Name;</code><br>不可解析实体<br>二进制文件，如图形、声音等非字符型数据，唯一可以出现不可解析实体的地方就是属性值且不能进行引用<br>链接是XML文档:<br><code>&lt;!ENTITY name SYSTEM &quot;URI&quot;&gt;</code><br>不是XML文档<br><code>&lt;!ENTITY name SYSTEM “URI”NDATA  type&gt;</code></p>
+<p>文件系统：操作系统中统一管理信息资源的一种软件，管理文件的存储、检索、更新，提供安全可靠的共享和保护手段，并且方便用户使用。<br>文件系统包含文件管理程序（文件与目录的集合）和所管理的全部文件。</p>
+<h2 id="2">文件逻辑结构</h2>
+
+<p>有结构文件：</p>
+<ol>
+<li>定长记录</li>
+<li>变长记录</li>
+</ol>
+<p>无结构文件：流式文件是相关信息的有序集合如源程序、可执行文件、库函数，可以提供很好的灵活性。</p>
+<h3 id="2.1">顺序文件</h3>
+
+<p>逻辑记录的排序:</p>
+<ul>
+<li>串结构:各记录之间的顺序与关键字无关,通常按存入的时间排序。</li>
+<li>顺序结构：所有记录按关键字排列。</li>
+</ul>
+<p>对顺序文件的读写操作：</p>
+<ul>
+<li>定长记录：所有记录长度相等</li>
+<li>变长记录：记录长度不固定</li>
+</ul>
+<p>优点：每次要读或写一大批记录时，对顺序文件的存取效率是所有逻辑文件中最高的；能存储在磁带上，并能有效地工作。</p>
+<p>缺点：查找或修改单个记录，系统要逐个地查找诸记录；增加或删除一个记录较困难。</p>
+<h3 id="2.2">索引文件</h3>
+
+<p>对于定长记录文件，如果要查找第i个记录，获得首地址：<br>$$A_i=i*L$$</p>
+<p>对于可变长度记录的文件，要查找其第i个记录时，须首先计算出该记录的首地址。为此，须顺序地查找每个记录，从中获得相应记录的长度Li，然后才能按下式计算出第i个记录的首址:<br>$$ \sum_{i=0}^{i-1} L_i+i = A_i $$<br>因此，对于可变长度记录的文件难以实现直接存储。<br>文件中每个记录，在索引表中有一相应表项<br>因为索引表本身是一个定长记录的顺序文件，从而可以方便的实现直接存取。</p>
+<h3 id="2.3">索引顺序文件</h3>
+
+<p>顺序文件与索引文件相结合,将顺序文件中记录分为若干个组，为各组的第一个记录建立一个索引表。</p>
+<h3 id="2.4">存储介质</h3>
+
+<p>在文件系统中，文件的存储设备常常划分为若干大小相等的物理块。同时也将文件信息划分成相同大小的逻辑块，所有块统一编号。以块为单位进行信息的存储、传输，分配。<br>常见的存储介质:磁盘，磁带，光盘</p>
+<h2 id="3">文件的物理结构</h2>
+
+<p>文件的物理结构也即文件的外存分配方式。</p>
+<h3 id="3.1">连续分配</h3>
+
+<p>一个文件的信息存放在若干连续的物理块中。<br>优点：</p>
+<ul>
+<li>简单</li>
+<li>支持顺序存取和随机存取</li>
+<li>顺序存取速度快</li>
+<li>所需的磁盘寻道次数和寻道时间最少</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>要求有连续的存储空间 </li>
+<li>必须事先知道文件的长度 </li>
+</ul>
+<p>连续文件：由一组相邻的物理块组成，是对记录式文件取连续区分配而构成的文件。</p>
+<h3 id="3.2">链接分配</h3>
+
+<p>一个文件的信息存放在若干不连续的物理块中，各块之间通过指针连接，前一个物理块指向下一个物理块。<br>优点：</p>
+<ul>
+<li>提高了磁盘空间利用率</li>
+<li>不存在外部碎片问题</li>
+<li>有利于文件插入和删除</li>
+<li>有利于文件动态扩充</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>存取速度慢，不适于随机存取</li>
+<li>可靠性问题，如指针出错</li>
+<li>更多的寻道次数和寻道时间</li>
+<li>链接指针占用一定的空间</li>
+<li>不能支持高效的直接存取。要对一个较大的文件进行直接存取，须首先在FAT中顺序地查找许多盘块号</li>
+<li>FAT需占用较大的内存空间</li>
+</ul>
+<p>隐式链接：文件名，始址，末址<br>显式链接：文件名，块号，块中显示指针</p>
+<h3 id="3.3">索引分配</h3>
+
+<p>一个文件的信息存放在若干不连续物理块中，系统为每个文件建立一个专用数据结构–索引表，并将这些块的块号存放在一个索引表中。<br>一个索引表就是磁盘块地址数组,其中第i个条目指向文件的第i块。</p>
+<p>优点：能顺序存取,也能随机存取，满足了文件动态增长、插入删除的要求，也能充分利用外存空间<br>缺点：较多的寻道次数和寻道时间，索引表本身带来了系统开销，如：内外存空间，存取时间。每个文件的索引表要分配盘块，可以存放成百上千的盘块号，但对于大量的小文件，索引块利用率极低。</p>
+<h3 id="3.4">混合分配方式</h3>
+
+<p>UNIX文件系统采用的是多级索引结构(混合分配模式)。每个文件的索引表为13个索引项，每项2个字节。最前面10项（ iaddr(0)~iaddr(9) ）直接登记存放文件信息的物理块号（直接寻址）。如果文件大于10块，则利用第11项指向一个物理块，该块中最多可放256个文件物理块的块号（一次间接寻址）。对于更大的文件还可利用第12和第13项作为二次和三次间接寻址。</p>
+<h2 id="4">目录管理</h2>
+
 
       
     </div>
@@ -454,13 +463,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/20/XML-DTD/">XML:DTD</a></p>
+        <p><span>本文标题:</span><a href="/2017/01/06/OS-File Management/">操作系统：文件管理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2016-12-20, 21:24:43</p>
-        <p><span>最后更新:</span>2016-12-24, 14:08:12</p>
+        <p><span>发布时间:</span>2017-01-06, 16:18:29</p>
+        <p><span>最后更新:</span>2017-01-06, 20:01:19</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/20/XML-DTD/" title="XML:DTD">http://www.codingbalian.online/2016/12/20/XML-DTD/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/20/XML-DTD/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/06/OS-File Management/" title="操作系统：文件管理">http://www.codingbalian.online/2017/01/06/OS-File Management/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/01/06/OS-File Management/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -472,16 +481,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/21/XML-Schema/">
-                    XML Schema
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/20/XML/">
-                    XML：语法基础
+                <a href="/2017/01/05/OS-Device Management/">
+                    操作系统:设备管理
                 </a>
             </div>
         
@@ -493,7 +496,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">DTD作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">DTD结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">DTD元素类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">元素限定符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-number">5.</span> <span class="toc-text">DTD引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6"><span class="toc-number">6.</span> <span class="toc-text">DTD实体</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">文件和文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">文件分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">文件系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">文件逻辑结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text">顺序文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text">索引文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.3"><span class="toc-number">2.3.</span> <span class="toc-text">索引顺序文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.4"><span class="toc-number">2.4.</span> <span class="toc-text">存储介质</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">文件的物理结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3.1"><span class="toc-number">3.1.</span> <span class="toc-text">连续分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3.2"><span class="toc-number">3.2.</span> <span class="toc-text">链接分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3.3"><span class="toc-number">3.3.</span> <span class="toc-text">索引分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3.4"><span class="toc-number">3.4.</span> <span class="toc-text">混合分配方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">目录管理</span></a></li></ol>
         
     </div>
     <style>
@@ -529,7 +532,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"XML:DTD　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"操作系统：文件管理　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -545,7 +548,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/20/XML-DTD/" data-title="XML:DTD" data-url="http://www.codingbalian.online/2016/12/20/XML-DTD/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/06/OS-File Management/" data-title="操作系统：文件管理" data-url="http://www.codingbalian.online/2017/01/06/OS-File Management/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -568,15 +571,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/21/XML-Schema/" title="上一篇: XML Schema">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/20/XML/" title="下一篇: XML：语法基础">
+            <a href="/2017/01/05/OS-Device Management/" title="下一篇: 操作系统:设备管理">
                 <i class="fa fa-angle-right"></i>
             </a>
         
