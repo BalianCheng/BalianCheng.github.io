@@ -1083,7 +1083,7 @@
     <link href="http://www.codingbalian.online/2016/12/25/OS-Process/"/>
     <id>http://www.codingbalian.online/2016/12/25/OS-Process/</id>
     <published>2016-12-24T16:37:07.000Z</published>
-    <updated>2017-01-04T11:40:32.561Z</updated>
+    <updated>2017-01-09T14:53:44.154Z</updated>
     
     <content type="html"><![CDATA[<p>简单介绍操作系统中的进程管理机制。<br><a id="more"></a></p>
 <h2 id="1">进程特征</h2>
@@ -1102,7 +1102,7 @@
 <li>阻塞态：正在执行的进程，由于某个事件而暂时无法执行，放弃CPU进入阻塞态(时间消失后由阻塞态进入就绪态) </li>
 <li>创建状态：已构造进程标识符，创建管理进程所需的表格，由于资源有限还没有进入就绪队列</li>
 <li>终止状态：中止后进程移入该状态，不再有执行资格但并未撤消，表格和其它信息暂时由辅助程序保留，其他进程可以利用这些信息，当数据不再需要后被删除</li>
-<li>挂起状态：进程处于静止状态，包括禁止就绪，静止阻塞</li>
+<li>挂起状态：进程处于静止状态，包括静止就绪，静止阻塞</li>
 </ul>
 <h2 id="3">进程控制块PCB</h2>
 
@@ -1445,7 +1445,7 @@
     <link href="http://www.codingbalian.online/2016/12/24/OS-Storage%20Management/"/>
     <id>http://www.codingbalian.online/2016/12/24/OS-Storage Management/</id>
     <published>2016-12-24T09:06:23.000Z</published>
-    <updated>2017-01-05T09:11:25.776Z</updated>
+    <updated>2017-01-09T14:52:51.067Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>存储管理可以提高主存的利用率，共享某个区域的信息，保证程序都在各自的存储区内操作，互不干扰。<br><a id="more"></a></p>
@@ -1459,7 +1459,7 @@
 <li>名空间：程序中定义的标识符，程序符号集合，没有地址的概念，包括：符号指令、数据说明、I/O说明。</li>
 <li>地址空间：程序用来访问信息所用地址单元的集合，是逻辑地址的集合，由编译程序生成。</li>
 <li>存储空间：主存中物理单元的集合，物理地址的集合。</li>
-<li>逻辑地址：程序行程单目标代码使用的首地址为0的相对地址。</li>
+<li>逻辑地址：程序形成目标代码使用的首地址为0的相对地址。</li>
 <li>物理地址：内存中存储单元的地址，可直接寻址。</li>
 </ol>
 <p>内存共享：</p>
