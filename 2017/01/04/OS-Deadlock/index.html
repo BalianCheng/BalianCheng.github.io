@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://www.codingbalian.online/2017/01/04/OS-Deadlock/index.html">
 <meta property="og:site_name" content="Balian's Blog">
 <meta property="og:description" content="关于死锁的简单内容。">
-<meta property="og:updated_time" content="2017-01-05T10:29:59.270Z">
+<meta property="og:updated_time" content="2017-01-09T14:27:18.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统：处理机调度与死锁">
 <meta name="twitter:description" content="关于死锁的简单内容。">
@@ -428,7 +428,10 @@
 </ol>
 <h2 id="4">死锁</h2>
 
-<h3 id="4.1">死锁的概念</h3><br>一组进程中，每个进程都无限等待被该组进程中另一进程所占有的资源，因而永远无法得到的资源，这种现象称为进程死锁，这一组进程就称为死锁进程。<br><br><h3 id="4.2">死锁的原因</h3>
+<h3 id="4.1">死锁的概念</h3>
+
+<p>一组进程中，每个进程都无限等待被该组进程中另一进程所占有的资源，因而永远无法得到的资源，这种现象称为进程死锁，这一组进程就称为死锁进程。</p>
+<h3 id="4.2">死锁的原因</h3>
 
 <ol>
 <li>竞争系统资源<br>竞争非剥夺性资源<br>竞争临时性资源<br>只可使用一次的资源<br>“申请–分配–使用–释放”模式</li>
@@ -441,9 +444,9 @@
 <li>不剥夺条件（不可强占）<br>进程所获得的资源在未使用完之前，不能被其它进程强行夺走，而只能由其自身释放</li>
 <li>环路等待条件<br>存在一个等待进程集合，P0正在等待一个P1占用的资源，P1正在等待一个P2占用的资源，…，Pn正在等待一个由PO占用的资源</li>
 </ul>
-<h2 id="5">解决锁死</h2>
+<h2 id="5">解决死锁</h2>
 
-<h3 id="5.1">预防锁死</h3>
+<h3 id="5.1">预防死锁</h3>
 
 <ol>
 <li>破坏请求和保持条件<br>资源一次性分配；要求每个进程在运行前必须一次性申请它所要求的所有资源，且仅当该进程所要资源均可满足时才给予一次性分配</li>
@@ -451,11 +454,11 @@
 <li>破坏环路等待条件<br>资源有序分配法；系统给每类资源赋予一个编号，每一个进程按编号递增的顺序请求资源，释放则相反</li>
 </ol>
 <p>缺点:影响系统性能</p>
-<h3 id="5.2">避免锁死</h3>
+<h3 id="5.2">避免死锁</h3>
 
-<p>系统对进程发出的能够满足的资源申请进行动态检查，若分配后系统可能发生死锁，则不予分配，否则予以分配。这种方法把系统分为安全状态和不安全状态，安全状态就不会发生锁死。</p>
+<p>系统对进程发出的能够满足的资源申请进行动态检查，若分配后系统可能发生死锁，则不予分配，否则予以分配。这种方法把系统分为安全状态和不安全状态，安全状态就不会发生死锁。</p>
 <p><strong>安全状态与不安全状态</strong><br>安全状态指系统能按某种进程顺序来为每个进程分配其所需资源，直至最大需求，使每个进程都可顺序完成。若不存在这样的序列，则为不安全状态。</p>
-<p>使用银行家算法可避免锁死：<br>可利用资源向量Available:含m个元素代表每种资源可利用的数目<br>最大需求矩阵Max:n<em>m的矩阵，n代表进程，m代表对资源的最大需求<br>分配矩阵Allocation:n</em>m<br>需求矩阵Need:n*m<br>Need［i,j］=Max［i,j］-Allocation［i,j］<br>Requesti是进程Pi的请求向量</p>
+<p>使用银行家算法可避免死锁：<br>可利用资源向量Available:含m个元素代表每种资源可利用的数目<br>最大需求矩阵Max:n<em>m的矩阵，n代表进程，m代表对资源的最大需求<br>分配矩阵Allocation:n</em>m<br>需求矩阵Need:n*m<br>Need［i,j］=Max［i,j］-Allocation［i,j］<br>Requesti是进程Pi的请求向量</p>
 <ol>
 <li>Requesti［j］≤Need［i,j］</li>
 <li>如果Requesti［j］≤Available［j］，下一步；否则，Pi等待</li>
@@ -490,7 +493,7 @@
         <p><span>本文标题:</span><a href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2017-01-04, 16:43:56</p>
-        <p><span>最后更新:</span>2017-01-05, 18:29:59</p>
+        <p><span>最后更新:</span>2017-01-09, 22:27:18</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/01/04/OS-Deadlock/" title="操作系统：处理机调度与死锁">http://www.codingbalian.online/2017/01/04/OS-Deadlock/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/01/04/OS-Deadlock/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -526,7 +529,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">处理机调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">高级、中级和低级调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">进程调度的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.3.</span> <span class="toc-text">确定算法原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.4"><span class="toc-number">1.4.</span> <span class="toc-text">进程调度方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.5"><span class="toc-number">1.5.</span> <span class="toc-text">进程调度性能衡量的指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.6"><span class="toc-number">1.6.</span> <span class="toc-text">调度准则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">进程调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text">先进先出(FIFO)算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text">短作业(进程)优先调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.3"><span class="toc-number">2.3.</span> <span class="toc-text">最高优先权优先调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.4"><span class="toc-number">2.4.</span> <span class="toc-text">高响应比优先调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.5"><span class="toc-number">2.5.</span> <span class="toc-text">转轮法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.6"><span class="toc-number">2.6.</span> <span class="toc-text">多队列反馈调度算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">实时调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3.1"><span class="toc-number">3.1.</span> <span class="toc-text">基本条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3.2"><span class="toc-number">3.2.</span> <span class="toc-text">算法的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3.2"><span class="toc-number">3.3.</span> <span class="toc-text">多处理机系统中的调度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4.1"><span class="toc-number">4.1.</span> <span class="toc-text">死锁的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.2"><span class="toc-number">4.2.</span> <span class="toc-text">死锁的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-number">5.</span> <span class="toc-text">解决锁死</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5.1"><span class="toc-number">5.1.</span> <span class="toc-text">预防锁死</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.2"><span class="toc-number">5.2.</span> <span class="toc-text">避免锁死</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.3"><span class="toc-number">5.3.</span> <span class="toc-text">死锁检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.4"><span class="toc-number">5.4.</span> <span class="toc-text">死锁解除</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">处理机调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">高级、中级和低级调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">进程调度的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.3.</span> <span class="toc-text">确定算法原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.4"><span class="toc-number">1.4.</span> <span class="toc-text">进程调度方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.5"><span class="toc-number">1.5.</span> <span class="toc-text">进程调度性能衡量的指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.6"><span class="toc-number">1.6.</span> <span class="toc-text">调度准则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">进程调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text">先进先出(FIFO)算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text">短作业(进程)优先调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.3"><span class="toc-number">2.3.</span> <span class="toc-text">最高优先权优先调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.4"><span class="toc-number">2.4.</span> <span class="toc-text">高响应比优先调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.5"><span class="toc-number">2.5.</span> <span class="toc-text">转轮法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.6"><span class="toc-number">2.6.</span> <span class="toc-text">多队列反馈调度算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">实时调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3.1"><span class="toc-number">3.1.</span> <span class="toc-text">基本条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3.2"><span class="toc-number">3.2.</span> <span class="toc-text">算法的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3.2"><span class="toc-number">3.3.</span> <span class="toc-text">多处理机系统中的调度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4.1"><span class="toc-number">4.1.</span> <span class="toc-text">死锁的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.2"><span class="toc-number">4.2.</span> <span class="toc-text">死锁的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-number">5.</span> <span class="toc-text">解决死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5.1"><span class="toc-number">5.1.</span> <span class="toc-text">预防死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.2"><span class="toc-number">5.2.</span> <span class="toc-text">避免死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.3"><span class="toc-number">5.3.</span> <span class="toc-text">死锁检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.4"><span class="toc-number">5.4.</span> <span class="toc-text">死锁解除</span></a></li></ol></li></ol>
         
     </div>
     <style>
