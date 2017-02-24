@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="Servlet是Java编写的服务器端程序，动态的生成Web内容。">
+<meta name="description" content="JavaScript的学习笔记，记录个人认为重要的内容。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JSP中Servlet的应用">
-<meta property="og:url" content="http://www.codingbalian.online/2016/12/29/JSP-Servlet/index.html">
+<meta property="og:title" content="JavaScript:学习笔记1">
+<meta property="og:url" content="http://www.codingbalian.online/2017/02/21/JavaScript-Note/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="Servlet是Java编写的服务器端程序，动态的生成Web内容。">
-<meta property="og:updated_time" content="2017-01-02T05:49:03.965Z">
+<meta property="og:description" content="JavaScript的学习笔记，记录个人认为重要的内容。">
+<meta property="og:updated_time" content="2017-02-24T13:25:47.350Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JSP中Servlet的应用">
-<meta name="twitter:description" content="Servlet是Java编写的服务器端程序，动态的生成Web内容。">
+<meta name="twitter:title" content="JavaScript:学习笔记1">
+<meta name="twitter:description" content="JavaScript的学习笔记，记录个人认为重要的内容。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JSP中Servlet的应用 | Balian&#39;s Blog</title>
+<title>JavaScript:学习笔记1 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +263,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-JSP-Servlet" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaScript-Note" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/29/JSP-Servlet/" class="article-date">
-      <time datetime="2016-12-29T08:04:09.000Z" itemprop="datePublished">2016-12-29</time>
+      <a href="/2017/02/21/JavaScript-Note/" class="article-date">
+      <time datetime="2017-02-21T05:53:25.000Z" itemprop="datePublished">2017-02-21</time>
 </a>
 
 
@@ -282,7 +282,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JSP中Servlet的应用
+      JavaScript:学习笔记1
     </h1>
   
 
@@ -291,15 +291,11 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JSP/">JSP</a>
+    <a class="article-category-link" href="/categories/JS/">JS</a>
     </div>
 
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/">Servlet</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -307,67 +303,123 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Servlet是Java编写的服务器端程序，动态的生成Web内容。<br><a id="more"></a></p>
-<p></p><h2 id="1">Servlet包的构成</h2><br>Servlet由服务器进行加载，是实现javax.servlet.Servlet接口的对象。大多数Servlet通过GenericServlet或者HttpServlet类来扩展实现。<br>Servlet API包含于javax.servlet和javax.servlet.http两个包中。javax.servlet包中定义了所有Servlet类都必须实现的接口和类：<p></p>
+        <p>JavaScript的学习笔记，记录个人认为重要的内容。<br><a id="more"></a></p>
+<h2 id="1">JS变量作用域</h2>
+
+<p>全局变量与局部变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var total = 10</div><div class="line">function square(num) &#123;</div><div class="line">    total = num * num</div><div class="line">    return total</div><div class="line">&#125;</div><div class="line">square(4)</div><div class="line">alert(total)</div></pre></td></tr></table></figure>
+<p>返回的total值为16<br>在调用<code>square()</code>函数时改变了total的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var total = 10</div><div class="line">function square(num) &#123;</div><div class="line">    var total = num * num</div><div class="line">    return total</div><div class="line">&#125;</div><div class="line">square(4)</div><div class="line">alert(total)</div></pre></td></tr></table></figure>
+<p>返回total值为10<br>在函数中使用var定义变量后函数中的total则变成局部变量，不在使用之前定义的全局变量total。</p>
+<h2 id="2">JS DOM使用</h2>
+
+<p><code>getElementById(idname)</code>获取id值为idname的元素，返回一个对象</p>
+<p><code>getElementsByName(namevalue)</code> 获取所有name属性为namevalue的元素，返回一个数组</p>
+<p><code>getElementsByTagName(tagnamevalue)</code> 获取所有标签为tagnamevalue的元素，返回一个数组</p>
+<p><code>getElementsByClassName(class1 (class2 ...))</code>获取所有class值包括class1(class2 …)的元素，其中class值以空格隔开，不分顺序，返回值是一个数组</p>
+<p>以上方法都适用于document对象，也可组合使用。</p>
+<p><code>obj.getAttribute(attribute)</code>只使用于object对象即节点元素，获取对象的属性值</p>
+<p><code>obj.setAttribute(attribute,value)</code>也只适用于节点元素，为元素添加值为value的attribute属性</p>
+<p><code>document.getElementsByTagName(&quot;form&quot;)=document.forms</code></p>
+<p><code>element.getAttribute(&#39;src&#39;)=element.src</code></p>
+<p><code>element.getAttribute(&#39;href&#39;)=element.href</code></p>
+<p><code>document.getElementsByTagName(&#39;body&#39;)=document.body</code></p>
+<p><code>element.className=element.setAttribute(&#39;class&#39;,value)</code></p>
+<h3 id="2.1">分离Javascript</h3>
+
+<p><code>element.event=action</code></p>
+<p>监听：<code>element.addEventListener(event, function, useCapture)</code><br>useCapture默认为false在冒泡阶段执行，true为在捕获阶段执行</p>
+<p>移除监听：<code>element.removeEventListener(event, function, useCapture)</code><br>useCapture默认为false在冒泡阶段执行，true为在捕获阶段执行</p>
+<table>
+<thead>
+<tr>
+<th>DOM 0</th>
+<th>DOM 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onblur()</td>
+<td>blur</td>
+</tr>
+<tr>
+<td>onfocus()</td>
+<td>focus</td>
+</tr>
+<tr>
+<td>onchange()</td>
+<td>change</td>
+</tr>
+<tr>
+<td>onmouseover()</td>
+<td>mouseover</td>
+</tr>
+<tr>
+<td>onmouseout()</td>
+<td>mouseout</td>
+</tr>
+<tr>
+<td>onmousemove()</td>
+<td>mousemove</td>
+</tr>
+<tr>
+<td>onmousedown()</td>
+<td>mousedown</td>
+</tr>
+<tr>
+<td>onmouseup()</td>
+<td>mouseup</td>
+</tr>
+<tr>
+<td>onclick()</td>
+<td>click</td>
+</tr>
+<tr>
+<td>ondblclick()</td>
+<td>dblclick</td>
+</tr>
+<tr>
+<td>onkeydown()</td>
+<td>keydown</td>
+</tr>
+<tr>
+<td>onkeyup()</td>
+<td>keyup</td>
+</tr>
+<tr>
+<td>onkeypress()</td>
+<td>keypress</td>
+</tr>
+<tr>
+<td>onsubmit()</td>
+<td>submit</td>
+</tr>
+<tr>
+<td>onload()</td>
+<td>load</td>
+</tr>
+<tr>
+<td>onunload()</td>
+<td>unload</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>interface ServletConfig：定义Servlet config 对象，由Servlet 引擎用在 Servlet 初始化时，向 Servlet 传递信息。</li>
-<li>interface ServletContext：定义Servlet用于获取容器信息的方法。</li>
-<li>interface ServletRequest：向服务器请求信息。</li>
-<li>interface ServletResponse：响应客户端请求。</li>
-<li>interface Servlet：定义了所有 Servlet 必须实现的方法。</li>
-<li>interface SingleThreadModel:用于保证Servlet在任一时刻只处理一个请求。</li>
-<li>class ServletInputStream:用于读取客户请求的二进制数据。</li>
-<li>class ServletOutputStream:向客户发送二进制数据。</li>
-<li>class GenericServlet:继承Servlet接口，定义了一个通用的，独立协议的Servlet。</li>
+<li>DOM2可以使用js监听事件</li>
 </ul>
-<p>javax.servle.http包中定义了采用HTTP通信的HttpServlet类：</p>
-<ul>
-<li>interface HttpServletRequest：提供http请求。</li>
-<li>interface HttpServletResponse：提供http相应。</li>
-<li>interface HttpSession：用于标识客户端并存储有关客户信息。</li>
-<li>interface HttpSessionAttributeListener：需要用户获取回话的属性列表实现这个监听接口。</li>
-<li>class HttpServlet：扩展GenericServlet用于创建HttpServlet。</li>
-<li>class Cookie：创建一个Cookie类，用于存储Servlet发送给客户端的信息。</li>
-</ul>
-<p>Servlet的工作模式：</p>
-<ol>
-<li>客户端发送请求至服务器。</li>
-<li>服务器启动并调用Servlet，根据客户端请求生成响应内容并传到服务器。</li>
-<li>服务器将响应返回客户端。</li>
-</ol>
-<p></p><h3 id="1.1">GenericServlet</h3><br>一般通用Servlet由javax.servle的GenericServlet实现Servlet接口。它定义了一个通用独立于底层协议的Servlet。通过使用或者继承来实现Servlet应用。<br>GenericServlet的主要方法：<p></p>
-<ul>
-<li>String getInitParameter(String name):返回具有指定名称的初始化参数。</li>
-<li>ServletConfig getServletConfig():返回传递到init()方法的ServletConfig对象。</li>
-<li>ServletContext gerServletContext():返回在config对象中引用的ServletContext。</li>
-<li>String getServletName():返回在web应用发布描述器(web.xml)中指定的Servlet名字。</li>
-</ul>
-<p></p><h3 id="1.2">HttpServlet</h3><br>javax.servle.http.HttpServlet实现了专门相应HTTP请求的Servlet。提供doGet(),doPost(),doDelete(),doOptions(),doPut(),doTrace()方法响应请求。<br>Web容器创建HttpServlet对象，并把HTTP请求封装到HttpServlet对象中。其相应web客户端的流程：<p></p>
-<ol>
-<li>web客户向web容器发送http请求</li>
-<li>web容器解析请求</li>
-<li>web容器创建一个HttpRequest对象，封装http请求信息</li>
-<li>web容器创建一个HttpResponse对象</li>
-<li>web容器调用service方法将之前两个对象作为service的参数传给HttpRequest对象</li>
-<li>HttpServlet调用HttpRequest对象获取请求信息</li>
-<li>HttpServlet调用HttpResponse生成响应数据】</li>
-<li>web容器把HttpServlet传给web客户</li>
-</ol>
-<p>创建HttpServlet:</p>
-<ol>
-<li>继承HttpServlet抽象类</li>
-<li>覆盖HttpServlet的部分方法</li>
-<li>获取HTTP的请求信息</li>
-<li>生成响应结果</li>
-</ol>
-<p></p><h3 id="1.3">Servlet生命周期</h3><br>Servlet框架的核心是javax.servlet.Servlet方法，它包含的三种方法代表了Servlet的生命周期：<p></p>
-<ul>
-<li>init():初始化Servlet。</li>
-<li>service():负责对客户端的请求。</li>
-<li>destory():当Servlet对象生命结束时释放占用的资源。</li>
-</ul>
-<p>Servlet只会在第一次请求到来时被加载和实例化。一旦被加载一般不会被删除，除非应用服务器关闭或者重新启动。当容器做内存回收动作时Servlet可能被删除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*初始化Servlet*/</div><div class="line">public void init(ServletConfig config) throws ServletException&#123;</div><div class="line">	...</div><div class="line">&#125;</div><div class="line">/*init(ServletConfig)代表配置信息在web.xml中修改。*/</div><div class="line">/*响应客户端请求*/</div><div class="line">public void doPost(ServletRequest request, ServletResponse response)throws ServletException, IOException &#123;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p></p><h3 id="1.4">配置web.xml</h3><br>建立mainServlet.java，配置web.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">	xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee</div><div class="line">                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;</div><div class="line">	version=&quot;3.1&quot;&gt;</div><div class="line">	&lt;display-name&gt;&lt;/display-name&gt;</div><div class="line">	&lt;!-- Servlet可以被外部访问 访问它需要一个地址 通过WEB的地址映射解决 --&gt;</div><div class="line">	&lt;servlet&gt;</div><div class="line">		&lt;servlet-name&gt;mainServlet&lt;/servlet-name&gt; &lt;!--定义Servlet应用名字 --&gt;</div><div class="line">		&lt;servlet-class&gt;cn.edu.ccnu.imd.mainServlet&lt;/servlet-class&gt;&lt;!--自定义的Servlet应用名字对应的具体Servlet文件 --&gt;</div><div class="line">	&lt;/servlet&gt;</div><div class="line"></div><div class="line">	&lt;servlet-mapping&gt; &lt;!--地址映射 --&gt;</div><div class="line">		&lt;servlet-name&gt;mainServlet&lt;/servlet-name&gt;</div><div class="line">		&lt;url-pattern&gt;/service.do&lt;/url-pattern&gt;&lt;!--地址名 --&gt;</div><div class="line">	&lt;/servlet-mapping&gt;</div><div class="line">	&lt;!--输入地址：http://localhost:端口号/service.do定位servlet--&gt;</div><div class="line">&lt;/web-app&gt;</div></pre></td></tr></table></figure><p></p>
+<h3 id="2.2">共享onload事件</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">      function addLoadEvent(fuc) &#123;</div><div class="line">          var oldOnLoad = window.onload</div><div class="line">          if (typeof window.onload != &apos;function&apos;) &#123;</div><div class="line">              window.onload = fuc</div><div class="line">          &#125;</div><div class="line">          else &#123;</div><div class="line">              window.onload = function () &#123;</div><div class="line">                  oldOnLoad();</div><div class="line">                  fuc()</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">addLoadEvent(function1)</div><div class="line">addLoadEvent(function2)</div></pre></td></tr></table></figure>
+<h3 id="2.3">insertAfter方法</h3>
+
+<p>DOM中定义了insertBefore方法，却没有给出相应的insertAfter方法，但是可以自己实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function insertAfter(newElement, targetElement) &#123;</div><div class="line">    var parent = targetElement.parentNode</div><div class="line">    if (parent.lastChild == targetElement) &#123;</div><div class="line">        parent.appendChild(newElement)</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        parent.insertBefore(newElement, targetElement.nextSibling)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="2.4">获取下一个元素节点</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">   function getNextElement(node) &#123;</div><div class="line">       if (node.nodeType == 1) &#123;</div><div class="line">           return node</div><div class="line">       &#125;</div><div class="line">       if (node.nextSibling) &#123;</div><div class="line">           getNextElement(node.nextSibling)</div><div class="line">       &#125;</div><div class="line">       return null</div><div class="line">   &#125;</div><div class="line">getNextElement(node.nextSibling)</div></pre></td></tr></table></figure>
+<h2 id="3">Ajax的兼容</h2>
+
+<p>Ajax使用XMLHttpRequest对象，但是由于IE与其他浏览器的实现方式不同，需要创建一个兼容对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">      function requestObject() &#123;</div><div class="line">          if (typeof XMLHttpRequest == &apos;undefined&apos;)</div><div class="line">              XMLHttpRequest = function () &#123;</div><div class="line">                  try &#123;</div><div class="line">                      return new ActiveXObject(&quot;Msxml2.XMLHTTP.6.0&quot;)</div><div class="line">                  &#125;</div><div class="line">                  catch (e) &#123;</div><div class="line">                  &#125;</div><div class="line">                  try &#123;</div><div class="line">                      return new ActiveXObject(&quot;Msxml2.XMLHTTP.3.0&quot;)</div><div class="line">                  &#125;</div><div class="line">                  catch (e) &#123;</div><div class="line">                  &#125;</div><div class="line">                  try &#123;</div><div class="line">                      return new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;)</div><div class="line">                  &#125;</div><div class="line">                  catch (e) &#123;</div><div class="line">                  &#125;</div><div class="line">                  return false</div><div class="line">              &#125;</div><div class="line">          return new XMLHttpRequest()</div><div class="line">      &#125;</div><div class="line">var request = new  requestObject()</div></pre></td></tr></table></figure></p>
+<p>XMLHTTPREQUEST对象发送的请求只能访问同一个域的数据。<br>Ajax在发送请求之后脚本会继续执行。</p>
 
       
     </div>
@@ -376,13 +428,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/21/JavaScript-Note/">JavaScript:学习笔记1</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2016-12-29, 16:04:09</p>
-        <p><span>最后更新:</span>2017-01-02, 13:49:03</p>
+        <p><span>发布时间:</span>2017-02-21, 13:53:25</p>
+        <p><span>最后更新:</span>2017-02-24, 21:25:47</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/29/JSP-Servlet/" title="JSP中Servlet的应用">http://www.codingbalian.online/2016/12/29/JSP-Servlet/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/29/JSP-Servlet/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/21/JavaScript-Note/" title="JavaScript:学习笔记1">http://www.codingbalian.online/2017/02/21/JavaScript-Note/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/02/21/JavaScript-Note/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -394,16 +446,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/04/OS-Deadlock/">
-                    操作系统：处理机调度与死锁
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/25/OS-Process/">
-                    操作系统：进程管理
+                <a href="/2017/01/06/OS-File Management/">
+                    操作系统：文件管理
                 </a>
             </div>
         
@@ -415,7 +461,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">Servlet包的构成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">GenericServlet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">HttpServlet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.3.</span> <span class="toc-text">Servlet生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.4"><span class="toc-number">1.4.</span> <span class="toc-text">配置web.xml</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">JS变量作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">JS DOM使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text">分离Javascript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text">共享onload事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.3"><span class="toc-number">2.3.</span> <span class="toc-text">insertAfter方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.4"><span class="toc-number">2.4.</span> <span class="toc-text">获取下一个元素节点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">Ajax的兼容</span></a></li></ol>
         
     </div>
     <style>
@@ -451,7 +497,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JSP中Servlet的应用　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"JavaScript:学习笔记1　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -467,7 +513,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/29/JSP-Servlet/" data-title="JSP中Servlet的应用" data-url="http://www.codingbalian.online/2016/12/29/JSP-Servlet/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/21/JavaScript-Note/" data-title="JavaScript:学习笔记1" data-url="http://www.codingbalian.online/2017/02/21/JavaScript-Note/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -490,15 +536,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/04/OS-Deadlock/" title="上一篇: 操作系统：处理机调度与死锁">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/25/OS-Process/" title="下一篇: 操作系统：进程管理">
+            <a href="/2017/01/06/OS-File Management/" title="下一篇: 操作系统：文件管理">
                 <i class="fa fa-angle-right"></i>
             </a>
         
