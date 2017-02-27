@@ -15,16 +15,28 @@
 
 
 
-<meta name="description" content="XSL是基于XML的语言，用于显示XML的规范。">
+<meta name="description" content="jQuery的代码风格与冲突解决&amp;lt;!–more&amp;gt;
+代码规范
+
+同一个对象的操作不超过3条,写在同一行1$(this).show().unbind(&amp;quot;click&amp;quot;)
+同一个对象的大量操作123456$(this).removeClass(&amp;quot;&amp;quot;)	   .addClass(&amp;quot;&amp;quot;)	   .stop()	   .unblind(&amp;q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XML:XSL转换">
-<meta property="og:url" content="http://www.codingbalian.online/2016/12/22/XML-XSL/index.html">
+<meta property="og:title" content="jQuery学习笔记">
+<meta property="og:url" content="http://www.codingbalian.online/2017/02/26/jQuery-note/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="XSL是基于XML的语言，用于显示XML的规范。">
-<meta property="og:updated_time" content="2016-12-24T06:12:58.024Z">
+<meta property="og:description" content="jQuery的代码风格与冲突解决&amp;lt;!–more&amp;gt;
+代码规范
+
+同一个对象的操作不超过3条,写在同一行1$(this).show().unbind(&amp;quot;click&amp;quot;)
+同一个对象的大量操作123456$(this).removeClass(&amp;quot;&amp;quot;)	   .addClass(&amp;quot;&amp;quot;)	   .stop()	   .unblind(&amp;q">
+<meta property="og:updated_time" content="2017-02-26T09:41:52.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XML:XSL转换">
-<meta name="twitter:description" content="XSL是基于XML的语言，用于显示XML的规范。">
+<meta name="twitter:title" content="jQuery学习笔记">
+<meta name="twitter:description" content="jQuery的代码风格与冲突解决&amp;lt;!–more&amp;gt;
+代码规范
+
+同一个对象的操作不超过3条,写在同一行1$(this).show().unbind(&amp;quot;click&amp;quot;)
+同一个对象的大量操作123456$(this).removeClass(&amp;quot;&amp;quot;)	   .addClass(&amp;quot;&amp;quot;)	   .stop()	   .unblind(&amp;q">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +68,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>XML:XSL转换 | Balian&#39;s Blog</title>
+<title>jQuery学习笔记 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +275,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-XML-XSL" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-jQuery-note" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/22/XML-XSL/" class="article-date">
-      <time datetime="2016-12-22T14:34:33.000Z" itemprop="datePublished">2016-12-22</time>
+      <a href="/2017/02/26/jQuery-note/" class="article-date">
+      <time datetime="2017-02-26T09:08:26.000Z" itemprop="datePublished">2017-02-26</time>
 </a>
 
 
@@ -282,7 +294,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      XML:XSL转换
+      jQuery学习笔记
     </h1>
   
 
@@ -291,13 +303,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/XML/">XML</a>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XSL/">XSL</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -307,211 +319,27 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>XSL是基于XML的语言，用于显示XML的规范。<br><a id="more"></a></p>
-<h2 id="1">XSL转换原理</h2><br>XSL样式表对XML文档转化的过程：<br>1. 根据XML文档构造源树，根据XSL规则将源树转化成结果树，转换协议为XSLT。<br>2. 生成结果树后进行解释，产生一种社和显示的格式（格式化）。<br><br>XSL处理器负责转换成。XML文档先被解析成DOM树存放在内存中，接着进行分析，每一个DOM树的节点都与一个模式相比较，匹配上按模板进行转换否则继续往下匹配。<br><h2 id="2">XSL文档结构</h2><br>XSL是扩展名为xsl的文本文件使用XML，其基本结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</div><div class="line">&lt;xsl:template match=&quot;/&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">&lt;xsl:template match=&quot;指定的XML元素&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:stylesheet&gt;</div></pre></td></tr></table></figure><br><br>把XSL样式表链接到XML文档:<code>&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;文件名.xsl&quot;?&gt;</code><br><br><h2 id="3">XSL模板</h2><br>XSL模板由两部分组成：匹配模式和执行，匹配模式指定文档中节点处理，执行定义输出。<br><em> 定义模板：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:template match=&quot;pattern&quot; name=&quot;name&quot; priority=&quot;number&quot; mode=&quot;mode&quot;&gt;</div><div class="line">	&lt;!--具体执行内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure>
+        <p>jQuery的代码风格与冲突解决<br>&lt;!–more&gt;</p>
+<h2 id="1">代码规范</h2>
 
-</em> match属性的pattern指定为<code>/</code>表示与根节点匹配，指定为为<em>表示与所有未指定规则的节点匹配。<br><code>match=&quot;(title|author)&quot;</code>表示匹配所有title和author元素，<code>match=&quot;(title/author)</code>表示匹配所有父节点为title的author元素
+<p>同一个对象的操作不超过3条,写在同一行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(this).show().unbind(&quot;click&quot;)</div></pre></td></tr></table></figure></p>
+<p>同一个对象的大量操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(this).removeClass(&quot;&quot;)</div><div class="line">	   .addClass(&quot;&quot;)</div><div class="line">	   .stop()</div><div class="line">	   .unblind(&quot;&quot;)</div><div class="line">	   .click(function()&#123;</div><div class="line">	&#125;)</div></pre></td></tr></table></figure></p>
+<p>多个对象的少量操作,适当缩进<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(this).addClass(&quot;&quot;)</div><div class="line">	.children(&quot;&quot;).show().end()</div><div class="line">.silbings().removeClass(&quot;&quot;)</div><div class="line">	.children(&quot;&quot;).hide()</div></pre></td></tr></table></figure></p>
+<h2 id="2">jQuery与DOM对象的转换</h2>
 
-</em> xsl:apply-template：处理当前节点的所有子节点，总是包含在xsl:template元素中。<br><code>&lt;xsl:apply-template select=&quot;expression&quot; mode=&quot;nam&quot;/&gt;</code><br><em> select属性是一个Xpath表达式，规定要用模板来处理节点。值为’</em>‘时去整个节点集，省略则是整个节点的子节点与模板比较选择匹配的处理。<br><em> mode选择同元素定义的多种处理方法。<br><br><h2 id="4">常用属性</h2><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#xsl:element 用于在输出文档创建节点</div><div class="line">&lt;xsl:element name=&quot;name&quot; namespace=&quot;URI&quot; use-attribute-sets=&quot;namelist&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:element&gt;</div><div class="line">#xsl:attribute</div><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">#xsl:text</div><div class="line">&lt;xsl:text disable-output-escaping=&quot;yes|no&quot;&gt;</div><div class="line">	&lt;!--content--&gt;</div><div class="line">&lt;/xsl:text&gt;</div></pre></td></tr></table></figure>
+<p>jQuery对象：<code>var $obj=</code><br>DOM对象：<code>var obj=</code></p>
+<p>jQuery对象转化为DOM对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var $obj=$(&quot;#cr&quot;)</div><div class="line">var cr=$obj[0]</div><div class="line">//使用get(index)方法</div><div class="line">var $obj=$(&quot;#cr&quot;)</div><div class="line">var cr=$obj.get(0)</div></pre></td></tr></table></figure></p>
+<p>DOM对象转化为jQuery对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var cr=document.getElementById(&quot;cr&quot;)</div><div class="line">var $obj=$(cr)</div></pre></td></tr></table></figure></p>
+<h2 id="3">解决jQuery与其他库的冲突</h2>
 
- </em> name规定创建元素的名称<br> <em> namespace规定名称空间的URI
- </em> use-attribute-sets空格分隔属性集，包含需要添加的属性<br> <em> <code>xsl:text</code>用于输出文本节点包括文本、#PCDATA等
- </em> disable-output-escaping默认为no，输出时将对文本进行转义。如<code>&lt;</code>输出为<code>&amp;lt</code><br><br><h2 id="5">XSL节点选择</h2><br>XSL样式表中有一个根模板，从根模板开始匹配XML文档，处理时调用其他模板，要匹配模板和标记时要设计“标记匹配模式”。<br>使用元素名匹配<br>XSL处理器根据match提供的元素名称去XML文档提取该节点的数据，需要用到<code>xsl:value-of</code>元素，用于选取文档中某个元素的值并输出。<br><code>&lt;xsl:value-of select=&quot;expression&quot; disable-output-escaping=&quot;yes|no&quot;&gt;</code><br> <em> select属性值是XPath表达式，规定从哪个节点或属性来提取<br>使用路径匹配<br>通过详细的路径选择节点，即模板中的标记匹配模式可以由子标记、根标记、/、//共同组成。<br><code>&lt;xsl:template match=&quot;图书/书名&quot;&gt;</code>表示匹配图书下的任意书名子节点。<br><code>&lt;xsl:template match=&quot;//书名&quot;&gt;</code>表示匹配任意节点下的书名子节点。<br><br>使用匹配字符匹配
- </em> 根节点匹配符<code>&lt;xsl:template match=&quot;/&quot;&gt;</code><br> <em> 根源素匹配符`&lt;xsl:template match=”/</em>“&gt;<code>* 当前节点</code><xsl:template match="."><code>父节点</code><xsl:template match=".."><code>4. 使用元素属性匹配
-使用</code>标记[@属性]<code>或</code>标记[@属性=’属性值’]`进行筛选匹配。<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#xml文档</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;名单&gt;</div><div class="line">	&lt;姓名&gt;张三&lt;/姓名&gt;</div><div class="line">	&lt;姓名 ID=&quot;1&quot;&gt;李四&lt;/姓名&gt;</div><div class="line">&lt;/名单&gt;</div><div class="line">#获得李四数据</div><div class="line">&lt;xsl:template match=&quot;名单/姓名[@ID=&apos;1&apos;]&quot;&gt;</div><div class="line">	&lt;!--模板内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure><br><br><h2 id="6">XSL控制指令</h2>
-
-<ol>
-<li>简单判断指令<code>&lt;xsl:if&gt;</code><ul>
-<li>以元素名为条件<code>&lt;xsl:if match=&quot;元素名&quot;&gt;</code></li>
-<li>以元素内容为条件<code>&lt;xsl:if test=&quot;元素名[.=元素内容]&quot;&gt;</code></li>
-<li>以元素属性为条件<code>&lt;xsl:if match=&quot;.[@属性名称=&#39;属性值&#39;]&quot;&gt;</code></li>
-<li>以元素属性为条件<code>&lt;xsl:if test=&quot;.[@属性名称=&#39;属性值&#39;]&quot;&gt;</code></li>
-</ul>
-</li>
-<li><p>多条件判断指令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:choose&gt;</div><div class="line">	&lt;xsl:when test=&quot;pattern&quot;&gt;</div><div class="line">		&lt;!--样式定义语句--&gt;</div><div class="line">	&lt;/xsl:when&gt;</div><div class="line">	&lt;xsl:when test=&quot;pattern&quot;&gt;</div><div class="line">		&lt;!--样式定义语句--&gt;</div><div class="line">	&lt;/xsl:when&gt;</div><div class="line">	......</div><div class="line">	&lt;xsl:otherwise&gt;</div><div class="line">		&lt;!--样式定义语句--&gt;</div><div class="line">	&lt;/xsl:otherwise&gt;</div><div class="line">&lt;/xsl:choose&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>循环处理指令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:for-each select=&quot;pattern&quot; order-by=&quot;patternlist&quot;&gt;</div><div class="line">	&lt;xsl:value-of../&gt;</div><div class="line">&lt;/xsl:for-each&gt;</div></pre></td></tr></table></figure>
 <ul>
-<li>用于对多个节点继续相同的处理</li>
-<li>select选择需要循环输出的节点元素</li>
-<li>order-by默认与+使用升序，-使用降序</li>
-<li><xsl:value-of>具体输出指定子节点内容</xsl:value-of></li>
+<li>jQuery在其他库之后导入</li>
 </ul>
-</li>
-<li>输出内容排序<br><code>&lt;xsl:sort select=&quot;元素名&quot; order=&quot;ascending|descending&quot; case-order=&quot;upper-first|lower-first&quot; data-type=&quot;text|number|qname&quot; /&gt;</code><ul>
-<li>xsl:sort作为xsl:apply-template或者xsl:for-each的子元素出现</li>
-<li>data-type标书排序数据类型</li>
-<li>select定义关键字</li>
-<li>order设置升降序</li>
-<li>case-order设置大小写字母排序</li>
-</ul>
-</li>
-</ol>
-<p></p><h2 id="7">XPath</h2><br>XPath用于XML文字导航，将节点划分成8种节点类型<p></p>
-<ol>
-<li>根节点：唯一，最上层。根源素是根节点的第一层子节点，一般包括两个子节点：xsl-stylesheet处理指令和根源素。</li>
-<li>元素节点：对应文档中的每一元素，可以定义唯一的标识ID，可以有扩展：命名空间URI、本地命名。</li>
-<li>文本节点：包含一组数据即CDATA包含的字符，没有紧邻的兄弟文本节点，没有扩展名。</li>
-<li>属性节点：元素节点有一个关联的属性节点的集合，元素是属性节点的父节点，但属性节点却不是其父元素的子节点。通过查找元素的子节点可以单向匹配出元素的属性节点，且不同的元素节点不共有同一个属性节点。 </li>
-<li>命名空间节点：每一个元素节点都有一个相关的命名空间节点集。在XML文档中，命名空间是通过保留属性声明的，它们与父元素之间的关系是单向的，并且不具有共享性。 </li>
-<li>处理指令节点：对应于XML文档中的每一条处理指令。它也有扩展名，扩展名的本地命名指向处理对象，而命名空间部分为空。</li>
-<li>注释节点：对应文档中的注释。 </li>
-<li>上下文节点：是将要查询的XML文档树种的一个特定节点，可以认为是查询的起点。</li>
-</ol>
-<p></p><h2 id="8">XPath路径表达式</h2><br>位置路径可以是绝对的，也可以是相对的。绝对路径起始于正斜杠( / )。都包含位置步。<br>绝对位置路径:<code>/step/step/...</code><br>相对位置路径:<code>step/step/...</code><br>步的语法：<code>轴名称::节点测试[谓语]</code><br>步包括：<p></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//使用jQuery()作为jQuery对象的制造工厂</div><div class="line">jQuery.noConflict()//将变量$控制权交给其他库</div><div class="line">jQuery(function ()&#123;</div><div class="line">//使用jQuery</div><div class="line">&#125;)</div><div class="line">//也可以使用自定义备用名</div><div class="line">var $j=jQuery.noConflict()//将变量$控制权交给其他库</div><div class="line">$j(function ()&#123;//使用快捷方式$j</div><div class="line">//使用jQuery</div><div class="line">&#125;)</div><div class="line">//不使用自定义名称而继续使用$</div><div class="line">jQuery.noConflict()</div><div class="line">jQuery(function ($)&#123;</div><div class="line">//使用jQuery</div><div class="line">&#125;)</div><div class="line">//或者使用匿名函数</div><div class="line">jQuery.noConflict()</div><div class="line">(function ($)&#123;</div><div class="line">//使用jQuery</div><div class="line">&#125;)(jQuery)</div></pre></td></tr></table></figure>
 <ul>
-<li>轴:定义所选节点与当前节点之间的树关系</li>
-<li>节点测试:识别某个轴内部的节点</li>
-<li>谓词:更深入地提炼所选的节点集</li>
+<li>jQuery在其他库之前导入</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th>轴</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ancestor</td>
-<td>选取当前节点的所有先辈</td>
-</tr>
-<tr>
-<td>ancestor-or-self</td>
-<td>选取当前节点的所有先辈以及当前节点本身</td>
-</tr>
-<tr>
-<td>attribute</td>
-<td>选取当前节点的所有属性</td>
-</tr>
-<tr>
-<td>child</td>
-<td>选取当前节点的所有子元素</td>
-</tr>
-<tr>
-<td>descendant</td>
-<td>选取当前节点的所有后代元素</td>
-</tr>
-<tr>
-<td>descendant-or-self</td>
-<td>选取当前节点的所有后代元素以及当前节点本身</td>
-</tr>
-<tr>
-<td>following</td>
-<td>选取文档中当前节点的结束标签之后的所有节点</td>
-</tr>
-<tr>
-<td>namespace</td>
-<td>选取当前节点的所有命名空间节点</td>
-</tr>
-<tr>
-<td>parent</td>
-<td>选取当前节点的父节点</td>
-</tr>
-<tr>
-<td>preceding</td>
-<td>选取文档中当前节点的开始标签之前的所有节点</td>
-</tr>
-<tr>
-<td>preceding-sibling</td>
-<td>选取当前节点之前的所有同级节点</td>
-</tr>
-<tr>
-<td>self</td>
-<td>选取当前节点</td>
-</tr>
-</tbody>
-</table>
-<p>节点测试允许从轴中选择特定的元素或者节点类型</p>
-<ul>
-<li>元素名称节点测试：指定与具有名称的节点匹配</li>
-<li>“*”节点测试:指定轴中的所有元素</li>
-<li>node()节点测试:指定轴中的所有元素</li>
-<li>comment()节点测试：指定轴中的所有注释</li>
-<li>text()指定轴中的所有文本</li>
-<li>processing-instruction()节点测试：指定轴中所有的处理指令元素</li>
-</ul>
-<p>谓词用于对节点集进行更神的过滤，用于查找特定节点</p>
-<table>
-<thead>
-<tr>
-<th>谓词</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[position()=n]</td>
-<td>选取当前节点的第n个节点</td>
-</tr>
-<tr>
-<td>[last()]</td>
-<td>选取当前节点的最后一个节点</td>
-</tr>
-<tr>
-<td>[attribute::name]</td>
-<td>选择所有拥有name属性的节点</td>
-</tr>
-<tr>
-<td>[attribute::name1 and attribute::name2]</td>
-<td>选取所有拥有名为name1、name2属性的节点</td>
-</tr>
-<tr>
-<td>[nodename=value]</td>
-<td>选取所有nodename子元素的值为value的节点</td>
-</tr>
-<tr>
-<td>[count()]</td>
-<td>返回符合条件的节点个数</td>
-</tr>
-</tbody>
-</table>
-<p>路径缩写表达式</p>
-<table>
-<thead>
-<tr>
-<th>表达式</th>
-<th>描述</th>
-<th>原语法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>nodename</td>
-<td>选取此节点的所有子节点</td>
-<td>child::nodename</td>
-</tr>
-<tr>
-<td>/</td>
-<td>从根节点选取</td>
-<td>..</td>
-</tr>
-<tr>
-<td>//</td>
-<td>从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置</td>
-<td>/descendant-or-self::node()/</td>
-</tr>
-<tr>
-<td>.</td>
-<td>选取当前节点</td>
-<td>self::node()</td>
-</tr>
-<tr>
-<td>..</td>
-<td>选取当前节点的父节点</td>
-<td>parent::node()</td>
-</tr>
-<tr>
-<td>@</td>
-<td>选取属性</td>
-<td>attribute::</td>
-</tr>
-</tbody>
-</table>
-<p>XPath标准函数:参考<a href="http://www.w3school.com.cn/xpath/xpath_functions.asp" target="_blank" rel="external">XPath、XQuery以及XSLT函数</a></p>
-</xsl:template></xsl:template>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jQuery(function ()&#123;</div><div class="line">//使用jQuery</div><div class="line">&#125;)</div><div class="line">//$()作为其他库的快捷方式，使用jQuery作为制造工厂</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -519,13 +347,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/22/XML-XSL/">XML:XSL转换</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/26/jQuery-note/">jQuery学习笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2016-12-22, 22:34:33</p>
-        <p><span>最后更新:</span>2016-12-24, 14:12:58</p>
+        <p><span>发布时间:</span>2017-02-26, 17:08:26</p>
+        <p><span>最后更新:</span>2017-02-26, 17:41:52</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/22/XML-XSL/" title="XML:XSL转换">http://www.codingbalian.online/2016/12/22/XML-XSL/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/22/XML-XSL/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/26/jQuery-note/" title="jQuery学习笔记">http://www.codingbalian.online/2017/02/26/jQuery-note/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/02/26/jQuery-note/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -538,15 +366,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/23/XML-DOM/">
-                    XML:DOM
+                <a href="/2017/02/26/JavaScript-Note2/">
+                    JavaScript:学习笔记2
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/22/XML-CSS/">
-                    用CSS显示XML
+                <a href="/2017/02/21/JavaScript-Note/">
+                    JavaScript:学习笔记1
                 </a>
             </div>
         
@@ -558,7 +386,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">XSL转换原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">XSL文档结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">XSL模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">常用属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-number">5.</span> <span class="toc-text">XSL节点选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6"><span class="toc-number">6.</span> <span class="toc-text">XSL控制指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7"><span class="toc-number">7.</span> <span class="toc-text">XPath</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8"><span class="toc-number">8.</span> <span class="toc-text">XPath路径表达式</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">代码规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">jQuery与DOM对象的转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">解决jQuery与其他库的冲突</span></a></li></ol>
         
     </div>
     <style>
@@ -594,7 +422,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"XML:XSL转换　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"jQuery学习笔记　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -610,7 +438,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/22/XML-XSL/" data-title="XML:XSL转换" data-url="http://www.codingbalian.online/2016/12/22/XML-XSL/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/26/jQuery-note/" data-title="jQuery学习笔记" data-url="http://www.codingbalian.online/2017/02/26/jQuery-note/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -633,7 +461,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/23/XML-DOM/" title="上一篇: XML:DOM">
+            <a href="/2017/02/26/JavaScript-Note2/" title="上一篇: JavaScript:学习笔记2">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -641,7 +469,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/22/XML-CSS/" title="下一篇: 用CSS显示XML">
+            <a href="/2017/02/21/JavaScript-Note/" title="下一篇: JavaScript:学习笔记1">
                 <i class="fa fa-angle-right"></i>
             </a>
         
