@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。">
+<meta name="description" content="JavaScript函数的闭包与变量。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XML:DTD">
-<meta property="og:url" content="http://www.codingbalian.online/2016/12/20/XML-DTD/index.html">
+<meta property="og:title" content="JavaScript函数">
+<meta property="og:url" content="http://www.codingbalian.online/2017/02/28/JavaScript-Function/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。">
-<meta property="og:updated_time" content="2016-12-24T06:08:12.303Z">
+<meta property="og:description" content="JavaScript函数的闭包与变量。">
+<meta property="og:updated_time" content="2017-02-28T06:49:01.381Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XML:DTD">
-<meta name="twitter:description" content="XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。">
+<meta name="twitter:title" content="JavaScript函数">
+<meta name="twitter:description" content="JavaScript函数的闭包与变量。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>XML:DTD | Balian&#39;s Blog</title>
+<title>JavaScript函数 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +263,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-XML-DTD" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaScript-Function" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/20/XML-DTD/" class="article-date">
-      <time datetime="2016-12-20T13:24:43.000Z" itemprop="datePublished">2016-12-20</time>
+      <a href="/2017/02/28/JavaScript-Function/" class="article-date">
+      <time datetime="2017-02-28T05:54:04.000Z" itemprop="datePublished">2017-02-28</time>
 </a>
 
 
@@ -282,7 +282,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      XML:DTD
+      JavaScript函数
     </h1>
   
 
@@ -291,15 +291,11 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/XML/">XML</a>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
     </div>
 
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DTD/">DTD</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -307,145 +303,32 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。<br><a id="more"></a></p>
-<h2 id="1">DTD作用</h2><br>1. 指定文档结构的规则<br>2. 验证文档有效性<br>3. 可以被共享<br>4. 可以在描述的文档中与外部的URL链接<br><br><h2 id="2">DTD结构</h2><br>1. <code>&lt;!DOCTYPE</code>开头<code>]&gt;</code>结尾<br>2. <code>&lt;!ELEMENT&gt;</code>声明元素<br>3. <code>&lt;!ATTLIST&gt;</code> 声明元素属性<br>4. <code>&lt;!ENTITY&gt;</code>声明实体，可以用来存储常用的文字区块，或将非XML的数据包括在文档中<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;</div><div class="line">&lt;!--DTD定义--&gt;</div><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">&lt;!--元素定义--&gt;</div><div class="line">&lt;!ELEMENT 公司 (雇员)+&gt;</div><div class="line">&lt;!ELEMENT 雇员 (姓名,雇佣日期,项目清单,说明)&gt;</div><div class="line">&lt;!ELEMENT 姓名 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 雇佣日期 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 项目清单 (项目)*&gt;</div><div class="line">&lt;!ELEMENT 项目 (产品,价格)&gt;</div><div class="line">&lt;!ELEMENT 产品 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 价格 (#PCDATA)&gt;</div><div class="line">&lt;!--属性定义--&gt;</div><div class="line">&lt;!ATTLIST 项目清单 数量 CDATA #REQUIRED&gt;</div><div class="line">&lt;!ATTLIST 雇员</div><div class="line">    部门 CDATA #IMPLIED</div><div class="line">    全职 CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ENTITY  note  &quot;这里是备注信息&quot;&gt;</div><div class="line">]&gt;</div><div class="line">&lt;!--内容定义--&gt;</div><div class="line">&lt;公司&gt;</div><div class="line">    &lt;雇员 部门=&quot;市场部&quot; 全职=&quot;是&quot;&gt;</div><div class="line">        &lt;姓名&gt;李东&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-01-15&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;2&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;打印机&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $111.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;笔记本&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $998.00&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line">    &lt;雇员 部门=&quot;客服部&quot;&gt;</div><div class="line">        &lt;姓名&gt;王权&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-10-2&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;1&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;扫描仪&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $200.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line"> &lt;/公司&gt;</div></pre></td></tr></table></figure><br><br>在IE中运行显示&lt;!DOCTYPE 公司 (View Source of full doctype……)&gt;说明是内部DTD<br><br><h2 id="3">DTD元素类型</h2><br>1. 空元素<code>&lt;!ELEMENT 元素 EMPTY&gt;</code>对应XML<code>&lt;元素/&gt;</code><br>2. ANY类型<code>&lt;!ELEMENT 元素 ANY&gt;</code>表明元素可以包含定义的其他任意内容或任意内容的组合<br>3. #PCDATA(可解析文本)，不能再包含子元素<br>4. 子元素<code>&lt;!ELEMENT 元素 (子元素列表)&gt;</code>包括序列与选择两种结构<code>&lt;!ELEMENT 元素 (元素1,元素2)&gt;</code>表示顺序，<code>&lt;!ELEMENT 元素 (元素1|元素2)&gt;</code>表示选择，至少选其一<br>5. 混合类型<code>&lt;!ELEMENT 元素 (#PCDATA|子元素1|子元素2)*&gt;</code><br><br><h2 id="4">元素限定符</h2>
+        <p>JavaScript函数的闭包与变量。<br><a id="more"></a></p>
+<h2 id="1">递归</h2>
 
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th style="text-align:center">用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>()</td>
-<td style="text-align:center">分组</td>
-</tr>
-<tr>
-<td>&brvbar;</td>
-<td style="text-align:center">选择</td>
-</tr>
-<tr>
-<td>+</td>
-<td style="text-align:center">最少出现一次</td>
-</tr>
-<tr>
-<td>*</td>
-<td style="text-align:center">允许出现任意多次</td>
-</tr>
-<tr>
-<td>?</td>
-<td style="text-align:center">出现0~1次</td>
-</tr>
-<tr>
-<td>,</td>
-<td style="text-align:center">必须按指定顺序出现</td>
-</tr>
-</tbody>
-</table>
-<p>**DTD属性</p>
-<ul>
-<li>设定元素属性与名称</li>
-<li>设定属性数据类型</li>
-<li>设定是否可选，是否属性固定，以及默认值</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!ATTLIST ELEMENT_name</div><div class="line">    Attribute_name TYPE [add_declare]&gt;</div></pre></td></tr></table></figure>
-<p>属性类型</p>
-<table>
-<thead>
-<tr>
-<th>类型名称</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CDATA</td>
-<td style="text-align:center">值为普通的字符</td>
-</tr>
-<tr>
-<td>ID</td>
-<td style="text-align:center">值在文档中是唯一的</td>
-</tr>
-<tr>
-<td>IDREF</td>
-<td style="text-align:center">值参考了文档中另一个ID属性</td>
-</tr>
-<tr>
-<td>IDREFS</td>
-<td style="text-align:center">值参考了用空格隔开的多个文档中的ID属性</td>
-</tr>
-<tr>
-<td>ENTITY</td>
-<td style="text-align:center">值是一个外部实体</td>
-</tr>
-<tr>
-<td>ENTITIES</td>
-<td style="text-align:center">值包含了多个外部实体，用空格隔开</td>
-</tr>
-<tr>
-<td>NMTOKEN</td>
-<td style="text-align:center">值只能由字母、数字、下划线、连字符、圆点、冒号等字符组成</td>
-</tr>
-<tr>
-<td>NMTOKENS</td>
-<td style="text-align:center">值由多个nmtoken组成，用空格隔开</td>
-</tr>
-<tr>
-<td>NOTATION</td>
-<td style="text-align:center">值是在DTD中声明过的注解名称</td>
-</tr>
-<tr>
-<td>Enumerated</td>
-<td style="text-align:center">列出能够赋予该属性的各种值的列表，只能从中选定一个属性值</td>
-</tr>
-</tbody>
-</table>
-<p>在DTD中声明一个NOTATION类型的属性时，必须首先声明一个具体的NOTATION用来指向应用软件所在的位置，声明的方式有两种:<br>一种是使用MIME类型，格式为：<br><code>&lt;!NOTATION 记号名 SYSTEM &quot;MIME类型&quot;&gt;</code><br>另一种是使用URL路径，指定一个处理程序的路径，格式为：<br><code>&lt;!NOTATION 记号名 SYSTEM  &quot;URL&quot;&gt;</code></p>
-<p>属性的附加声明<br>added_declare是属性定义中的可选内容。附加声明指明了该属性是必要的还是可选的，是预设的固定属性值还是当属性值被省略时的默认值</p>
-<table>
-<thead>
-<tr>
-<th>附加声明</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>#REQUIRED</td>
-<td>必须给出属性值</td>
-</tr>
-<tr>
-<td>#IMPLIIED</td>
-<td>可以不出现</td>
-</tr>
-<tr>
-<td>#FIXED AttValue</td>
-<td>固定值</td>
-</tr>
-<tr>
-<td>Default_Value</td>
-<td>默认</td>
-</tr>
-</tbody>
-</table>
-<h2 id="5">DTD引用</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function factorial(num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * factorial(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">var func = factorial</div><div class="line">factorial =null	</div><div class="line">alert(func(4))//error</div></pre></td></tr></table></figure>
+<p>在调用func时需要执行factorial函数，func指向factorial函数但由于factorial函数以及为空，因此无法执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function factorial(num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * arguments.callee(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">var func = factorial</div><div class="line">factorial =null	</div><div class="line">alert(func(4))//24</div></pre></td></tr></table></figure>
+<p>arguments.callee指向正在执行的函数，因此不会出错，但是在严格模式下不能访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var factorial = (function f (num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * f(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;)</div></pre></td></tr></table></figure></p>
+<p>严格模式下即使factorial为空但是f依旧存在。</p>
+<h2 id="2">闭包</h2>
 
-<p>内部DTD</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">	声明语句</div><div class="line">]&gt;</div></pre></td></tr></table></figure>
-<p>外部DTD</p>
-<p>引用私有DTD：<br><code>&lt;!DOCTYPE  RootElementName  SYSTEM  DTD_URL&gt;</code><br>引用公有DTD：<br><code>&lt;!DOCTYPE RootElementName PUBLIC DTD_name  DTD_URL&gt;</code></p>
-<ul>
-<li>RootElementName根源素</li>
-<li>SYSTEM 私有</li>
-<li>PUBLIC 公用</li>
-<li>DTD_name DTD文件名</li>
-<li>DTD_URL DTD文件路径</li>
-</ul>
-<h2 id="6">DTD实体</h2>
+<p>闭包是指有权限访问另一个函数作用域的变量的函数。<br>函数执行完毕后局部活动对象会被销毁只保留全局的变量对象，但是闭包不同。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function funa(...)&#123;</div><div class="line">	...</div><div class="line">	return function()&#123;//闭包，匿名函数</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在调用funa时，匿名函数会包含funa的活动对象和全局变量，而funa在执行完之后其环境的作用域链被销毁但是活动对象仍然存在，因匿名函数仍在调用它，直到匿名函数被销毁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a=funa()//创建函数</div><div class="line">...//执行</div><div class="line">a=null//解除对匿名函数的引用释放内存</div></pre></td></tr></table></figure></p>
+<p>同时闭包只能取得包含函数中的任何变量的最后一个值。</p>
+<h3 id="2.1">闭包的this对象</h3>
 
-<p>普通实体<br>用来插入文本。<br>内部普通实体<br><code>&lt;!ENTITY Entity_Name Entity_Value&gt;</code><br>外部普通实体<br><code>&lt;!ENTITY Entity_Name SYSTEM Entity_URL&gt;</code><br>SYSTEM是定义外部实体的关键字<br>引用<code>&amp;Enitiy_Name;</code><br>参数实体<br>不仅可以包含文本，还可以包含元素类型声明、属性列表声明、一般实体声明、标签声明、处理指令或注释等，只能在DTD中引用，并且通常情况下只能在外部DTD文档中引用。<br>内部参数实体<br><code>&lt;!ENTITY % Entity_Name Entity_Value&gt;</code><br>外部参数实体<br><code>&lt;!ENTITY % Entity_Name SYSTEM Entity_URL&gt;</code><br>引用<code>&amp;Enitiy_Name;</code><br>不可解析实体<br>二进制文件，如图形、声音等非字符型数据，唯一可以出现不可解析实体的地方就是属性值且不能进行引用<br>链接是XML文档:<br><code>&lt;!ENTITY name SYSTEM &quot;URI&quot;&gt;</code><br>不是XML文档<br><code>&lt;!ENTITY name SYSTEM “URI”NDATA  type&gt;</code></p>
+<p>this在全局环境中指向window，在函数被作为对象的方法调用时指向那个对象，匿名函数具有全局性，因此指向window。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name = &apos;world&apos;</div><div class="line">var createFunction = &#123;</div><div class="line">    name: &quot;total&quot;,</div><div class="line">    getName: function () &#123;//返回函数</div><div class="line">        return function () &#123;</div><div class="line">            return this.name</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">alert(createFunction.getName()())//调用被返回的函数，world</div></pre></td></tr></table></figure></p>
+<p>this指向window。<br>使this指向对象本身。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &apos;world&apos;</div><div class="line">var createFunction = &#123;</div><div class="line">    name: &quot;total&quot;,</div><div class="line">    getName: function () &#123;</div><div class="line">        return function () &#123;</div><div class="line">var that = this </div><div class="line">            return that.name</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">alert(createFunction.getName()())//total</div></pre></td></tr></table></figure></p>
+<h3 id="2.2">内存泄漏</h3>
+
+<p>闭包的作用域链包含HTML元素，则该元素无法被销毁。，但改写函数可以释放所占用的内存。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function fun()&#123;</div><div class="line">	...</div><div class="line">	var ele=document.getElementById(&quot;...&quot;)</div><div class="line">	var id =ele.id</div><div class="line">	ele.onclick=function()&#123;</div><div class="line">		alert(id)</div><div class="line">	&#125;	</div><div class="line">	ele=null</div><div class="line">&#125;//即闭包不直接引用HTML元素，可以保证内存的正常回收</div></pre></td></tr></table></figure></p>
+<h3 id="2.3">块级作用域与私有变量</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">function f()&#123;&#125;()//出错，函数声明不能直接调用</div><div class="line">(function f()&#123;&#125;)()//转换成表达式即可调用</div></pre></td></tr></table></figure>
+<p>f拥有私有的作用域又可以访问环境的对象，而且不会扰乱全局作用域。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function f(name)&#123;</div><div class="line">	this.getName=function()&#123;//特权方法</div><div class="line">		return name</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>name作为私有变量无法直接访问，但是可以通过getName方法访问。</p>
 
       
     </div>
@@ -454,13 +337,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/20/XML-DTD/">XML:DTD</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/28/JavaScript-Function/">JavaScript函数</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2016-12-20, 21:24:43</p>
-        <p><span>最后更新:</span>2016-12-24, 14:08:12</p>
+        <p><span>发布时间:</span>2017-02-28, 13:54:04</p>
+        <p><span>最后更新:</span>2017-02-28, 14:49:01</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/20/XML-DTD/" title="XML:DTD">http://www.codingbalian.online/2016/12/20/XML-DTD/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/20/XML-DTD/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/28/JavaScript-Function/" title="JavaScript函数">http://www.codingbalian.online/2017/02/28/JavaScript-Function/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/02/28/JavaScript-Function/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -473,15 +356,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/21/XML-Schema/">
-                    XML Schema
+                <a href="/2017/02/28/JavaScript-BOM/">
+                    BOM
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/20/XML/">
-                    XML：语法基础
+                <a href="/2017/02/27/JavaScript-object/">
+                    JavaScript对象
                 </a>
             </div>
         
@@ -493,7 +376,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">DTD作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">DTD结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">DTD元素类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">元素限定符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-number">5.</span> <span class="toc-text">DTD引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6"><span class="toc-number">6.</span> <span class="toc-text">DTD实体</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">递归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">闭包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text">闭包的this对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text">内存泄漏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.3"><span class="toc-number">2.3.</span> <span class="toc-text">块级作用域与私有变量</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -529,7 +412,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"XML:DTD　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"JavaScript函数　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -545,7 +428,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/20/XML-DTD/" data-title="XML:DTD" data-url="http://www.codingbalian.online/2016/12/20/XML-DTD/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/28/JavaScript-Function/" data-title="JavaScript函数" data-url="http://www.codingbalian.online/2017/02/28/JavaScript-Function/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -568,7 +451,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/21/XML-Schema/" title="上一篇: XML Schema">
+            <a href="/2017/02/28/JavaScript-BOM/" title="上一篇: BOM">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -576,7 +459,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/20/XML/" title="下一篇: XML：语法基础">
+            <a href="/2017/02/27/JavaScript-object/" title="下一篇: JavaScript对象">
                 <i class="fa fa-angle-right"></i>
             </a>
         

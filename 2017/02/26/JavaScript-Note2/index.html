@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://www.codingbalian.online/2017/02/26/JavaScript-Note2/index.html">
 <meta property="og:site_name" content="Balian's Blog">
 <meta property="og:description" content="1">
-<meta property="og:updated_time" content="2017-02-27T09:07:01.507Z">
+<meta property="og:updated_time" content="2017-02-27T16:26:26.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript:学习笔记2">
 <meta name="twitter:description" content="1">
@@ -328,7 +328,7 @@
 <h2 id="5">正则表达式与函数</h2>
 
 <p>创建正则表达式对象：<br><code>var expression = /pattern/ flags</code><br><code>var obj=new RegExp(&quot;pattern&quot;,&quot;flags&quot;)</code><br>flags可选，可包含多个：i表示不区分大小写，g表示匹配全局，m表示多行，在一行文本末尾时还会继续寻找下一行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var text=&apos;value&apos;</div><div class="line">var obj=new RegExp(&quot;&quot;,&quot;&quot;)</div><div class="line">//text.match(obj)等同于obj.exec(text)</div></pre></td></tr></table></figure></p>
-<p>函数：访问函数本身：functionname，不包含括号。<br>函数内部属性：arguments：包含所有参数，this指向执行的环境对象。<br><code>arguments.callee</code>指向函数本身，在函数内部使用可以消除耦合。<br><code>arguments.caller</code>指向调用函数本身的另一函数，若在全局环境中调用则返回null。</p>
+<p>函数：访问函数本身：functionname，不包含括号。<br>函数内部属性：arguments：包含所有参数，this指向执行的环境对象。<br><code>arguments.callee</code>指向正在调用的函数，在函数内部使用可以消除耦合。<br><code>arguments.caller</code>指向调用函数本身的另一函数，若在全局环境中调用则返回null。</p>
 <h2 id="6">对象</h2>
 
 <p>对象的数据属性：<br>Configurable:默认为true，表示能否提供delete删除属性，修改属性的特性，能否将属性修改位访问器属性。<br>Enumerable：默认为true，表示能否通过for-in循环返回属性。<br>Writable：默认为true，表示能否修改属性。<br>Value：写入属性时将属性的值包含在此。<br>修改属性默认的特性：<br><code>Object.defineProperty(objectname,&quot;attributename&quot;,{Configurable|Enumerable|Writable|Value})</code></p>
@@ -345,7 +345,7 @@
         <p><span>本文标题:</span><a href="/2017/02/26/JavaScript-Note2/">JavaScript:学习笔记2</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2017-02-26, 21:00:05</p>
-        <p><span>最后更新:</span>2017-02-27, 17:07:01</p>
+        <p><span>最后更新:</span>2017-02-28, 00:26:26</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/02/26/JavaScript-Note2/" title="JavaScript:学习笔记2">http://www.codingbalian.online/2017/02/26/JavaScript-Note2/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/02/26/JavaScript-Note2/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -470,7 +470,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/JavaScript-object/">JavaScript对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/JavaScript-Note2/">JavaScript:学习笔记2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/jQuery-note/">jQuery学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/JavaScript-Note/">JavaScript:学习笔记1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/OS-File Management/">操作系统：文件管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/OS-Device Management/">操作系统:设备管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-Process/">操作系统：进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/OS-Storage Management/">操作系统:存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-BOM/">BOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-Function/">JavaScript函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/JavaScript-object/">JavaScript对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/JavaScript-Note2/">JavaScript:学习笔记2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/jQuery-note/">jQuery学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/JavaScript-Note/">JavaScript:学习笔记1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/OS-File Management/">操作系统：文件管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/OS-Device Management/">操作系统:设备管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-Process/">操作系统：进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/OS-Storage Management/">操作系统:存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
 
 
 

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2017-02-27T16:13:02.021Z</updated>
+  <updated>2017-02-28T09:25:10.598Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -14,6 +14,138 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BOM</title>
+    <link href="http://www.codingbalian.online/2017/02/28/JavaScript-BOM/"/>
+    <id>http://www.codingbalian.online/2017/02/28/JavaScript-BOM/</id>
+    <published>2017-02-28T06:54:05.000Z</published>
+    <updated>2017-02-28T09:25:10.598Z</updated>
+    
+    <content type="html"><![CDATA[<p>JavaScript中的浏览器对象模型<br><a id="more"></a></p>
+<h2 id="1">window对象</h2>
+
+<p>window对象是BOM的核心，代表浏览器的实例，在全局作用域的对象与方法都会变成window的属性和方法。<br>全局变量不能通过delete来删除。而在window上定义的对象可以。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a =29</div><div class="line">window.b=28</div><div class="line">delete window.a</div><div class="line">delete window.b</div><div class="line">alert(window.a)//29</div><div class="line">alert(window.b)//undefined</div></pre></td></tr></table></figure></p>
+<p>访问未声明变量会抛出错误但访问window的未声明变量则是一次查询，不会出错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var a=b//Uncaught ReferenceError: b is not defined</div><div class="line">var a=window.b//查询，不会出错</div></pre></td></tr></table></figure></p>
+<h3 id="1.1">frame</h3>
+
+<p>如果页面中包含框架，则每个框架都有自己的window对象，保存在frames集合中。每个window对象都有name属性包含框架的名称。<br>top始终指向最外层框架即浏览器窗口，可以使用<code>top.frames[index|&quot;framename&quot;]</code>引用指定框架。<br>parent对象指的是当前框架的上层框架，在没有框架的情况下等于top。<br>self等同与window。<br><code>window.moveTo</code>将浏览器窗口移动到指定位置，<code>window.moveBy</code>是对浏览器窗口的相对移动操作。<br><code>window.resizeTo</code>直接调整大小，<code>window.resizeBy</code>接受与原窗口的宽高差后再相对调整。</p>
+<p>获取页面视口的大小：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> function GetClientSize() &#123;</div><div class="line">    var pageWidth = window.innerWidth</div><div class="line">    var pageHeight = window.innerHeight</div><div class="line">    if (typeof pageHeight != &quot;number&quot;) &#123;</div><div class="line">        if (document.compatMode == &quot;CSS1Compat&quot;) &#123;</div><div class="line">            pageWidth = document.documentElement.clientWidth</div><div class="line">            pageHeight = document.documentElement.clientHeight</div><div class="line">        &#125; else &#123;</div><div class="line">            pageWidth = document.body.clientWidth</div><div class="line">            pageHeight = document.body.clientHeight</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    alert(&quot;Height:&quot; + pageHeight + &quot; Width:&quot; + pageWidth)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>弹窗屏蔽检测：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var blocked = false</div><div class="line">try &#123;</div><div class="line">    var newWindow = window.open(&quot;http://www.baidu.com&quot;, &quot;_blank&quot;)</div><div class="line">    if (newWindow == null)</div><div class="line">        blocked = true</div><div class="line">&#125; catch (ex) &#123;</div><div class="line">    blocked = true</div><div class="line">&#125;</div><div class="line">if (blocked) &#123;</div><div class="line">    alert(&quot;The popup was blocked!&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2">location对象</h2>
+
+<p>location对象提供了当前加载的文档的相关信息。</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hash</td>
+<td>返回URL中#及后面的字符，若无则为空字符</td>
+</tr>
+<tr>
+<td>host</td>
+<td>返回服务器名称与端口号</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>返回服务器名称</td>
+</tr>
+<tr>
+<td>href</td>
+<td>完整的URL</td>
+</tr>
+<tr>
+<td>pathname</td>
+<td>URL的目录和文件名</td>
+</tr>
+<tr>
+<td>port</td>
+<td>端口号</td>
+</tr>
+<tr>
+<td>portocal</td>
+<td>使用协议</td>
+</tr>
+<tr>
+<td>search</td>
+<td>?及之后的字符</td>
+</tr>
+</tbody>
+</table>
+<p><code>localtion.assign(&quot;...&quot;)</code>改变浏览器位置<br><code>localtion.replace(&quot;...&quot;)</code>导航到新页面且不在历史记录中生成记录，即无法倒退<br><code>localtion.reload()</code>重新加载本页面，使用true参数直接从服务器重新加载</p>
+<h2 id="3">navigator对象</h2>
+
+<p>navigator对象用于识别客户端浏览器。</p>
+<p>扩展插件检测（不适用于IE）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function hasPlugin(name) &#123;</div><div class="line">    name = name.toLowerCase()</div><div class="line">    for (var i = 0; i &lt; navigator.plugins.length; i++) &#123;</div><div class="line">        if (navigator.plugins[i].name.toLowerCase().indexOf(name) &gt; -1) &#123;</div><div class="line">            return true</div><div class="line">        &#125; else &#123;</div><div class="line">            return false</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="4">screen对象</h2>
+
+<p>screen对象用于表示客户端能力。<br>使浏览器占据屏幕空间：<br><code>window.resizeTo(screen.availWidth,screen.availHeight)</code></p>
+<h2 id="5">history对象</h2>
+
+<p>history对象保存着浏览器的浏览记录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">history.go(-1)//后退一页</div><div class="line">history.go(1)//前进一页</div><div class="line">history.go(2)//前进两页</div><div class="line">history.g0(baidu.com)//跳转到最近的baidu.com页面</div><div class="line">history.back()//后退</div><div class="line">history.forward()//前进</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JavaScript中的浏览器对象模型&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript函数</title>
+    <link href="http://www.codingbalian.online/2017/02/28/JavaScript-Function/"/>
+    <id>http://www.codingbalian.online/2017/02/28/JavaScript-Function/</id>
+    <published>2017-02-28T05:54:04.000Z</published>
+    <updated>2017-02-28T06:49:01.381Z</updated>
+    
+    <content type="html"><![CDATA[<p>JavaScript函数的闭包与变量。<br><a id="more"></a></p>
+<h2 id="1">递归</h2>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function factorial(num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * factorial(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">var func = factorial</div><div class="line">factorial =null	</div><div class="line">alert(func(4))//error</div></pre></td></tr></table></figure>
+<p>在调用func时需要执行factorial函数，func指向factorial函数但由于factorial函数以及为空，因此无法执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function factorial(num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * arguments.callee(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">var func = factorial</div><div class="line">factorial =null	</div><div class="line">alert(func(4))//24</div></pre></td></tr></table></figure>
+<p>arguments.callee指向正在执行的函数，因此不会出错，但是在严格模式下不能访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var factorial = (function f (num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * f(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;)</div></pre></td></tr></table></figure></p>
+<p>严格模式下即使factorial为空但是f依旧存在。</p>
+<h2 id="2">闭包</h2>
+
+<p>闭包是指有权限访问另一个函数作用域的变量的函数。<br>函数执行完毕后局部活动对象会被销毁只保留全局的变量对象，但是闭包不同。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function funa(...)&#123;</div><div class="line">	...</div><div class="line">	return function()&#123;//闭包，匿名函数</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在调用funa时，匿名函数会包含funa的活动对象和全局变量，而funa在执行完之后其环境的作用域链被销毁但是活动对象仍然存在，因匿名函数仍在调用它，直到匿名函数被销毁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a=funa()//创建函数</div><div class="line">...//执行</div><div class="line">a=null//解除对匿名函数的引用释放内存</div></pre></td></tr></table></figure></p>
+<p>同时闭包只能取得包含函数中的任何变量的最后一个值。</p>
+<h3 id="2.1">闭包的this对象</h3>
+
+<p>this在全局环境中指向window，在函数被作为对象的方法调用时指向那个对象，匿名函数具有全局性，因此指向window。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name = &apos;world&apos;</div><div class="line">var createFunction = &#123;</div><div class="line">    name: &quot;total&quot;,</div><div class="line">    getName: function () &#123;//返回函数</div><div class="line">        return function () &#123;</div><div class="line">            return this.name</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">alert(createFunction.getName()())//调用被返回的函数，world</div></pre></td></tr></table></figure></p>
+<p>this指向window。<br>使this指向对象本身。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &apos;world&apos;</div><div class="line">var createFunction = &#123;</div><div class="line">    name: &quot;total&quot;,</div><div class="line">    getName: function () &#123;</div><div class="line">        return function () &#123;</div><div class="line">var that = this </div><div class="line">            return that.name</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">alert(createFunction.getName()())//total</div></pre></td></tr></table></figure></p>
+<h3 id="2.2">内存泄漏</h3>
+
+<p>闭包的作用域链包含HTML元素，则该元素无法被销毁。，但改写函数可以释放所占用的内存。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function fun()&#123;</div><div class="line">	...</div><div class="line">	var ele=document.getElementById(&quot;...&quot;)</div><div class="line">	var id =ele.id</div><div class="line">	ele.onclick=function()&#123;</div><div class="line">		alert(id)</div><div class="line">	&#125;	</div><div class="line">	ele=null</div><div class="line">&#125;//即闭包不直接引用HTML元素，可以保证内存的正常回收</div></pre></td></tr></table></figure></p>
+<h3 id="2.3">块级作用域与私有变量</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">function f()&#123;&#125;()//出错，函数声明不能直接调用</div><div class="line">(function f()&#123;&#125;)()//转换成表达式即可调用</div></pre></td></tr></table></figure>
+<p>f拥有私有的作用域又可以访问环境的对象，而且不会扰乱全局作用域。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function f(name)&#123;</div><div class="line">	this.getName=function()&#123;//特权方法</div><div class="line">		return name</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>name作为私有变量无法直接访问，但是可以通过getName方法访问。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JavaScript函数的闭包与变量。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>JavaScript对象</title>
@@ -90,7 +222,7 @@
     <link href="http://www.codingbalian.online/2017/02/26/JavaScript-Note2/"/>
     <id>http://www.codingbalian.online/2017/02/26/JavaScript-Note2/</id>
     <published>2017-02-26T13:00:05.000Z</published>
-    <updated>2017-02-27T09:07:01.507Z</updated>
+    <updated>2017-02-27T16:26:26.830Z</updated>
     
     <content type="html"><![CDATA[<p>1<br><a id="more"></a></p>
 <h2 id="1">Script参数</h2>
@@ -117,7 +249,7 @@
 <h2 id="5">正则表达式与函数</h2>
 
 <p>创建正则表达式对象：<br><code>var expression = /pattern/ flags</code><br><code>var obj=new RegExp(&quot;pattern&quot;,&quot;flags&quot;)</code><br>flags可选，可包含多个：i表示不区分大小写，g表示匹配全局，m表示多行，在一行文本末尾时还会继续寻找下一行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var text=&apos;value&apos;</div><div class="line">var obj=new RegExp(&quot;&quot;,&quot;&quot;)</div><div class="line">//text.match(obj)等同于obj.exec(text)</div></pre></td></tr></table></figure></p>
-<p>函数：访问函数本身：functionname，不包含括号。<br>函数内部属性：arguments：包含所有参数，this指向执行的环境对象。<br><code>arguments.callee</code>指向函数本身，在函数内部使用可以消除耦合。<br><code>arguments.caller</code>指向调用函数本身的另一函数，若在全局环境中调用则返回null。</p>
+<p>函数：访问函数本身：functionname，不包含括号。<br>函数内部属性：arguments：包含所有参数，this指向执行的环境对象。<br><code>arguments.callee</code>指向正在调用的函数，在函数内部使用可以消除耦合。<br><code>arguments.caller</code>指向调用函数本身的另一函数，若在全局环境中调用则返回null。</p>
 <h2 id="6">对象</h2>
 
 <p>对象的数据属性：<br>Configurable:默认为true，表示能否提供delete删除属性，修改属性的特性，能否将属性修改位访问器属性。<br>Enumerable：默认为true，表示能否通过for-in循环返回属性。<br>Writable：默认为true，表示能否修改属性。<br>Value：写入属性时将属性的值包含在此。<br>修改属性默认的特性：<br><code>Object.defineProperty(objectname,&quot;attributename&quot;,{Configurable|Enumerable|Writable|Value})</code></p>
@@ -3192,41 +3324,6 @@
     
       <category term="Python" scheme="http://www.codingbalian.online/categories/Python/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>github pages + Hexo + 域名绑定</title>
-    <link href="http://www.codingbalian.online/2016/12/19/github-pages-Hexo/"/>
-    <id>http://www.codingbalian.online/2016/12/19/github-pages-Hexo/</id>
-    <published>2016-12-19T15:03:28.000Z</published>
-    <updated>2016-12-24T05:54:41.418Z</updated>
-    
-    <content type="html"><![CDATA[<p>本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。<br><a id="more"></a></p>
-<p></p><h2 id="1">环境</h2><p></p>
-<ol>
-<li>安装Git<img src="http://oifuxc6w5.bkt.clouddn.com/git.png" alt=""></li>
-<li>安装Node<img src="http://oifuxc6w5.bkt.clouddn.com/NODEJS.png" alt=""></li>
-<li>验证安装<img src="http://oifuxc6w5.bkt.clouddn.com/cmd.png" alt=""></li>
-</ol>
-<p></p><h2 id="2">Github Pages</h2><br> 在GitHub创建一个格式为：yourusername.github.io的仓库即可。<br><img src="http://oifuxc6w5.bkt.clouddn.com/gitmaven.png" alt=""><p></p>
-<p></p><h2 id="3">Hexo</h2><br>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。<br>建立一个blog文件夹用于存放博客文件,然后右键单击选择“Git Bash”。<br><code>npm install hexo-cli -g</code><br><code>hexo init blog</code><br><code>cd blog</code><br><code>npm install</code><br><code>hexo server</code><br>执行hexo server时，默认端口是4000,如果端口被占用更换即可。<br>如<code>hexo server -p 4001</code><br>访问<code>http://localhost:4000/</code><br><img src="http://oifuxc6w5.bkt.clouddn.com/hexo.png" alt=""><p></p>
-<p></p><h2 id="4">更换主题</h2><br>exo-theme：<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a><br>hexo-github-theme-list：<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">https://github.com/hexojs/hexo/wiki/Themes</a><br><code>git clone</code>加上主题地址<br>_config.yml中将theme改成刚刚下载的主题<br>修改完成后<code>hexo generate</code>  <code>hexo server</code>重启服务器查看效果<br><img src="http://oifuxc6w5.bkt.clouddn.com/newtheme.png" alt=""><p></p>
-<p></p><h2 id="5">部署代码到github</h2><br><code>ssh-keygen -t rsa -C &quot;你的邮箱地址&quot;</code>生成SSH秘钥<br>在<a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a> 添加id_rsa.pub中的秘钥<br>安装插件：<br><code>npm install hexo -server --save</code><br><code>npm install hexo-deployer-git --save</code><br>安装其他插件的格式为<code>npm install ... --save</code><br>编辑全局 hexo 的配置文件：<code>_config.yml</code><br>注意<code>:</code>后留一个空格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">type: git</div><div class="line">repository: https://github.com/BalianCheng/BalianCheng.github.io.git</div><div class="line">branch: master</div></pre></td></tr></table></figure><p></p>
-<p>编辑全局配置后需要重新部署：<br>清除掉已经生成的文件：<code>hexo clean</code><br>再生成静态文件：<code>hexo generate</code><br>预览：<code>hexo server</code><br>打开<code>localhost:4000</code>查看<br>部署：<code>hexo deploy</code><br>生成 40 4页面：<code>hexo new page 404</code><br>生成 about 页面：<code>hexo new page about</code><br>生成 tag 标签云页面：<code>hexo new page tags</code><br>安装RSS订阅：<code>npm install hexo-generator-feed --save</code>安装插件，自动生成atom.xml，提供订阅</p>
-<p></p><h2 id="6">绑定域名</h2><br><code>ping yourname.github.io</code>获得IP地址并使用域名解析<br>进入GitHub项目,进入<code>Settings</code>,在<code>Custom domain</code>写入域名<br>在\blog\public下建立CNAME文件写入域名<br>将CNAME放入\blog\source\中避免重复操作<p></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本文从安装环境开始详细讲述如何使用github pages + Hexo搭建自己的静态博客，并且使用阿里云绑定域名。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="github" scheme="http://www.codingbalian.online/categories/github/"/>
-    
-    
-      <category term="hexo" scheme="http://www.codingbalian.online/tags/hexo/"/>
     
   </entry>
   

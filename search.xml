@@ -4,6 +4,110 @@
   
     
     <entry>
+      <title><![CDATA[BOM]]></title>
+      <url>http://www.codingbalian.online/2017/02/28/JavaScript-BOM/</url>
+      <content type="html"><![CDATA[<p>JavaScript中的浏览器对象模型<br><a id="more"></a></p>
+<h2 id="1">window对象</h2>
+
+<p>window对象是BOM的核心，代表浏览器的实例，在全局作用域的对象与方法都会变成window的属性和方法。<br>全局变量不能通过delete来删除。而在window上定义的对象可以。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a =29</div><div class="line">window.b=28</div><div class="line">delete window.a</div><div class="line">delete window.b</div><div class="line">alert(window.a)//29</div><div class="line">alert(window.b)//undefined</div></pre></td></tr></table></figure></p>
+<p>访问未声明变量会抛出错误但访问window的未声明变量则是一次查询，不会出错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var a=b//Uncaught ReferenceError: b is not defined</div><div class="line">var a=window.b//查询，不会出错</div></pre></td></tr></table></figure></p>
+<h3 id="1.1">frame</h3>
+
+<p>如果页面中包含框架，则每个框架都有自己的window对象，保存在frames集合中。每个window对象都有name属性包含框架的名称。<br>top始终指向最外层框架即浏览器窗口，可以使用<code>top.frames[index|&quot;framename&quot;]</code>引用指定框架。<br>parent对象指的是当前框架的上层框架，在没有框架的情况下等于top。<br>self等同与window。<br><code>window.moveTo</code>将浏览器窗口移动到指定位置，<code>window.moveBy</code>是对浏览器窗口的相对移动操作。<br><code>window.resizeTo</code>直接调整大小，<code>window.resizeBy</code>接受与原窗口的宽高差后再相对调整。</p>
+<p>获取页面视口的大小：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> function GetClientSize() &#123;</div><div class="line">    var pageWidth = window.innerWidth</div><div class="line">    var pageHeight = window.innerHeight</div><div class="line">    if (typeof pageHeight != &quot;number&quot;) &#123;</div><div class="line">        if (document.compatMode == &quot;CSS1Compat&quot;) &#123;</div><div class="line">            pageWidth = document.documentElement.clientWidth</div><div class="line">            pageHeight = document.documentElement.clientHeight</div><div class="line">        &#125; else &#123;</div><div class="line">            pageWidth = document.body.clientWidth</div><div class="line">            pageHeight = document.body.clientHeight</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    alert(&quot;Height:&quot; + pageHeight + &quot; Width:&quot; + pageWidth)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>弹窗屏蔽检测：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var blocked = false</div><div class="line">try &#123;</div><div class="line">    var newWindow = window.open(&quot;http://www.baidu.com&quot;, &quot;_blank&quot;)</div><div class="line">    if (newWindow == null)</div><div class="line">        blocked = true</div><div class="line">&#125; catch (ex) &#123;</div><div class="line">    blocked = true</div><div class="line">&#125;</div><div class="line">if (blocked) &#123;</div><div class="line">    alert(&quot;The popup was blocked!&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2">location对象</h2>
+
+<p>location对象提供了当前加载的文档的相关信息。</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hash</td>
+<td>返回URL中#及后面的字符，若无则为空字符</td>
+</tr>
+<tr>
+<td>host</td>
+<td>返回服务器名称与端口号</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>返回服务器名称</td>
+</tr>
+<tr>
+<td>href</td>
+<td>完整的URL</td>
+</tr>
+<tr>
+<td>pathname</td>
+<td>URL的目录和文件名</td>
+</tr>
+<tr>
+<td>port</td>
+<td>端口号</td>
+</tr>
+<tr>
+<td>portocal</td>
+<td>使用协议</td>
+</tr>
+<tr>
+<td>search</td>
+<td>?及之后的字符</td>
+</tr>
+</tbody>
+</table>
+<p><code>localtion.assign(&quot;...&quot;)</code>改变浏览器位置<br><code>localtion.replace(&quot;...&quot;)</code>导航到新页面且不在历史记录中生成记录，即无法倒退<br><code>localtion.reload()</code>重新加载本页面，使用true参数直接从服务器重新加载</p>
+<h2 id="3">navigator对象</h2>
+
+<p>navigator对象用于识别客户端浏览器。</p>
+<p>扩展插件检测（不适用于IE）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function hasPlugin(name) &#123;</div><div class="line">    name = name.toLowerCase()</div><div class="line">    for (var i = 0; i &lt; navigator.plugins.length; i++) &#123;</div><div class="line">        if (navigator.plugins[i].name.toLowerCase().indexOf(name) &gt; -1) &#123;</div><div class="line">            return true</div><div class="line">        &#125; else &#123;</div><div class="line">            return false</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="4">screen对象</h2>
+
+<p>screen对象用于表示客户端能力。<br>使浏览器占据屏幕空间：<br><code>window.resizeTo(screen.availWidth,screen.availHeight)</code></p>
+<h2 id="5">history对象</h2>
+
+<p>history对象保存着浏览器的浏览记录。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">history.go(-1)//后退一页</div><div class="line">history.go(1)//前进一页</div><div class="line">history.go(2)//前进两页</div><div class="line">history.g0(baidu.com)//跳转到最近的baidu.com页面</div><div class="line">history.back()//后退</div><div class="line">history.forward()//前进</div></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JavaScript函数]]></title>
+      <url>http://www.codingbalian.online/2017/02/28/JavaScript-Function/</url>
+      <content type="html"><![CDATA[<p>JavaScript函数的闭包与变量。<br><a id="more"></a></p>
+<h2 id="1">递归</h2>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function factorial(num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * factorial(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">var func = factorial</div><div class="line">factorial =null	</div><div class="line">alert(func(4))//error</div></pre></td></tr></table></figure>
+<p>在调用func时需要执行factorial函数，func指向factorial函数但由于factorial函数以及为空，因此无法执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function factorial(num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * arguments.callee(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">var func = factorial</div><div class="line">factorial =null	</div><div class="line">alert(func(4))//24</div></pre></td></tr></table></figure>
+<p>arguments.callee指向正在执行的函数，因此不会出错，但是在严格模式下不能访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var factorial = (function f (num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * f(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;)</div></pre></td></tr></table></figure></p>
+<p>严格模式下即使factorial为空但是f依旧存在。</p>
+<h2 id="2">闭包</h2>
+
+<p>闭包是指有权限访问另一个函数作用域的变量的函数。<br>函数执行完毕后局部活动对象会被销毁只保留全局的变量对象，但是闭包不同。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function funa(...)&#123;</div><div class="line">	...</div><div class="line">	return function()&#123;//闭包，匿名函数</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在调用funa时，匿名函数会包含funa的活动对象和全局变量，而funa在执行完之后其环境的作用域链被销毁但是活动对象仍然存在，因匿名函数仍在调用它，直到匿名函数被销毁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a=funa()//创建函数</div><div class="line">...//执行</div><div class="line">a=null//解除对匿名函数的引用释放内存</div></pre></td></tr></table></figure></p>
+<p>同时闭包只能取得包含函数中的任何变量的最后一个值。</p>
+<h3 id="2.1">闭包的this对象</h3>
+
+<p>this在全局环境中指向window，在函数被作为对象的方法调用时指向那个对象，匿名函数具有全局性，因此指向window。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name = &apos;world&apos;</div><div class="line">var createFunction = &#123;</div><div class="line">    name: &quot;total&quot;,</div><div class="line">    getName: function () &#123;//返回函数</div><div class="line">        return function () &#123;</div><div class="line">            return this.name</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">alert(createFunction.getName()())//调用被返回的函数，world</div></pre></td></tr></table></figure></p>
+<p>this指向window。<br>使this指向对象本身。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &apos;world&apos;</div><div class="line">var createFunction = &#123;</div><div class="line">    name: &quot;total&quot;,</div><div class="line">    getName: function () &#123;</div><div class="line">        return function () &#123;</div><div class="line">var that = this </div><div class="line">            return that.name</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">alert(createFunction.getName()())//total</div></pre></td></tr></table></figure></p>
+<h3 id="2.2">内存泄漏</h3>
+
+<p>闭包的作用域链包含HTML元素，则该元素无法被销毁。，但改写函数可以释放所占用的内存。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function fun()&#123;</div><div class="line">	...</div><div class="line">	var ele=document.getElementById(&quot;...&quot;)</div><div class="line">	var id =ele.id</div><div class="line">	ele.onclick=function()&#123;</div><div class="line">		alert(id)</div><div class="line">	&#125;	</div><div class="line">	ele=null</div><div class="line">&#125;//即闭包不直接引用HTML元素，可以保证内存的正常回收</div></pre></td></tr></table></figure></p>
+<h3 id="2.3">块级作用域与私有变量</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">function f()&#123;&#125;()//出错，函数声明不能直接调用</div><div class="line">(function f()&#123;&#125;)()//转换成表达式即可调用</div></pre></td></tr></table></figure>
+<p>f拥有私有的作用域又可以访问环境的对象，而且不会扰乱全局作用域。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function f(name)&#123;</div><div class="line">	this.getName=function()&#123;//特权方法</div><div class="line">		return name</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>name作为私有变量无法直接访问，但是可以通过getName方法访问。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript对象]]></title>
       <url>http://www.codingbalian.online/2017/02/27/JavaScript-object/</url>
       <content type="html"><![CDATA[<p>JavaScript中的原型对象与继承<br><a id="more"></a></p>
@@ -87,7 +191,7 @@
 <h2 id="5">正则表达式与函数</h2>
 
 <p>创建正则表达式对象：<br><code>var expression = /pattern/ flags</code><br><code>var obj=new RegExp(&quot;pattern&quot;,&quot;flags&quot;)</code><br>flags可选，可包含多个：i表示不区分大小写，g表示匹配全局，m表示多行，在一行文本末尾时还会继续寻找下一行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var text=&apos;value&apos;</div><div class="line">var obj=new RegExp(&quot;&quot;,&quot;&quot;)</div><div class="line">//text.match(obj)等同于obj.exec(text)</div></pre></td></tr></table></figure></p>
-<p>函数：访问函数本身：functionname，不包含括号。<br>函数内部属性：arguments：包含所有参数，this指向执行的环境对象。<br><code>arguments.callee</code>指向函数本身，在函数内部使用可以消除耦合。<br><code>arguments.caller</code>指向调用函数本身的另一函数，若在全局环境中调用则返回null。</p>
+<p>函数：访问函数本身：functionname，不包含括号。<br>函数内部属性：arguments：包含所有参数，this指向执行的环境对象。<br><code>arguments.callee</code>指向正在调用的函数，在函数内部使用可以消除耦合。<br><code>arguments.caller</code>指向调用函数本身的另一函数，若在全局环境中调用则返回null。</p>
 <h2 id="6">对象</h2>
 
 <p>对象的数据属性：<br>Configurable:默认为true，表示能否提供delete删除属性，修改属性的特性，能否将属性修改位访问器属性。<br>Enumerable：默认为true，表示能否通过for-in循环返回属性。<br>Writable：默认为true，表示能否修改属性。<br>Value：写入属性时将属性的值包含在此。<br>修改属性默认的特性：<br><code>Object.defineProperty(objectname,&quot;attributename&quot;,{Configurable|Enumerable|Writable|Value})</code></p>
