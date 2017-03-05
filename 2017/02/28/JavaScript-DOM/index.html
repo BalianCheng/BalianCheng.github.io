@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="关于死锁的简单内容。">
+<meta name="description" content="DOM1方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统：处理机调度与死锁">
-<meta property="og:url" content="http://www.codingbalian.online/2017/01/04/OS-Deadlock/index.html">
+<meta property="og:title" content="JavaScript的文档对象模型">
+<meta property="og:url" content="http://www.codingbalian.online/2017/02/28/JavaScript-DOM/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="关于死锁的简单内容。">
-<meta property="og:updated_time" content="2017-01-09T14:27:18.583Z">
+<meta property="og:description" content="DOM1方法">
+<meta property="og:updated_time" content="2017-03-05T06:35:52.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="操作系统：处理机调度与死锁">
-<meta name="twitter:description" content="关于死锁的简单内容。">
+<meta name="twitter:title" content="JavaScript的文档对象模型">
+<meta name="twitter:description" content="DOM1方法">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>操作系统：处理机调度与死锁 | Balian&#39;s Blog</title>
+<title>JavaScript的文档对象模型 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +263,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-OS-Deadlock" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaScript-DOM" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/04/OS-Deadlock/" class="article-date">
-      <time datetime="2017-01-04T08:43:56.000Z" itemprop="datePublished">2017-01-04</time>
+      <a href="/2017/02/28/JavaScript-DOM/" class="article-date">
+      <time datetime="2017-02-28T11:53:40.000Z" itemprop="datePublished">2017-02-28</time>
 </a>
 
 
@@ -282,7 +282,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      操作系统：处理机调度与死锁
+      JavaScript的文档对象模型
     </h1>
   
 
@@ -291,15 +291,11 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/操作系统/">操作系统</a>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
     </div>
 
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/处理机/">处理机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/死锁/">死锁</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/调度/">调度</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -307,181 +303,96 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>关于死锁的简单内容。<br><a id="more"></a></p>
-<h2 id="1">处理机调度</h2>
+        <p>DOM1方法<br><a id="more"></a></p>
+<h2 id="1">节点</h2>
 
-<h3 id="1.1">高级、中级和低级调度</h3>
+<p>每个HTML文档的文档节点是根节点，<code>&lt;html&gt;</code>是文档元素，也是文档最外层的元素。</p>
+<h3 id="1.1">Node类型</h3>
 
-<ul>
-<li>高级调度：也称为作业调度或长程调度，决定将外存上处于后备队列中的哪些作业调入内存，并为它们创建进程，排入就绪队列，准备执行。作业调度的时间尺度通常是分钟级。</li>
-<li>低级调度：也称进程调度、短程调度，它决定就绪队列中的哪个进程获得处理机。进程调度的时间尺度通常是毫秒级的。      </li>
-<li>中级调度：也称中程调度。引入中级调度的主要目的，是为了提高内存利用率和系统吞吐量。 </li>
-</ul>
-<p>中级调度的实现：把暂时不能运行的进程调至外存等待，此时的进程状态称为就绪驻外存状态或挂起状态。当又具备运行条件、且内存又稍有空闲时，由中级调度来决定把外存上的就绪进程重新调入内存，并修改其状态为就绪状态，挂在就绪队列上等待调度。涉及进程在内外存间的交换。</p>
-<h3 id="1.2">进程调度的作用</h3>
 
-<p>使用调度算法从就绪队列中选中一个进程，把CPU的使用权交给被选中的进程</p>
-<h3 id="1.3">确定算法原则</h3>
+<table>
+<thead>
+<tr>
+<th>NodeType</th>
+<th>Named Constant</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ELEMENT_NODE</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ATTRIBUTE_NODE</td>
+</tr>
+<tr>
+<td>3</td>
+<td>TEXT_NODE</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CDATA_SECTION_NODE</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ENTITY_REFERENCE_NODE</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ENTITY_NODE</td>
+</tr>
+<tr>
+<td>7</td>
+<td>PROCESSING_INSTRUCTION_NODE</td>
+</tr>
+<tr>
+<td>8</td>
+<td>COMMENT_NODE</td>
+</tr>
+<tr>
+<td>9</td>
+<td>DOCUMENT_NODE</td>
+</tr>
+<tr>
+<td>10</td>
+<td>DOCUMENT_TYPE_NODE</td>
+</tr>
+<tr>
+<td>11</td>
+<td>DOCUMENT_FRAGMENT_NODE</td>
+</tr>
+<tr>
+<td>12</td>
+<td>NOTATION_NODE</td>
+</tr>
+</tbody>
+</table>
+<p>每个节点都有childNodes属性，保存着NodeList对象，但并不是Array的实例。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function convertToArray(nodes) &#123;//将NodeList转化为数组</div><div class="line">    var array = null</div><div class="line">    try &#123;</div><div class="line">        array = Array.prototype.slice.call(nodes, 0)</div><div class="line">    &#125; catch (ex) &#123;</div><div class="line">        array = new Array()</div><div class="line">        for (var i = 0, len = nodes.length; i &lt; len; i++) &#123;</div><div class="line">            array[i].push(nodes[i])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>DOM树中的操作可以看成是指针操作，使用<code>appendChild()</code>方法将已存在的DOM中的节点添加到指定节点的最后则会改变节点所在的位置，即原本的位置已经不存在这个节点了。</p>
+<p><code>cloneNode()</code>接受的参数为布尔值，true时复制其整个节点及子节点，false只复制节点本身。</p>
+<h2 id="2">Document类型</h2>
 
-<ul>
-<li>公平性</li>
-<li>资源利用率高</li>
-</ul>
-<h3 id="1.4">进程调度方式</h3>
+<p>nodeType=0，nodeName=#document<br>Document类型表示整个页面。<br><code>document.Element</code>取得对<code>&lt;html&gt;</code>的引用，<code>document.body</code>取得对<code>&lt;body&gt;</code>的引用，<code>document.doctype</code>取得对<code>&lt;!DOCTYPE&gt;</code>的引用。<br><code>document.URL</code>:完整的url<br><code>document.domain</code>取得域名，可设置。<br><code>document.referrer</code>取得来源页面的URL<br><code>document.links</code>获取带href的<code>&lt;a&gt;</code><br><code>document.anchors</code>获取带name的<code>&lt;a&gt;</code><br><code>document.img</code>取得所有<code>&lt;img&gt;</code><br><code>document.form</code>取得所有<code>&lt;form&gt;</code></p>
+<p><code>document.implementation</code>用于浏览器对DOM的检测。<br>DOM1只有<code>hasFeature()</code>方法。<br>在使用<code>write()</code>和<code>writeln()</code>方法加载script时需要注意将内容的结束符设为<code>&lt;\/script&gt;</code>否则将会被认为与外部的<code>&lt;scrpit&gt;</code>标签匹配。</p>
+<h2 id="3">Element类型</h2>
 
-<ul>
-<li>非剥夺方式：分派程序把处理机分配给进程后便让它一直运行下去，直到进程完成或发生某事件而阻塞时，才把处理机分配给另一个进程。</li>
-<li>剥夺方式：当一个进程正在运行时，系统可以基于某种原则，剥夺已分配给它的处理机，将之分配给其它进程。剥夺原则有：优先权原则、短进程优先原则、时间片原则。</li>
-</ul>
-<h3 id="1.5">进程调度性能衡量的指标</h3>
+<p>html元素属性：<br>html.id    html.title    html.lang    html.dir    html.className</p>
+<p>元素属性方法：<code>getAttribute()</code>,<code>setAttribute()</code>,<code>removeAttribute()</code></p>
+<p>attributes属性方法：<br><code>element.attributse.getNamedItem(name)</code>返回name属性的节点<br><code>element.attributse.removeNamedItem(name)</code><br><code>element.attributse.setNamedItem(node)</code></p>
+<h2 id="4">Text类型</h2>
 
-<ul>
-<li>周转时间</li>
-<li>响应时间</li>
-<li>CPU-I/O执行期</li>
-</ul>
-<h3 id="1.6">调度准则</h3>
+<p><code>appendData(&quot;text&quot;)</code>将text加到Text节点的末尾。<br><code>deleteData(offset,count)</code>删除从offset开始的count个字符。<br><code>replaceData(offset,count,text)</code>用text替换从offset开始的count个字符。<br><code>insertData(offset,text)</code><br><code>splitText(offset,count,Text)</code>将指定位置的当前文档分成两部分<br><code>substring(offset,count)</code>取字符<br><code>crateTextNode()</code>创建text节点。</p>
+<h2 id="5">选择符API</h2>
 
-<ul>
-<li>面向用户的准则：<ul>
-<li>周转时间短，即作业从提交到完成（作业的周转时间T与系统为它提供服务的时间TS之比，即W=T/TS，称为带权周转时间）</li>
-<li>响应时间快</li>
-<li>截止时间的保证</li>
-<li>优先权准则</li>
-</ul>
-</li>
-<li>面向系统的准则：<ul>
-<li>系统吞吐量高</li>
-<li>处理机利用率好</li>
-<li>各类资源的平衡利用</li>
-</ul>
-</li>
-</ul>
-<h2 id="2">进程调度算法</h2>
+<p><code>querySelector()</code>可以接收CSS选择符，返回第一个匹配的元素<br><code>querySelector(&#39;img.button&#39;)</code>选择类为botton的<code>&lt;img&gt;</code></p>
+<p><code>querySelectorAll()</code>同上，但是返回所有符合的元素<br><code>querySelectorAll(&quot;p strong&quot;)</code>返回<code>&lt;p&gt;</code>中所有的<code>&lt;strong&gt;</code>元素</p>
+<p><code>matchesSelector()</code>返回元素与匹配符是否匹配的布尔值。</p>
+<h2 id="6">HTML5的扩展</h2>
 
-<h3 id="2.1">先进先出(FIFO)算法</h3>
-
-<p>把处理机分配给最先进入就绪队列的进程，一个进程一旦分得处理机，便执行下去，直到该进程完成或阻塞时，才释放处理机。<br>优点:实现简单,有利于长作业,CPU繁忙型作业<br>缺点:没考虑进程的优先级,不利于I/O繁忙型作业</p>
-<h3 id="2.2">短作业(进程)优先调度算法</h3>
-
-<ul>
-<li>短作业优先(SJF)的调度算法:从后备队列中选择一个或若干个估计运行时间最短的作业，将它们调入内存运行</li>
-<li>短进程优先(SPF)调度算法:从就绪队列中选出一估计运行时间最短的进程，使它立即执行</li>
-</ul>
-<p>缺点：对长作业不利；不能保证紧迫性作业(进程)会被及时处理；根据用户估计可能存在错误</p>
-<h3 id="2.3">最高优先权优先调度算法</h3>
-
-<p>把处理机分配给就绪队列中具有最高优先权的进程。<br>决定优先权的方法：</p>
-<ol>
-<li>静态优先数法：静态优先权是在创建进程时确定的，在整个运行期间不再改变。依据有：进程类型；进程对资源的要求；用户要求的优先权。</li>
-<li>动态优先数法：在进程创建时创立一个优先数，但在其生命周期内优先权可以随进程的推进或随其等待时间的增加而改变的，以便获得更好的调度性能。</li>
-</ol>
-<h3 id="2.4">高响应比优先调度算法</h3>
-
-<p>$$优先权={等待时间+要求服务时间 \over 要求服务时间}={响应时间  \over 要求服务时间}$$</p>
-<p>特点：</p>
-<ol>
-<li>作业等待时间相同，要求服务的时间愈短，其优先权愈高，有利于短作业</li>
-<li>要求服务的时间相同时，等待时间愈长，其优先权愈高，因而它实现的是先来先服务</li>
-<li>对于长作业，作业的优先级随等待时间的增加而提高，当其等待时间足够长时，其优先级便可升到很高， 从而也可获得处理机。  </li>
-</ol>
-<h3 id="2.5">转轮法</h3> 
-
-<p>把CPU划分成若干时间片,并且按顺序赋给就绪队列中的每一个进程，进程轮流占有CPU，当时间片用完时，即使进程未执行完毕，系统也剥夺该进程的CPU，将该进程排在就绪队列末尾。同时系统选择另一个进程运行。</p>
-<p>简单轮转法：系统将所有就绪进程按FIFO规则排队，按一定的时间间隔把处理机分配给队列中的进程。<br>多级队列方法：将系统中所有进程分成若干类，每类为一级。<br>时间片选择：固定时间片；可变时间片<br>与时间片大小有关的因素：系统响应时间(正比);就绪进程个数(反比);CPU能力 </p>
-<h3 id="2.6">多队列反馈调度算法</h3> 
-
-<ul>
-<li>系统中设置多个就绪队列，并为各个队列赋予不同的优先级。第一个队列的优先级最高，第二个队列次之，其余各队列的优先权逐个降低</li>
-<li>每个就绪队列分配给不同时间片，优先级高的为第一级队列，时间片最小，随着队列级别的降低，时间片加大</li>
-<li>各个队列按照先进先出调度算法</li>
-<li>一个新进程就绪后进入第一级队列</li>
-<li>进程由于等待而放弃CPU后，进入等待队列，一旦等待的事件发生，则回到原来的就绪队列</li>
-<li>当有一个优先级更高的进程就绪时，可以抢占CPU，被抢占进程回到原来一级就绪队列末尾</li>
-<li>当第一级队列空时，就去调度第二级队列，如此类推</li>
-<li>当时间片到后，进程放弃CPU，回到下一级队列，如此下去，一个长作业从第一队列依次降到第n队列</li>
-</ul>
-<h2 id="3">实时调度</h2>
-
-<h3 id="3.1">基本条件</h3>
-
-<ul>
-<li>提供必要的信息(就绪时间、截止时间、处理时间、资源、优先级)</li>
-<li>系统处理能力强</li>
-<li>采用抢占式调度机制</li>
-<li>具有快速切换机制</li>
-</ul>
-<h3 id="3.2">算法的分类</h3>
-
-<ol>
-<li>非抢占式调度算法:非抢占式轮转调度算法;非抢占式优先调度算法</li>
-<li>抢占式调度算法:基于时钟中断的抢占优先调度算法;立即抢占优先权调度算法</li>
-</ol>
-<p>常用算法：<br>最早截止时间优先即EDF算法：只考虑了进程的截止时间，未考虑其运行时间<br>最低松弛度优先(LLF)算法：该算法是根据任务紧急(或松弛)的程度，来确定任务的优先级。该算法主要用于可抢占调度方式中。<br>松弛度=必须完成时间-其本身的运行时间-当前时间 </p>
-<h3 id="3.2">多处理机系统中的调度</h3>
-
-<ol>
-<li>多处理器系统的类型<br>紧密耦合(Tightly Coupted)MPS:<br>通过高速总线或高速交叉开关，来实现多个处理器之间的互连的。它们共享主存储器系统和I/O设备，并要求将主存储器划分为若干个能独立访问的存储器模块，以便多个处理机能同时对主存进行访问。系统中的所有资源和进程，都由操作系统实施统一的控制和管理<br>松散耦合(Loosely Coupled)MPS:<br>通过通道或通信线路，来实现多台计算机之间的互连。每台计算机都有自己的存储器和I/O设备，并配置了OS来管理本地资源和在本地运行的进程,每一台计算机都能独立地工作， 必要时可通过通信线路与其它计算机交换信息，以及协调它们之间的工作</li>
-<li>对称多处理器系统:<br>系统中所包含的各处理器单元，在功能和结构上都是相同的<br>非对称多处理器系统:<br>在系统中有多种类型的处理单元， 它们的功能和结构各不相同，其中只有一个主处理器</li>
-<li>进程分配方式:<br>对称多处理器系统中的进程分配方式：<br>静态分配(Static Assigenment)方式<br>动态分配(Dynamic Assgement)方式<br>非对称MPS中的进程分配方式</li>
-<li>进程(线程)调度方式<br>自调度(Self-Scheduling)方式<br>成组调度(Gang Scheduling)方式</li>
-</ol>
-<h2 id="4">死锁</h2>
-
-<h3 id="4.1">死锁的概念</h3>
-
-<p>一组进程中，每个进程都无限等待被该组进程中另一进程所占有的资源，因而永远无法得到的资源，这种现象称为进程死锁，这一组进程就称为死锁进程。</p>
-<h3 id="4.2">死锁的原因</h3>
-
-<ol>
-<li>竞争系统资源<br>竞争非剥夺性资源<br>竞争临时性资源<br>只可使用一次的资源<br>“申请–分配–使用–释放”模式</li>
-<li>进程的推进顺序不当 </li>
-</ol>
-<p>在同时具备下列四个条件时，就会产生死锁:</p>
-<ul>
-<li>互斥条件（资源独占）<br>在一段时间内，一个资源只能由一个进程独占使用，若别的进程也要求该资源，则须等待，直至其占用者释放</li>
-<li>请求和保持条件<br>允许进程在不释放其已分得资源的情况下请求并等待分配新的资源</li>
-<li>不剥夺条件（不可强占）<br>进程所获得的资源在未使用完之前，不能被其它进程强行夺走，而只能由其自身释放</li>
-<li>环路等待条件<br>存在一个等待进程集合，P0正在等待一个P1占用的资源，P1正在等待一个P2占用的资源，…，Pn正在等待一个由PO占用的资源</li>
-</ul>
-<h2 id="5">解决死锁</h2>
-
-<h3 id="5.1">预防死锁</h3>
-
-<ol>
-<li>破坏请求和保持条件<br>资源一次性分配；要求每个进程在运行前必须一次性申请它所要求的所有资源，且仅当该进程所要资源均可满足时才给予一次性分配</li>
-<li>破坏不可剥夺条件<br>可剥夺资源:某进程新的资源未满足时，释放已占有的资源</li>
-<li>破坏环路等待条件<br>资源有序分配法；系统给每类资源赋予一个编号，每一个进程按编号递增的顺序请求资源，释放则相反</li>
-</ol>
-<p>缺点:影响系统性能</p>
-<h3 id="5.2">避免死锁</h3>
-
-<p>系统对进程发出的能够满足的资源申请进行动态检查，若分配后系统可能发生死锁，则不予分配，否则予以分配。这种方法把系统分为安全状态和不安全状态，安全状态就不会发生死锁。</p>
-<p><strong>安全状态与不安全状态</strong><br>安全状态指系统能按某种进程顺序来为每个进程分配其所需资源，直至最大需求，使每个进程都可顺序完成。若不存在这样的序列，则为不安全状态。</p>
-<p>使用银行家算法可避免死锁：<br>可利用资源向量Available:含m个元素代表每种资源可利用的数目<br>最大需求矩阵Max:n<em>m的矩阵，n代表进程，m代表对资源的最大需求<br>分配矩阵Allocation:n</em>m<br>需求矩阵Need:n*m<br>Need［i,j］=Max［i,j］-Allocation［i,j］<br>Requesti是进程Pi的请求向量</p>
-<ol>
-<li>Requesti［j］≤Need［i,j］</li>
-<li>如果Requesti［j］≤Available［j］，下一步；否则，Pi等待</li>
-<li>Available［j］∶=Available［j］-Requesti［j］;<br>Allocation［i,j］∶=Allocation［i,j］+Requesti［j］;<br>Need［i,j］∶=Need［i,j］-Requesti［j］;</li>
-<li>系统执行安全性算法，检查资源分配后，系统是否处于安全状态，若安全则分配</li>
-</ol>
-<h3 id="5.3">死锁检测</h3>
-
-<p>当为进程分配资源时，如果未采取任何限制措施，则必须提供死锁检测和解除功能:<br>允许死锁发生，操作系统不断监视系统进展情况，判断死锁是否发生。<br>一旦死锁发生则采取专门的措施，解除死锁并以最小的代价恢复操作系统运行。</p>
-<p>检测时机：</p>
-<ul>
-<li>进程等待时检测</li>
-<li>定时检测</li>
-<li>系统资源利用率下降时检测</li>
-</ul>
-<h3 id="5.4">死锁解除</h3>
-
-<ol>
-<li>重新启动</li>
-<li>撤消进程</li>
-<li>剥夺资源</li>
-<li>进程回退</li>
-</ol>
+<p>对元素的class属性操作：<br><code>element.classList.add()</code>增加class属性<br><code>element.classList.contains()</code>判断是否存在指定的class值<br><code>element.classList.remove()</code>删除class的指定值<br><code>element.classList.toggle()</code>若存在指定的class值则删除，若不存在则增加。</p>
+<p><code>document.readyState</code>loading表示文档正在加载，若为complete则加载完成。</p>
+<p><code>document.compatMode</code>CSS1Compat表示标准渲染模式，BackCompat表示混杂模式。</p>
 
       
     </div>
@@ -490,13 +401,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/28/JavaScript-DOM/">JavaScript的文档对象模型</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2017-01-04, 16:43:56</p>
-        <p><span>最后更新:</span>2017-01-09, 22:27:18</p>
+        <p><span>发布时间:</span>2017-02-28, 19:53:40</p>
+        <p><span>最后更新:</span>2017-03-05, 14:35:52</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/01/04/OS-Deadlock/" title="操作系统：处理机调度与死锁">http://www.codingbalian.online/2017/01/04/OS-Deadlock/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/01/04/OS-Deadlock/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/28/JavaScript-DOM/" title="JavaScript的文档对象模型">http://www.codingbalian.online/2017/02/28/JavaScript-DOM/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/02/28/JavaScript-DOM/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -509,15 +420,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/05/OS-Device Management/">
-                    操作系统:设备管理
+                <a href="/2017/03/02/JavaScrpit-DOM2/">
+                    JavaScrpit-DOM2
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/29/JSP-Servlet/">
-                    JSP中Servlet的应用
+                <a href="/2017/02/28/JavaScript-BOM/">
+                    BOM
                 </a>
             </div>
         
@@ -529,7 +440,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">处理机调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">高级、中级和低级调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">进程调度的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.3.</span> <span class="toc-text">确定算法原则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.4"><span class="toc-number">1.4.</span> <span class="toc-text">进程调度方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.5"><span class="toc-number">1.5.</span> <span class="toc-text">进程调度性能衡量的指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.6"><span class="toc-number">1.6.</span> <span class="toc-text">调度准则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">进程调度算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text">先进先出(FIFO)算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text">短作业(进程)优先调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.3"><span class="toc-number">2.3.</span> <span class="toc-text">最高优先权优先调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.4"><span class="toc-number">2.4.</span> <span class="toc-text">高响应比优先调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.5"><span class="toc-number">2.5.</span> <span class="toc-text">转轮法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.6"><span class="toc-number">2.6.</span> <span class="toc-text">多队列反馈调度算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">实时调度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3.1"><span class="toc-number">3.1.</span> <span class="toc-text">基本条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3.2"><span class="toc-number">3.2.</span> <span class="toc-text">算法的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3.2"><span class="toc-number">3.3.</span> <span class="toc-text">多处理机系统中的调度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4.1"><span class="toc-number">4.1.</span> <span class="toc-text">死锁的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4.2"><span class="toc-number">4.2.</span> <span class="toc-text">死锁的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-number">5.</span> <span class="toc-text">解决死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5.1"><span class="toc-number">5.1.</span> <span class="toc-text">预防死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.2"><span class="toc-number">5.2.</span> <span class="toc-text">避免死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.3"><span class="toc-number">5.3.</span> <span class="toc-text">死锁检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5.4"><span class="toc-number">5.4.</span> <span class="toc-text">死锁解除</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">节点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">Node类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">Document类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">Element类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">Text类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5"><span class="toc-number">5.</span> <span class="toc-text">选择符API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6"><span class="toc-number">6.</span> <span class="toc-text">HTML5的扩展</span></a></li></ol>
         
     </div>
     <style>
@@ -565,7 +476,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"操作系统：处理机调度与死锁　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"JavaScript的文档对象模型　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -581,7 +492,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/04/OS-Deadlock/" data-title="操作系统：处理机调度与死锁" data-url="http://www.codingbalian.online/2017/01/04/OS-Deadlock/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/28/JavaScript-DOM/" data-title="JavaScript的文档对象模型" data-url="http://www.codingbalian.online/2017/02/28/JavaScript-DOM/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -604,7 +515,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/05/OS-Device Management/" title="上一篇: 操作系统:设备管理">
+            <a href="/2017/03/02/JavaScrpit-DOM2/" title="上一篇: JavaScrpit-DOM2">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -612,7 +523,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/29/JSP-Servlet/" title="下一篇: JSP中Servlet的应用">
+            <a href="/2017/02/28/JavaScript-BOM/" title="下一篇: BOM">
                 <i class="fa fa-angle-right"></i>
             </a>
         
