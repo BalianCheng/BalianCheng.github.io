@@ -358,7 +358,7 @@
     <entry>
       <title><![CDATA[JavaScript:学习笔记2]]></title>
       <url>http://www.codingbalian.online/2017/02/26/JavaScript-Note2/</url>
-      <content type="html"><![CDATA[<a id="more"></a>
+      <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
 <h2 id="1">Script参数</h2>
 
 <p><code>async</code> 可选，立刻下载脚本文件 在XHTML中需要设置为<code>async=&quot;async&quot;</code><br><code>defer</code> 可选，脚本延迟到整个文档全部解析显示后加载<br><code>src</code> 可选，执行外部脚本，含有src的<code>&lt;script&gt;</code>标签内不能在含有脚本代码，因为代码会被忽略。<br><code>type</code> 默认为’text/javascripy’</p>

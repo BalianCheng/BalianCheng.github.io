@@ -456,9 +456,9 @@
     <link href="http://www.codingbalian.online/2017/02/26/JavaScript-Note2/"/>
     <id>http://www.codingbalian.online/2017/02/26/JavaScript-Note2/</id>
     <published>2017-02-26T13:00:05.000Z</published>
-    <updated>2017-03-05T13:42:07.713Z</updated>
+    <updated>2017-03-05T13:44:42.300Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a>
+    <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
 <h2 id="1">Script参数</h2>
 
 <p><code>async</code> 可选，立刻下载脚本文件 在XHTML中需要设置为<code>async=&quot;async&quot;</code><br><code>defer</code> 可选，脚本延迟到整个文档全部解析显示后加载<br><code>src</code> 可选，执行外部脚本，含有src的<code>&lt;script&gt;</code>标签内不能在含有脚本代码，因为代码会被忽略。<br><code>type</code> 默认为’text/javascripy’</p>
@@ -493,10 +493,7 @@
     
     <summary type="html">
     
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;h2 id=&quot;1&quot;&gt;Script参数&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;async&lt;/code&gt; 可选，立刻下载脚本文件 在XHTML中需要设置为&lt;code&gt;async=&amp;quot;async&amp;quot;&lt;/code&gt;&lt;br&gt;&lt;code&gt;defe
+      &lt;p&gt;　&lt;br&gt;
     
     </summary>
     
