@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2017-03-05T13:30:44.214Z</updated>
+  <updated>2017-03-06T12:46:53.269Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -14,6 +14,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript表单脚本</title>
+    <link href="http://www.codingbalian.online/2017/03/06/JavaScript-form/"/>
+    <id>http://www.codingbalian.online/2017/03/06/JavaScript-form/</id>
+    <published>2017-03-06T08:18:50.000Z</published>
+    <updated>2017-03-06T12:46:53.269Z</updated>
+    
+    <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
+<h2 id="1">表单属性与方法</h2>
+
+<p>HTMLELEMENTFORM的属性与方法：<br>acceptCharset：服务器能处理的字符集<br>action：接受请求的URL<br>elements：表单中所有的控件<br>length：表单中控件的数量<br>method：表单提交的方法，get或者post<br>name：表单名称<br>reset()：重置表单为默认值<br>submit():提交表单<br>target：用于发送请求和接受响应的窗口</p>
+<p>document.forms可以取得页面所有的表单</p>
+<p>使用submit提交表单时会触发一个submit事件，可以借此对表单进行验证，并决定是否提交。使用preventDefault()可以取消表单的提交。</p>
+<p>使用forms.submit()时不会发生submit事件。</p>
+<p>重置表单除了form.reset()时会触发reset事件以外与表单提交相同。</p>
+<h3 id="1.1">表单字段</h3>
+
+<p>共有的表单字段属性(除了<code>&lt;fieldset&gt;</code>)：<br>disabled：表示当前字段是否被禁用<br>form：指向当前字段所属的表单的指针<br>name：当前字段的名称<br>readOnly：是否只读<br>tabIndex：当前字段的切换序号<br>type：字段类型<br>value：当前字段提交给服务器的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(form, &quot;submit&quot;, function (event)//防止重复提交 &#123;</div><div class="line">    event = EventUtil.getEvent(event)</div><div class="line">    var target = EventUtil.getTarget(event)</div><div class="line">    var btn = target.elements[&quot;submit-btn&quot;]</div><div class="line">    btn.disabled = true</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>共有的表单字段方法：<br>focus():浏览器将焦点设置到表单字段(隐藏的字段不可用)<br>blur():字段上的焦点被移走时发生</p>
+<p>共有表单字段事件：<br>blur：字段失去焦点时触发<br>change：对于<code>&lt;input&gt;</code>和<code>&lt;textarea&gt;</code>元素，失去焦点和value改变时触发。对于<code>&lt;select&gt;</code>元素选项改变时触发。<br>focus：字段获得焦点时触发</p>
+<h3 id="1.2">选择文本</h3>
+
+<p>选择了文本框中的内容时就会触发select事件。在调用select()方法时也会发生select事件。<br>取得选择的文本：<br>textbox.value.substring(textbox.selectionStrat,textbox.selectionEnd)<br>选择部分文本：setSelectionRange（strat，end）</p>
+<h3 id="1.3">剪贴板操作</h3>
+
+<p>beforecopy,copy,cut,beforecut,paste,beforepaste事件。</p>
+<p>before系列事件可以向剪贴板数据进行操作。<br>访问剪贴板对象event.clipboardData,getData(),setData(),clearDate()。</p>
+<h3 id="2">富文本编辑器</h3>
+
+<p>嵌入一个包含<code>&lt;iframe&gt;</code>的元素，并将其designMode设置为on。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(window,&quot;load&quot;,function () &#123;</div><div class="line">    frames[&quot;myFrame&quot;].document.designMode=&quot;on&quot;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>或者将元素属性设置为<code>contenteditable=true</code></p>
+<p><div id="wysiwyg" style="height: 100px;width: 100px;border:1px solid black"></div></p>
+<p><button id="btn1">打开富文本编辑</button></p>
+<p><button id="btn2">关闭富文本编辑</button>    </p>
+<p><script><br>btn1.onclick = function(){wysiwyg.contentEditable = true;}<br>btn2.onclick = function(){wysiwyg.contentEditable = false;}<br></script><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;div&quot; style=&quot;height: 100px;width: 100px;border:1px solid black&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;button id=&quot;btn1&quot;&gt;打开富文本编辑&lt;/button&gt;</div><div class="line">&lt;button id=&quot;btn2&quot;&gt;关闭富文本编辑&lt;/button&gt;    </div><div class="line">&lt;script&gt;</div><div class="line">btn1.onclick = function()&#123;div.contentEditable = true;&#125;</div><div class="line">btn2.onclick = function()&#123;div.contentEditable = false;&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>使用element.document.execCommand()进行富文本的操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">居中        　　document.execCommand(&apos;justifyCenter&apos;);</div><div class="line">左对齐     　　 document.execCommand(&apos;justifyLeft&apos;);</div><div class="line">右对齐         document.execCommand(&apos;justifyRight&apos;);</div><div class="line">添加缩进    　　document.execCommand(&apos;indent&apos;);</div><div class="line">去掉缩进    　　document.execCommand(&apos;outdent&apos;);</div><div class="line">字体类型    　　document.execCommand(&apos;fontname&apos;,false,sFontName)</div><div class="line">字体大小    　　document.execCommand(&apos;fontsize&apos;,false,sFontSize)</div><div class="line">字体颜色    　　document.execCommand(&apos;forecolor&apos;,false,sFontColor)</div><div class="line">背景色         document.execCommand(&apos;backColor&apos;,false,sBackColor)</div><div class="line">加粗        　 document.execCommand(&apos;bold&apos;);</div><div class="line">斜体        　 document.execCommand(&apos;italic&apos;);</div><div class="line">下划线         document.execCommand(&apos;underline&apos;);</div><div class="line">复制        　　document.execCommand(&apos;copy&apos;);</div><div class="line">剪切        　　document.execCommand(&apos;cut&apos;);</div><div class="line">粘贴        　　document.execCommand(&apos;paste&apos;);(经测试无效)</div><div class="line">全选        　　document.execCommand(&apos;selectAll&apos;);    </div><div class="line">删除        　　document.execCommand(&apos;delete&apos;);</div><div class="line">后删除         document.execCommand(&apos;forwarddelete&apos;);</div><div class="line">清空格式    　　document.execCommand(&apos;removeFormat&apos;);</div><div class="line">前进一步    　　document.execCommand(&apos;redo&apos;);</div><div class="line">后退一步    　　document.execCommand(&apos;undo&apos;);</div><div class="line">打印       　　 document.execCommand(&apos;print&apos;);(对firefox无效)</div><div class="line">插入标签    　　 document.execCommand(&apos;formatblock&apos;,false,elementName);</div><div class="line">插入&lt;hr&gt;    　　document.execCommand(&apos;inserthorizontalrule&apos;);</div><div class="line">插入&lt;ol&gt;    　　document.execCommand(&apos;insertorderedlist&apos;);</div><div class="line">插入&lt;ul&gt;    　　document.execCommand(&apos;insertunorderedlist&apos;);</div><div class="line">插入&lt;p&gt;        document.execCommand(&apos;insertparagraph&apos;);</div><div class="line">插入图像   　　 document.execCommand(&apos;insertimage&apos;,false,URL);</div><div class="line">增加链接   　　 document.execCommand(&apos;createlink&apos;,false,URL);</div><div class="line">删除链接   　　 document.execCommand(&apos;unlink&apos;);</div><div class="line">anchorNode：选区起点所在的节点</div><div class="line">anchorOffset：在到达选区起点位置之前跳过的anchorNode中的字符数量</div><div class="line">focusNode：选区终点所在的节点</div><div class="line">focusOffset：focusNode中包含在选区之内的字符数量</div><div class="line">isCollapsed：布尔值，表示选区的起点和终点是否重合</div><div class="line">rangeCount：选区中包含的DOM范围的数量</div><div class="line">addRange(range)：将指定的DOM范围添加到选区中</div><div class="line">collapse(node,offset)：将选区折叠到指定节点中的相应的文本偏移位置</div><div class="line">collapseToEnd()：将选区折叠到终点位置</div><div class="line">collapseToStart()：将选区折叠到起点位置</div><div class="line">containsNode(node)：确定指定的节点是否包含在选区中</div><div class="line">deleteFromDocument()：从文档中删除选区中的文本，与document.execCommand(&quot;delete&quot;,false,null)命令的结果相同</div><div class="line">extend(node,offset)：通过将focusNode和focusOffset移动到指定的值来扩展选区</div><div class="line">getRangeAt(index)：返回索引对应的选区中的DOM范围</div><div class="line">removeAllRanges()：从选区中移除所有DOM范围。实际上，这样会移除选区，因为选区中至少要有一个范围</div><div class="line">reomveRange(range)：从选区中移除指定的DOM范围</div><div class="line">selectAllChildren(node)：清除选区并选择指定节点的所有子节点</div><div class="line">toString()：返回选区所包含的文本内容</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>JavaScript-event</title>
@@ -3255,167 +3305,6 @@
     
     
       <category term="Schema" scheme="http://www.codingbalian.online/tags/Schema/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>XML:DTD</title>
-    <link href="http://www.codingbalian.online/2016/12/20/XML-DTD/"/>
-    <id>http://www.codingbalian.online/2016/12/20/XML-DTD/</id>
-    <published>2016-12-20T13:24:43.000Z</published>
-    <updated>2016-12-24T06:08:12.303Z</updated>
-    
-    <content type="html"><![CDATA[<p>XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。<br><a id="more"></a></p>
-<h2 id="1">DTD作用</h2><br>1. 指定文档结构的规则<br>2. 验证文档有效性<br>3. 可以被共享<br>4. 可以在描述的文档中与外部的URL链接<br><br><h2 id="2">DTD结构</h2><br>1. <code>&lt;!DOCTYPE</code>开头<code>]&gt;</code>结尾<br>2. <code>&lt;!ELEMENT&gt;</code>声明元素<br>3. <code>&lt;!ATTLIST&gt;</code> 声明元素属性<br>4. <code>&lt;!ENTITY&gt;</code>声明实体，可以用来存储常用的文字区块，或将非XML的数据包括在文档中<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;</div><div class="line">&lt;!--DTD定义--&gt;</div><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">&lt;!--元素定义--&gt;</div><div class="line">&lt;!ELEMENT 公司 (雇员)+&gt;</div><div class="line">&lt;!ELEMENT 雇员 (姓名,雇佣日期,项目清单,说明)&gt;</div><div class="line">&lt;!ELEMENT 姓名 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 雇佣日期 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 项目清单 (项目)*&gt;</div><div class="line">&lt;!ELEMENT 项目 (产品,价格)&gt;</div><div class="line">&lt;!ELEMENT 产品 (#PCDATA)&gt;</div><div class="line">&lt;!ELEMENT 价格 (#PCDATA)&gt;</div><div class="line">&lt;!--属性定义--&gt;</div><div class="line">&lt;!ATTLIST 项目清单 数量 CDATA #REQUIRED&gt;</div><div class="line">&lt;!ATTLIST 雇员</div><div class="line">    部门 CDATA #IMPLIED</div><div class="line">    全职 CDATA #IMPLIED</div><div class="line">&gt;</div><div class="line">&lt;!ENTITY  note  &quot;这里是备注信息&quot;&gt;</div><div class="line">]&gt;</div><div class="line">&lt;!--内容定义--&gt;</div><div class="line">&lt;公司&gt;</div><div class="line">    &lt;雇员 部门=&quot;市场部&quot; 全职=&quot;是&quot;&gt;</div><div class="line">        &lt;姓名&gt;李东&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-01-15&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;2&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;打印机&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $111.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;笔记本&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $998.00&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line">    &lt;雇员 部门=&quot;客服部&quot;&gt;</div><div class="line">        &lt;姓名&gt;王权&lt;/姓名&gt;</div><div class="line">        &lt;雇佣日期&gt;2005-10-2&lt;/雇佣日期&gt;</div><div class="line">        &lt;项目清单 数量=&quot;1&quot;&gt;</div><div class="line">            &lt;项目&gt;</div><div class="line">                &lt;产品&gt;扫描仪&lt;/产品&gt;</div><div class="line">                &lt;价格&gt; $200.00=&quot;&quot;&gt;&lt;/价格&gt;</div><div class="line">            &lt;/项目&gt;</div><div class="line">        &lt;/项目清单&gt;</div><div class="line">        &lt;说明&gt;这里是备注信息&lt;/说明&gt;</div><div class="line">    &lt;/雇员&gt;</div><div class="line"> &lt;/公司&gt;</div></pre></td></tr></table></figure><br><br>在IE中运行显示&lt;!DOCTYPE 公司 (View Source of full doctype……)&gt;说明是内部DTD<br><br><h2 id="3">DTD元素类型</h2><br>1. 空元素<code>&lt;!ELEMENT 元素 EMPTY&gt;</code>对应XML<code>&lt;元素/&gt;</code><br>2. ANY类型<code>&lt;!ELEMENT 元素 ANY&gt;</code>表明元素可以包含定义的其他任意内容或任意内容的组合<br>3. #PCDATA(可解析文本)，不能再包含子元素<br>4. 子元素<code>&lt;!ELEMENT 元素 (子元素列表)&gt;</code>包括序列与选择两种结构<code>&lt;!ELEMENT 元素 (元素1,元素2)&gt;</code>表示顺序，<code>&lt;!ELEMENT 元素 (元素1|元素2)&gt;</code>表示选择，至少选其一<br>5. 混合类型<code>&lt;!ELEMENT 元素 (#PCDATA|子元素1|子元素2)*&gt;</code><br><br><h2 id="4">元素限定符</h2>
-
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th style="text-align:center">用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>()</td>
-<td style="text-align:center">分组</td>
-</tr>
-<tr>
-<td>&brvbar;</td>
-<td style="text-align:center">选择</td>
-</tr>
-<tr>
-<td>+</td>
-<td style="text-align:center">最少出现一次</td>
-</tr>
-<tr>
-<td>*</td>
-<td style="text-align:center">允许出现任意多次</td>
-</tr>
-<tr>
-<td>?</td>
-<td style="text-align:center">出现0~1次</td>
-</tr>
-<tr>
-<td>,</td>
-<td style="text-align:center">必须按指定顺序出现</td>
-</tr>
-</tbody>
-</table>
-<p>**DTD属性</p>
-<ul>
-<li>设定元素属性与名称</li>
-<li>设定属性数据类型</li>
-<li>设定是否可选，是否属性固定，以及默认值</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!ATTLIST ELEMENT_name</div><div class="line">    Attribute_name TYPE [add_declare]&gt;</div></pre></td></tr></table></figure>
-<p>属性类型</p>
-<table>
-<thead>
-<tr>
-<th>类型名称</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CDATA</td>
-<td style="text-align:center">值为普通的字符</td>
-</tr>
-<tr>
-<td>ID</td>
-<td style="text-align:center">值在文档中是唯一的</td>
-</tr>
-<tr>
-<td>IDREF</td>
-<td style="text-align:center">值参考了文档中另一个ID属性</td>
-</tr>
-<tr>
-<td>IDREFS</td>
-<td style="text-align:center">值参考了用空格隔开的多个文档中的ID属性</td>
-</tr>
-<tr>
-<td>ENTITY</td>
-<td style="text-align:center">值是一个外部实体</td>
-</tr>
-<tr>
-<td>ENTITIES</td>
-<td style="text-align:center">值包含了多个外部实体，用空格隔开</td>
-</tr>
-<tr>
-<td>NMTOKEN</td>
-<td style="text-align:center">值只能由字母、数字、下划线、连字符、圆点、冒号等字符组成</td>
-</tr>
-<tr>
-<td>NMTOKENS</td>
-<td style="text-align:center">值由多个nmtoken组成，用空格隔开</td>
-</tr>
-<tr>
-<td>NOTATION</td>
-<td style="text-align:center">值是在DTD中声明过的注解名称</td>
-</tr>
-<tr>
-<td>Enumerated</td>
-<td style="text-align:center">列出能够赋予该属性的各种值的列表，只能从中选定一个属性值</td>
-</tr>
-</tbody>
-</table>
-<p>在DTD中声明一个NOTATION类型的属性时，必须首先声明一个具体的NOTATION用来指向应用软件所在的位置，声明的方式有两种:<br>一种是使用MIME类型，格式为：<br><code>&lt;!NOTATION 记号名 SYSTEM &quot;MIME类型&quot;&gt;</code><br>另一种是使用URL路径，指定一个处理程序的路径，格式为：<br><code>&lt;!NOTATION 记号名 SYSTEM  &quot;URL&quot;&gt;</code></p>
-<p>属性的附加声明<br>added_declare是属性定义中的可选内容。附加声明指明了该属性是必要的还是可选的，是预设的固定属性值还是当属性值被省略时的默认值</p>
-<table>
-<thead>
-<tr>
-<th>附加声明</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>#REQUIRED</td>
-<td>必须给出属性值</td>
-</tr>
-<tr>
-<td>#IMPLIIED</td>
-<td>可以不出现</td>
-</tr>
-<tr>
-<td>#FIXED AttValue</td>
-<td>固定值</td>
-</tr>
-<tr>
-<td>Default_Value</td>
-<td>默认</td>
-</tr>
-</tbody>
-</table>
-<h2 id="5">DTD引用</h2>
-
-<p>内部DTD</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE 公司[</div><div class="line">	声明语句</div><div class="line">]&gt;</div></pre></td></tr></table></figure>
-<p>外部DTD</p>
-<p>引用私有DTD：<br><code>&lt;!DOCTYPE  RootElementName  SYSTEM  DTD_URL&gt;</code><br>引用公有DTD：<br><code>&lt;!DOCTYPE RootElementName PUBLIC DTD_name  DTD_URL&gt;</code></p>
-<ul>
-<li>RootElementName根源素</li>
-<li>SYSTEM 私有</li>
-<li>PUBLIC 公用</li>
-<li>DTD_name DTD文件名</li>
-<li>DTD_URL DTD文件路径</li>
-</ul>
-<h2 id="6">DTD实体</h2>
-
-<p>普通实体<br>用来插入文本。<br>内部普通实体<br><code>&lt;!ENTITY Entity_Name Entity_Value&gt;</code><br>外部普通实体<br><code>&lt;!ENTITY Entity_Name SYSTEM Entity_URL&gt;</code><br>SYSTEM是定义外部实体的关键字<br>引用<code>&amp;Enitiy_Name;</code><br>参数实体<br>不仅可以包含文本，还可以包含元素类型声明、属性列表声明、一般实体声明、标签声明、处理指令或注释等，只能在DTD中引用，并且通常情况下只能在外部DTD文档中引用。<br>内部参数实体<br><code>&lt;!ENTITY % Entity_Name Entity_Value&gt;</code><br>外部参数实体<br><code>&lt;!ENTITY % Entity_Name SYSTEM Entity_URL&gt;</code><br>引用<code>&amp;Enitiy_Name;</code><br>不可解析实体<br>二进制文件，如图形、声音等非字符型数据，唯一可以出现不可解析实体的地方就是属性值且不能进行引用<br>链接是XML文档:<br><code>&lt;!ENTITY name SYSTEM &quot;URI&quot;&gt;</code><br>不是XML文档<br><code>&lt;!ENTITY name SYSTEM “URI”NDATA  type&gt;</code></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;XML文档类型定义DTD(Document Type Definition)要求XML文件遵守规定的语法。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
-    
-    
-      <category term="DTD" scheme="http://www.codingbalian.online/tags/DTD/"/>
     
   </entry>
   
