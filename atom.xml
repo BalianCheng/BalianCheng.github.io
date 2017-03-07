@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2017-03-06T12:46:53.269Z</updated>
+  <updated>2017-03-07T10:32:34.250Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -14,6 +14,85 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>H5脚本</title>
+    <link href="http://www.codingbalian.online/2017/03/07/JavaScript-API/"/>
+    <id>http://www.codingbalian.online/2017/03/07/JavaScript-API/</id>
+    <published>2017-03-07T07:58:39.000Z</published>
+    <updated>2017-03-07T10:32:34.250Z</updated>
+    
+    <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
+<h2 id="1">跨文档消息传递</h2>
+
+<p><code>doc.postMessage(&quot;message&quot;,&quot;origin&quot;)</code>向目标文档发送消息。接收到消息后，window会触发message事件，异步形势触发，传递给onmessage处理程序包含三个信息：data（接收到的消息），origin（发送消息所在的文档），source（window的代理）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (event.origin==&quot;...&quot;)</div><div class="line">	processMessage(event.data)</div><div class="line">	event.source.postMessage(...)</div></pre></td></tr></table></figure></p>
+<h2 id="2">原生拖放</h2>
+
+<h3 id="2.1">拖放事件</h3>
+
+<p>拖动元素时依次触发<br>dragstart<br>drag<br>dragend<br>当元素被拖动到有效的放置目标时触发<br>dragenter<br>dragover<br>dragleave或者drop</p>
+<h3 id="2.2">自定义拖放元素</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(elem,&quot;dragover&quot;,function (event) &#123;</div><div class="line">    EventUtil.preventDefault(event)</div><div class="line">&#125;)</div><div class="line">EventUtil.addHandler(elem,&quot;dragenter&quot;,function (event) &#123;</div><div class="line">    EventUtil.preventDefault(event)</div><div class="line">&#125;)</div><div class="line">EventUtil.addHandler(elem,&quot;drop&quot;,function (event) &#123;</div><div class="line">    EventUtil.preventDefault(event)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>将禁止放置的目标转换成可以放置的目标</p>
+<h3 id="2.3">dataTransfer</h3>
+
+<p>被拖动元素向目标元素传递数据时可以访问dataTransfer对象。dataTransfer有两个方法：setData和getData<br>setData(“type”,”data”)type为text或URl，data为传递内容<br>getData()的参数为type</p>
+<p>dataTransfer对象还能确定被拖动的元素和作为放置目标的元素可以接收的操作。<br>dropEffect属性：<br>none：不能放置<br>move：移动到目标位置<br>copy：复制到目标位置<br>link：拖动元素为URL时拖到这里打开<br>在ondragenter事件中设置它。<br>dropEffect必须配合effectAllowed属性，表示允许拖动元素的哪种dropEffect：<br>uninitialized：没有设置<br>none：不能有行为<br>copy：复制<br>link：打开连接<br>move：移动<br>copyLink：copy+link<br>copyMove：copy+move<br>linkMove：link+move<br>all：任意</p>
+<p>HTML5还为每个元素设定了一个”draggable”属性，可以设置是否允许被拖动。<br>其他方法：<br>addElement(element)：为拖动操作添加一个只影响数据的元素<br>clearData(format)清除以特定格式保存的数据<br>setDragImage(element,x,y)指定一个对象显示在拖动时的光标下方。<br>types:当前保存的数据类型</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript-Canvas</title>
+    <link href="http://www.codingbalian.online/2017/03/07/JavaScript-Canvas/"/>
+    <id>http://www.codingbalian.online/2017/03/07/JavaScript-Canvas/</id>
+    <published>2017-03-07T05:51:37.000Z</published>
+    <updated>2017-03-07T07:57:11.851Z</updated>
+    
+    <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
+<h2 id="1">2D上下文</h2>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var canvas = document.getElementById(&quot;draw&quot;)</div><div class="line">var context = canvas.getContext(&quot;2d&quot;)</div><div class="line">context.strokeStyle = &quot;red&quot;//设置描边颜色</div><div class="line">context.fillStyle = &quot;blue&quot;//设置填充颜色</div></pre></td></tr></table></figure>
+<p>使用2D绘图。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">context.strokeRect(10,10,30,30)</div><div class="line">context.fillRect(10,10,30,30)</div></pre></td></tr></table></figure></p>
+<p>矩形是2D绘图中唯一一个可以直接画出的图像。接受的参数为x,y,宽，高。<br>lineWidth设置描边线宽，设置lineCap线条为平，圆，方头，lineJoin设置线条交叉方式。<br>clearRect(40,40,10,10)清除一个小矩形。</p>
+<p>其他的图形就需要使用绘制路径来绘画。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">context.beginPath()</div><div class="line">context.moveTo(0,0)//绘图游标移动指定位置，不划线</div><div class="line">context.beginPath()</div><div class="line">context.arc(250,250,100,0,2*Math.PI,false)</div><div class="line">context.stroke()//描边</div><div class="line">context.fill()//填充</div></pre></td></tr></table></figure>
+<h3 id="1.1">绘制文本</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">context.font=&quot;bold 14px Arial&quot;</div><div class="line">context.textAlign=&quot;center&quot;</div><div class="line">context.textBaseline=&quot;middle&quot;</div><div class="line">context.fillText(&quot;圆形&quot;,250,250)//普通文字</div><div class="line">context.strokeText(&quot;圆形&quot;,250,250,100)//描边的文字</div></pre></td></tr></table></figure>
+<p>save()保存上下文，restore()恢复上下文</p>
+<h3 id="1.2">绘制图形</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var img=document.images[0]</div><div class="line">context.drawImage(img,10,10,300,300)</div></pre></td></tr></table></figure>
+<p>drawImage(img,10,10)绘制图像到10,10<br>drawImage(img,10,10,300,300)绘制图像并改变图像大小<br>drawImage(img,10,10,300,300,500,600,200,200)最后四个参数是目标图像的起点坐标与宽高</p>
+<h3 id="1.3">阴影与渐变</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">context.shadowColor=&quot;silver&quot;//阴影颜色</div><div class="line">context.shadowOffsetX=5//阴影X方向的偏移</div><div class="line">context.shadowOffsetY=6//Y方向偏移</div><div class="line">context.shadowBlur=4//模糊像素</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function createLinearGradient(context,x,y,width,height)&#123;</div><div class="line">	return context.createLinearGradient(x,y,x+width,y+height)</div><div class="line">      var gradient=createLinearGradient(context,100,100,300,300)</div><div class="line">      gradient.addColorStop(0,&quot;sliver&quot;)//开始颜色</div><div class="line">      gradient.addColorStop(1,&quot;black&quot;)//结束颜色</div><div class="line">      context.fillStyle=gradient</div></pre></td></tr></table></figure>
+<p>createPattern(image,”repeat”)可以设置图像的重复，用于填充<br>getImageData(x,y,width,height)可以获取图像的部分内容，返回的对象有三个属性：width，height，data。data是数组，保存着rgb，alpha。<br>putImageData可以将图像数据放到画布中<br>globalAlpha设置全局透明度<br>globalCompositionOperation设置图像结合。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>JavaScript表单脚本</title>
@@ -2831,480 +2910,6 @@
     
     
       <category term="XSL" scheme="http://www.codingbalian.online/tags/XSL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用CSS显示XML</title>
-    <link href="http://www.codingbalian.online/2016/12/22/XML-CSS/"/>
-    <id>http://www.codingbalian.online/2016/12/22/XML-CSS/</id>
-    <published>2016-12-22T12:11:40.000Z</published>
-    <updated>2016-12-24T06:08:22.946Z</updated>
-    
-    <content type="html"><![CDATA[<p>在XML里用到过的CSS的一点点基础内容<br><a id="more"></a></p>
-<p></p><h2 id="1">CSS基础</h2><br>CSS的定义语法由三部分构成：选择器(selector)，属性(property)，属性值(value)<br>基本格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure><p></p>
-<p>CSS可以设置多个元素的选择器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">selector1, selector2, selector3&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>selector1、selector2、selector3公用同一种样式<br>类(class)选择器可以为同名的元素设置不同的样式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Tag.class&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">#XML</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;book.css&quot;?&gt;</div><div class="line">&lt;DocumentElement&gt;</div><div class="line">	&lt;book Class=&quot;1&quot;&gt;</div><div class="line">		&lt;name&gt;数据挖掘&lt;/name&gt;</div><div class="line">		&lt;price&gt;16&lt;/price&gt;</div><div class="line">	&lt;/book&gt;</div><div class="line">	&lt;book Class=&quot;2&quot;&gt;</div><div class="line">		&lt;name&gt;机器学习&lt;/name&gt;</div><div class="line">		&lt;price&gt;18&lt;/price&gt;</div><div class="line">	&lt;/book&gt;</div><div class="line">&lt;/DocumentElement&gt;</div><div class="line">#CSS</div><div class="line">	book&#123;</div><div class="line">		display:block;</div><div class="line">		margin-top:16px</div><div class="line">		&#125;</div><div class="line">	name&#123;</div><div class="line">		display:block;</div><div class="line">		font-weight:bold</div><div class="line">		&#125;</div><div class="line">	book.1&#123;</div><div class="line">		font-size:18px</div><div class="line">		&#125;</div><div class="line">	book.2&#123;</div><div class="line">		font-style:italic;</div><div class="line">		font-size:16px</div><div class="line">		&#125;</div><div class="line">	name,price&#123;</div><div class="line">		margin:16px</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
-<p>标识(ID)选择器：唯一标识一个元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Tag#ID&#123;</div><div class="line">	property1:value;</div><div class="line">	property2:value;</div><div class="line">	.....</div><div class="line">	propertyN:value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p></p><h2 id="2">CSS属性</h2><br>display常用属性<p></p>
-<table>
-<thead>
-<tr>
-<th>属性值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>none</td>
-<td>不显示</td>
-</tr>
-<tr>
-<td>block</td>
-<td>块级元素，换行与别的元素分开</td>
-</tr>
-<tr>
-<td>inline</td>
-<td>默认，同一行显示</td>
-</tr>
-<tr>
-<td>list-item</td>
-<td>作为列表显示</td>
-</tr>
-</tbody>
-</table>
-<p>font常用属性</p>
-<table>
-<thead>
-<tr>
-<th>属性值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>font-family</td>
-<td>字体</td>
-</tr>
-<tr>
-<td>font-size</td>
-<td>尺寸</td>
-</tr>
-<tr>
-<td>font-style</td>
-<td>字形样式</td>
-</tr>
-<tr>
-<td>font-variant</td>
-<td>大小写</td>
-</tr>
-<tr>
-<td>font-weight</td>
-<td>粗细</td>
-</tr>
-</tbody>
-</table>
-<p>CSS可以使用color指定元素字体颜色</p>
-<p>CSS允许添加边框</p>
-<table>
-<thead>
-<tr>
-<th>属性值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>none</td>
-<td>无边框</td>
-</tr>
-<tr>
-<td>dotted</td>
-<td>点状边框</td>
-</tr>
-<tr>
-<td>dashed</td>
-<td>虚线</td>
-</tr>
-<tr>
-<td>solid</td>
-<td>实线</td>
-</tr>
-<tr>
-<td>double</td>
-<td>双线</td>
-</tr>
-<tr>
-<td>groove</td>
-<td>3D 凹槽边框</td>
-</tr>
-<tr>
-<td>ridge</td>
-<td>3D 垄状边框</td>
-</tr>
-<tr>
-<td>inset</td>
-<td>3D inset 边框</td>
-</tr>
-<tr>
-<td>outset</td>
-<td>3D outset 边框</td>
-</tr>
-<tr>
-<td>inherit</td>
-<td>从父元素继承</td>
-</tr>
-</tbody>
-</table>
-<p>XML背景属性</p>
-<table>
-<thead>
-<tr>
-<th>属性值</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>background-color</td>
-<td>背景颜色</td>
-</tr>
-<tr>
-<td>background-position</td>
-<td>背景图像的位置</td>
-</tr>
-<tr>
-<td>background-size</td>
-<td>规定背景图片的尺寸</td>
-</tr>
-<tr>
-<td>background-repeat</td>
-<td>规定如何重复背景图像</td>
-</tr>
-<tr>
-<td>background-origin</td>
-<td>背景图片的定位区域</td>
-</tr>
-<tr>
-<td>background-clip</td>
-<td>规定背景的绘制区域</td>
-</tr>
-<tr>
-<td>background-attachment</td>
-<td>规定背景图像是否固定</td>
-</tr>
-<tr>
-<td>background-image</td>
-<td>背景图像</td>
-</tr>
-<tr>
-<td>inherit</td>
-<td>从父元素继承</td>
-</tr>
-</tbody>
-</table>
-<p>更多属性参考<a href="http://www.w3school.com.cn/cssref/index.asp" target="_blank" rel="external">CSS参考手册</a></p>
-<p>链接样式：在xml中加入<code>&lt;?xml-stylesheet type=&quot;text/css&quot; href=&quot;样式名.css&quot;?&gt;</code><br>或者<code>@import url(stylesheetURL)</code><br>无需链接的内部CSS<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml-stylesheet type=&quot;text/css&quot;?&gt;</div><div class="line">&lt;根源素 xmlns:HTML=&quot;URL&quot;&gt;</div><div class="line">	&lt;HTML:STYLE&gt;</div><div class="line">		&lt;!--CSS--&gt;</div><div class="line">	&lt;/HTML:STYLE&gt;</div><div class="line">	&lt;!--XML子元素--&gt;</div><div class="line">&lt;/根源素&gt;</div></pre></td></tr></table></figure></p>
-<p>CSS中的注释:<code>/*注释内容*/</code></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在XML里用到过的CSS的一点点基础内容&lt;br&gt;
-    
-    </summary>
-    
-      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
-    
-    
-      <category term="CSS" scheme="http://www.codingbalian.online/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>XML Schema</title>
-    <link href="http://www.codingbalian.online/2016/12/21/XML-Schema/"/>
-    <id>http://www.codingbalian.online/2016/12/21/XML-Schema/</id>
-    <published>2016-12-21T10:58:19.000Z</published>
-    <updated>2016-12-24T06:07:58.863Z</updated>
-    
-    <content type="html"><![CDATA[<p>XML Schema为详细规定XML文档数据类型与组织结构的标准，且基于XML语法，更加规范。</p>
-<blockquote>
-<p>本篇介绍W3C标准</p>
-</blockquote>
-<a id="more"></a>
-<p></p><h2 id="1">Schema格式</h2><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:schema xmlns:xsd=”http://www.w3.org/2001/XMLSchema”&gt;</div><div class="line">    &lt;xsd:element name=&quot;name&quot;&gt;</div><div class="line">        &lt;xsd:complexType&gt;</div><div class="line">            &lt;xsd:sequence&gt;</div><div class="line">                &lt;xsd:element name=&quot;example&quot; type=&quot;xsd:string&quot;/&gt;</div><div class="line">            &lt;/xsd:sequence&gt;</div><div class="line">        &lt;/xsd:complexType&gt;</div><div class="line">    &lt;/xsd:element&gt;</div><div class="line">&lt;/xsd:schema&gt;</div></pre></td></tr></table></figure><p></p>
-<p>schema以<code>&lt;xsd:schema xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;</code>开头<code>&lt;/xsd:schema&gt;</code>结尾</p>
-<p>complexTypey用来定义复杂类型（包含子元素或者带有属性）<br>type定义数据类型，包括string,int,double,dateTime,Boolean,long,integer,float等<br>sequence规定元素需要依次出现</p>
-<p></p><h2 id="2">元素声明</h2><br>schema必须且只能声明一个schema以根元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:schema xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;</div><div class="line">...</div><div class="line">...</div><div class="line">&lt;/xsd:schema&gt;</div></pre></td></tr></table></figure><p></p>
-<p>element声明元素</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>id</td>
-<td>规定该元素的唯一的ID</td>
-</tr>
-<tr>
-<td>name</td>
-<td>规定元素的名称。父元素是schema则必须含name</td>
-</tr>
-<tr>
-<td>ref</td>
-<td>对另一个元素的引用</td>
-</tr>
-<tr>
-<td>type</td>
-<td>规定内建数据类型的名称，或者规定 simpleType 或 complexType 元素的名称。</td>
-</tr>
-<tr>
-<td>substitutionGroup</td>
-<td>规定可用来替代该元素的元素的名称。 该元素必须具有相同的类型或从指定元素类型派生的类型。</td>
-</tr>
-<tr>
-<td>default</td>
-<td>为元素规定默认值（仅当元素内容是简单类型或 textOnly ）。</td>
-</tr>
-<tr>
-<td>fixed</td>
-<td>为元素规定固定值（仅当元素内容是简单类型或 textOnly ）</td>
-</tr>
-<tr>
-<td>form</td>
-<td>该元素的形式。</td>
-</tr>
-<tr>
-<td>maxOccurs</td>
-<td>在父元素中可出现的最大次数。不设限制：”unbounded”</td>
-</tr>
-<tr>
-<td>minOccurs</td>
-<td>在父元素中可出现的最小次数。</td>
-</tr>
-<tr>
-<td>nillable</td>
-<td>是否可以将显式的零值分配给该元素。此项应用于元素内容并且不是该元素的属性。 默认值为 false。</td>
-</tr>
-<tr>
-<td>abstract</td>
-<td>元素是否可以在实例文档中使用。true不能出现在文档中。</td>
-</tr>
-<tr>
-<td>block</td>
-<td>派生的类型。防止具有指定派生类型的元素被用于替代该元素。</td>
-</tr>
-<tr>
-<td>final</td>
-<td>设置 element 元素上 final 属性的默认值。</td>
-</tr>
-</tbody>
-</table>
-<p>block参数：<br>extension - 防止通过扩展派生的元素被用来替代该元素。<br>restriction - 防止通过限制派生的元素被用来替代该元素。<br>substitution - 防止通过替换派生的元素被用来替代该元素。<br>#all - 防止所有派生的元素被用来替代该元素。</p>
-<p>final参数：<br>extension - 防止通过扩展派生的元素被用来替代该元素<br>restriction - 防止通过限制派生的元素被用来替代该元素<br>#all - 防止所有派生的元素被用来替代该元素</p>
-<p>element常用子元素</p>
-<table>
-<thead>
-<tr>
-<th>元素名</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>annotation</td>
-<td>定义批注</td>
-</tr>
-<tr>
-<td>simpleType</td>
-<td>简单类型</td>
-</tr>
-<tr>
-<td>complexType</td>
-<td>复杂类型</td>
-</tr>
-<tr>
-<td>key</td>
-<td>属性或元素必须是指定的键</td>
-</tr>
-<tr>
-<td>unique</td>
-<td>属性或元素在指定范围内唯一</td>
-</tr>
-<tr>
-<td>keyref</td>
-<td>指定的元素或属性与指定的key/unique相对应</td>
-</tr>
-</tbody>
-</table>
-<p>空元素定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:element name=&quot;name&quot;&gt;</div><div class="line">  &lt;xsd:complexType&gt;</div><div class="line">    &lt;xsd:complexContent&gt;</div><div class="line">      &lt;xsd:restriction base=&quot;xs:integer&quot;&gt;</div><div class="line">        &lt;xsd:attribute name=&quot;attribute&quot; type=&quot;xsd:string&quot;/&gt;</div><div class="line">      &lt;/xsd:restriction&gt;</div><div class="line">    &lt;/xsd:complexContent&gt;</div><div class="line">  &lt;/xsd:complexType&gt;</div><div class="line">&lt;/xsd:element&gt;</div></pre></td></tr></table></figure></p>
-<p>对应的XML元素定义<code>&lt;name attribute=&quot;string&quot;/&gt;</code></p>
-<p>默认值<br><code>&lt;xsd:element name=&quot;author&quot; type=&quot;xsd:string&quot; default=&quot;cheng&quot;&gt;</code></p>
-<p>固定值<br><code>&lt;xsd:element name=&quot;author&quot; type=&quot;xsd:integar&quot; fixed=&quot;20&quot;&gt;</code></p>
-<p>元素引用<code>&lt;xsd:element name=&quot;&quot; ref=&quot;&quot;&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">person.xsd</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;xsd:schema xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;</div><div class="line">	&lt;xsd:element name=&quot;person&quot;&gt;</div><div class="line">		&lt;xsd:complexType&gt;</div><div class="line">            &lt;xsd:sequence&gt;</div><div class="line">                &lt;xsd:element name=&quot;name&quot; type=&quot;xsd:string&quot;/&gt;</div><div class="line">				&lt;xsd:element ref=&quot;phone&quot;/&gt;</div><div class="line">            &lt;/xsd:sequence&gt;</div><div class="line">        &lt;/xsd:complexType&gt;</div><div class="line">    &lt;/xsd:element&gt;</div><div class="line">	&lt;xsd:element name=&quot;phone&quot;&gt;</div><div class="line">		&lt;xsd:complexType&gt;</div><div class="line">            &lt;xsd:sequence&gt;</div><div class="line">                &lt;xsd:element name=&quot;number&quot; type=&quot;xsd:string&quot;/&gt;</div><div class="line">            &lt;/xsd:sequence&gt;</div><div class="line">        &lt;/xsd:complexType&gt;</div><div class="line">    &lt;/xsd:element&gt;</div><div class="line">&lt;/xsd:schema&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">XML</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;person xmlns:xsi&quot;http://www.w3.org/2001/XMLSchema&quot; xsi:noNamespaceSchemaLocation=&quot;person.xsd&quot;&gt;</div><div class="line">	&lt;name&gt;Cheng&lt;/name&gt;</div><div class="line">	&lt;phone&gt;</div><div class="line">		&lt;number&gt;123456&lt;/number&gt;</div><div class="line">	&lt;/phone&gt;</div><div class="line">&lt;/person&gt;</div></pre></td></tr></table></figure>
-<p>元素替换<br><code>&lt;xs:element name=&quot;&quot; substitutionGroup=&quot;name&quot;/&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;xsd:schema xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;</div><div class="line">	&lt;xsd:element name=&quot;person&quot;&gt;</div><div class="line">		&lt;xsd:complexType&gt;</div><div class="line">            &lt;xsd:sequence&gt;</div><div class="line">                &lt;xsd:element name=&quot;name&quot; type=&quot;xsd:string&quot;/&gt;</div><div class="line">				&lt;xsd:element ref=&quot;phone&quot;/&gt;</div><div class="line">            &lt;/xsd:sequence&gt;</div><div class="line">        &lt;/xsd:complexType&gt;</div><div class="line">    &lt;/xsd:element&gt;</div><div class="line">	&lt;xsd:element name=&quot;phone&quot;&gt;</div><div class="line">    &lt;xsd:element name=&quot;number&quot; type=&quot;xsd:string&quot; substitutionGroup=&quot;phone&quot;/&gt;</div><div class="line">&lt;/xsd:schema&gt;</div></pre></td></tr></table></figure>
-<p></p><h2 id="3">数据类型</h2><br>内置数据类型<br><code>&lt;xsd:element name=&quot;&quot; type=&quot;&quot;&gt;</code><p></p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>string</td>
-<td>字符串</td>
-</tr>
-<tr>
-<td>boolean</td>
-<td>true/false</td>
-</tr>
-<tr>
-<td>date</td>
-<td>日期 YYYY-MM-DD</td>
-</tr>
-<tr>
-<td>dateTime</td>
-<td>YYYY-MM-DD hh:mm:ss</td>
-</tr>
-<tr>
-<td>time</td>
-<td>hh:mm:ss</td>
-</tr>
-<tr>
-<td>decimal</td>
-<td>任意精度和位数的十进制数</td>
-</tr>
-<tr>
-<td>integer</td>
-<td>整数</td>
-</tr>
-<tr>
-<td>uri-refernce</td>
-<td>URL</td>
-</tr>
-<tr>
-<td>float</td>
-<td>浮点数</td>
-</tr>
-</tbody>
-</table>
-<p>简单自定义类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:element name=&quot;&quot; type=&quot;自定义简单类型名&quot;&gt;</div><div class="line">&lt;xsd:simpleType name=&quot;自定义简单类型名称&quot;&gt;</div><div class="line">&lt;xsd:restriction base=&quot;现有类型名称&quot;&gt;</div><div class="line">&lt;!--内容--&gt;</div><div class="line">&lt;/xsd:restriction&gt;</div><div class="line">&lt;/xsd:simpleType&gt;</div></pre></td></tr></table></figure></p>
-<table>
-<thead>
-<tr>
-<th>base常用约束面</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enumeration</td>
-<td>定义可接受值的列表</td>
-</tr>
-<tr>
-<td>length</td>
-<td>允许字符或列表的精确数目</td>
-</tr>
-<tr>
-<td>maxLength</td>
-<td>允许字符或列表的最大数目</td>
-</tr>
-<tr>
-<td>minLength</td>
-<td>允许字符或列表的最小数目</td>
-</tr>
-<tr>
-<td>pattern</td>
-<td>可接受字符的精确序列</td>
-</tr>
-<tr>
-<td>whiteSpace</td>
-<td>空白字符的处理方式</td>
-</tr>
-<tr>
-<td>totalDigits</td>
-<td>定义所允许的阿拉伯数字的精确位数</td>
-</tr>
-<tr>
-<td>fractionDigits</td>
-<td>定义所允许的最大的小数位数</td>
-</tr>
-<tr>
-<td>maxExclusive</td>
-<td>定义数值的上限(小于)</td>
-</tr>
-<tr>
-<td>maxInclusive</td>
-<td>定义数值的上限(小于等于)</td>
-</tr>
-<tr>
-<td>minExclusive</td>
-<td>定义数值的下限(大于)</td>
-</tr>
-<tr>
-<td>minInclusive</td>
-<td>定义数值的下限(大于等于)</td>
-</tr>
-</tbody>
-</table>
-<p>复杂数据类型(complexType)</p>
-<ul>
-<li>简单内容元素(simpleContent)仅包含文本属性不包含子元素<br>声明：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:element name=&quot;&quot; type=&quot;&quot;&gt;</div><div class="line">&lt;xsd:complexType name=&quot;类型名&quot;&gt;</div><div class="line">	&lt;xsd:simpleContent&gt;</div><div class="line">		&lt;xsd:extension base=&quot;简单类型&quot;&gt;</div><div class="line">			&lt;xsd:attribute name=&quot;&quot; type=&quot;&quot;/&gt;		</div><div class="line">		&lt;/xsd:extension&gt;	</div><div class="line">	&lt;/xsd:simpleContent&gt;</div><div class="line">&lt;/xsd:complexType&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>属性声明格式<code>&lt;xsd:attribute name=&quot;&quot; type=&quot;&quot; use=&quot;&quot;/&gt;</code><br>use指定出现与否<code>optional</code>可出现可不出现，<code>required</code>必须出现,<code>prohibited</code>不能出现<br>default设定默认值，fixed指定固定值</p>
-<ul>
-<li>复杂内容元素complexContent包含子元素<br>声明：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:element name=&quot;&quot; type=&quot;&quot;&gt;</div><div class="line">&lt;xsd:complexType name=&quot;&quot;&gt;</div><div class="line">	&lt;xsd:complexContent&gt;</div><div class="line">		&lt;xsd:restriction base=&quot;xsd:andType&quot;&gt;</div><div class="line">			&lt;!--子元素声明--&gt;</div><div class="line">			&lt;!--属性声明--&gt;</div><div class="line">		&lt;/xsd:restriction&gt;</div><div class="line">	&lt;/xsd:complexContent&gt;</div><div class="line">&lt;/xsd:complexType&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>complexType通常包含多个子元素，使用<code>all</code>、<code>sequence</code>、<code>choice</code>、<code>group</code>四种结构指示元素顺序</p>
-<ol>
-<li><p>all：所有成员可以出现一次或者不出现，排序任意,位于顶层不能嵌套</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;all maxOccurs=&quot;0|1&quot; minOccurs=&quot;0|1&quot;&gt;</div><div class="line">	&lt;!--声明--&gt;</div><div class="line">&lt;/all&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>sequence:按顺序出现，默认出现1次，可由maxOccurs和minOccurs控制</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:sequence&gt;</div><div class="line">	&lt;!--声明--&gt;</div><div class="line">&lt;/xsd:sequence&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>choice:选择一个元素出现，能与sequence嵌套</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:choice minOccurs=&quot;&quot; maxOccurs=&quot;&quot;&gt;</div><div class="line">&lt;!--声明--&gt;</div><div class="line">&lt;/xsd:choice&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>group:归为一组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsd:group minOccurs=&quot;&quot; maxOccurs=&quot;&quot; name=&quot;&quot; ref=&quot;组名&quot;&gt;</div><div class="line">&lt;!--声明--&gt;</div><div class="line">&lt;/xsd:group&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p></p><h2 id="4">命名空间</h2><p></p>
-<p><xsd: schema="" targetnamespace="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns=""></xsd:></p>
-<ul>
-<li>targetNamespace目标命名空间，schema规定在其中有效</li>
-<li>标准命名空间：<a href="http://www.w3.org/2001/XMLSchema" target="_blank" rel="external">http://www.w3.org/2001/XMLSchema</a> </li>
-<li>默认命名空间：自定义文件的地址</li>
-</ul>
-<p>引用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#已定义目标命名空间</div><div class="line">&lt;根源素名 xmlns=&quot;www.studaholic.online/xml&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema&quot; </div><div class="line">xsi:schemaLocation=&quot;www.studaholic.online/xml/文档名.xsd&quot;</div><div class="line">/&gt;</div><div class="line">#未定义目标命名空间</div><div class="line">&lt;根源素名 xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema&quot; </div><div class="line">xsi:noNamespaceSchemaLocation=&quot;文档名.xsd&quot; 属性名=&quot;&quot;</div><div class="line">/&gt;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;XML Schema为详细规定XML文档数据类型与组织结构的标准，且基于XML语法，更加规范。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;本篇介绍W3C标准&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
-    
-    
-      <category term="Schema" scheme="http://www.codingbalian.online/tags/Schema/"/>
     
   </entry>
   

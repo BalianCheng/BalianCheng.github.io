@@ -4,6 +4,57 @@
   
     
     <entry>
+      <title><![CDATA[H5脚本]]></title>
+      <url>http://www.codingbalian.online/2017/03/07/JavaScript-API/</url>
+      <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
+<h2 id="1">跨文档消息传递</h2>
+
+<p><code>doc.postMessage(&quot;message&quot;,&quot;origin&quot;)</code>向目标文档发送消息。接收到消息后，window会触发message事件，异步形势触发，传递给onmessage处理程序包含三个信息：data（接收到的消息），origin（发送消息所在的文档），source（window的代理）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (event.origin==&quot;...&quot;)</div><div class="line">	processMessage(event.data)</div><div class="line">	event.source.postMessage(...)</div></pre></td></tr></table></figure></p>
+<h2 id="2">原生拖放</h2>
+
+<h3 id="2.1">拖放事件</h3>
+
+<p>拖动元素时依次触发<br>dragstart<br>drag<br>dragend<br>当元素被拖动到有效的放置目标时触发<br>dragenter<br>dragover<br>dragleave或者drop</p>
+<h3 id="2.2">自定义拖放元素</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(elem,&quot;dragover&quot;,function (event) &#123;</div><div class="line">    EventUtil.preventDefault(event)</div><div class="line">&#125;)</div><div class="line">EventUtil.addHandler(elem,&quot;dragenter&quot;,function (event) &#123;</div><div class="line">    EventUtil.preventDefault(event)</div><div class="line">&#125;)</div><div class="line">EventUtil.addHandler(elem,&quot;drop&quot;,function (event) &#123;</div><div class="line">    EventUtil.preventDefault(event)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>将禁止放置的目标转换成可以放置的目标</p>
+<h3 id="2.3">dataTransfer</h3>
+
+<p>被拖动元素向目标元素传递数据时可以访问dataTransfer对象。dataTransfer有两个方法：setData和getData<br>setData(“type”,”data”)type为text或URl，data为传递内容<br>getData()的参数为type</p>
+<p>dataTransfer对象还能确定被拖动的元素和作为放置目标的元素可以接收的操作。<br>dropEffect属性：<br>none：不能放置<br>move：移动到目标位置<br>copy：复制到目标位置<br>link：拖动元素为URL时拖到这里打开<br>在ondragenter事件中设置它。<br>dropEffect必须配合effectAllowed属性，表示允许拖动元素的哪种dropEffect：<br>uninitialized：没有设置<br>none：不能有行为<br>copy：复制<br>link：打开连接<br>move：移动<br>copyLink：copy+link<br>copyMove：copy+move<br>linkMove：link+move<br>all：任意</p>
+<p>HTML5还为每个元素设定了一个”draggable”属性，可以设置是否允许被拖动。<br>其他方法：<br>addElement(element)：为拖动操作添加一个只影响数据的元素<br>clearData(format)清除以特定格式保存的数据<br>setDragImage(element,x,y)指定一个对象显示在拖动时的光标下方。<br>types:当前保存的数据类型</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JavaScript-Canvas]]></title>
+      <url>http://www.codingbalian.online/2017/03/07/JavaScript-Canvas/</url>
+      <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
+<h2 id="1">2D上下文</h2>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var canvas = document.getElementById(&quot;draw&quot;)</div><div class="line">var context = canvas.getContext(&quot;2d&quot;)</div><div class="line">context.strokeStyle = &quot;red&quot;//设置描边颜色</div><div class="line">context.fillStyle = &quot;blue&quot;//设置填充颜色</div></pre></td></tr></table></figure>
+<p>使用2D绘图。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">context.strokeRect(10,10,30,30)</div><div class="line">context.fillRect(10,10,30,30)</div></pre></td></tr></table></figure></p>
+<p>矩形是2D绘图中唯一一个可以直接画出的图像。接受的参数为x,y,宽，高。<br>lineWidth设置描边线宽，设置lineCap线条为平，圆，方头，lineJoin设置线条交叉方式。<br>clearRect(40,40,10,10)清除一个小矩形。</p>
+<p>其他的图形就需要使用绘制路径来绘画。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">context.beginPath()</div><div class="line">context.moveTo(0,0)//绘图游标移动指定位置，不划线</div><div class="line">context.beginPath()</div><div class="line">context.arc(250,250,100,0,2*Math.PI,false)</div><div class="line">context.stroke()//描边</div><div class="line">context.fill()//填充</div></pre></td></tr></table></figure>
+<h3 id="1.1">绘制文本</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">context.font=&quot;bold 14px Arial&quot;</div><div class="line">context.textAlign=&quot;center&quot;</div><div class="line">context.textBaseline=&quot;middle&quot;</div><div class="line">context.fillText(&quot;圆形&quot;,250,250)//普通文字</div><div class="line">context.strokeText(&quot;圆形&quot;,250,250,100)//描边的文字</div></pre></td></tr></table></figure>
+<p>save()保存上下文，restore()恢复上下文</p>
+<h3 id="1.2">绘制图形</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var img=document.images[0]</div><div class="line">context.drawImage(img,10,10,300,300)</div></pre></td></tr></table></figure>
+<p>drawImage(img,10,10)绘制图像到10,10<br>drawImage(img,10,10,300,300)绘制图像并改变图像大小<br>drawImage(img,10,10,300,300,500,600,200,200)最后四个参数是目标图像的起点坐标与宽高</p>
+<h3 id="1.3">阴影与渐变</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">context.shadowColor=&quot;silver&quot;//阴影颜色</div><div class="line">context.shadowOffsetX=5//阴影X方向的偏移</div><div class="line">context.shadowOffsetY=6//Y方向偏移</div><div class="line">context.shadowBlur=4//模糊像素</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function createLinearGradient(context,x,y,width,height)&#123;</div><div class="line">	return context.createLinearGradient(x,y,x+width,y+height)</div><div class="line">      var gradient=createLinearGradient(context,100,100,300,300)</div><div class="line">      gradient.addColorStop(0,&quot;sliver&quot;)//开始颜色</div><div class="line">      gradient.addColorStop(1,&quot;black&quot;)//结束颜色</div><div class="line">      context.fillStyle=gradient</div></pre></td></tr></table></figure>
+<p>createPattern(image,”repeat”)可以设置图像的重复，用于填充<br>getImageData(x,y,width,height)可以获取图像的部分内容，返回的对象有三个属性：width，height，data。data是数组，保存着rgb，alpha。<br>putImageData可以将图像数据放到画布中<br>globalAlpha设置全局透明度<br>globalCompositionOperation设置图像结合。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript表单脚本]]></title>
       <url>http://www.codingbalian.online/2017/03/06/JavaScript-form/</url>
       <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>

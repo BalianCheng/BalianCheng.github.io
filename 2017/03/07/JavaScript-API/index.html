@@ -15,16 +15,13 @@
 
 
 
-<meta name="description" content="Github 部分功能使用教程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Github教程">
-<meta property="og:url" content="http://www.codingbalian.online/2016/12/20/Github-Tutorial/index.html">
+<meta property="og:title" content="H5脚本">
+<meta property="og:url" content="http://www.codingbalian.online/2017/03/07/JavaScript-API/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="Github 部分功能使用教程">
-<meta property="og:updated_time" content="2016-12-24T06:08:34.307Z">
+<meta property="og:updated_time" content="2017-03-07T10:32:34.250Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Github教程">
-<meta name="twitter:description" content="Github 部分功能使用教程">
+<meta name="twitter:title" content="H5脚本">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +53,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Github教程 | Balian&#39;s Blog</title>
+<title>H5脚本 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +260,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Github-Tutorial" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-JavaScript-API" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/12/20/Github-Tutorial/" class="article-date">
-      <time datetime="2016-12-20T03:17:56.000Z" itemprop="datePublished">2016-12-20</time>
+      <a href="/2017/03/07/JavaScript-API/" class="article-date">
+      <time datetime="2017-03-07T07:58:39.000Z" itemprop="datePublished">2017-03-07</time>
 </a>
 
 
@@ -282,7 +279,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Github教程
+      H5脚本
     </h1>
   
 
@@ -291,7 +288,7 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/github/">github</a>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
     </div>
 
 
@@ -303,8 +300,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Github 部分功能使用教程<br><a id="more"></a><br>上传：<br>在GitHub上创建仓库<br>使用Git Bush进入本地仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">touch README</div><div class="line">git add .</div><div class="line">git commit -m &apos;first commit&apos;</div><div class="line">git remote add origin git@github.com:yourname/yourrepositoryname.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure></p>
-<p>上传至master分支<br>在本地新建分支： <code>git branch Branch</code><br>切换分支: <code>git checkout Branch</code><br>将新分支发布： <code>git push origin Branch</code><br>在本地删除分支： <code>git branch -d Branch</code><br>在github远程端删除分支： <code>git push origin :Branch</code><br>取回仓库并与本地合并<code>git pull origin</code><br>克隆仓库<code>git clone https://github.com/BalianCheng/BalianCheng.github.io.git</code></p>
+        <p>　<br><a id="more"></a></p>
+<h2 id="1">跨文档消息传递</h2>
+
+<p><code>doc.postMessage(&quot;message&quot;,&quot;origin&quot;)</code>向目标文档发送消息。接收到消息后，window会触发message事件，异步形势触发，传递给onmessage处理程序包含三个信息：data（接收到的消息），origin（发送消息所在的文档），source（window的代理）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (event.origin==&quot;...&quot;)</div><div class="line">	processMessage(event.data)</div><div class="line">	event.source.postMessage(...)</div></pre></td></tr></table></figure></p>
+<h2 id="2">原生拖放</h2>
+
+<h3 id="2.1">拖放事件</h3>
+
+<p>拖动元素时依次触发<br>dragstart<br>drag<br>dragend<br>当元素被拖动到有效的放置目标时触发<br>dragenter<br>dragover<br>dragleave或者drop</p>
+<h3 id="2.2">自定义拖放元素</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(elem,&quot;dragover&quot;,function (event) &#123;</div><div class="line">    EventUtil.preventDefault(event)</div><div class="line">&#125;)</div><div class="line">EventUtil.addHandler(elem,&quot;dragenter&quot;,function (event) &#123;</div><div class="line">    EventUtil.preventDefault(event)</div><div class="line">&#125;)</div><div class="line">EventUtil.addHandler(elem,&quot;drop&quot;,function (event) &#123;</div><div class="line">    EventUtil.preventDefault(event)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>将禁止放置的目标转换成可以放置的目标</p>
+<h3 id="2.3">dataTransfer</h3>
+
+<p>被拖动元素向目标元素传递数据时可以访问dataTransfer对象。dataTransfer有两个方法：setData和getData<br>setData(“type”,”data”)type为text或URl，data为传递内容<br>getData()的参数为type</p>
+<p>dataTransfer对象还能确定被拖动的元素和作为放置目标的元素可以接收的操作。<br>dropEffect属性：<br>none：不能放置<br>move：移动到目标位置<br>copy：复制到目标位置<br>link：拖动元素为URL时拖到这里打开<br>在ondragenter事件中设置它。<br>dropEffect必须配合effectAllowed属性，表示允许拖动元素的哪种dropEffect：<br>uninitialized：没有设置<br>none：不能有行为<br>copy：复制<br>link：打开连接<br>move：移动<br>copyLink：copy+link<br>copyMove：copy+move<br>linkMove：link+move<br>all：任意</p>
+<p>HTML5还为每个元素设定了一个”draggable”属性，可以设置是否允许被拖动。<br>其他方法：<br>addElement(element)：为拖动操作添加一个只影响数据的元素<br>clearData(format)清除以特定格式保存的数据<br>setDragImage(element,x,y)指定一个对象显示在拖动时的光标下方。<br>types:当前保存的数据类型</p>
 
       
     </div>
@@ -313,13 +326,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/12/20/Github-Tutorial/">Github教程</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/07/JavaScript-API/">H5脚本</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2016-12-20, 11:17:56</p>
-        <p><span>最后更新:</span>2016-12-24, 14:08:34</p>
+        <p><span>发布时间:</span>2017-03-07, 15:58:39</p>
+        <p><span>最后更新:</span>2017-03-07, 18:32:34</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/12/20/Github-Tutorial/" title="Github教程">http://www.codingbalian.online/2016/12/20/Github-Tutorial/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2016/12/20/Github-Tutorial/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/07/JavaScript-API/" title="H5脚本">http://www.codingbalian.online/2017/03/07/JavaScript-API/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/03/07/JavaScript-API/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -331,16 +344,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/12/20/XML/">
-                    XML：语法基础
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/20/Adaboost/">
-                    Adaboost
+                <a href="/2017/03/07/JavaScript-Canvas/">
+                    JavaScript-Canvas
                 </a>
             </div>
         
@@ -352,7 +359,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">跨文档消息传递</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">原生拖放</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text">拖放事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text">自定义拖放元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.3"><span class="toc-number">2.3.</span> <span class="toc-text">dataTransfer</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -388,7 +395,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Github教程　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"H5脚本　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -404,7 +411,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/12/20/Github-Tutorial/" data-title="Github教程" data-url="http://www.codingbalian.online/2016/12/20/Github-Tutorial/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/07/JavaScript-API/" data-title="H5脚本" data-url="http://www.codingbalian.online/2017/03/07/JavaScript-API/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -427,15 +434,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/12/20/XML/" title="上一篇: XML：语法基础">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/20/Adaboost/" title="下一篇: Adaboost">
+            <a href="/2017/03/07/JavaScript-Canvas/" title="下一篇: JavaScript-Canvas">
                 <i class="fa fa-angle-right"></i>
             </a>
         
