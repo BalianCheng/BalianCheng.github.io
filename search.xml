@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[jQuery-selector]]></title>
+      <title><![CDATA[jQuery选择器]]></title>
       <url>http://www.codingbalian.online/2017/03/14/jQuery-selector/</url>
       <content type="html"><![CDATA[<p>jQuery中选择器的使用<br><a id="more"></a></p>
 <h2 id="1">选择器</h2>
@@ -244,7 +244,7 @@
     </entry>
     
     <entry>
-      <title><![CDATA[JavaScript-event]]></title>
+      <title><![CDATA[JavaScript事件处理]]></title>
       <url>http://www.codingbalian.online/2017/03/02/JavaScript-event/</url>
       <content type="html"><![CDATA[<p>JavaScript中的事件处理。<br><a id="more"></a></p>
 <h2 id="1">事件处理</h2>

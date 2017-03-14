@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2017-03-14T11:05:30.218Z</updated>
+  <updated>2017-03-14T11:07:37.695Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>jQuery-selector</title>
+    <title>jQuery选择器</title>
     <link href="http://www.codingbalian.online/2017/03/14/jQuery-selector/"/>
     <id>http://www.codingbalian.online/2017/03/14/jQuery-selector/</id>
     <published>2017-03-14T07:04:01.490Z</published>
-    <updated>2017-03-14T11:05:30.218Z</updated>
+    <updated>2017-03-14T11:07:37.695Z</updated>
     
     <content type="html"><![CDATA[<p>jQuery中选择器的使用<br><a id="more"></a></p>
 <h2 id="1">选择器</h2>
@@ -354,11 +354,11 @@
   </entry>
   
   <entry>
-    <title>JavaScript-event</title>
+    <title>JavaScript事件处理</title>
     <link href="http://www.codingbalian.online/2017/03/02/JavaScript-event/"/>
     <id>http://www.codingbalian.online/2017/03/02/JavaScript-event/</id>
     <published>2017-03-02T13:03:34.000Z</published>
-    <updated>2017-03-05T13:30:44.214Z</updated>
+    <updated>2017-03-14T11:09:13.577Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript中的事件处理。<br><a id="more"></a></p>
 <h2 id="1">事件处理</h2>
