@@ -15,16 +15,13 @@
 
 
 
-<meta name="description" content="DOM2与DOM3中新增的内容。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScrpit-DOM2">
-<meta property="og:url" content="http://www.codingbalian.online/2017/03/02/JavaScrpit-DOM2/index.html">
+<meta property="og:title" content="AJAX&Comet">
+<meta property="og:url" content="http://www.codingbalian.online/2017/03/09/AJAX-Comet/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="DOM2与DOM3中新增的内容。">
-<meta property="og:updated_time" content="2017-03-02T12:57:37.440Z">
+<meta property="og:updated_time" content="2017-03-09T09:32:14.833Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScrpit-DOM2">
-<meta name="twitter:description" content="DOM2与DOM3中新增的内容。">
+<meta name="twitter:title" content="AJAX&Comet">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +53,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JavaScrpit-DOM2 | Balian&#39;s Blog</title>
+<title>AJAX&amp;Comet | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +260,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-JavaScrpit-DOM2" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-AJAX-Comet" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/02/JavaScrpit-DOM2/" class="article-date">
-      <time datetime="2017-03-02T06:18:52.000Z" itemprop="datePublished">2017-03-02</time>
+      <a href="/2017/03/09/AJAX-Comet/" class="article-date">
+      <time datetime="2017-03-09T06:26:32.000Z" itemprop="datePublished">2017-03-09</time>
 </a>
 
 
@@ -282,7 +279,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScrpit-DOM2
+      AJAX&amp;Comet
     </h1>
   
 
@@ -303,25 +300,45 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>DOM2与DOM3中新增的内容。<br><a id="more"></a></p>
-<h2 id="1">样式</h2>
+        <p>　<br><a id="more"></a></p>
+<h2 id="1">XMLHttpRequest</h2>
 
-<p><code>element.style.cssText</code>获取style特性的代码<br><code>element.style.length</code>获取style特性中CSS属性的数量<br><code>element.style.parentRule</code>返回CSSRule对象<br><code>element.style.getPropertyValue</code>返回给定属性的字符值<br><code>element.style.removeProperty</code>移除给定属性<br><code>element.style.setProperty</code>加上给定属性，给定值，优先标准<br><code>element.style.item</code>返回给定位置的CSS属性名<br><code>element.style.getPropertyCSSValue</code>返回给定属性的CSSValue对象<br><code>element.style.getPropertyPriority</code>若给定属性使用了!important设置返回important，否则返回null</p>
-<p><code>document.defaultView.getComputedStyle</code>取得元素计算后样式，第一个参数是元素，第二个是伪元素字符串，若无则填null</p>
-<h3 id="1.1">操作样式表</h3>
+<p>XHR是Ajax的核心。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function createXHR() &#123;</div><div class="line">    if (typeof XMLHttpRequest != &quot;undefined&quot;) &#123;</div><div class="line">        return new XMLHttpRequest()</div><div class="line">    &#125;</div><div class="line">    else if (typeof ActiveXObject != &quot;undefined&quot;) &#123;</div><div class="line">        if (typeof arguments.callee.activeXString != &quot;string&quot;) &#123;</div><div class="line">            var versions = [&quot;Msxml2.XMLHTTP.6.0&quot;, &quot;Msxml2.XMLHTTP.3.0&quot;, &quot;Msxml2.XMLHTTP&quot;],</div><div class="line">                i, len</div><div class="line">            for (i = 0, len = versions.length; i &lt; len; i++) &#123;</div><div class="line">                try &#123;</div><div class="line">                    new ActiveXObject(versions[i])</div><div class="line">                    arguments.callee.activeXString = versions[i]</div><div class="line">                    break</div><div class="line">                &#125; catch (ex) &#123;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return new ActiveXObject(arguments.callee.activeXString)</div><div class="line">    &#125; else &#123;</div><div class="line">        throw new Error(&quot;No XMLHttpRequest object available!&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个函数可以支持创建所有版本的XHR对象。<br><code>var xhr=createXHR()</code><br>在使用XHR对象时，要调用的第一个方法是open()。open接受三个参数：请求方式：post或get，请求的URL和表示是否异步发送的布尔值。<br>要发送特定请求还需要使用send方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xhr.open(&quot;get&quot;,&quot;index.html&quot;,false)</div><div class="line">xhr.send(null)</div></pre></td></tr></table></figure></p>
+<p>send接受一个参数，为发送请求的主体，若不需要请求主体发送数据，必须传入null。<br>在收到服务器响应后，js会据需执行。响应的数据会自动填充XHR对象的属性：<br>responseText：作为响应主体返回的文本<br>responseXML：响应内容的类型若是”text/xml”或”application/xml”这个属性就会保存包含XMLDOM文档<br>status：响应的HTTP状态<br>statusText：HTTP状态说明<br>收到响应后，先检查status确定响应返回成功(200),(304）表示请求资源没有被修改，可以使用浏览器缓存中的内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ((xhr.status&gt;=200&amp;&amp;xhr.status&lt;300)||	xhr.status==304)&#123;</div><div class="line">	...&#125;	//success</div><div class="line">else&#123;</div><div class="line">	...&#125;//unsuccess</div></pre></td></tr></table></figure></p>
+<p>异步请求下还需要检测XHR的readyState属性。0表示未初始化，1调用了open方法，2调用了send方法，3接受部分响应，4接受全部响应数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var xhr=createXHR()</div><div class="line">xhr.onreadystatechange=function()&#123;</div><div class="line">	if(xhr.readyState==4)&#123;</div><div class="line">		if ((xhr.status&gt;=200&amp;&amp;xhr.status&lt;300)||	xhr.status==304)&#123;</div><div class="line">		...&#125;	//success</div><div class="line">	else&#123;</div><div class="line">		...&#125;//unsuccess</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">xhr.open(&quot;get&quot;,&quot;index.html&quot;,false)</div><div class="line">xhr.send(null)</div></pre></td></tr></table></figure></p>
+<p>在接受到响应之前可以用abort方法取消异步请求。</p>
+<h3 id="1.1"> 头部信息</h3>
 
-<p><code>alert(document.implementation.hasFeature(&quot;StyleSheets&quot;,&quot;2.0&quot;))</code>判断浏览器是否支持DOM2的样式表操作。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">    #mydiv &#123;</div><div class="line">        width: auto;</div><div class="line">        height: 20px;</div><div class="line">        font-style: italic</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">var sheet=document.styleSheets[0]//取得样式表列表</div><div class="line">var rules=sheet.cssRules||sheet.rules//取得规则列表</div><div class="line">var rule=rules[0]//第一个规则</div><div class="line">alert(rule.style.cssText)//设置的css规则包含的文本</div><div class="line">alert(rule.cssText)//设置的完整的css规则文本（包括选择器）</div><div class="line">alert(rule.selectorText)//选择器</div><div class="line">sheet.insertRule(&quot;#mydiv&#123;background-color:red;&#125;&quot;,0)//添加规则</div></pre></td></tr></table></figure>
-<h3 id="1.2">遍历</h3>
+<p>每个请求和响应都会带有头部信息。可以使用setRequestHeader设置请求的头部信息。接受两个参数，头部字段的名称与头部字段的值。必须在open和send之间调用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xhr.open(...)</div><div class="line">xhr.setRequestHeader(&quot;header&quot;,&quot;value&quot;)</div><div class="line">xhr.send(null)</div></pre></td></tr></table></figure></p>
+<p>调用getResponseHeader并传入头部名称可取的相应的头部字段信息。<br>getAllResponseHeaders可以取得所有的头部信息。</p>
+<h3 id="1.2">GET请求</h3>
 
-<p><code>document.createNodeIterator()</code>创造一个迭代器。第一个参数表示搜索的起点，第二个表示显示哪些节点，第三个参数是一个NodeFilter对象，表示拒绝或接受特定节点，第四个布尔值表示是否扩展实体引用HTML中为false。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var filter=function (node) &#123;</div><div class="line">    return node.tagName.toLowerCase()==&quot;p&quot;?</div><div class="line">           NodeFilter.FILTER_ACCEPT:</div><div class="line">           NodeFilter.FILTER_SKIP;</div><div class="line">&#125;</div><div class="line">var iterator=document.createNodeIterator(body,NodeFilter.SHOW_ELEMENT,filter,false)</div><div class="line">var node=iterator.nextNode()</div><div class="line">while (node!==null)&#123;</div><div class="line">    alert(node.tagName)</div><div class="line">    node=iterator.nextNode()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>定义了一个显示<code>&lt;p&gt;</code>元素的迭代器，若不指定过滤元素则第三个参数为null。</p>
-<p><code>createTreeWalker()</code>是NodeIterator的更高级版本，除了<code>nextNode()</code>和<code>previousNode()</code>之外还包括以下方法：<br><code>parentNode()</code>;<code>firstChild()</code>;<code>lastChild()</code>;<code>nextSibing()</code>;<code>previousSibing()</code>方法，创建方法与<code>createNodeIterator()</code>相同。<br><code>currentNode</code>便是现在正在访问的节点。</p>
-<h2 id="2">范围</h2>
+<p>get请求发送的格式：URL?name=value&amp;name2=value2<br>所有查询字参数必须调用encodeURIComponent方法编码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function addURLParam(url, name, value) &#123;</div><div class="line">    url += (url.indexOf(&quot;?&quot;) == -1 ? &quot;?&quot; : &quot;&amp;&quot;)</div><div class="line">    url += encodeURIComponent(name) + &quot;=&quot; + encodeURIComponent(value)</div><div class="line">    return url</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 i="1.3">Post请求</h3>
 
-<p>createRange()方法可以用来创建DOM范围。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var range1=document.createRange()</div><div class="line">	 range2=document.createRange()</div><div class="line"> p1=docuemnt.getElementsByTagName(&quot;p&quot;)[0]</div><div class="line">range1.selectNode(p1)//p1节点标签从开始到结束</div><div class="line">range2.selectNodeContents(p1)//p1节点包含的内容或子节点开始到结束</div><div class="line">range2.cloneContents()//复制range2中的所有内容。</div><div class="line">range2.deleteContents()//删除p1节点包含的子元素。</div><div class="line">var frangment=range1.extraContents()//删除range1包含的内容并返回</div></pre></td></tr></table></figure></p>
-<p>insertNode(node)在range范围内的setStart位置后插入node<br>surroundContents(node)将从range包含的内容包含在插入的node中，之后将插入内容的node放在内容原来的位置上。<br>collapse(),true表示折叠到起点，false折叠到终点。<br>cloneRange()复制范围<br>清理范围：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">range.detach()</div><div class="line">range=null</div></pre></td></tr></table></figure></p>
+<p>引入函数表单序列化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">function serialize(form) &#123;</div><div class="line">    var parts = [],</div><div class="line">        field = null,</div><div class="line">        i, len, j, optLen, option, optValue;</div><div class="line">    for (i = 0, len = form.elements.length; i &lt; len; i++) &#123;</div><div class="line">        field = form.elements[i]</div><div class="line">        switch (field.type) &#123;</div><div class="line">            case &quot;select-one&quot;:</div><div class="line">            case  &quot;select-multiple&quot;:</div><div class="line">                if (field.name.length) &#123;</div><div class="line">                    for (j = 0, optLen = field.options.length; j &lt; optLen; j++) &#123;</div><div class="line">                        option = field.options[j]</div><div class="line">                        if (option.selected) &#123;</div><div class="line">                            optValue = &quot;&quot;</div><div class="line">                            if (option.hasAttribute) &#123;</div><div class="line">                                optValue = (option.hasAttribute(&quot;value&quot;) ? option.value : option.text)</div><div class="line">                            &#125; else &#123;</div><div class="line">                                optValue = (option.attributes[&quot;value&quot;].specified ? option.value : option.text)</div><div class="line">                            &#125;</div><div class="line">                            parts.push(encodeURIComponent(field.name) + &quot;=&quot; + encodeURIComponent(optValue))</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                break</div><div class="line">            case undefined:</div><div class="line">            case &quot;file&quot;:</div><div class="line">            case &quot;submit&quot;:</div><div class="line">            case &quot;reset&quot;:</div><div class="line">            case &quot;button&quot;:</div><div class="line">                break</div><div class="line">            case &quot;radio&quot;:</div><div class="line">            case &quot;checkbox&quot;:</div><div class="line">                if (!field.checked) &#123;</div><div class="line">                    break</div><div class="line">                &#125;</div><div class="line">            default:</div><div class="line">                if (field.name.length) &#123;</div><div class="line">                    parts.push(encodeURIComponent(field.name) + &quot;=&quot; + encodeURIComponent(field.value))</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return parts.join(&quot;&amp;&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>post请求可以使用XHR来模仿表单提交。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">xhr.open(&quot;post&quot;,&quot;index.html&quot;,true)</div><div class="line">xhr.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;)</div><div class="line">/*get form*/</div><div class="line">xhr.send(serialize(form))</div></pre></td></tr></table></figure></p>
+<h2 id="2">XHR2级</h2>
+
+<h3 id="2.1">FormData</h3>
+
+<p>FormData用于表单序列化与创建与表单格式相同的数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var data=new FormData()</div><div class="line">data.append(&quot;name&quot;,&quot;cmz&quot;)</div></pre></td></tr></table></figure></p>
+<p>也可以直接使用表单中的值进行填充，可以直接传给send方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var form=document.form[0]</div><div class="line">xhr.send(new FormData(form))</div></pre></td></tr></table></figure></p>
+<h3 id="2.2">超时设定</h3>
+
+<p>XHR的timeout属性表示在请求等待多少毫秒后会终止，发生timeout事件，调用ontimeout进行处理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">xhr.timeout=1000</div><div class="line">xhr.ontimeout=function()&#123;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="2.3">overrideMimeType</h3>
+
+<p>overrideMimeType用于重写MIME类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xhr.open(...)</div><div class="line">xhr.overrideMimeType(&quot;text/xml&quot;)</div><div class="line">xhr.send(null)</div></pre></td></tr></table></figure></p>
+<p>强迫xhr将响应当做xml来处理而非纯文本，overrideMimeType必须在send之前。</p>
+<h2 id="3">进度事件</h2>
+
+<p>loadstart:接受到响应数据的第一个字节触发<br>progress:在接受响应的期间不断触发<br>error:请求错误时触发<br>abort:调用abort方法终止而触发<br>load:在接收到完整的响应后触发<br>loadend:通信完成，error，abort，load发生时触发</p>
+<p>onload可用代替readystatechange事件。<br>onprogress事件收到一个target为xhr的event对象，包含三个额外属性：lengthComputable表示进度信息是否可用的布尔值，position表示已接受的字节数，totalSize表示根据Content-Length响应头部确定的预期数值。</p>
+<h2 id="4">Comet</h2>
+
+<p>Comet实现的两种方式:长查询和流。侦听readyStateChange可用利用XHR实现HTTP流：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var received=0</div><div class="line">xhr.onreadyStateChange=function()&#123;</div><div class="line">var result</div><div class="line">if(xhr.readyStateChange==3)&#123;</div><div class="line">result=xhr.responceText.substring(received)</div><div class="line">received+=result.length</div><div class="line">progress(result)</div><div class="line">&#125;else if(xhr.readyStateChange==4)&#123;</div><div class="line">finished(xhr.resopnseText)</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">xhr.send(null)</div><div class="line">return xhr</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -330,13 +347,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/02/JavaScrpit-DOM2/">JavaScrpit-DOM2</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/09/AJAX-Comet/">AJAX&amp;Comet</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2017-03-02, 14:18:52</p>
-        <p><span>最后更新:</span>2017-03-02, 20:57:37</p>
+        <p><span>发布时间:</span>2017-03-09, 14:26:32</p>
+        <p><span>最后更新:</span>2017-03-09, 17:32:14</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/02/JavaScrpit-DOM2/" title="JavaScrpit-DOM2">http://www.codingbalian.online/2017/03/02/JavaScrpit-DOM2/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/03/02/JavaScrpit-DOM2/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/09/AJAX-Comet/" title="AJAX&amp;Comet">http://www.codingbalian.online/2017/03/09/AJAX-Comet/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/03/09/AJAX-Comet/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -349,15 +366,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/02/JavaScript-event/">
-                    JavaScript-event
+                <a href="/2017/03/09/JS-skill/">
+                    JS高级技巧
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/28/JavaScript-DOM/">
-                    JavaScript的文档对象模型
+                <a href="/2017/03/07/JavaScript-Error/">
+                    JS错误处理
                 </a>
             </div>
         
@@ -369,7 +386,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">样式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">操作样式表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">范围</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">XMLHttpRequest</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text"> 头部信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">GET请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">1.3.</span> <span class="toc-text">Post请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">XHR2级</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text">FormData</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text">超时设定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.3"><span class="toc-number">2.3.</span> <span class="toc-text">overrideMimeType</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3"><span class="toc-number">3.</span> <span class="toc-text">进度事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4"><span class="toc-number">4.</span> <span class="toc-text">Comet</span></a></li></ol>
         
     </div>
     <style>
@@ -405,7 +422,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JavaScrpit-DOM2　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"AJAX&Comet　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -421,7 +438,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/02/JavaScrpit-DOM2/" data-title="JavaScrpit-DOM2" data-url="http://www.codingbalian.online/2017/03/02/JavaScrpit-DOM2/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/09/AJAX-Comet/" data-title="AJAX&amp;Comet" data-url="http://www.codingbalian.online/2017/03/09/AJAX-Comet/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -444,7 +461,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/02/JavaScript-event/" title="上一篇: JavaScript-event">
+            <a href="/2017/03/09/JS-skill/" title="上一篇: JS高级技巧">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -452,7 +469,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/28/JavaScript-DOM/" title="下一篇: JavaScript的文档对象模型">
+            <a href="/2017/03/07/JavaScript-Error/" title="下一篇: JS错误处理">
                 <i class="fa fa-angle-right"></i>
             </a>
         

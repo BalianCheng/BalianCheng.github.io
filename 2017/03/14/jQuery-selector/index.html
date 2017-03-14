@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="DOM2与DOM3中新增的内容。">
+<meta name="description" content="jQuery中选择器的使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScrpit-DOM2">
-<meta property="og:url" content="http://www.codingbalian.online/2017/03/02/JavaScrpit-DOM2/index.html">
+<meta property="og:title" content="jQuery-selector">
+<meta property="og:url" content="http://www.codingbalian.online/2017/03/14/jQuery-selector/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="DOM2与DOM3中新增的内容。">
-<meta property="og:updated_time" content="2017-03-02T12:57:37.440Z">
+<meta property="og:description" content="jQuery中选择器的使用">
+<meta property="og:updated_time" content="2017-03-14T11:03:14.980Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScrpit-DOM2">
-<meta name="twitter:description" content="DOM2与DOM3中新增的内容。">
+<meta name="twitter:title" content="jQuery-selector">
+<meta name="twitter:description" content="jQuery中选择器的使用">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JavaScrpit-DOM2 | Balian&#39;s Blog</title>
+<title>jQuery-selector | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +263,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-JavaScrpit-DOM2" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-jQuery-selector" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/02/JavaScrpit-DOM2/" class="article-date">
-      <time datetime="2017-03-02T06:18:52.000Z" itemprop="datePublished">2017-03-02</time>
+      <a href="/2017/03/14/jQuery-selector/" class="article-date">
+      <time datetime="2017-03-14T07:04:01.490Z" itemprop="datePublished">2017-03-14</time>
 </a>
 
 
@@ -282,7 +282,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScrpit-DOM2
+      jQuery-selector
     </h1>
   
 
@@ -303,25 +303,38 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>DOM2与DOM3中新增的内容。<br><a id="more"></a></p>
-<h2 id="1">样式</h2>
+        <p>jQuery中选择器的使用<br><a id="more"></a></p>
+<h2 id="1">选择器</h2>
 
-<p><code>element.style.cssText</code>获取style特性的代码<br><code>element.style.length</code>获取style特性中CSS属性的数量<br><code>element.style.parentRule</code>返回CSSRule对象<br><code>element.style.getPropertyValue</code>返回给定属性的字符值<br><code>element.style.removeProperty</code>移除给定属性<br><code>element.style.setProperty</code>加上给定属性，给定值，优先标准<br><code>element.style.item</code>返回给定位置的CSS属性名<br><code>element.style.getPropertyCSSValue</code>返回给定属性的CSSValue对象<br><code>element.style.getPropertyPriority</code>若给定属性使用了!important设置返回important，否则返回null</p>
-<p><code>document.defaultView.getComputedStyle</code>取得元素计算后样式，第一个参数是元素，第二个是伪元素字符串，若无则填null</p>
-<h3 id="1.1">操作样式表</h3>
+<h3 id="1.1">元素判断</h3>
 
-<p><code>alert(document.implementation.hasFeature(&quot;StyleSheets&quot;,&quot;2.0&quot;))</code>判断浏览器是否支持DOM2的样式表操作。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;style type=&quot;text/css&quot;&gt;</div><div class="line">    #mydiv &#123;</div><div class="line">        width: auto;</div><div class="line">        height: 20px;</div><div class="line">        font-style: italic</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div><div class="line"></div><div class="line">var sheet=document.styleSheets[0]//取得样式表列表</div><div class="line">var rules=sheet.cssRules||sheet.rules//取得规则列表</div><div class="line">var rule=rules[0]//第一个规则</div><div class="line">alert(rule.style.cssText)//设置的css规则包含的文本</div><div class="line">alert(rule.cssText)//设置的完整的css规则文本（包括选择器）</div><div class="line">alert(rule.selectorText)//选择器</div><div class="line">sheet.insertRule(&quot;#mydiv&#123;background-color:red;&#125;&quot;,0)//添加规则</div></pre></td></tr></table></figure>
-<h3 id="1.2">遍历</h3>
+<p><code>$(&quot;span,#two&quot;).css(&quot;background&quot;,&quot;#bbffaa&quot;)</code>选择了页面中不存在的元素也不会报错，但是要检验一个元素是否存在时，应该使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if($(&quot;span,#two&quot;).length&gt;0)&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="1.2">基本选择器</h3>
 
-<p><code>document.createNodeIterator()</code>创造一个迭代器。第一个参数表示搜索的起点，第二个表示显示哪些节点，第三个参数是一个NodeFilter对象，表示拒绝或接受特定节点，第四个布尔值表示是否扩展实体引用HTML中为false。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var filter=function (node) &#123;</div><div class="line">    return node.tagName.toLowerCase()==&quot;p&quot;?</div><div class="line">           NodeFilter.FILTER_ACCEPT:</div><div class="line">           NodeFilter.FILTER_SKIP;</div><div class="line">&#125;</div><div class="line">var iterator=document.createNodeIterator(body,NodeFilter.SHOW_ELEMENT,filter,false)</div><div class="line">var node=iterator.nextNode()</div><div class="line">while (node!==null)&#123;</div><div class="line">    alert(node.tagName)</div><div class="line">    node=iterator.nextNode()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>定义了一个显示<code>&lt;p&gt;</code>元素的迭代器，若不指定过滤元素则第三个参数为null。</p>
-<p><code>createTreeWalker()</code>是NodeIterator的更高级版本，除了<code>nextNode()</code>和<code>previousNode()</code>之外还包括以下方法：<br><code>parentNode()</code>;<code>firstChild()</code>;<code>lastChild()</code>;<code>nextSibing()</code>;<code>previousSibing()</code>方法，创建方法与<code>createNodeIterator()</code>相同。<br><code>currentNode</code>便是现在正在访问的节点。</p>
-<h2 id="2">范围</h2>
+<p><code>$(&quot;span,#two&quot;)</code>选择span元素和id为wtwo的元素<br><code>$(&quot;.one&quot;)</code>选择class为one的元素<br><code>$(&quot;span&quot;)</code>选择所有span元素<br><code>$(&quot;#two&quot;)</code>选择id为two的元素<br><code>$(&quot;*&quot;)</code>选择所有元素</p>
+<h3 id="1.3">层次选择器</h3><br><code>$(&quot;div span&quot;)</code>选择div中的所有span后代元素(后代元素，包括子元素)<br><code>$(&quot;div&gt;span&quot;)</code>选择div中的所有span子元素<br><code>$(&quot;div+span&quot;)</code>选择紧跟在div后的span同辈元素，等价于<code>$(&quot;div&quot;).next(&quot;span&quot;)</code><br><code>$(&quot;div~span&quot;)</code>选择紧跟在div后的所有span同辈元素，等价于<code>$(&quot;div&quot;).nextAll(&quot;span&quot;)</code><br><br><h3 id="1.4"> 基本过滤选择器</h3>
 
-<p>createRange()方法可以用来创建DOM范围。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var range1=document.createRange()</div><div class="line">	 range2=document.createRange()</div><div class="line"> p1=docuemnt.getElementsByTagName(&quot;p&quot;)[0]</div><div class="line">range1.selectNode(p1)//p1节点标签从开始到结束</div><div class="line">range2.selectNodeContents(p1)//p1节点包含的内容或子节点开始到结束</div><div class="line">range2.cloneContents()//复制range2中的所有内容。</div><div class="line">range2.deleteContents()//删除p1节点包含的子元素。</div><div class="line">var frangment=range1.extraContents()//删除range1包含的内容并返回</div></pre></td></tr></table></figure></p>
-<p>insertNode(node)在range范围内的setStart位置后插入node<br>surroundContents(node)将从range包含的内容包含在插入的node中，之后将插入内容的node放在内容原来的位置上。<br>collapse(),true表示折叠到起点，false折叠到终点。<br>cloneRange()复制范围<br>清理范围：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">range.detach()</div><div class="line">range=null</div></pre></td></tr></table></figure></p>
+<p><code>$(&quot;div:fist&quot;)</code>选择所有div元素中的第一个div元素<br><code>$(&quot;div:last&quot;)</code>选择所有div元素中的最后一个div元素<br><code>$(&quot;div:not(.one)&quot;)</code>选择所有div元素中class不为one的所有div元素<br><code>$(&quot;div:even&quot;)</code>选择索引是偶数的div元素<br><code>$(&quot;div:odd&quot;)</code>选择索引是奇数的div元素<br><code>$(&quot;div:eq(1)&quot;)</code>选择索引为1的div元素（索引从0开始）<br><code>$(&quot;div:gt(1)&quot;)</code>选择索引大于1的div元素（索引从0开始）<br><code>$(&quot;div:lt(1)&quot;)</code>选择索引小于1的div元素（索引从0开始）<br><code>$(&quot;:header&quot;)</code>选择索引标题元素<br><code>$(&quot;:animated&quot;)</code>选择正在执行的动画元素<br><code>$(&quot;:focus&quot;)</code>选择获取焦点的元素</p>
+<h3 id="1.5"> 内容过滤选择器</h3>
+
+<p><code>$(&quot;div:contains(&#39;=&#39;)&quot;)</code>选择含有文本内容为”=”的div元素<br><code>$(&quot;div:empty&quot;)</code>选择没有子元素或者文本的空div元素<br><code>$(&quot;div:has(.mini)&quot;)</code>选择含有class为mini子元素的div元素<br><code>$(&quot;div:parent&quot;)</code>选择含有子元素或文本元素的div元素</p>
+<h3 id="1.6"> 可见性过滤选择器</h3>
+
+<p><code>$(&quot;div:visible&quot;)</code>选取所有可见的div元素<br><code>$(&quot;div:hidden&quot;)</code>选取所有不可见的div元素</p>
+<h3 id="1.7"> 属性过滤选择器</h3>
+
+<p><code>$(&quot;div[id]&quot;)</code>选取有id属性的div元素<br><code>$(&quot;div[title=test]&quot;)</code>选取title属性为test的div元素<br><code>$(&quot;div[title^=t]&quot;)</code>选取title属性值以t开头的div元素<br><code>$(&quot;div[title$=t]&quot;)</code>选取title属性值以t结尾的div元素<br><code>$(&quot;div[title*=t]&quot;)</code>选取title属性含有的div元素<br><code>$(&quot;div[title|=t]&quot;)</code>选取title属性值以t为前缀（前缀后必须包含“-”）的div元素<br><code>$(&quot;div[title~=t]&quot;)</code>选取title属性值以空格分隔的包含t的div元素<br><code>$(&quot;div[title$=t][id]&quot;)</code>满足相应条件的多条件选择器</p>
+<h3 id="1.8"> 子元素过滤选择器</h3>
+
+<p><code>$(&quot;div:nth-child(1/odd/even/(3n))&quot;)</code>索引从1算起，选取div所有div元素下的第一个/奇数/偶数/3n倍数的子元素<br><code>$(&quot;div:first-child&quot;)</code>所有div下的第一个子元素<br><code>$(&quot;div:last-child&quot;)</code>所有div下的最后一个子元素<br><code>$(&quot;div:only-child&quot;)</code>选取只包含一个子元素的div元素的子元素</p>
+<h2 id="2"> 表单选择器</h2>
+
+<h3 id="2.1"> 表单对象属性过滤选择器</h3>
+
+<p><code>$(input:enabled)</code>选取所有input元素中可用的元素<br><code>$(input:disabled)</code>选取所有input元素中不可用的元素<br><code>$(input:checked)</code>选取所有input元素中被选中的单选框复选框元素<br><code>$(input:selected)</code>选取所有input元素中被选中的下拉列表元素</p>
+<h3 id="2.2"> 表单选择器</h3>
+
+<p><code>$(#form1:input)</code>选取class为form1元素下的所有<code>&lt;input&gt;,&lt;textarea&gt;,&lt;button&gt;,&lt;select&gt;</code>元素<br><code>$(#form1:text)</code>选取class为form1元素下的所有单行文本框<br><code>$(#form1:password)</code>选取class为form1元素下的所有密码框<br><code>$(#form1:radio)</code>选取class为form1元素下的所有单选框<br><code>$(#form1:submit)</code>选取class为form1元素下的所有提交按钮<br><code>$(#form1:checkbox)</code>选取class为form1元素下的所有多选框<br><code>$(#form1:image)</code>选取class为form1元素下的所有图像按钮<br><code>$(#form1:reset)</code>选取class为form1元素下的所有重置按钮<br><code>$(#form1:button)</code>选取class为form1元素下的所有按钮<br><code>$(#form1:file)</code>选取class为form1元素下的所有上传域<br><code>$(#form1:hidden)</code>选取class为form1元素下的所有不可见元素</p>
 
       
     </div>
@@ -330,13 +343,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/02/JavaScrpit-DOM2/">JavaScrpit-DOM2</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/14/jQuery-selector/">jQuery-selector</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2017-03-02, 14:18:52</p>
-        <p><span>最后更新:</span>2017-03-02, 20:57:37</p>
+        <p><span>发布时间:</span>2017-03-14, 15:04:01</p>
+        <p><span>最后更新:</span>2017-03-14, 19:03:14</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/02/JavaScrpit-DOM2/" title="JavaScrpit-DOM2">http://www.codingbalian.online/2017/03/02/JavaScrpit-DOM2/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/03/02/JavaScrpit-DOM2/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/14/jQuery-selector/" title="jQuery-selector">http://www.codingbalian.online/2017/03/14/jQuery-selector/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/03/14/jQuery-selector/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -348,16 +361,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/02/JavaScript-event/">
-                    JavaScript-event
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/28/JavaScript-DOM/">
-                    JavaScript的文档对象模型
+                <a href="/2017/03/09/JS-skill/">
+                    JS高级技巧
                 </a>
             </div>
         
@@ -369,7 +376,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">样式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">操作样式表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">范围</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">元素判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">基本选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.3.</span> <span class="toc-text">层次选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.4"><span class="toc-number">1.4.</span> <span class="toc-text"> 基本过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.5"><span class="toc-number">1.5.</span> <span class="toc-text"> 内容过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.6"><span class="toc-number">1.6.</span> <span class="toc-text"> 可见性过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.7"><span class="toc-number">1.7.</span> <span class="toc-text"> 属性过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.8"><span class="toc-number">1.8.</span> <span class="toc-text"> 子元素过滤选择器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text"> 表单选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text"> 表单对象属性过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text"> 表单选择器</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -405,7 +412,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JavaScrpit-DOM2　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"jQuery-selector　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -421,7 +428,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/02/JavaScrpit-DOM2/" data-title="JavaScrpit-DOM2" data-url="http://www.codingbalian.online/2017/03/02/JavaScrpit-DOM2/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/14/jQuery-selector/" data-title="jQuery-selector" data-url="http://www.codingbalian.online/2017/03/14/jQuery-selector/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -444,15 +451,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/02/JavaScript-event/" title="上一篇: JavaScript-event">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/28/JavaScript-DOM/" title="下一篇: JavaScript的文档对象模型">
+            <a href="/2017/03/09/JS-skill/" title="下一篇: JS高级技巧">
                 <i class="fa fa-angle-right"></i>
             </a>
         

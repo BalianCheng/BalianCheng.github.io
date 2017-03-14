@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2017-03-07T10:32:34.250Z</updated>
+  <updated>2017-03-14T11:03:14.980Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -14,6 +14,212 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jQuery-selector</title>
+    <link href="http://www.codingbalian.online/2017/03/14/jQuery-selector/"/>
+    <id>http://www.codingbalian.online/2017/03/14/jQuery-selector/</id>
+    <published>2017-03-14T07:04:01.490Z</published>
+    <updated>2017-03-14T11:03:14.980Z</updated>
+    
+    <content type="html"><![CDATA[<p>jQuery中选择器的使用<br><a id="more"></a></p>
+<h2 id="1">选择器</h2>
+
+<h3 id="1.1">元素判断</h3>
+
+<p><code>$(&quot;span,#two&quot;).css(&quot;background&quot;,&quot;#bbffaa&quot;)</code>选择了页面中不存在的元素也不会报错，但是要检验一个元素是否存在时，应该使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if($(&quot;span,#two&quot;).length&gt;0)&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="1.2">基本选择器</h3>
+
+<p><code>$(&quot;span,#two&quot;)</code>选择span元素和id为wtwo的元素<br><code>$(&quot;.one&quot;)</code>选择class为one的元素<br><code>$(&quot;span&quot;)</code>选择所有span元素<br><code>$(&quot;#two&quot;)</code>选择id为two的元素<br><code>$(&quot;*&quot;)</code>选择所有元素</p>
+<h3 id="1.3">层次选择器</h3><br><code>$(&quot;div span&quot;)</code>选择div中的所有span后代元素(后代元素，包括子元素)<br><code>$(&quot;div&gt;span&quot;)</code>选择div中的所有span子元素<br><code>$(&quot;div+span&quot;)</code>选择紧跟在div后的span同辈元素，等价于<code>$(&quot;div&quot;).next(&quot;span&quot;)</code><br><code>$(&quot;div~span&quot;)</code>选择紧跟在div后的所有span同辈元素，等价于<code>$(&quot;div&quot;).nextAll(&quot;span&quot;)</code><br><br><h3 id="1.4"> 基本过滤选择器</h3>
+
+<p><code>$(&quot;div:fist&quot;)</code>选择所有div元素中的第一个div元素<br><code>$(&quot;div:last&quot;)</code>选择所有div元素中的最后一个div元素<br><code>$(&quot;div:not(.one)&quot;)</code>选择所有div元素中class不为one的所有div元素<br><code>$(&quot;div:even&quot;)</code>选择索引是偶数的div元素<br><code>$(&quot;div:odd&quot;)</code>选择索引是奇数的div元素<br><code>$(&quot;div:eq(1)&quot;)</code>选择索引为1的div元素（索引从0开始）<br><code>$(&quot;div:gt(1)&quot;)</code>选择索引大于1的div元素（索引从0开始）<br><code>$(&quot;div:lt(1)&quot;)</code>选择索引小于1的div元素（索引从0开始）<br><code>$(&quot;:header&quot;)</code>选择索引标题元素<br><code>$(&quot;:animated&quot;)</code>选择正在执行的动画元素<br><code>$(&quot;:focus&quot;)</code>选择获取焦点的元素</p>
+<h3 id="1.5"> 内容过滤选择器</h3>
+
+<p><code>$(&quot;div:contains(&#39;=&#39;)&quot;)</code>选择含有文本内容为”=”的div元素<br><code>$(&quot;div:empty&quot;)</code>选择没有子元素或者文本的空div元素<br><code>$(&quot;div:has(.mini)&quot;)</code>选择含有class为mini子元素的div元素<br><code>$(&quot;div:parent&quot;)</code>选择含有子元素或文本元素的div元素</p>
+<h3 id="1.6"> 可见性过滤选择器</h3>
+
+<p><code>$(&quot;div:visible&quot;)</code>选取所有可见的div元素<br><code>$(&quot;div:hidden&quot;)</code>选取所有不可见的div元素</p>
+<h3 id="1.7"> 属性过滤选择器</h3>
+
+<p><code>$(&quot;div[id]&quot;)</code>选取有id属性的div元素<br><code>$(&quot;div[title=test]&quot;)</code>选取title属性为test的div元素<br><code>$(&quot;div[title^=t]&quot;)</code>选取title属性值以t开头的div元素<br><code>$(&quot;div[title$=t]&quot;)</code>选取title属性值以t结尾的div元素<br><code>$(&quot;div[title*=t]&quot;)</code>选取title属性含有的div元素<br><code>$(&quot;div[title|=t]&quot;)</code>选取title属性值以t为前缀（前缀后必须包含“-”）的div元素<br><code>$(&quot;div[title~=t]&quot;)</code>选取title属性值以空格分隔的包含t的div元素<br><code>$(&quot;div[title$=t][id]&quot;)</code>满足相应条件的多条件选择器</p>
+<h3 id="1.8"> 子元素过滤选择器</h3>
+
+<p><code>$(&quot;div:nth-child(1/odd/even/(3n))&quot;)</code>索引从1算起，选取div所有div元素下的第一个/奇数/偶数/3n倍数的子元素<br><code>$(&quot;div:first-child&quot;)</code>所有div下的第一个子元素<br><code>$(&quot;div:last-child&quot;)</code>所有div下的最后一个子元素<br><code>$(&quot;div:only-child&quot;)</code>选取只包含一个子元素的div元素的子元素</p>
+<h2 id="2"> 表单选择器</h2>
+
+<h3 id="2.1"> 表单对象属性过滤选择器</h3>
+
+<p><code>$(input:enabled)</code>选取所有input元素中可用的元素<br><code>$(input:disabled)</code>选取所有input元素中不可用的元素<br><code>$(input:checked)</code>选取所有input元素中被选中的单选框复选框元素<br><code>$(input:selected)</code>选取所有input元素中被选中的下拉列表元素</p>
+<h3 id="2.2"> 表单选择器</h3>
+
+<p><code>$(#form1:input)</code>选取class为form1元素下的所有<code>&lt;input&gt;,&lt;textarea&gt;,&lt;button&gt;,&lt;select&gt;</code>元素<br><code>$(#form1:text)</code>选取class为form1元素下的所有单行文本框<br><code>$(#form1:password)</code>选取class为form1元素下的所有密码框<br><code>$(#form1:radio)</code>选取class为form1元素下的所有单选框<br><code>$(#form1:submit)</code>选取class为form1元素下的所有提交按钮<br><code>$(#form1:checkbox)</code>选取class为form1元素下的所有多选框<br><code>$(#form1:image)</code>选取class为form1元素下的所有图像按钮<br><code>$(#form1:reset)</code>选取class为form1元素下的所有重置按钮<br><code>$(#form1:button)</code>选取class为form1元素下的所有按钮<br><code>$(#form1:file)</code>选取class为form1元素下的所有上传域<br><code>$(#form1:hidden)</code>选取class为form1元素下的所有不可见元素</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;jQuery中选择器的使用&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS高级技巧</title>
+    <link href="http://www.codingbalian.online/2017/03/09/JS-skill/"/>
+    <id>http://www.codingbalian.online/2017/03/09/JS-skill/</id>
+    <published>2017-03-09T11:57:34.000Z</published>
+    <updated>2017-03-13T14:24:14.270Z</updated>
+    
+    <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
+<h2 id="1">高级函数</h2>
+
+<h3 id="1.1">安全类型检测</h3>
+
+<p>typeof在Safari中检测正则表达式时会返回function，instanceof在检测数组时由于Array是window的对象，被检测的对象必须和Array构造函数位于同个全局作用域中。<br>因此使用原生的toString方法可以避免出错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Object.prototype.toString.call(obj)==&quot;[boject Array]&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="1.2">安全作用域</h3>
+
+<p>当构造函数使用this关键字，创建新对象时没有使用new时，this会直接映射到window上，因此需要创造安全的作用域：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function person(name,age) &#123;</div><div class="line">    if (this instanceof person) &#123;//判断</div><div class="line">        this.name = name</div><div class="line">        this.age = age</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        return new person(name,age)//确保安全</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">person.prototype=&#123;</div><div class="line">    constructor:person,</div><div class="line">    sayName:function () &#123;</div><div class="line">        alert(this.name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Object.defineProperty(person.prototype,&quot;constructor&quot;,&#123;</div><div class="line">    enumerable:false,</div><div class="line">    value:person</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="1.2">惰性载入函数</h3>
+
+<p>函数中如果有大量的if语句，且if语句不用每次都执行，可以使用惰性载入的方法。比如在函数调用时在处理函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">function createXHR() &#123;</div><div class="line">    if (typeof XMLHttpRequest != &quot;undefined&quot;) &#123;</div><div class="line">        createXHR = function () &#123;</div><div class="line">            return new XMLHttpRequest()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    else if (typeof ActiveXObject != &quot;undefined&quot;) &#123;</div><div class="line">        createXHR = function () &#123;</div><div class="line">            if (typeof arguments.callee.activeXString != &quot;string&quot;) &#123;</div><div class="line">                var versions = [&quot;Msxml2.XMLHTTP.6.0&quot;, &quot;Msxml2.XMLHTTP.3.0&quot;, &quot;Msxml2.XMLHTTP&quot;],</div><div class="line">                    i, len</div><div class="line">                for (i = 0, len = versions.length; i &lt; len; i++) &#123;</div><div class="line">                    try &#123;</div><div class="line">                        new ActiveXObject(versions[i])</div><div class="line">                        arguments.callee.activeXString = versions[i]</div><div class="line">                        break</div><div class="line">                    &#125; catch (ex) &#123;</div><div class="line"></div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            return new ActiveXObject(arguments.callee.activeXString)</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">        createXHR = function () &#123;</div><div class="line">            throw new Error(&quot;No XMLHttpRequest object available!&quot;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return createXHR()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>每一个分支都会覆盖原函数，最后调用新函数，下一次调用就会调用新的分配函数。</p>
+<h3 id="1.3">函数绑定</h3>
+
+<p>当调用一个对象的方法时，如果没有绑定其环境，方法中使用this的指向会改变，因此可以使用闭包或者函数绑定来执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var handler=&#123;</div><div class="line">	message:&quot;Event&quot;,</div><div class="line">	handlerClick:function(event)&#123;</div><div class="line">		alert(this.message)</div><div class="line">	&#125;</div><div class="line">EventUtil.addHandler(btn,&quot;click&quot;,function(event)&#123;</div><div class="line">	handler.handlerClick(event)</div><div class="line">	&#125;)</div><div class="line">/*bind函数绑定环境</div><div class="line">    function bind(fn, context) &#123;</div><div class="line">        return function () &#123;</div><div class="line">            return fn.apply(context, arguments)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    EventUtil.addHandler(btn, &quot;click&quot;, bind(handler.handleClick, handler))</div><div class="line">*/</div><div class="line"></div><div class="line">/*原生bind函数</div><div class="line">    EventUtil.addHandler(btn, &quot;click&quot;,handler.handleClick.bind(handler))</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<h3 id="1.4">函数柯里化</h3>
+
+<p>调用另一个函数并为它传入要柯里化的函数和必要参数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function bind(fn,context)&#123;</div><div class="line">	//获取柯里化的参数</div><div class="line">	var args = Array.prototype.slice.call(arguments,2);//&quot;zhangsan&quot;,12</div><div class="line">	return function()&#123;</div><div class="line">		//获取调用函数时传入的参数</div><div class="line">		var innerArgs = Array.prototype.slice.call(arguments);//event</div><div class="line">		var finalArgs = innerArgs.concat(args);//event,&quot;zhangsan&quot;,12</div><div class="line">		return fn.apply(context,finalArgs);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">handler = &#123;</div><div class="line">	message:&quot;hehe&quot;,</div><div class="line">	handleClick:function(event,name,age)&#123;</div><div class="line">		console.log(this.message);</div><div class="line">		console.log(event.type);</div><div class="line">		console.log(name+&quot;:&quot;+age);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var btn = document.getElementById(&quot;btn&quot;);</div><div class="line">btn.onclick = bind(handler.handleClick,handler,&quot;zhangsan&quot;,12);</div></pre></td></tr></table></figure></p>
+<p>bind()方法也实现了函数柯里化，只要在this的值后再传入另一个参数即可:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">handler = &#123;</div><div class="line">	message:&quot;hehe&quot;,</div><div class="line">	handleClick:function(name,age,event)&#123;//event对象作为最后一个参数传入</div><div class="line">		console.log(this.message);</div><div class="line">		console.log(event.type);</div><div class="line">		console.log(name+&quot;:&quot;+age);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var btn = document.getElementById(&quot;btn&quot;);</div><div class="line">btn.onclick = handler.handleClick.bind(handler,&quot;zhangsan&quot;,12);</div></pre></td></tr></table></figure></p>
+<h3 id="1.5">防篡改对象</h3>
+
+<p>一旦将对象定义成防篡改，就无法撤销了。<br>默认情况下，所有对象都是可以扩展的，任何时候都可以向对象中添加属性和方法。<br>Object.preventExtensions()方法可以禁止给对象添加属性和方法。<br>Object.istExtensible()：检测对象是否可扩展</p>
+<p>密封对象不可扩展，而且已有成员的[[Configurable]]特性为false。不能删除属性和方法，可以修改:<br>Object.seal(person);</p>
+<p>最严格的防篡改级别是冻结对象(frozen object)。不可扩展，又是密封的，而且对象的属性的[[Writable]]特性会被设置为false。无法直接修改属性，但是如果定义[[Set]]函数，访问器属性任然可以修改。</p>
+<p>Object.freeze(person);//冻结对象</p>
+<h3 id="1.6">Yielding Processes</h3>
+
+<p>在浏览器中的JS都被分配了一个确定数量的资源。需要的内存大小和处理器时间都被严格限制了，防止恶意的Web程序员把用户机器资源耗尽。<br>脚本长时间运行的问题通常由两个原因之一造成：过长的，过深嵌套的函数调用或者是进行大量处理的循环。<br>对于后者，可以使用定时器分割这个循环。这是一种叫做数组分块(array  chunking)的技术，小块小块地处理数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function chunk(array,process,context)&#123;//处理的数据，执行函数，运行环境</div><div class="line">    setTimeout(function()&#123;</div><div class="line">        var item = array.shift();//待处理事项</div><div class="line">        process.call(context,item);</div><div class="line">        if(array.length&gt;0)&#123;//如果还有待办事项</div><div class="line">            setTimeout(arguments.callee,100);</div><div class="line">        &#125;</div><div class="line">    &#125;,100);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="1.7">函数节流</h3>
+
+
+<p>某些代码不可以在没有间断的情况连续重复执行。第一次调用函数，创建一个定时器，在指定的时间间隔之后运行代码。当第二次调用该函数时，它会清除前一次的定时器并设置另一个。如果前一个定时器已经执行过了，这个操作就没有任何意义。如果前一个定时器未执行，其实就是将其替换为一个新的定时器。目的是只有在执行函数的请求停止了一段时间之后才执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var processor =&#123;</div><div class="line">	timeoutId:null,</div><div class="line">	//实际处理的程序</div><div class="line">	performProcessing:function()&#123;</div><div class="line">		//实际执行的代码</div><div class="line">	&#125;</div><div class="line">	//初始处理调用的方法</div><div class="line">	process:function()&#123;</div><div class="line">		//清除前一个定时器</div><div class="line">		clearTimeout(this.timeoutId);</div><div class="line">		//保留this当前执行环境</div><div class="line">		var processContext = this;</div><div class="line">		//设置新的处理程序定时器</div><div class="line">		this.timeoutId = setTimeout(function()&#123;</div><div class="line">			processContext.performProcessing();//调用实际处理程序</div><div class="line">		&#125;,100);</div><div class="line">	&#125;</div><div class="line">&#125; </div><div class="line">//开始执行</div><div class="line">processor.process();</div></pre></td></tr></table></figure></p>
+<p>使用throttle()函数来简化，该函数可自动进行定时器的设置和清除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function throttle(method,context)&#123;</div><div class="line">	clearTimeout(method.tId);</div><div class="line">	method.tId = setTimeout(function()&#123;</div><div class="line">		method.call(context);//如果没有给定执行环境，就会在全局作用域内执行</div><div class="line">	&#125;,1000);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function resizeDiv()&#123;</div><div class="line">	var div = document.getElementById(&quot;editDiv&quot;);</div><div class="line">	div.style.height = div.offsetWidth + &quot;px&quot;;</div><div class="line">&#125;</div><div class="line">window.onresize = function()&#123;</div><div class="line">	//resizeDiv();</div><div class="line">	throttle(resizeDiv);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="1.8">自定义事件</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">function EventTarget() &#123;</div><div class="line">    this.handlers = &#123;&#125;;//存储事件处理程序</div><div class="line">&#125;</div><div class="line">EventTarget.prototype = &#123;</div><div class="line">    constructor: EventTarget,</div><div class="line">    //type事件类型，handler处理该事件的函数</div><div class="line">    addHandler: function (type, handler) &#123;//注册给定类型事件的事件处理程序</div><div class="line">        if (typeof this.handlers[type] == &apos;undefined&apos;) &#123;</div><div class="line">            this.handlers[type] = [];</div><div class="line">        &#125;</div><div class="line">        this.handlers[type].push(handler);</div><div class="line">    &#125;,</div><div class="line">    //event,至少包含type属性的对象</div><div class="line">    fire: function (event) &#123;//触发一个事件</div><div class="line">        if (!event.target) &#123;//给event对象初始化设置一个target属性。</div><div class="line">            event.target = this;</div><div class="line">        &#125;</div><div class="line">        if (this.handlers[event.type] instanceof Array) &#123;//查找该事件类型的一组处理程序</div><div class="line">            var handlers = this.handlers[event.type];</div><div class="line">            for (var i = 0, len = handlers.length; i &lt; len; i++) &#123;//遍历调用所有的事件处理程序</div><div class="line">                handlers[i](event);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    removeHandler: function (type, handler) &#123;</div><div class="line">        if (this.handlers[type] instanceof Array) &#123;</div><div class="line">            var handlers = this.handlers[type];</div><div class="line">            for (var i = 0, len = handlers.length; i &lt; len; i++) &#123;</div><div class="line">                if (handlers[i] === handler) &#123;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            handlers.splice(i, 1);//从数组中删除该处理程序</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用自定义的事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function handlerMessage(event)&#123;</div><div class="line">	console.log(&quot;消息处理:&quot;+event.message);</div><div class="line">&#125;</div><div class="line">//创建一个新的对象</div><div class="line">var target = new EventTarget();</div><div class="line">//添加事件处理程序,类型是message</div><div class="line">target.addHandler(&quot;message&quot;,handlerMessage);</div><div class="line">//触发message类型的事件,并自定义event对象的message属性</div><div class="line">target.fire(&#123;type:&quot;message&quot;,message:&quot;消息事件处理&quot;&#125;);</div><div class="line">//删除事件处理程序</div><div class="line">target.removeHandler(&quot;message&quot;,handlerMessage);</div><div class="line">//再次触发事件，已删除</div><div class="line">target.fire(&#123;type:&quot;message&quot;,message:&quot;再次触发事件，已删除&quot;&#125;);</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>AJAX&amp;Comet</title>
+    <link href="http://www.codingbalian.online/2017/03/09/AJAX-Comet/"/>
+    <id>http://www.codingbalian.online/2017/03/09/AJAX-Comet/</id>
+    <published>2017-03-09T06:26:32.000Z</published>
+    <updated>2017-03-09T09:32:14.833Z</updated>
+    
+    <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
+<h2 id="1">XMLHttpRequest</h2>
+
+<p>XHR是Ajax的核心。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">function createXHR() &#123;</div><div class="line">    if (typeof XMLHttpRequest != &quot;undefined&quot;) &#123;</div><div class="line">        return new XMLHttpRequest()</div><div class="line">    &#125;</div><div class="line">    else if (typeof ActiveXObject != &quot;undefined&quot;) &#123;</div><div class="line">        if (typeof arguments.callee.activeXString != &quot;string&quot;) &#123;</div><div class="line">            var versions = [&quot;Msxml2.XMLHTTP.6.0&quot;, &quot;Msxml2.XMLHTTP.3.0&quot;, &quot;Msxml2.XMLHTTP&quot;],</div><div class="line">                i, len</div><div class="line">            for (i = 0, len = versions.length; i &lt; len; i++) &#123;</div><div class="line">                try &#123;</div><div class="line">                    new ActiveXObject(versions[i])</div><div class="line">                    arguments.callee.activeXString = versions[i]</div><div class="line">                    break</div><div class="line">                &#125; catch (ex) &#123;</div><div class="line"></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return new ActiveXObject(arguments.callee.activeXString)</div><div class="line">    &#125; else &#123;</div><div class="line">        throw new Error(&quot;No XMLHttpRequest object available!&quot;)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个函数可以支持创建所有版本的XHR对象。<br><code>var xhr=createXHR()</code><br>在使用XHR对象时，要调用的第一个方法是open()。open接受三个参数：请求方式：post或get，请求的URL和表示是否异步发送的布尔值。<br>要发送特定请求还需要使用send方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xhr.open(&quot;get&quot;,&quot;index.html&quot;,false)</div><div class="line">xhr.send(null)</div></pre></td></tr></table></figure></p>
+<p>send接受一个参数，为发送请求的主体，若不需要请求主体发送数据，必须传入null。<br>在收到服务器响应后，js会据需执行。响应的数据会自动填充XHR对象的属性：<br>responseText：作为响应主体返回的文本<br>responseXML：响应内容的类型若是”text/xml”或”application/xml”这个属性就会保存包含XMLDOM文档<br>status：响应的HTTP状态<br>statusText：HTTP状态说明<br>收到响应后，先检查status确定响应返回成功(200),(304）表示请求资源没有被修改，可以使用浏览器缓存中的内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ((xhr.status&gt;=200&amp;&amp;xhr.status&lt;300)||	xhr.status==304)&#123;</div><div class="line">	...&#125;	//success</div><div class="line">else&#123;</div><div class="line">	...&#125;//unsuccess</div></pre></td></tr></table></figure></p>
+<p>异步请求下还需要检测XHR的readyState属性。0表示未初始化，1调用了open方法，2调用了send方法，3接受部分响应，4接受全部响应数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var xhr=createXHR()</div><div class="line">xhr.onreadystatechange=function()&#123;</div><div class="line">	if(xhr.readyState==4)&#123;</div><div class="line">		if ((xhr.status&gt;=200&amp;&amp;xhr.status&lt;300)||	xhr.status==304)&#123;</div><div class="line">		...&#125;	//success</div><div class="line">	else&#123;</div><div class="line">		...&#125;//unsuccess</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">xhr.open(&quot;get&quot;,&quot;index.html&quot;,false)</div><div class="line">xhr.send(null)</div></pre></td></tr></table></figure></p>
+<p>在接受到响应之前可以用abort方法取消异步请求。</p>
+<h3 id="1.1"> 头部信息</h3>
+
+<p>每个请求和响应都会带有头部信息。可以使用setRequestHeader设置请求的头部信息。接受两个参数，头部字段的名称与头部字段的值。必须在open和send之间调用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xhr.open(...)</div><div class="line">xhr.setRequestHeader(&quot;header&quot;,&quot;value&quot;)</div><div class="line">xhr.send(null)</div></pre></td></tr></table></figure></p>
+<p>调用getResponseHeader并传入头部名称可取的相应的头部字段信息。<br>getAllResponseHeaders可以取得所有的头部信息。</p>
+<h3 id="1.2">GET请求</h3>
+
+<p>get请求发送的格式：URL?name=value&amp;name2=value2<br>所有查询字参数必须调用encodeURIComponent方法编码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function addURLParam(url, name, value) &#123;</div><div class="line">    url += (url.indexOf(&quot;?&quot;) == -1 ? &quot;?&quot; : &quot;&amp;&quot;)</div><div class="line">    url += encodeURIComponent(name) + &quot;=&quot; + encodeURIComponent(value)</div><div class="line">    return url</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 i="1.3">Post请求</h3>
+
+<p>引入函数表单序列化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">function serialize(form) &#123;</div><div class="line">    var parts = [],</div><div class="line">        field = null,</div><div class="line">        i, len, j, optLen, option, optValue;</div><div class="line">    for (i = 0, len = form.elements.length; i &lt; len; i++) &#123;</div><div class="line">        field = form.elements[i]</div><div class="line">        switch (field.type) &#123;</div><div class="line">            case &quot;select-one&quot;:</div><div class="line">            case  &quot;select-multiple&quot;:</div><div class="line">                if (field.name.length) &#123;</div><div class="line">                    for (j = 0, optLen = field.options.length; j &lt; optLen; j++) &#123;</div><div class="line">                        option = field.options[j]</div><div class="line">                        if (option.selected) &#123;</div><div class="line">                            optValue = &quot;&quot;</div><div class="line">                            if (option.hasAttribute) &#123;</div><div class="line">                                optValue = (option.hasAttribute(&quot;value&quot;) ? option.value : option.text)</div><div class="line">                            &#125; else &#123;</div><div class="line">                                optValue = (option.attributes[&quot;value&quot;].specified ? option.value : option.text)</div><div class="line">                            &#125;</div><div class="line">                            parts.push(encodeURIComponent(field.name) + &quot;=&quot; + encodeURIComponent(optValue))</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                break</div><div class="line">            case undefined:</div><div class="line">            case &quot;file&quot;:</div><div class="line">            case &quot;submit&quot;:</div><div class="line">            case &quot;reset&quot;:</div><div class="line">            case &quot;button&quot;:</div><div class="line">                break</div><div class="line">            case &quot;radio&quot;:</div><div class="line">            case &quot;checkbox&quot;:</div><div class="line">                if (!field.checked) &#123;</div><div class="line">                    break</div><div class="line">                &#125;</div><div class="line">            default:</div><div class="line">                if (field.name.length) &#123;</div><div class="line">                    parts.push(encodeURIComponent(field.name) + &quot;=&quot; + encodeURIComponent(field.value))</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return parts.join(&quot;&amp;&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>post请求可以使用XHR来模仿表单提交。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">xhr.open(&quot;post&quot;,&quot;index.html&quot;,true)</div><div class="line">xhr.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;)</div><div class="line">/*get form*/</div><div class="line">xhr.send(serialize(form))</div></pre></td></tr></table></figure></p>
+<h2 id="2">XHR2级</h2>
+
+<h3 id="2.1">FormData</h3>
+
+<p>FormData用于表单序列化与创建与表单格式相同的数据。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var data=new FormData()</div><div class="line">data.append(&quot;name&quot;,&quot;cmz&quot;)</div></pre></td></tr></table></figure></p>
+<p>也可以直接使用表单中的值进行填充，可以直接传给send方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var form=document.form[0]</div><div class="line">xhr.send(new FormData(form))</div></pre></td></tr></table></figure></p>
+<h3 id="2.2">超时设定</h3>
+
+<p>XHR的timeout属性表示在请求等待多少毫秒后会终止，发生timeout事件，调用ontimeout进行处理：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">xhr.timeout=1000</div><div class="line">xhr.ontimeout=function()&#123;</div><div class="line">	...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="2.3">overrideMimeType</h3>
+
+<p>overrideMimeType用于重写MIME类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xhr.open(...)</div><div class="line">xhr.overrideMimeType(&quot;text/xml&quot;)</div><div class="line">xhr.send(null)</div></pre></td></tr></table></figure></p>
+<p>强迫xhr将响应当做xml来处理而非纯文本，overrideMimeType必须在send之前。</p>
+<h2 id="3">进度事件</h2>
+
+<p>loadstart:接受到响应数据的第一个字节触发<br>progress:在接受响应的期间不断触发<br>error:请求错误时触发<br>abort:调用abort方法终止而触发<br>load:在接收到完整的响应后触发<br>loadend:通信完成，error，abort，load发生时触发</p>
+<p>onload可用代替readystatechange事件。<br>onprogress事件收到一个target为xhr的event对象，包含三个额外属性：lengthComputable表示进度信息是否可用的布尔值，position表示已接受的字节数，totalSize表示根据Content-Length响应头部确定的预期数值。</p>
+<h2 id="4">Comet</h2>
+
+<p>Comet实现的两种方式:长查询和流。侦听readyStateChange可用利用XHR实现HTTP流：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var received=0</div><div class="line">xhr.onreadyStateChange=function()&#123;</div><div class="line">var result</div><div class="line">if(xhr.readyStateChange==3)&#123;</div><div class="line">result=xhr.responceText.substring(received)</div><div class="line">received+=result.length</div><div class="line">progress(result)</div><div class="line">&#125;else if(xhr.readyStateChange==4)&#123;</div><div class="line">finished(xhr.resopnseText)</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">xhr.send(null)</div><div class="line">return xhr</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JS错误处理</title>
+    <link href="http://www.codingbalian.online/2017/03/07/JavaScript-Error/"/>
+    <id>http://www.codingbalian.online/2017/03/07/JavaScript-Error/</id>
+    <published>2017-03-07T12:52:10.000Z</published>
+    <updated>2017-03-09T06:24:29.064Z</updated>
+    
+    <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
+<h2 id="1">错误处理</h2>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">   try &#123;</div><div class="line">	...//可能出错的代码</div><div class="line">   &#125;</div><div class="line">   catch (error)&#123;</div><div class="line">	...//错误处理</div><div class="line">   &#125;</div><div class="line">finally&#123;</div><div class="line">	...//一定会执行的代码</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>错误会包含一个message的属性。</p>
+<h3 id="1.1">错误类型</h3>
+
+<p>Error，EvalError，RangeError，ReferenceError，SyntaxError，TypeError，URIError<br>Error是基本类型，其他都继承于Error。<br>可以根据不同类型的错误进行不同的处理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (error instanceof TypeError) &#123;</div><div class="line">&#125;</div><div class="line">else if (error instanceof SyntaxError) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用try-catch后浏览器任务错误以及被处理了，因此不会在console中报告错误。</p>
+<p>使用throw可以随时抛出自定义的错误。<br><code>throw 12345</code></p>
+<h3 id="1.2">错误事件</h3>
+
+<p>任何没有通过try-catch处理的错误都会触发window的error事件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">window.error=function(...)&#123;</div><div class="line">	...</div><div class="line">	return false</div></pre></td></tr></table></figure></p>
+<p>可以阻止浏览器默认的错误报告行为。</p>
+<h3 id="1.3">console</h3>
+
+<p>对于JavaScript控制台，可以调用console对象向控制台写入消息。<br>error():错误消息<br>info():信息消息<br>log():一般消息<br>warn() :警告消息</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>H5脚本</title>
@@ -99,7 +305,7 @@
     <link href="http://www.codingbalian.online/2017/03/06/JavaScript-form/"/>
     <id>http://www.codingbalian.online/2017/03/06/JavaScript-form/</id>
     <published>2017-03-06T08:18:50.000Z</published>
-    <updated>2017-03-06T12:46:53.269Z</updated>
+    <updated>2017-03-09T07:51:22.375Z</updated>
     
     <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
 <h2 id="1">表单属性与方法</h2>
@@ -122,6 +328,9 @@
 
 <p>beforecopy,copy,cut,beforecut,paste,beforepaste事件。</p>
 <p>before系列事件可以向剪贴板数据进行操作。<br>访问剪贴板对象event.clipboardData,getData(),setData(),clearDate()。</p>
+<h3 id="1.4">表单序列化</h3>
+
+<p>表单序列化为Ajax服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">function serialize(form) &#123;</div><div class="line">    var parts = [],</div><div class="line">        field = null,</div><div class="line">        i, len, j, optLen, option, optValue;</div><div class="line">    for (i = 0, len = form.elements.length; i &lt; len; i++) &#123;</div><div class="line">        field = form.elements[i]</div><div class="line">        switch (field.type) &#123;</div><div class="line">            case &quot;select-one&quot;:</div><div class="line">            case  &quot;select-multiple&quot;:</div><div class="line">                if (field.name.length) &#123;</div><div class="line">                    for (j = 0, optLen = field.options.length; j &lt; optLen; j++) &#123;</div><div class="line">                        option = field.options[j]</div><div class="line">                        if (option.selected) &#123;</div><div class="line">                            optValue = &quot;&quot;</div><div class="line">                            if (option.hasAttribute) &#123;</div><div class="line">                                optValue = (option.hasAttribute(&quot;value&quot;) ? option.value : option.text)</div><div class="line">                            &#125; else &#123;</div><div class="line">                                optValue = (option.attributes[&quot;value&quot;].specified ? option.value : option.text)</div><div class="line">                            &#125;</div><div class="line">                            parts.push(encodeURIComponent(field.name) + &quot;=&quot; + encodeURIComponent(optValue))</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                break</div><div class="line">            case undefined:</div><div class="line">            case &quot;file&quot;:</div><div class="line">            case &quot;submit&quot;:</div><div class="line">            case &quot;reset&quot;:</div><div class="line">            case &quot;button&quot;:</div><div class="line">                break</div><div class="line">            case &quot;radio&quot;:</div><div class="line">            case &quot;checkbox&quot;:</div><div class="line">                if (!field.checked) &#123;</div><div class="line">                    break</div><div class="line">                &#125;</div><div class="line">            default:</div><div class="line">                if (field.name.length) &#123;</div><div class="line">                    parts.push(encodeURIComponent(field.name) + &quot;=&quot; + encodeURIComponent(field.value))</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return parts.join(&quot;&amp;&quot;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="2">富文本编辑器</h3>
 
 <p>嵌入一个包含<code>&lt;iframe&gt;</code>的元素，并将其designMode设置为on。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(window,&quot;load&quot;,function () &#123;</div><div class="line">    frames[&quot;myFrame&quot;].document.designMode=&quot;on&quot;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
@@ -1870,1046 +2079,6 @@
     
     
       <category term="Servlet" scheme="http://www.codingbalian.online/tags/Servlet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统：进程管理</title>
-    <link href="http://www.codingbalian.online/2016/12/25/OS-Process/"/>
-    <id>http://www.codingbalian.online/2016/12/25/OS-Process/</id>
-    <published>2016-12-24T16:37:07.000Z</published>
-    <updated>2017-01-09T14:53:44.154Z</updated>
-    
-    <content type="html"><![CDATA[<p>简单介绍操作系统中的进程管理机制。<br><a id="more"></a></p>
-<h2 id="1">进程特征</h2>
-
-<ul>
-<li>动态性：进程的实质是程序的一次执行过程，进程是动态产生，动态消亡的，进程在其生命周期内，在三种基本状态之间转换</li>
-<li>并发性：任何进程都可以同其他进程一起向前推进<br>独立性：进程是一个能独立运行的基本单位，同时也是系统分配资源和调度的独立单位</li>
-<li>异步性：由于进程间的相互制约，使进程具有执行的间断性，即进程按各自独立的、不可预知的速度向前推进</li>
-<li>结构特征：为了控制和管理进程，系统为每个进程设立一个进程控制块:PCB</li>
-</ul>
-<h2 id="2">进程状态</h2>
-
-<ul>
-<li>就绪态：进程已分配到除CPU以外的所有必要资源</li>
-<li>执行态：就绪态的进程获得CPU</li>
-<li>阻塞态：正在执行的进程，由于某个事件而暂时无法执行，放弃CPU进入阻塞态(时间消失后由阻塞态进入就绪态) </li>
-<li>创建状态：已构造进程标识符，创建管理进程所需的表格，由于资源有限还没有进入就绪队列</li>
-<li>终止状态：中止后进程移入该状态，不再有执行资格但并未撤消，表格和其它信息暂时由辅助程序保留，其他进程可以利用这些信息，当数据不再需要后被删除</li>
-<li>挂起状态：进程处于静止状态，包括静止就绪，静止阻塞</li>
-</ul>
-<h2 id="3">进程控制块PCB</h2>
-
-<p>系统为了管理进程设置了一个专门的数据结构，存放了用于描述该进程情况和控制进程运行所需的全部信息：PCB，是系统感知进程存在的唯一标志，与进程一一对应。<br>PCB内容：</p>
-<ul>
-<li>进程标识符：标识一个进程的编号，进程的内部名</li>
-<li>现行状态：说明进程的当前状态</li>
-<li>现场保留区：保存进程由执行状态变为其它状态时的CPU现场信息 </li>
-<li>程序与数据地址：该进程的程序和数据所在位置信息</li>
-<li>互斥与同步机构：实现进程间互斥与同步时所必须的机构 </li>
-<li>进程通信机制：用于实现进程间的通信所需的数据结构 </li>
-<li>优先级：表示进程使用CPU时优先级别的一个整数 </li>
-<li>资源清单：列出进程拥有的资源的记录</li>
-<li>连接字：给出本进程所在队列中的下一个进程的PCB首址 </li>
-<li>家族联系：用于说明本进程与其它家族成员间的关系</li>
-</ul>
-<p>进程映像：</p>
-<ul>
-<li>用户程序</li>
-<li>用户数据</li>
-<li>栈(用于过程调用和参数传递)</li>
-<li>进程控制块PCB(执行上下文，包括控制进程所需的数据：处理器状态信息，进程标识符信息，进程控制信息)</li>
-</ul>
-<p>PCB的组织方式：</p>
-<ol>
-<li>连接方式：不同状态的进程分别组成队列：运行队列、就绪队列、等待队列</li>
-<li>索引方式：相同状态的进程设置各自的PCB索引表表面地址</li>
-</ol>
-<h2 id="4">进程控制</h2>
-
-<p>一般是由操作系统的内核通过执行各种原语操作来对系统中所有进程从产生、存在到消亡的全过程管理和控制。</p>
-<ul>
-<li>内核：加在硬件上的第一层软件，通过执行各种原语操作来实现各种控制和管理功能，具有创建、撤消、进程通信、资源管理的功能</li>
-<li>内核的基本功能:支撑功能：中断处理、时钟管理、原语操作;资源管理功能：进程管理、存贮管理、设备管理</li>
-<li>原语：是由若干条机器指令所构成，用以完成特定功能的一段程序</li>
-</ul>
-<h3 id="4.1">创建原语</h3>
-
-<ul>
-<li>功能：创建一个具有指定标识符进程</li>
-<li>入口信息：进程标识符、优先级、进程开始地址、初始CPU状态、资源清单等</li>
-</ul>
-<p>进程创建过程</p>
-<ol>
-<li>创建一个PCB</li>
-<li>赋予一个统一进程标识符</li>
-<li>为进程映象分配空间</li>
-<li>初始化进程控制块</li>
-<li>设置相应的链接</li>
-</ol>
-<p>创建原语的实现过程:</p>
-<ol>
-<li>查PCB总链</li>
-<li>向PCB资源地申请空的PCB结构</li>
-<li>将入口信息填入PCB对应项</li>
-<li>PCB入就绪队列，入总链</li>
-</ol>
-<h3 id="4.2">撤销原语</h3>
-
-<ul>
-<li>功能：撤消一个指定的进程</li>
-<li>入口信息：被撤消的进程名</li>
-<li>实现:收回进程所占有的资源,撤消该进程的PCB</li>
-</ul>
-<p>撤消原语的实现过程：</p>
-<ol>
-<li>在总链中查需要撤销的PCB</li>
-<li>将该列进程从现行队列的总链中摘除</li>
-<li>回收该进程的资源</li>
-<li>若有子进程：将子进程的PCB从有关链中摘除并回收</li>
-<li>回收PCB</li>
-</ol>
-<h3 id="4.3">阻塞原语</h3><br>处于运行状态的进程，在其运行过程中期待某一事件发生，当被等待的事件未发生时，由进程自己执行阻塞原语，使自己由运行态变为阻塞态。<br>阻塞原语实现过程：<br>1. 将现行进程的CPU现场送到该进程的PCB保护现场<br>2. 设置该进程为阻塞<br>3. 把该进程插入相应的等待队列<br><br><h3 id="4.4">唤醒原语</h3>
-
-<ul>
-<li>功能：唤醒某一处于等待队列当中的进程</li>
-<li>入口信息：被唤醒进程的名字</li>
-</ul>
-<p>唤醒原语的实现：</p>
-<ol>
-<li>从相应的等待队列中摘下该进程PCB</li>
-<li>设置该进程为就绪</li>
-<li>将PCB插入就绪队列</li>
-</ol>
-<h3 id="4.5">挂起与激活原语</h3>
-
-<ul>
-<li>挂起原语的功能：自身挂起、挂起具有指定标识符的进程、将其进程及其全部或部分子孙进程挂起</li>
-<li>激活原语功能：使处于静止状态的进程变为活动</li>
-</ul>
-<h2 id="5">线程</h2>
-
-<h3 id="5.1">线程简介</h3>
-
-<p>进程拥有资源、是调度单位，系统对进程需要完成的操作：创建进程、撤销进程、进程切换，但是操作时间空间开销大，限制并发度高，因此将进程的两个属性分开，将线程作为调度单位，只拥有必要资源。</p>
-<p>线程的特点：</p>
-<ol>
-<li>是进程的一个实体，可作为系统独立调度和分派的基本单位</li>
-<li>不拥有系统资源(只拥有从属进程的全部资源，资源是分配给进程)</li>
-<li>一个进程中的多个线程可并发执行(进程可创建线程执行同一程序的不同部分) </li>
-<li>系统开销小、切换快(进程的多个线程都在进程的地址空间活动)</li>
-</ol>
-<p>引入线程的优点：</p>
-<ol>
-<li>创建一个新线程花费时间少</li>
-<li>两个线程的切换花费时间少</li>
-<li>因为同一进程内的线程共享内存和文件，因此它们之间相互通信无须调用内核</li>
-<li>适合多处理机系统</li>
-</ol>
-<h3 id="5.2">线程的实现机制</h3>
-
-
-<ul>
-<li>用户级线程UTL<ul>
-<li>由应用程序完成所有线程的管理</li>
-<li>通过线程库(用户空间)</li>
-<li>一组管理线程的过程</li>
-<li>核心不知道线程的存在，但仍然管理线程的进程的活动</li>
-<li>线程切换不需要核心态特权</li>
-<li>调度是应用特定的</li>
-<li>当线程调用系统调用时，整个进程阻塞</li>
-<li>线程状态是与进程状态独立的</li>
-</ul>
-</li>
-</ul>
-<p>优点：</p>
-<ul>
-<li>线程切换不调用核心</li>
-<li>调度是应用程序特定的：可以选择最好的算法</li>
-<li>ULT可运行在任何操作系统上（只需要线程库）</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>大多数系统调用是阻塞的，因此核心阻塞进程，故进程中所有线程将被阻塞</li>
-<li>核心只将处理器分配给进程，同一进程中的两个线程不能同时运行于两个处理器上</li>
-</ul>
-<ul>
-<li>核心级线程KTL<ul>
-<li>所有线程管理由核心完成</li>
-<li>没有线程库，但对核心线程工具提供API</li>
-<li>核心维护进程和线程的上下文</li>
-<li>线程之间的切换需要核心支持</li>
-<li>以线程为基础进行调度 </li>
-</ul>
-</li>
-</ul>
-<p>优点:</p>
-<ul>
-<li>对多处理器，核心可以同时调度同一进程的多个线程</li>
-<li>阻塞是在线程一级完成</li>
-<li>核心例程是多线程的</li>
-</ul>
-<p>缺点：</p>
-<ul>
-<li>在同一进程内的线程切换调用内核，导致速度下降</li>
-</ul>
-<ul>
-<li>两者结合<ul>
-<li>线程创建在用户空间完成</li>
-<li>大量线程调度和同步在用户空间完成</li>
-<li>以调整KLT的数量</li>
-</ul>
-</li>
-</ul>
-<h2 id="6">进程同步</h2>
-
-<p>在多道程序系统中，系统中的多个进程存在两种关系：</p>
-<ul>
-<li>相互合作（直接作用）<ul>
-<li>进程间存在相互合作地关系</li>
-<li>进程同步的任务：保证各进程在执行次序上不出现与时间有关的差错</li>
-</ul>
-</li>
-<li>资源共享（间接作用）：<ul>
-<li>进程间彼此无关，但因为同处一个系统，必然存在资源共享的关系。</li>
-<li>进程同步的任务：保证各进程能互斥地访问临界资源</li>
-</ul>
-</li>
-</ul>
-<p>这两种关系这需要用进程互斥与同步机制来协调。<br>进程同步的主要任务是使并发执行的进程间有效的共享资源和相互合作，同步机制：信号量、P.V操作。</p>
-<h3 id="6.1">基本概念</h3>
-
-<ul>
-<li>进程互斥：由于各进程要求共享资源，而有些资源需要互斥使用，因此各进程间竞争使用这些资源，进程的这种关系为进程的互斥。</li>
-<li>进程同步：指多个相关进程在执行次序上的协调。</li>
-<li>临界资源:系统中某些资源一次只允许一个进程使用，称这样的资源为临界资源或互斥资源或共享变量。</li>
-<li>临界区：在进程中涉及到临界资源的程序段</li>
-<li>相关临界区：多个进程的临界区</li>
-</ul>
-<h3 id="6.2">使用互斥区的原则</h3>
-
-<ul>
-<li>空闲让进：当无进程在互斥区时，任何有权使用互斥区的进程可进入</li>
-<li>忙则等待：不允许两个以上的进程同时进入互斥区</li>
-<li>有限等待：任何进入互斥区的要求应在有限的时间内得到满足</li>
-<li>让权等待：处于等待状态的进程应放弃占用CPU，以使其他进程有机会得到CPU的使用权</li>
-</ul>
-<h3 id="6.3">信号与P.V操作</h3>
-
-<p>信号量semaphore：是一个数据结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">定义： </div><div class="line"> struc semaphore </div><div class="line"> &#123;</div><div class="line">	int value; //信号量</div><div class="line">	pointer_PCB queue; //队列操作</div><div class="line">  &#125;</div><div class="line">声明：</div><div class="line">  semaphore s;</div></pre></td></tr></table></figure></p>
-<p>P操作：请求分配一个单位资源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">P(s)</div><div class="line">&#123;</div><div class="line">  s.value = s.value --;</div><div class="line">  if (s.value &lt; 0)</div><div class="line">  &#123;</div><div class="line">	 该进程状态置为等待状态</div><div class="line">   将该进程的PCB插入相应的等待队列末尾s.queue;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>V操作：意味着释放一个单位资源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">V(s)</div><div class="line">&#123;</div><div class="line">  s.value = s.value ++;</div><div class="line">  if (s.value &lt; = 0)</div><div class="line">  &#123;</div><div class="line">   唤醒相应等待队列s.queue中等待的一个进程</div><div class="line">   改变其状态为就绪态，并将其插入就绪队列</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>信号量必须且只能置一次非负的初值，且只能进行PV操作。</p>
-<ul>
-<li>P(S)表示申请一个资源 </li>
-<li>V(S)表示释放一个资源。</li>
-<li>信号量的初值应该大于等于0</li>
-<li>S&gt;0表示有S个资源可用</li>
-<li>S=0表示无资源可用</li>
-<li>S&lt;0则|S|表示等待队列中的进程个数S个 </li>
-</ul>
-<p>P.V操作必须成对出现，有一个P操作就一定有一个V操作</p>
-<ul>
-<li>当为互斥操作时，它们同处于同一进程</li>
-<li>当为同步操作时，则不在同一进程中出现</li>
-<li>如果P(S1)和P(S2)两个操作在一起，那么P操作的顺序至关重要，一个同步P操作与一个互斥P操作在一起时同步P操作在互斥P操作前</li>
-</ul>
-<h3 id="6.4">AND信号量集</h3>
-
-<p>AND型信号量集是指同时需要多种资源,将进程在整个运行过程中需要的所有资源，一次性全部地分配给进程，待进程使用完后再一起释放。只要有一个资源未能分配给进程，其他的资源也都不分配。对若干个临界资源的分配，要么全部分配到进程，要么一个也不分配。 这样就可避免上述死锁情况的发生。为此，在wait操作中，增加了一个“AND”条件，故称为AND同步。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Swait(S1, S2, …, Sn)&#123;AND型信号量P原语；</div><div class="line">	while (TRUE)&#123;</div><div class="line">		if (S1 &gt;=1 &amp;&amp; S2 &gt;= 1 &amp;&amp; … &amp;&amp; Sn &gt;= 1)&#123;//满足资源要求时的处理；</div><div class="line">	   		for (i = 1; i &lt;= n; ++i) -–Si;</div><div class="line">    //注：与P的处理不同，这里是在确信可满足资源要求时，才进行减1操作；</div><div class="line">			break;</div><div class="line">		&#125;</div><div class="line">		else&#123;	//某些资源不够时的处理；</div><div class="line">   			调用进程进入第一个小于1信号量的等待队列Sj.queue;</div><div class="line">   			阻塞调用进程;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">Ssignal(S1, S2, …, Sn)//V操作</div><div class="line">&#123;</div><div class="line">for (i = 1; i &lt;= n; ++i)</div><div class="line">  &#123;</div><div class="line">    ++Si;		//释放占用的资源；</div><div class="line">    for (在Si.queue中等待的每一个进程P)</div><div class="line">    //检查每种资源的等待队列的所有进程；</div><div class="line">    &#123;</div><div class="line">    从等待队列Si.queue中取出进程P;</div><div class="line">    if (判断进程P是否通过Swait中的测试)</div><div class="line">       //注：与signal不同，这里要进行重新判断；</div><div class="line">      &#123;//通过检查（资源够用）时的处理；</div><div class="line">      进程P进入就绪队列;</div><div class="line">      &#125;</div><div class="line">    else</div><div class="line">      &#123;//未通过检查（资源不够用）时的处理；</div><div class="line">      进程P进入某等待队列；</div><div class="line">      &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="6.5">一般信号量集</h3>
-
-<ol>
-<li>一般信号量集是指同时需要多种资源、每种占用的数目不同、且可分配的资源还存在一个临界值时的信号量处理 </li>
-<li>一般信号量集的基本思路就是在AND型信号量集的基础上进行扩充，在一次原语操作中完成所有的资源申请。</li>
-</ol>
-<p>进程对信号量Si：</p>
-<ul>
-<li>测试值为ti（表示信号量的判断条件，要求Si &gt;= ti；即当资源数量低于ti时，便不予分配）</li>
-<li>占用值为di（表示资源的申请量，即Si = Si - di）</li>
-</ul>
-<p>对应的P、V原语格式为：<br><code>Swait(S1, t1, d1; ...; Sn, tn, dn);</code><br><code>Ssignal(S1, d1; ...; Sn, dn);</code></p>
-<p>几种特殊情况:<br><code>Swait(S, d, d)</code>表示每次申请d个资源，当少于d个时，便不分配<br><code>Swait(S, 1, 1)</code>表示互斥信号量<br><code>Swait(S, 1, 0)</code>可作为一个可控开关（当S&gt;=1时，允许多个进程进入临界区；当S=0时，禁止任何进程进入临界区）</p>
-<p>P.V机制的缺点：</p>
-<ol>
-<li>易读性差，因为要了解对于一组共享变量及信号量的操作是否正确，则必须通读整个系统或者并发程序</li>
-<li>不利于修改和维护，因为程序的局部性很差，所以任一组变量或一段代码的修改都可能影响全局</li>
-<li>正确性难以保证，因为操作系统或并发程序通常很大，要保证这样一个复杂的系统没有逻辑错误是很难的</li>
-</ol>
-<h2 id="7">管程机制</h2>
-
-<h3 id="7.1">管程概念</h3>
-
-<blockquote>
-<p>管程是关于共享资源的数据及在其上操作的一组过程或共享数据结构及其规定的所有操作。<br>系统按资源管理的观点分解成若干模块，用数据表示抽象系统资源，同时分析了共享资源和专用资源在管理上的差别，按不同的管理方式定义模块的类型和结构，使同步操作相对集中，从而增加了模块的相对独立性。</p>
-</blockquote>
-<h3 id="7.2">管程组成</h3>
-
-<ul>
-<li>名称</li>
-<li>数据结构说明</li>
-<li>对该数据结构进行操作的一组过程/函数</li>
-<li>初始化语句</li>
-</ul>
-<h3 id="7.3">管程的特性</h3>
-
-<ul>
-<li>模块化:一个管程是一个基本程序单位，可以单独编译</li>
-<li>抽象数据类型:管程是一种特殊的数据类型，其中不仅有数据，而且有对数据进行操作的代码</li>
-<li>信息掩蔽:管程是半透明的，管程中的局部过程（函数）实现了某些功能，至于这些功能是怎样实现的，在其外部则是不可见的</li>
-</ul>
-<h3 id="7.4">管程的要素</h3>
-
-<ul>
-<li>管程中的共享变量在管程外部是不可见的，外部只能通过调用管程中所说明的外部过程（函数）来间接地访问管程中的共享变量</li>
-<li>为了保证管程共享变量的数据完整性，规定管程互斥进入</li>
-<li>管程通常是用来管理资源的，因而在管程中应当设有进程等待队列以及相应的等待及唤醒操作</li>
-</ul>
-<p>在管程内部可以说明和使用一种特殊类型的变量，称作条件变量：<code>VAR C:condition</code><br>对于条件型变量，可以执行wait和signal操作：<br>wait（c）：如果紧急等待队列非空，则唤醒第一个等待者；否则释放管程的互斥权，执行此操作的进程的PCB入c链尾部<br>signal（c）：如果c链为空，则相当于空操作，执行此操作的进程继续；否则唤醒第一个等待者，执行此操作的进程的PCB入紧急等待队列的尾部</p>
-<h3 id="7.5">管程实现</h3>
-
-<ol>
-<li>直接构造(效率高)</li>
-<li>间接构造，即用某种已经实现的同步机制去构造</li>
-</ol>
-<h3 id="7.5">管程和进程的异同</h3>
-
-<ol>
-<li>设置进程和管程的目的不同</li>
-<li>系统管理数据结构:进程：PCB;管程：等待队列</li>
-<li>管程被进程调用</li>
-<li>管程是操作系统的固有成分，无创建和撤消</li>
-</ol>
-<h2 id="8">进程通信</h2>
-
-
-<blockquote>
-<p>P.V操作实现的是进程之间的低级通讯，只能传递简单的信号,如果要在进程间传递大量信息则要用Send/Receive原语。</p>
-</blockquote>
-<h3 id="8.1">实现进程通信的方式</h3>
-
-<ul>
-<li>共享存储器系统(Shared-Memory System)<ul>
-<li>共享数据结构方式</li>
-<li>共享存储区方式</li>
-</ul>
-</li>
-<li>消息传递系统(Message passing system)</li>
-<li>管道(Pipe)通信<ul>
-<li>用于连接一个读进程和一个写进程以实现他们之间通信的一个共享文件 </li>
-<li>写进程以字符流形式将大量的数据送入管道，读进程从管道中接收数据</li>
-</ul>
-</li>
-</ul>
-<h3 id="8.2">通信实现的方式</h3>
-
-<ol>
-<li><p>直接通信方式<br>指发送进程利用OS所提供的发送命令，直接把消息发送给目标进程<br><code>Send(Receiver, message);</code>发送一个消息给接收进程<br><code>Receive(Sender, message);</code>接收Sender发来的消息</p>
-</li>
-<li><p>间接通信方式<br>进程间通过中间媒介：信箱实现通信。</p>
-</li>
-</ol>
-<p>信箱包括：</p>
-<ul>
-<li>私用信箱</li>
-<li>公用信箱</li>
-<li>共享信箱<br><code>Send(mailbox, message);</code>将一个消息发送到指定信箱<br><code>Receive(mailbox, message);</code>从指定信箱中接收一个消息</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;简单介绍操作系统中的进程管理机制。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="操作系统" scheme="http://www.codingbalian.online/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-      <category term="进程管理" scheme="http://www.codingbalian.online/tags/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/"/>
-    
-      <category term="进程" scheme="http://www.codingbalian.online/tags/%E8%BF%9B%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统:存储管理</title>
-    <link href="http://www.codingbalian.online/2016/12/24/OS-Storage%20Management/"/>
-    <id>http://www.codingbalian.online/2016/12/24/OS-Storage Management/</id>
-    <published>2016-12-24T09:06:23.000Z</published>
-    <updated>2017-01-09T14:52:51.067Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>存储管理可以提高主存的利用率，共享某个区域的信息，保证程序都在各自的存储区内操作，互不干扰。<br><a id="more"></a></p>
-</blockquote>
-<h2 id="1">存储管理基本概念</h2>
-
-<ol>
-<li>定位（存储分配）：为具体的程序和数据等分配存储单元或存储区工作。</li>
-<li>映射：把逻辑地址转换为相应的物理地址的过程。</li>
-<li>隔离：按存取权限把合法区与非法区分隔，实现存储保护。</li>
-<li>名空间：程序中定义的标识符，程序符号集合，没有地址的概念，包括：符号指令、数据说明、I/O说明。</li>
-<li>地址空间：程序用来访问信息所用地址单元的集合，是逻辑地址的集合，由编译程序生成。</li>
-<li>存储空间：主存中物理单元的集合，物理地址的集合。</li>
-<li>逻辑地址：程序形成目标代码使用的首地址为0的相对地址。</li>
-<li>物理地址：内存中存储单元的地址，可直接寻址。</li>
-</ol>
-<p>内存共享：</p>
-<ul>
-<li>两个或多个进程共用内存中相同区域</li>
-<li>节省内存空间，提高内存利用率</li>
-<li>实现进程通信(数据共享)</li>
-</ul>
-<p>存储保护：</p>
-<ul>
-<li>保护系统程序区不被用户侵犯</li>
-<li>不允许用户程序读写不属于自己地址空间的数据</li>
-</ul>
-<h2 id="2">程序的装入和链接</h2>
-
-<h3 id="2.1">装入方式</h3>
-
-<ul>
-<li><p>绝对装入方式：程序使用的绝对地址在编译或者汇编时给出，或者采用符号地址在编译汇编中转为绝对地址。由于编译程序不能预知所编译的目标模块在内存中的位置，因此，只适用于单道程序环境。</p>
-</li>
-<li><p>可重定位装入方式：在多道程序环境下，使用的目标模块起始地址通常为0，再把逻辑地址映射到物理地址。但一个进程被多次换入换出位置通常不同，因此无法满足。</p>
-</li>
-<li><p>动态运行时装入方式：把装入模块装入内存后仍然使用相对地址，到程序真正要执行时才改为转换为绝对地址。</p>
-</li>
-</ul>
-<h3 id="2.2">程序的链接</h3>
-
-<p>程序的处理步骤：</p>
-<ol>
-<li>编译程序产生目标模块和所需的库函数</li>
-<li>链接程序</li>
-<li>装入模块</li>
-<li>装入程序到内存中</li>
-</ol>
-<ul>
-<li><p>装入时静态链接方式：装入前链接，以后不再拆开</p>
-</li>
-<li><p>装入时动态链接：边装入边链接,装入一个目标模块时，若发生一个外部模块调用，装入程序将找出相应的外部目标模块，并装入内存。</p>
-</li>
-</ul>
-<p>动态链接的优点:便于软件版本的更新和修改，实现对目标模块的共享。<br>动态链接的缺点:在进程整个执行期间，装入模块是不改变的，每次运行时的装入模块是相同的。</p>
-<ul>
-<li>运行时的动态链接：将对某些模块的链接推迟到执行时才执行，可加快程序的装入过程，而且可节省大量的内存空间。 </li>
-</ul>
-<h2 id="3">连续分配存储管理方式</h2>
-
-<h3 id="3.1">单一连续分配</h3>
-
-<p>在单道环境下（单用户系统、单道批处理系统）进程执行时除了系统占用一部分主存外，剩下的主存区域全部归它占用。<br>主存划分为：系统区、用户区。系统区供操作系统使用，用户区是一个连续的存储区所以又称单用户存储管理。<br>单用户系统在一段时间内，只有一个进程在内存，故内存分配管理十分简单，但内存利用率低。<br>工作流程：<br>单一连续区分配采用静态分配和静态重定位方式，即作业或进程一旦进入主存，就一直等到它运行结束后才能释放主存。<br>存储保护：由装入程序检查其绝对地址是否超越，若超越则自动修改地址。<br>缺点：</p>
-<ol>
-<li>主存利用率不高。</li>
-<li>程序的运行受主存容量限制。</li>
-<li>不支持多道。      </li>
-</ol>
-<h3 id="3.2">固定分区分配</h3>
-
-<p>分区式将内存划分成若干个连续区域，满足多道程序，每个分区只能存储一个程序，且程序只能在此分区中运行。<br>通过设置内存分配表分配内存。</p>
-<p>划分内存方法：<br>分区大小相等：<br>适用于控制多个相同对象的场合。<br>分区大小不等：<br>多个较小分区、适量中等分区、少量大分区</p>
-<h3 id="3.3">动态分区分配</h3>
-
-<p>内存等作业装入时，根据其需求和内存空间的使用情况来决定是否分配。</p>
-<p>分区分配中的数据结构：</p>
-<ol>
-<li>分区分配表 </li>
-<li>空闲分区链：空闲块的前后设置两个单元，放置必要的说明信息和指针。系统只要设立一个链首指针，指向第一个空闲块即可。分配程序可以依照自由块链表，来查找适合的空闲块进行分配。</li>
-</ol>
-<h3 id="3.4">分配算法</h3>
-
-<p>按照空闲块的连接方式分为四种算法：</p>
-<ul>
-<li><p>最佳适应算法：</p>
-<ul>
-<li>接到内存申请时，在空闲块表中找到一个不小于且大小最接近于作业所要求的存储区域</li>
-<li>要求将空闲区按大小顺序形成空闲区链</li>
-<li>用最小空间满足要求，保留大的空闲区 </li>
-<li>当次最优，但宏观上未必最优，每次分配后所分割下的剩余部分，总是最小很难再利用，从而形成碎块。</li>
-</ul>
-</li>
-<li><p>最坏适应算法</p>
-<ul>
-<li>接到内存申请时，在空闲块表中找到一个不小于且最大的空白区。</li>
-<li>尽量利用存储空间，节约时间和开销，当分割后空闲块仍为较大空块，但是空间浪费比较大，碎片多。</li>
-</ul>
-</li>
-<li><p>首次适应法</p>
-<ul>
-<li>要求空闲分区链以地址递增的次序链接。分配内存时，从链首开始顺序查找，直到找到满足其大小要求的空闲为止。</li>
-<li>优先利用内存低址区，从而保留高址部分的大空闲区，但会在低址区留下很多碎片，而每次查找又都是从低址区开始，增加查找空闲分区的开销。</li>
-</ul>
-</li>
-<li><p>下次适应法</p>
-<ul>
-<li>总是从上次查找结束的地方开始，找到一个足够大的空白区分配。</li>
-<li>减小查找空闲分区开销，使内存中的空闲分区分布更均匀，但会缺乏大的空闲分区。</li>
-</ul>
-</li>
-</ul>
-<p>分区式存储管理的优点:</p>
-<ul>
-<li>便于动态申请内存</li>
-<li>便于共享内存</li>
-<li>便于动态链接<br>分区式存储管理的缺点:</li>
-<li>碎片问题(外碎片)</li>
-<li>内存利用率不高</li>
-<li>受实际内存容量限制</li>
-</ul>
-<h3 id="3.5">可重定位分区分配</h3>
-
-<p>碎片问题:<br>经过分配回收后，内存中存在很多小的空闲块,被称为碎片。这些碎片不足以满足分配要求，但其总和满足分配要求。<br>通过在内存移动程序，将所有小的空闲区域合并为大的空闲区域来解决碎片问题：紧凑技术。</p>
-<p>经过紧凑后的用户程序在内存中对的位置发生了变化，若不对程序和数据的地址进行修改，则程序无法运行。这种地址的变换称为重定位。</p>
-<ul>
-<li>静态重定位:当用户程序被装入内存时，一次性实现逻辑地址到物理地址的转换，以后不再转换，作业i在执行前一次变址，直到该作业完成退出内存为止。</li>
-<li>动态重定位:在程序运行过程中要访问数据时再进行地址变换。由地址变换机构进行的地址变换，硬件上需要重定位寄存器的支持。</li>
-</ul>
-<p>优点:消除内存碎片，提高内存利用率。<br>缺点:提高硬件成本，紧凑时花费CPU时间。</p>
-<h2 id="4">分页存储管理</h2>
-
-<p>使用动态分区的存储空间存在碎片问题，使用“紧凑”移动大量信息花去不少的处理机时间，将一个进程直接分散地分配到许多不相邻的分区中，就不必再进行“紧凑”，即离散分配方式。</p>
-<p>分页存储管理是将一个进程的逻辑地址空间分成若干个大小相等的片，称为页，并为各页加以编号，从0开始；把内存空间分成与页面相同大小的若干个存储块，称为块或页框， 加以编号。在为进程分配内存时，以块为单位将进程中的若干个页分别装入到多个可以不相邻接的物理块中。<br>由于进程的最后一页经常装不满一块而形成了不可利用的碎片，称之为“页内碎片”。<br>页面通常为8~512KB<br>页面太小：<br>使内存碎片减小，从而减少了内存碎片的总空间， 有利于提高内存利用率；<br>使每个进程占用较多的页面，从而导致进程的页表过长，占用大量内存；还会降低页面换进换出的效率。<br>页面较大<br>减少页表的长度，提高页面换进换出的速度，但却会使页内碎片增大。</p>
-<p>页表：<br>一个页表中包含若干个表目，表目的自然序号对应于用户程序中的页号，表目中的块号是该页对应的物理块号。<br>实现从作业的逻辑地址（页号）到其在主存中的物理地址（块号）间的地址映射。<br>页表的每一个表目除了包含指向页框的指针外，还包括一个存取控制字段。<br>表目也称为页描述子。</p>
-<h3 id="4.1">具有快表的地址变换机构</h3>
-
-<p>把页表放在主存中会影响系统的性能。因为每次访问主存，首先必须访问页表，读出页描述子，之后根据形成的实际地址再访问主存，这样使访问主存的次数加倍，因而使总的处理速度明显下降。<br>因此采用一组硬件寄存器，存放当前访问过的页的页描述子，<br>每次访问主存时，首先查找快表，若找到所需的页描述子，则快速形成物理地址。否则从页表中查找后形成物理地址，同时把页描述子写入快表。如果设计得当，快表的命中率可以很高。 </p>
-<h3 id="4.2">两级页表</h3>
-
-<p>由于现在的计算机支持非常大的逻辑地址空间(232~264)。页表就变得非常大，要占用相当大的内存空间。</p>
-<p>解决方法：</p>
-<ol>
-<li>采用离散分配方式来解决难以找到一块连续的大内存空间的问题：</li>
-<li>只将当前需要的部分页表项调入内存，其余的页表项仍驻留在磁盘上，需要时再调入。 </li>
-</ol>
-<p>将页表进行分页，使每个页面的大小与内存物理块的大小相同，可以离散地将各个页面分别放在不同的物理块中。<br>要为离散分配的页表再建立一张页表，称为外层页表，在每个页表项中记录页表页面的物理块号。</p>
-<p>对于64位机器，对于外层页表还需要进行分页，即采用多级页表。</p>
-<h2 id="5">分段存储管理</h2>
-
-<p>在分页存储系统中，作业的地址空间是一维线性的，这破坏了程序内部天然的逻辑结构,造成共享、保护的困难。<br>使用分段式存储管理可以方便编程、信息共享、信息保护、动态链接、动态增长。</p>
-<p>段表：记录了段号，段的首（地）址和长度之间的关系。<br>段表始址寄存器：<br>用于保存正在运行进程的段表的始址。<br>段表长度寄存器：<br>用于保存正在运行进程的段表的长度。</p>
-<p>分页由系统实现，大小固定，作业地址是单一的线性地址空间，段由用户编写的程序决定，长度不固定，需要段名和段内地址。</p>
-<p>优点：<br>便于动态申请内存<br>管理和使用统一化<br>便于共享<br>便于动态链接<br>缺点：<br>产生碎片</p>
-<h2 id="6">交换与覆盖</h2>
-
-<p>躲到环境下的问题：<br>内存中某些进程阻塞后仍占据内存<br>外存上尚有许多作业，因无内存而不能进入</p>
-<h3 id="6.1">覆盖技术</h3>
-
-<p>覆盖技术主要用在早期的操作系统中。<br>把程序划分为若干个功能上相对独立的程序段，按照其自身的逻辑结构将那些不会同时执行的程序段共享同一块内存区域<br>程序段先保存在磁盘上，当有关程序段的前一部分执行结束，把后续程序段调入内存，覆盖前面的程序段<br>覆盖：一个作业的若干程序段，或几个作业的某些部分共享某一个存储空间<br>一般要求作业各模块之间有明确的调用结构，向系统指明覆盖结构，然后由由操作系统完成自动覆盖。<br>缺点：对用户不透明，增加用户负担。</p>
-<h3 id="6.2">交换技术</h3>
-
-<p>交换技术多用于分时系统中，当内存空间紧张时，把内存中暂时不能运行的进程或者暂时不用的程序和数据，调出到外存上，再把已具备运行条件的进程或进程所需要的程序和数据，调入内存，占据前者所占用的区域，这种技术是进程在内存与外存之间的动态调度。</p>
-<p>选择原则：只能换出非共享的程序和数据段。忧先选择处于阻塞状态且优先级最低的进程作为换出进程，为防止低优先级进程刚进来就被换出，在选择换出进程时，要考虑换出的进程的内存驻留时间。从不换出处于等待I/O状态的进程。<br>交换时机：只要不用就换出;只在内存空间不够或有不够的危险时换出。</p>
-<p>与覆盖的区别：<br>与覆盖技术相比，交换技术不要求用户给出程序段之间的逻辑覆盖结构；而且，交换发生在进程或作业之间。<br>覆盖发生在同一进程或作业内。此外，覆盖只能覆盖那些与覆盖段无关的程序段。</p>
-<h2 id="7">段页存储管理 </h2>
-
-<p>内存划分：按页式存储管理方案<br>内存分配：以页为单位进行分配<br>逻辑地址：段号、段内地址（段内页号、页内地址）</p>
-<p>地址变换过程：</p>
-<ol>
-<li>从控制寄存器读取段表始址，找到段表；</li>
-<li>段号＋段表始址 得到段描述子地址；</li>
-<li>从段描述子读取页表始址，找到页表；</li>
-<li>页号＋页表始址 得到页描述子地址；</li>
-<li>从页描述子读取物理块号；</li>
-<li>物理块号＋页内位移量 得到物理地址。</li>
-</ol>
-<h2 id="8">虚拟存储器</h2>
-
-<p>常规存储器管理方式的特征：<br>一次性（一次性将作业全部装入）<br>驻留性（作业长期驻留内存）<br>出现的问题：<br>暂时不用的进程占用大量内存，使得需要运行的作业无法装入<br>大于内存容量的作业无法装入</p>
-<p>虚拟存储器的基本思想是：程序、数据、堆栈的大小可以超过内存的大小，操作系统把程序当前使用的部分保留在内存，而把其它部分保存在磁盘上，并在需要时在内存和磁盘之间动态交换。<br>所谓虚拟存储器，是指具有请求调入功能和置换功能,能从逻辑上对内存容量进行扩充的存储器系统。<br>其逻辑容量（虚存）由内存容量和外存容量之和所决定，其运行速度接近于内存速度，而每位的成本却又接近于外存。<br>对用户：指令地址部分所限定的比实存大得多的地址实间。<br>对系统：借助于各种表格机构，体现虚拟实间。     </p>
-<p>虚拟存储器的实现方式是建立在离散分配存储管理方式的基础上：请求分页与请求分段。</p>
-<h2 id="9">请求分页存储管理</h2>
-
-<p>请求式分页管理系统在进程开始运行之前，不是装入全部页面，而是装入一个或零个页面，之后根据进程运行的需要，动态装入其它页面；当内存空间已满，而又需要装入新的页面时，则根据某种算法淘汰某个页面，以便装入新的页面。</p>
-<p>页表项：页号；状态位；物理块号；外存地址；访问位；修改位。</p>
-<p>页面中断：当存在位指示该页不在主存时，则引起一个缺页中断发生，相应的中断处理程序把控制转向缺页中断子程序。<br>执行缺页中断子程序，根据页表中给出的外存地址，将该页调入内存，使作业继续运行下去。<br>如果内存中有空闲块，则分配一页，将新调入页装入内存，并修改页表中相应页表项目的驻留位及相应的内存块号。<br>若此时内存中没有空闲块，则要淘汰某页，若该页在内存期间被修改过，则要将其写回外存。</p>
-<h3 id="9.1">页面置换算法</h3>
-
-<ul>
-<li><p>最佳置换算法</p>
-<ul>
-<li>选择的被淘汰页面，将是以后永不使用的，或者是在最长(未来)时间内不再被访问的页面。采用最佳置换算法，通常可保证获得最低的缺页率</li>
-<li>无法实现，只能用来评价其他算法</li>
-</ul>
-</li>
-<li><p>先进先出(FIFO)页面置换算法</p>
-<ul>
-<li>置换时选择在内存中驻留时间最长的页淘汰</li>
-<li>只考虑页面调入内存的时间，而没有考虑页面的使用情况，性能差</li>
-</ul>
-</li>
-<li><p>最近最久未使用(LRU)置换算法 </p>
-<ul>
-<li>淘汰没有使用的时间最长的页</li>
-<li>实现代价高</li>
-</ul>
-</li>
-<li><p>Clock置换算法 </p>
-<ul>
-<li>由访问位A和修改位M可以组合成下面四种类型的页面：<br>1类(A=0, M=0): 表示该页最近既未被访问， 又未被修改， 是最佳淘汰页。<br>2类(A=0, M=1)： 表示该页最近未被访问， 但已被修改， 并不是很好的淘汰页。<br>3类(A=1, M=0)： 最近已被访问， 但未被修改， 该页有可能再被访问。<br>4类(A=1, M=1): 最近已被访问且被修改， 该页可能再被访问。</li>
-</ul>
-</li>
-</ul>
-<h3 id="9.2">性能问题</h3>
-
-<p>在虚存中，页面在内存与外存之间频繁调度，以至于调度页面所需时间比进程实际运行的时间还多，此时系统效率急剧下降，甚至导致系统崩溃。这种现象称为颠簸或抖动<br>原因：<br>页面淘汰算法不合理<br>分配给进程的物理页面数太少</p>
-<p>工作集模型：进程在一段时间内总是集中访问一些页面，这些页面称为活跃页面，如果分配给一个进程的物理页面数太少了，使该进程所需的活跃页面不能全部装入内存，则进程在运行过程中将频繁发生中断；如果能为进程提供与活跃页面数相等的物理页面数，则可减少缺页中断次数；对于给定的访问序列选取定长的区间，称为工作集窗口，落在工作集窗口中的页面集合称为工作集。</p>
-<h2 id="10">请求分段存储管理</h2>
-
-<p>在分段系统的基础上建立的虚拟存储器,以段为单位进行换入、换出。<br>段表：段名；段长；段地址；存取方式；访问位A；修改位M；存在位P；增补位；外存实址<br>增加硬件和相应软件：</p>
-<ul>
-<li>段表机制</li>
-<li>缺段中断机构</li>
-<li>地址变换机构</li>
-</ul>
-<h3 id="10.1">分段共享与保护</h3>
-
-<p>每个进程都有一个段表，记录所使用的段的信息，要实现分段共享，应设置相应的数据结构：共享段表。<br>共享段表包括：<br>共享此分段的每个进程的情况<br>该段共享进程数－count<br>每个进程名、进程号以及该共享段在该进程中的段号（对于同一个共享段，不同进程可以使用不同的段号来共享该段）、允许的存取方式等。<br>每个允许被共享的段，当其调入主存时，均在此表上登记。当一共享作业退出系统后，则应将共享本段作业数减１并取消其在共享表中的相应的记录。若共享作业数为０，则请求系统回收相应的存储空间。</p>
-<table>
-<thead>
-<tr>
-<th>分页系统</th>
-<th>分段系统</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>单一地址空间</td>
-<td>二位地址空间</td>
-</tr>
-<tr>
-<td>页是物理单位</td>
-<td>段是逻辑单位</td>
-</tr>
-<tr>
-<td>页大小固定</td>
-<td>段大小可变</td>
-</tr>
-<tr>
-<td>对用户透明</td>
-<td>对用户可见</td>
-</tr>
-</tbody>
-</table>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;存储管理可以提高主存的利用率，共享某个区域的信息，保证程序都在各自的存储区内操作，互不干扰。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="操作系统" scheme="http://www.codingbalian.online/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-      <category term="存储管理" scheme="http://www.codingbalian.online/tags/%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>XML:DOM</title>
-    <link href="http://www.codingbalian.online/2016/12/23/XML-DOM/"/>
-    <id>http://www.codingbalian.online/2016/12/23/XML-DOM/</id>
-    <published>2016-12-23T14:48:22.000Z</published>
-    <updated>2017-01-04T11:36:38.543Z</updated>
-    
-    <content type="html"><![CDATA[<p>本篇介绍DOM来解析XML文档内容。暂时应该不会再更新XML的内容了。</p>
-<blockquote>
-<p>DOM基于树或基于对象，方便应用程序对数据和结构进行更改，且任何时候可以在树中上下导航。<br><a id="more"></a></p>
-</blockquote>
-<h2 id="1">XML解析器</h2>
-
-<h3 id="1.1">DOM概述</h3>
-
-<p>可以将DOM看做一组API，将HTML、XML看做文档对象，在接口中存放对这些文档的操作属性和方法定义，允许程序和脚本动态地访问、更新文档内容、结构、脚本程序。<br>利用DOM处理XML时，先是将XML文档加载到内存中去，以树结构存在，应用程序再对其节点对象进行修改。</p>
-<h3 id="1.2">DOM结构</h3>
-
-<p>DOM是XML文档的结构化视图，将XML看做一棵节点树，每一个节点都代表一个可以与其进行交互的对象，因此可以将DOM看做一个节点的集合。</p>
-<ul>
-<li>整个文档是一个文档节点</li>
-<li>每个XML标记是一个元素节点</li>
-<li>包含在XML元素中的文本都是文本节点</li>
-<li>每一个XML属性是一个属性节点</li>
-<li>注释属于注释节点</li>
-</ul>
-<p>一个节点树中的所有节点彼此都是有关系的，一个节点树可以将一个XML文档战术为一个节点集以及他们之间的链接。在一棵节点树中，最顶端节点作为根，除根外每一个节点都有父节点，一个节点可以有无限的子节点，但叶节点无子节点，拥有相同父节点的节点称为同级节点。</p>
-<h3 id="1.3">DOM对象</h3>
-
-<p>DOM作为API接口存放着不同的未实例化的对象，对应着XML文档中不同类型的节点和数据。</p>
-<ul>
-<li>基本接口<ol>
-<li>Document接口：文档树的根，提供对文档数据的最初（或最顶层）的访问入口。由于元素节点、文本节点、注释、处理指令等均无法存在于文档之外，Document 对象也提供了创建这些对象的方法。通过其创造ID节点对象都有ownerDocument属性。Document节点可以有多个注释、处理指令节点，但是文档类型节点和根节点都是唯一的。</li>
-<li>Node接口：Node 是整个文档对象的主要数据类型，表示文档树中的单个节点。DOM中很大一部分的接口是从Node接口中继承过来的，提供了访问DOM树中元素内容的途径，给出了遍历的支持。</li>
-<li>NodeList接口：节点列表中的节点可以通过其对应的索引数字（从 0 开始计数）进行访问。节点列表可保持其自身的更新。如果节点列表或 XML 文档中的某个元素被删除或添加，列表也会被自动更新。</li>
-<li>NamedNodeMap接口：包含可以通过名字访问一组节点的集合，且是无序的不能通过索引来访问，主要用于属性节点的表示，与NodeList一样其对象也是自动更新的。</li>
-<li>Element接口：继承于NodeList接口，表示文档中的一个元素标记，可包含属性、其他元素或文本。如果元素含有文本，则在文本节点中表示该文本。可以使用attribute来获得元素的所有属性集合。</li>
-<li>Text接口：Text 节点继承了CharacterData接口，通过从CharacterData接口继承的data属性或从Node接口继承的 nadevalue 属性，可以访问Text节点的文本内容。<br>更多对象接口参考<a herf="http://www.w3school.com.cn/xmldom/xmldom_reference.asp">XML DOM 参考手册</a></li>
-</ol>
-</li>
-</ul>
-<ul>
-<li>DOM对象<ol>
-<li>XML文档对象：代表整个XML文档，由Document对象实现，由根源素和子元素组成。对XML进行操作就要先获取XML文档对象。</li>
-<li>XML节点对象：代表XML文档中单个节点,由Node接口实现。</li>
-<li>XML节点列表对象：XML文档模块列表代表节点的集合由NodeList接口实现。</li>
-<li>对XML文档操作就是创建不同的对象来进行操作。</li>
-</ol>
-</li>
-</ul>
-<h2 id="2">DOM的使用</h2>
-
-<p>对XML文档进行操作需要先创建一个DOM对象并以此为句柄把XML文档对象加载到内存中的节点树进行操作。</p>
-<h3 id="2.1">JAXP简介、类和方法</h3>
-
-<p>JAXP(Java API for XMLParsing)是解析XML文件的API。包括此法分析器、标注NSAX，可以选择事件流或者建立对象来解析数据，且提供XSLT标准支持、名称空间支持、在没有命名冲突的情况下使用DTD。</p>
-<h3 id="2.2">JAXP的类和方法</h3>
-
-<ol>
-<li>解析器工厂类(DocumentBuliderFactory)：要使用DOM对XML文档进行操作先要建立一个解析器工厂实例，通过它来获得一个具体的解析器对象。<br><code>DocumentBuliderFactory dbf=DocumentBuliderFactory.newInstance();</code></li>
-<li>解析器类(DocumentBulider)：开发者可以使用它从XML文档获取DOM实例。<br><code>DocumentBulider db=dbf.newDocumentBulider();</code></li>
-<li>文档树模型(Document)：代表一个XML文档树模型，其中的所有节点都以一定顺序包含在Document对象内，之后的所有操作都与解析器无关，直接对Document对象操作即可。<br>使用DocumentBuilder的parse()方法接受一个XML文档名作为输入参数，返回一个Document实例：<code>Document doc=db.parse(&quot;example.xml&quot;);</code><br>把XML文档转化为输入流，作为parse()方法的参数，一遍DOM解析器解析：<br><code>InputStream is=new FileInputStream(&quot;example.xml&quot;);Document DOC=DB.PARSE(is);</code><br>从得到Document对象开始就可以使用DOM操作XML文档。使用Document对象的getElementsByTagsName()方法可以得到一个NodeList对象：<code>NodeList nl=doc.getElementByTagsName(&quot;example&quot;)</code> <ul>
-<li>createAttribute(String)：用给定的属性名创建一个Attr对象，并可在其后使用setAttributeNode方法来放置在某一个Element对象上面。 </li>
-<li>createElement(String)：用给定的标签名创建一个Element对象，代表XML文档中的一个标签，然后就可以在这个Element对象上添加属性或进行其它的操作。 </li>
-<li>createTextNode(String)：用给定的字符串创建一个Text对象，Text对象代表了标签或者属性中所包含的纯文本字符串。如果在一个标签内没有其它的标签，那么标签内的文本所代表的Text对象是这个Element对象的唯一子对象。 </li>
-<li>getElementsByTagName(String)：返回一个NodeList对象，它包含了所有给定标签名字的标签。 </li>
-<li>getDocumentElement()：返回一个代表这个DOM树的根节点的Element对象，也就是代表XML文档根元素的那个对象。 </li>
-</ul>
-</li>
-<li>节点类(Node):Node是最基本的对象，代表文档树中一个抽象的节点，实际操作中很少用到，而是使用其子对象来进行操作。<ul>
-<li>appendChild(org.w3c.dom.Node)：为这个节点添加一个子节点，并放在所有子节点的最后，如果这个子节点已经存在，则先把它删掉再添加进去。 </li>
-<li>getFirstChild()：如果节点存在子节点，则返回第一个子节点，对等的，还有getLastChild()方法返回最后一个子节点。 </li>
-<li>getNextSibling()：返回在DOM树中这个节点的下一个兄弟节点，对等的，还有getPreviousSibling()方法返回其前一个兄弟节点。 </li>
-<li>getNodeName()：根据节点的类型返回节点的名称。 </li>
-<li>getNodeType()：返回节点的类型。 </li>
-<li>getNodeValue()：返回节点的值。 </li>
-<li>hasChildNodes()：判断是不是存在有子节点。 </li>
-<li>hasAttributes()：判断这个节点是否存在有属性。 </li>
-<li>getOwnerDocument()：返回节点所处的Document对象。 </li>
-<li>insertBefore(org.w3c.dom.Node new，org.w3c.dom.Node ref)：在给定的一个子对象前再插入一个子对象。 </li>
-<li>removeChild(org.w3c.dom.Node)：删除给定的子节点对象。 </li>
-<li>replaceChild(org.w3c.dom.Node new，org.w3c.dom.Node old)：用一个新的Node对象代替给定的子节点对象。 </li>
-</ul>
-</li>
-<li>节点列表类(NodeList)：代表一个包含Node的列表，可以简单的看成Node数组。<ul>
-<li>GetLength():返回列表长度</li>
-<li>Item(int):返回指定位置的Node对象。</li>
-</ul>
-</li>
-<li><p>元素类(Element)：代表XML文档中的标记元素，继承于Node，有存取标记属性的方法，任何Node定义的方法可以用到Element对象上。</p>
-<ul>
-<li>getElementsByTagName(String)：返回一个NodeList对象，它包含了在这个标签中其下的子孙节点中具有给定标签名字的标签。 </li>
-<li>getTagName()：返回一个代表这个标签名字的字符串。 </li>
-<li>getAttribute(String)：返回标签中给定属性名称的属性的值。在这儿需要主要的是，应为XML文档中允许有实体属性出现，而这个方法对这些实体属性并不适用。这时候需要用到getAttributeNodes()方法来得到一个Attr对象来进行进一步的操作。</li>
-<li>getAttributeNode(String)：返回一个代表给定属性名称的Attr对象。 </li>
-</ul>
-</li>
-<li><p>属性类(Attr)：代表每个标记中的属性。不能做为DOM树中单独的一个节点出现。</p>
-</li>
-</ol>
-<p>更多类与方法参考：<a herf="https://jaxp.java.net/">Project JAXP</a></p>
-<p>实例参考：<a herf="http://baliancheng.github.io/2016/12/24/XML-DOM-Test/">JAXP操作XML实例</a></p>
-<h3 id="2.3">附：JAXP套件</h3>
-
-<table>
-<thead>
-<tr>
-<th>JAXP提供的套件</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Java.xml.parsers</td>
-<td>提供处理XML文件的类</td>
-</tr>
-<tr>
-<td>Java.xml.transform</td>
-<td>提供处理XSLT文件的类</td>
-</tr>
-<tr>
-<td>org.xml.sax</td>
-<td>SAX解析器，提供以事件驱动方式解析XML的API</td>
-</tr>
-<tr>
-<td>org.xml.saxhelpers</td>
-<td>提供解析错误处理的相关类，可以帮助程序设计中使用SAX API</td>
-</tr>
-<tr>
-<td>org.w3c.dom</td>
-<td>提供支持DOM建议规格的套件</td>
-</tr>
-</tbody>
-</table>
-<h2 id="3">JAXP操作XML</h2>
-
-<h3 id="3.1">遍历XML文档</h3>
-
-<p>book.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;图书列表&gt;</div><div class="line">	&lt;图书&gt;</div><div class="line">		&lt;书名&gt;三国演义&lt;/书名&gt;</div><div class="line">		&lt;作者&gt;罗贯中&lt;/作者&gt;</div><div class="line">		&lt;价格&gt;38.00元&lt;/价格&gt;</div><div class="line">		&lt;出版社&gt;人民文学出版社&lt;/出版社&gt;</div><div class="line">	&lt;/图书&gt;</div><div class="line">	&lt;图书&gt;</div><div class="line">		&lt;书名&gt;西游记&lt;/书名&gt;</div><div class="line">		&lt;作者&gt;吴承恩&lt;/作者&gt;</div><div class="line">		&lt;价格&gt;48.00元&lt;/价格&gt;</div><div class="line">		&lt;出版社&gt;人民文学出版社&lt;/出版社&gt;</div><div class="line">	&lt;/图书&gt;</div><div class="line">&lt;/图书列表&gt;</div></pre></td></tr></table></figure></p>
-<p>bookxml.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">import javax.xml.parsers.*;</div><div class="line">import org.w3c.dom.*;</div><div class="line">public class bookxml&#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		try&#123;</div><div class="line">			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); //获得工厂实例</div><div class="line">			DocumentBuilder builder = factory.newDocumentBuilder();  //获得DOM解析器</div><div class="line">			Document doc = builder.parse(&quot;book.xml&quot;); //将需要解析的XML文档读入DOM</div><div class="line">			System.out.println(doc.getImplementation());</div><div class="line">            NodeList nl = doc.getElementsByTagName(&quot;图书&quot;);  //获得“图书”元素的节点列表</div><div class="line">            for (int i = 0; i &lt; nl.getLength(); i++) &#123;  //遍历</div><div class="line">				Element node=(Element)nl.item(i);</div><div class="line">				System.out.print(&quot;书名&quot;);</div><div class="line">				System.out.println(node.getElementsByTagName(&quot;书名&quot;).item(0).getFirstChild().getNodeValue());</div><div class="line">				System.out.print(&quot;作者&quot;);</div><div class="line">				System.out.println(node.getElementsByTagName(&quot;作者&quot;).item(0).getFirstChild().getNodeValue());</div><div class="line">				System.out.print(&quot;价格&quot;);</div><div class="line">				System.out.println(node.getElementsByTagName(&quot;价格&quot;).item(0).getFirstChild().getNodeValue());</div><div class="line">				System.out.print(&quot;出版社&quot;);</div><div class="line">				System.out.println(node.getElementsByTagName(&quot;出版社&quot;).item(0).getFirstChild().getNodeValue());</div><div class="line">            &#125;</div><div class="line">		&#125;</div><div class="line">		catch(Exception e)&#123;</div><div class="line">				e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="3.2">访问属性节点</h3>
-
-<p>book.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;图书列表&gt;</div><div class="line">	&lt;图书 作者=&quot;罗贯中&quot; 价格=&quot;38.00元&quot; 出版社=&quot;人民文学出版社&quot;&gt;</div><div class="line">		三国演义</div><div class="line">	&lt;/图书&gt;</div><div class="line">	&lt;图书 作者=&quot;吴承恩&quot; 价格=&quot;48.00元&quot; 出版社=&quot;人民文学出版社&quot;&gt;</div><div class="line">		西游记</div><div class="line">	&lt;/图书&gt;</div><div class="line">&lt;/图书列表&gt;</div></pre></td></tr></table></figure></p>
-<p>bookxml.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">import javax.xml.parsers.*;</div><div class="line">import org.w3c.dom.*;</div><div class="line">public class bookxml&#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		try&#123;</div><div class="line">			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); </div><div class="line">			DocumentBuilder builder = factory.newDocumentBuilder(); </div><div class="line">			Document doc = builder.parse(&quot;book.xml&quot;); </div><div class="line">			Element root=doc.getDocumentElement();</div><div class="line">			String rootName=root.getNodeName();</div><div class="line">			System.out.println(&quot;XML文件根节点命名为：&quot;+rootName);</div><div class="line">			NodeList nl = root.getElementsByTagName(&quot;图书&quot;); //获取图书节点对象集合</div><div class="line">			for (int i = 0; i &lt; nl.getLength(); i++) &#123;</div><div class="line">				Node node=nl.item(i);</div><div class="line">				String name=node.getNodeName(); //获取节点名</div><div class="line">				NamedNodeMap map=node.getAttributes(); //获取每个节点的属性集合</div><div class="line">				String content =node.getTextContent(); //获取节点中包含的数据</div><div class="line">				System.out.print(name);</div><div class="line">				for(int k = 0;k&lt;map.getLength();k++)&#123; //获取节点长度，输出属性集合的名称和值</div><div class="line">					Attr attrNode=(Attr)map.item(k);</div><div class="line">					String attName=attrNode.getName(); //获得属性名称</div><div class="line">					String attValue=attrNode.getValue(); //获得属性值</div><div class="line">					System.out.print(&quot; &quot;+attName+&quot;=&quot;+attValue);</div><div class="line">				&#125;</div><div class="line">				System.out.print(content);</div><div class="line">            &#125;</div><div class="line">		&#125;</div><div class="line">		catch(Exception e)&#123;</div><div class="line">				e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="3.3">动态创建XML文档</h3>
-
-
-<p>解析器建立与XML文档相应的树状结构数据，也可以根据数据建立一个XML文档，即将整个被解析的XML文档封装成一个Document节点返回，使用Transformer将其转化为一个XML文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">import javax.xml.parsers.*;</div><div class="line">import javax.xml.transform.*;</div><div class="line">import javax.xml.transform.stream.*;</div><div class="line">import javax.xml.transform.dom.*;</div><div class="line">import org.w3c.dom.*;</div><div class="line">import java.io.*;</div><div class="line">public class peoplexml &#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		Document doc;</div><div class="line">		Element people,person;</div><div class="line">		Element name=null;</div><div class="line">		Element address=null;</div><div class="line">		Element tel=null;</div><div class="line">		Element fax=null;</div><div class="line">		Element email=null;</div><div class="line">		try&#123;</div><div class="line">			DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();//创建工厂实例</div><div class="line">			DocumentBuilder builder=dbf.newDocumentBuilder();//获得DOM解析器</div><div class="line">			doc=builder.newDocument();//创建文档树模型对象</div><div class="line">			if(doc!=null)&#123; //判断是否为空</div><div class="line">				people=doc.createElement(&quot;联系人列表&quot;);//创建根源素</div><div class="line">				person=doc.createElement(&quot;联系人&quot;);//创建联系人元素</div><div class="line">				people.appendChild(person);//将联系人元素作为根源素的子元素</div><div class="line">				name=doc.createElement(&quot;姓名&quot;);</div><div class="line">				name.appendChild(doc.createTextNode(&quot;Cheng&quot;));</div><div class="line">				person.appendChild(name);</div><div class="line">				address=doc.createElement(&quot;地址&quot;);</div><div class="line">				address.appendChild(doc.createTextNode(&quot;华中师范大学&quot;));</div><div class="line">				person.appendChild(address);</div><div class="line">				tel=doc.createElement(&quot;电话&quot;);</div><div class="line">				tel.appendChild(doc.createTextNode(&quot;133XXXXX&quot;));</div><div class="line">				person.appendChild(tel);</div><div class="line">				fax=doc.createElement(&quot;传真&quot;);</div><div class="line">				fax.appendChild(doc.createTextNode(&quot;080-XXXX&quot;));</div><div class="line">				person.appendChild(fax);</div><div class="line">				email=doc.createElement(&quot;电子邮箱&quot;);</div><div class="line">				email.appendChild(doc.createTextNode(&quot;2324@qq.com&quot;));</div><div class="line">				person.appendChild(email);</div><div class="line">				doc.appendChild(people);//将联系人列表作为根源素添加到XML文档中</div><div class="line">				TransformerFactory transFactory=TransformerFactory.newInstance();//创建转换工厂对象</div><div class="line">				Transformer transformer =transFactory.newTransformer();//创建文件转换对象</div><div class="line">				DOMSource domScource =new DOMSource(doc);//把要转换的Document对象封装到DOMSource类中</div><div class="line">				File file =new File(&quot;people.xml&quot;);</div><div class="line">				FileOutputStream out= new FileOutputStream(file);</div><div class="line">				StreamResult xmlResult =new StreamResult(out);//将要转换的XML文件保存在StreamResult中</div><div class="line">				transformer.transform(domScource, xmlResult);//把节点树转化成XML文件</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		catch(Exception e)&#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在同一目录下生产peoplexml.xml文件</p>
-<h3 id="3.4">文本节点操作：修改</h3>
-
-<p>book.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</div><div class="line">&lt;图书列表&gt;</div><div class="line">	&lt;图书&gt;三国演义&lt;/图书&gt;</div><div class="line">	&lt;图书&gt;&lt;/图书&gt;</div><div class="line">&lt;/图书列表&gt;</div></pre></td></tr></table></figure></p>
-<p>bookxml.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">import javax.xml.parsers.*;</div><div class="line">import javax.xml.transform.*;</div><div class="line">import javax.xml.transform.stream.*;</div><div class="line">import javax.xml.transform.dom.*;</div><div class="line">import org.w3c.dom.*;</div><div class="line">import java.io.*;</div><div class="line"></div><div class="line">public class bookxml &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">		try&#123;</div><div class="line">			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();</div><div class="line">			DocumentBuilder builder = factory.newDocumentBuilder();  </div><div class="line">			Document doc = builder.parse(new File(&quot;book.xml&quot;));</div><div class="line">			Element root=doc.getDocumentElement();</div><div class="line">			NodeList nl = root.getElementsByTagName(&quot;图书&quot;);//取得图书命名节点的集合</div><div class="line">			for (int i = 0; i &lt; nl.getLength(); i++) &#123;//取得长度</div><div class="line">				Node node=nl.item(i);</div><div class="line">				if(node.getNodeType()==Node.ELEMENT_NODE)&#123;//判断节点类型</div><div class="line">					Element enode=(Element)node;//强制转换类型</div><div class="line">					String str=enode.getTextContent();//获取节点值</div><div class="line">					if(str.equals(&quot;&quot;))&#123;</div><div class="line">						enode.setTextContent(&quot;水浒传&quot;);//设置节点值</div><div class="line">					&#125;</div><div class="line">					if(str.equals(&quot;三国演义&quot;))&#123;</div><div class="line">						enode.setTextContent(&quot;西游记&quot;);</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			TransformerFactory transFactory=TransformerFactory.newInstance();//创建转换工厂对象</div><div class="line">			Transformer transformer =transFactory.newTransformer();//创建文件转换对象</div><div class="line">			DOMSource domScource =new DOMSource(doc);//把要转换的Document对象封装到DOMSource类中</div><div class="line">			File file =new File(&quot;book.xml&quot;);</div><div class="line">			FileOutputStream out= new FileOutputStream(file);</div><div class="line">			StreamResult xmlResult =new StreamResult(out);//将要转换的XML文件保存在StreamResult中</div><div class="line">			transformer.transform(domScource, xmlResult);//把节点树转化成XML文件</div><div class="line">		&#125;</div><div class="line">		catch(Exception e)&#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="3.4">文本节点操作：删除</h3>
-
-<p>book.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;图书列表&gt;</div><div class="line">	&lt;图书&gt;西游记&lt;/图书&gt;</div><div class="line">	&lt;图书&gt;三国演义&lt;/图书&gt;</div><div class="line">	&lt;图书 作者=&quot;曹雪芹&quot;&gt;红楼梦&lt;/图书&gt;</div><div class="line">	&lt;图书&gt;水浒传&lt;/图书&gt;</div><div class="line">&lt;/图书列表&gt;</div></pre></td></tr></table></figure></p>
-<p>bookxml.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">import javax.xml.parsers.*;</div><div class="line">import javax.xml.transform.*;</div><div class="line">import javax.xml.transform.stream.*;</div><div class="line">import javax.xml.transform.dom.*;</div><div class="line">import org.w3c.dom.*;</div><div class="line"></div><div class="line">import java.io.*;</div><div class="line"></div><div class="line">public class bookxml &#123;</div><div class="line">    public static void main(String[] args)&#123;</div><div class="line">		try&#123;</div><div class="line">			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();</div><div class="line">			DocumentBuilder builder = factory.newDocumentBuilder();  </div><div class="line">			Document doc = builder.parse(new File(&quot;book.xml&quot;));</div><div class="line">			Element root=doc.getDocumentElement();</div><div class="line">			NodeList nl = root.getElementsByTagName(&quot;图书&quot;);//取得图书命名节点的集合</div><div class="line">			for (int i = 0; i &lt; nl.getLength(); i++) &#123;//取得长度</div><div class="line">				Node node=nl.item(i);</div><div class="line">				if(node.getNodeType()==Node.ELEMENT_NODE)&#123;//判断节点类型</div><div class="line">					Element enode=(Element)node;//强制转换类型</div><div class="line">					if(i==2)&#123;</div><div class="line">						enode.removeAttribute(&quot;作者&quot;);//移除属性</div><div class="line">					&#125;</div><div class="line">					System.out.println(i);</div><div class="line">					System.out.println(enode.getTextContent());</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			Node node=nl.item(1);//获得该处索引处的node节点</div><div class="line">			root.removeChild(node);//移除节点</div><div class="line">			TransformerFactory transFactory=TransformerFactory.newInstance();//创建转换工厂对象</div><div class="line">			Transformer transformer =transFactory.newTransformer();//创建文件转换对象</div><div class="line">			DOMSource domScource =new DOMSource(doc);//把要转换的Document对象封装到DOMSource类中</div><div class="line">			File file =new File(&quot;book.xml&quot;);</div><div class="line">			FileOutputStream out= new FileOutputStream(file);</div><div class="line">			StreamResult xmlResult =new StreamResult(out);//将要转换的XML文件保存在StreamResult中</div><div class="line">			transformer.transform(domScource, xmlResult);//把节点树转化成XML文件</div><div class="line">		&#125;</div><div class="line">		catch(Exception e)&#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本篇介绍DOM来解析XML文档内容。暂时应该不会再更新XML的内容了。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;DOM基于树或基于对象，方便应用程序对数据和结构进行更改，且任何时候可以在树中上下导航。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
-    
-    
-      <category term="DOM" scheme="http://www.codingbalian.online/tags/DOM/"/>
-    
-      <category term="JAXP" scheme="http://www.codingbalian.online/tags/JAXP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>XML:XSL转换</title>
-    <link href="http://www.codingbalian.online/2016/12/22/XML-XSL/"/>
-    <id>http://www.codingbalian.online/2016/12/22/XML-XSL/</id>
-    <published>2016-12-22T14:34:33.000Z</published>
-    <updated>2016-12-24T06:12:58.024Z</updated>
-    
-    <content type="html"><![CDATA[<p>XSL是基于XML的语言，用于显示XML的规范。<br><a id="more"></a></p>
-<h2 id="1">XSL转换原理</h2><br>XSL样式表对XML文档转化的过程：<br>1. 根据XML文档构造源树，根据XSL规则将源树转化成结果树，转换协议为XSLT。<br>2. 生成结果树后进行解释，产生一种社和显示的格式（格式化）。<br><br>XSL处理器负责转换成。XML文档先被解析成DOM树存放在内存中，接着进行分析，每一个DOM树的节点都与一个模式相比较，匹配上按模板进行转换否则继续往下匹配。<br><h2 id="2">XSL文档结构</h2><br>XSL是扩展名为xsl的文本文件使用XML，其基本结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;</div><div class="line">&lt;xsl:template match=&quot;/&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">&lt;xsl:template match=&quot;指定的XML元素&quot;&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:template&gt;</div><div class="line">	.....</div><div class="line">&lt;/xsl:stylesheet&gt;</div></pre></td></tr></table></figure><br><br>把XSL样式表链接到XML文档:<code>&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;文件名.xsl&quot;?&gt;</code><br><br><h2 id="3">XSL模板</h2><br>XSL模板由两部分组成：匹配模式和执行，匹配模式指定文档中节点处理，执行定义输出。<br><em> 定义模板：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:template match=&quot;pattern&quot; name=&quot;name&quot; priority=&quot;number&quot; mode=&quot;mode&quot;&gt;</div><div class="line">	&lt;!--具体执行内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure>
-
-</em> match属性的pattern指定为<code>/</code>表示与根节点匹配，指定为为<em>表示与所有未指定规则的节点匹配。<br><code>match=&quot;(title|author)&quot;</code>表示匹配所有title和author元素，<code>match=&quot;(title/author)</code>表示匹配所有父节点为title的author元素
-
-</em> xsl:apply-template：处理当前节点的所有子节点，总是包含在xsl:template元素中。<br><code>&lt;xsl:apply-template select=&quot;expression&quot; mode=&quot;nam&quot;/&gt;</code><br><em> select属性是一个Xpath表达式，规定要用模板来处理节点。值为’</em>‘时去整个节点集，省略则是整个节点的子节点与模板比较选择匹配的处理。<br><em> mode选择同元素定义的多种处理方法。<br><br><h2 id="4">常用属性</h2><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#xsl:element 用于在输出文档创建节点</div><div class="line">&lt;xsl:element name=&quot;name&quot; namespace=&quot;URI&quot; use-attribute-sets=&quot;namelist&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:element&gt;</div><div class="line">#xsl:attribute</div><div class="line">&lt;xsl:attribute name=&quot;attributename&quot; namespace=&quot;URI&quot;&gt;</div><div class="line">	&lt;!--template--&gt;</div><div class="line">&lt;/xsl:attribute&gt;</div><div class="line">#xsl:text</div><div class="line">&lt;xsl:text disable-output-escaping=&quot;yes|no&quot;&gt;</div><div class="line">	&lt;!--content--&gt;</div><div class="line">&lt;/xsl:text&gt;</div></pre></td></tr></table></figure>
-
- </em> name规定创建元素的名称<br> <em> namespace规定名称空间的URI
- </em> use-attribute-sets空格分隔属性集，包含需要添加的属性<br> <em> <code>xsl:text</code>用于输出文本节点包括文本、#PCDATA等
- </em> disable-output-escaping默认为no，输出时将对文本进行转义。如<code>&lt;</code>输出为<code>&amp;lt</code><br><br><h2 id="5">XSL节点选择</h2><br>XSL样式表中有一个根模板，从根模板开始匹配XML文档，处理时调用其他模板，要匹配模板和标记时要设计“标记匹配模式”。<br>使用元素名匹配<br>XSL处理器根据match提供的元素名称去XML文档提取该节点的数据，需要用到<code>xsl:value-of</code>元素，用于选取文档中某个元素的值并输出。<br><code>&lt;xsl:value-of select=&quot;expression&quot; disable-output-escaping=&quot;yes|no&quot;&gt;</code><br> <em> select属性值是XPath表达式，规定从哪个节点或属性来提取<br>使用路径匹配<br>通过详细的路径选择节点，即模板中的标记匹配模式可以由子标记、根标记、/、//共同组成。<br><code>&lt;xsl:template match=&quot;图书/书名&quot;&gt;</code>表示匹配图书下的任意书名子节点。<br><code>&lt;xsl:template match=&quot;//书名&quot;&gt;</code>表示匹配任意节点下的书名子节点。<br><br>使用匹配字符匹配
- </em> 根节点匹配符<code>&lt;xsl:template match=&quot;/&quot;&gt;</code><br> <em> 根源素匹配符`&lt;xsl:template match=”/</em>“&gt;<code>* 当前节点</code><xsl:template match="."><code>父节点</code><xsl:template match=".."><code>4. 使用元素属性匹配
-使用</code>标记[@属性]<code>或</code>标记[@属性=’属性值’]`进行筛选匹配。<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#xml文档</div><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;GB2312&quot;?&gt;</div><div class="line">&lt;名单&gt;</div><div class="line">	&lt;姓名&gt;张三&lt;/姓名&gt;</div><div class="line">	&lt;姓名 ID=&quot;1&quot;&gt;李四&lt;/姓名&gt;</div><div class="line">&lt;/名单&gt;</div><div class="line">#获得李四数据</div><div class="line">&lt;xsl:template match=&quot;名单/姓名[@ID=&apos;1&apos;]&quot;&gt;</div><div class="line">	&lt;!--模板内容--&gt;</div><div class="line">&lt;/xsl:template&gt;</div></pre></td></tr></table></figure><br><br><h2 id="6">XSL控制指令</h2>
-
-<ol>
-<li>简单判断指令<code>&lt;xsl:if&gt;</code><ul>
-<li>以元素名为条件<code>&lt;xsl:if match=&quot;元素名&quot;&gt;</code></li>
-<li>以元素内容为条件<code>&lt;xsl:if test=&quot;元素名[.=元素内容]&quot;&gt;</code></li>
-<li>以元素属性为条件<code>&lt;xsl:if match=&quot;.[@属性名称=&#39;属性值&#39;]&quot;&gt;</code></li>
-<li>以元素属性为条件<code>&lt;xsl:if test=&quot;.[@属性名称=&#39;属性值&#39;]&quot;&gt;</code></li>
-</ul>
-</li>
-<li><p>多条件判断指令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:choose&gt;</div><div class="line">	&lt;xsl:when test=&quot;pattern&quot;&gt;</div><div class="line">		&lt;!--样式定义语句--&gt;</div><div class="line">	&lt;/xsl:when&gt;</div><div class="line">	&lt;xsl:when test=&quot;pattern&quot;&gt;</div><div class="line">		&lt;!--样式定义语句--&gt;</div><div class="line">	&lt;/xsl:when&gt;</div><div class="line">	......</div><div class="line">	&lt;xsl:otherwise&gt;</div><div class="line">		&lt;!--样式定义语句--&gt;</div><div class="line">	&lt;/xsl:otherwise&gt;</div><div class="line">&lt;/xsl:choose&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>循环处理指令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;xsl:for-each select=&quot;pattern&quot; order-by=&quot;patternlist&quot;&gt;</div><div class="line">	&lt;xsl:value-of../&gt;</div><div class="line">&lt;/xsl:for-each&gt;</div></pre></td></tr></table></figure>
-<ul>
-<li>用于对多个节点继续相同的处理</li>
-<li>select选择需要循环输出的节点元素</li>
-<li>order-by默认与+使用升序，-使用降序</li>
-<li><xsl:value-of>具体输出指定子节点内容</xsl:value-of></li>
-</ul>
-</li>
-<li>输出内容排序<br><code>&lt;xsl:sort select=&quot;元素名&quot; order=&quot;ascending|descending&quot; case-order=&quot;upper-first|lower-first&quot; data-type=&quot;text|number|qname&quot; /&gt;</code><ul>
-<li>xsl:sort作为xsl:apply-template或者xsl:for-each的子元素出现</li>
-<li>data-type标书排序数据类型</li>
-<li>select定义关键字</li>
-<li>order设置升降序</li>
-<li>case-order设置大小写字母排序</li>
-</ul>
-</li>
-</ol>
-<p></p><h2 id="7">XPath</h2><br>XPath用于XML文字导航，将节点划分成8种节点类型<p></p>
-<ol>
-<li>根节点：唯一，最上层。根源素是根节点的第一层子节点，一般包括两个子节点：xsl-stylesheet处理指令和根源素。</li>
-<li>元素节点：对应文档中的每一元素，可以定义唯一的标识ID，可以有扩展：命名空间URI、本地命名。</li>
-<li>文本节点：包含一组数据即CDATA包含的字符，没有紧邻的兄弟文本节点，没有扩展名。</li>
-<li>属性节点：元素节点有一个关联的属性节点的集合，元素是属性节点的父节点，但属性节点却不是其父元素的子节点。通过查找元素的子节点可以单向匹配出元素的属性节点，且不同的元素节点不共有同一个属性节点。 </li>
-<li>命名空间节点：每一个元素节点都有一个相关的命名空间节点集。在XML文档中，命名空间是通过保留属性声明的，它们与父元素之间的关系是单向的，并且不具有共享性。 </li>
-<li>处理指令节点：对应于XML文档中的每一条处理指令。它也有扩展名，扩展名的本地命名指向处理对象，而命名空间部分为空。</li>
-<li>注释节点：对应文档中的注释。 </li>
-<li>上下文节点：是将要查询的XML文档树种的一个特定节点，可以认为是查询的起点。</li>
-</ol>
-<p></p><h2 id="8">XPath路径表达式</h2><br>位置路径可以是绝对的，也可以是相对的。绝对路径起始于正斜杠( / )。都包含位置步。<br>绝对位置路径:<code>/step/step/...</code><br>相对位置路径:<code>step/step/...</code><br>步的语法：<code>轴名称::节点测试[谓语]</code><br>步包括：<p></p>
-<ul>
-<li>轴:定义所选节点与当前节点之间的树关系</li>
-<li>节点测试:识别某个轴内部的节点</li>
-<li>谓词:更深入地提炼所选的节点集</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>轴</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ancestor</td>
-<td>选取当前节点的所有先辈</td>
-</tr>
-<tr>
-<td>ancestor-or-self</td>
-<td>选取当前节点的所有先辈以及当前节点本身</td>
-</tr>
-<tr>
-<td>attribute</td>
-<td>选取当前节点的所有属性</td>
-</tr>
-<tr>
-<td>child</td>
-<td>选取当前节点的所有子元素</td>
-</tr>
-<tr>
-<td>descendant</td>
-<td>选取当前节点的所有后代元素</td>
-</tr>
-<tr>
-<td>descendant-or-self</td>
-<td>选取当前节点的所有后代元素以及当前节点本身</td>
-</tr>
-<tr>
-<td>following</td>
-<td>选取文档中当前节点的结束标签之后的所有节点</td>
-</tr>
-<tr>
-<td>namespace</td>
-<td>选取当前节点的所有命名空间节点</td>
-</tr>
-<tr>
-<td>parent</td>
-<td>选取当前节点的父节点</td>
-</tr>
-<tr>
-<td>preceding</td>
-<td>选取文档中当前节点的开始标签之前的所有节点</td>
-</tr>
-<tr>
-<td>preceding-sibling</td>
-<td>选取当前节点之前的所有同级节点</td>
-</tr>
-<tr>
-<td>self</td>
-<td>选取当前节点</td>
-</tr>
-</tbody>
-</table>
-<p>节点测试允许从轴中选择特定的元素或者节点类型</p>
-<ul>
-<li>元素名称节点测试：指定与具有名称的节点匹配</li>
-<li>“*”节点测试:指定轴中的所有元素</li>
-<li>node()节点测试:指定轴中的所有元素</li>
-<li>comment()节点测试：指定轴中的所有注释</li>
-<li>text()指定轴中的所有文本</li>
-<li>processing-instruction()节点测试：指定轴中所有的处理指令元素</li>
-</ul>
-<p>谓词用于对节点集进行更神的过滤，用于查找特定节点</p>
-<table>
-<thead>
-<tr>
-<th>谓词</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[position()=n]</td>
-<td>选取当前节点的第n个节点</td>
-</tr>
-<tr>
-<td>[last()]</td>
-<td>选取当前节点的最后一个节点</td>
-</tr>
-<tr>
-<td>[attribute::name]</td>
-<td>选择所有拥有name属性的节点</td>
-</tr>
-<tr>
-<td>[attribute::name1 and attribute::name2]</td>
-<td>选取所有拥有名为name1、name2属性的节点</td>
-</tr>
-<tr>
-<td>[nodename=value]</td>
-<td>选取所有nodename子元素的值为value的节点</td>
-</tr>
-<tr>
-<td>[count()]</td>
-<td>返回符合条件的节点个数</td>
-</tr>
-</tbody>
-</table>
-<p>路径缩写表达式</p>
-<table>
-<thead>
-<tr>
-<th>表达式</th>
-<th>描述</th>
-<th>原语法</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>nodename</td>
-<td>选取此节点的所有子节点</td>
-<td>child::nodename</td>
-</tr>
-<tr>
-<td>/</td>
-<td>从根节点选取</td>
-<td>..</td>
-</tr>
-<tr>
-<td>//</td>
-<td>从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置</td>
-<td>/descendant-or-self::node()/</td>
-</tr>
-<tr>
-<td>.</td>
-<td>选取当前节点</td>
-<td>self::node()</td>
-</tr>
-<tr>
-<td>..</td>
-<td>选取当前节点的父节点</td>
-<td>parent::node()</td>
-</tr>
-<tr>
-<td>@</td>
-<td>选取属性</td>
-<td>attribute::</td>
-</tr>
-</tbody>
-</table>
-<p>XPath标准函数:参考<a href="http://www.w3school.com.cn/xpath/xpath_functions.asp" target="_blank" rel="external">XPath、XQuery以及XSLT函数</a></p>
-</xsl:template></xsl:template>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;XSL是基于XML的语言，用于显示XML的规范。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="XML" scheme="http://www.codingbalian.online/categories/XML/"/>
-    
-    
-      <category term="XSL" scheme="http://www.codingbalian.online/tags/XSL/"/>
     
   </entry>
   

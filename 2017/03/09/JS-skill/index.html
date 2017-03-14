@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Balian Cheng" />
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS高级技巧">
+<meta property="og:url" content="http://www.codingbalian.online/2017/03/09/JS-skill/index.html">
+<meta property="og:site_name" content="Balian's Blog">
+<meta property="og:updated_time" content="2017-03-13T14:24:14.270Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS高级技巧">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Balian&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>JS高级技巧 | Balian&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="https://avatars0.githubusercontent.com/u/17884783?v=3&amp;s=460" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Balian Cheng</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:393418737@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/BalianCheng" title="GitHub"></a>
+                            
+                                <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DOM/">DOM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DTD/">DTD</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JAXP/">JAXP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Schema/">Schema</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Servlet/">Servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSL/">XSL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/处理机/">处理机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/存储管理/">存储管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件管理/">文件管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/死锁/">死锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设备管理/">设备管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/调度/">调度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进程/">进程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进程管理/">进程管理</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.Studaholic.online/">Studaholic</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">前端新人</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Balian Cheng</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="https://avatars0.githubusercontent.com/u/17884783?v=3&amp;s=460" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Balian Cheng</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:393418737@qq.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/BalianCheng" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-JS-skill" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/09/JS-skill/" class="article-date">
+      <time datetime="2017-03-09T11:57:34.000Z" itemprop="datePublished">2017-03-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS高级技巧
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>　<br><a id="more"></a></p>
+<h2 id="1">高级函数</h2>
+
+<h3 id="1.1">安全类型检测</h3>
+
+<p>typeof在Safari中检测正则表达式时会返回function，instanceof在检测数组时由于Array是window的对象，被检测的对象必须和Array构造函数位于同个全局作用域中。<br>因此使用原生的toString方法可以避免出错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Object.prototype.toString.call(obj)==&quot;[boject Array]&quot;</div></pre></td></tr></table></figure></p>
+<h3 id="1.2">安全作用域</h3>
+
+<p>当构造函数使用this关键字，创建新对象时没有使用new时，this会直接映射到window上，因此需要创造安全的作用域：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function person(name,age) &#123;</div><div class="line">    if (this instanceof person) &#123;//判断</div><div class="line">        this.name = name</div><div class="line">        this.age = age</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line">        return new person(name,age)//确保安全</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">person.prototype=&#123;</div><div class="line">    constructor:person,</div><div class="line">    sayName:function () &#123;</div><div class="line">        alert(this.name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Object.defineProperty(person.prototype,&quot;constructor&quot;,&#123;</div><div class="line">    enumerable:false,</div><div class="line">    value:person</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="1.2">惰性载入函数</h3>
+
+<p>函数中如果有大量的if语句，且if语句不用每次都执行，可以使用惰性载入的方法。比如在函数调用时在处理函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">function createXHR() &#123;</div><div class="line">    if (typeof XMLHttpRequest != &quot;undefined&quot;) &#123;</div><div class="line">        createXHR = function () &#123;</div><div class="line">            return new XMLHttpRequest()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    else if (typeof ActiveXObject != &quot;undefined&quot;) &#123;</div><div class="line">        createXHR = function () &#123;</div><div class="line">            if (typeof arguments.callee.activeXString != &quot;string&quot;) &#123;</div><div class="line">                var versions = [&quot;Msxml2.XMLHTTP.6.0&quot;, &quot;Msxml2.XMLHTTP.3.0&quot;, &quot;Msxml2.XMLHTTP&quot;],</div><div class="line">                    i, len</div><div class="line">                for (i = 0, len = versions.length; i &lt; len; i++) &#123;</div><div class="line">                    try &#123;</div><div class="line">                        new ActiveXObject(versions[i])</div><div class="line">                        arguments.callee.activeXString = versions[i]</div><div class="line">                        break</div><div class="line">                    &#125; catch (ex) &#123;</div><div class="line"></div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            return new ActiveXObject(arguments.callee.activeXString)</div><div class="line">        &#125;</div><div class="line">    &#125; else &#123;</div><div class="line">        createXHR = function () &#123;</div><div class="line">            throw new Error(&quot;No XMLHttpRequest object available!&quot;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return createXHR()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>每一个分支都会覆盖原函数，最后调用新函数，下一次调用就会调用新的分配函数。</p>
+<h3 id="1.3">函数绑定</h3>
+
+<p>当调用一个对象的方法时，如果没有绑定其环境，方法中使用this的指向会改变，因此可以使用闭包或者函数绑定来执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var handler=&#123;</div><div class="line">	message:&quot;Event&quot;,</div><div class="line">	handlerClick:function(event)&#123;</div><div class="line">		alert(this.message)</div><div class="line">	&#125;</div><div class="line">EventUtil.addHandler(btn,&quot;click&quot;,function(event)&#123;</div><div class="line">	handler.handlerClick(event)</div><div class="line">	&#125;)</div><div class="line">/*bind函数绑定环境</div><div class="line">    function bind(fn, context) &#123;</div><div class="line">        return function () &#123;</div><div class="line">            return fn.apply(context, arguments)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    EventUtil.addHandler(btn, &quot;click&quot;, bind(handler.handleClick, handler))</div><div class="line">*/</div><div class="line"></div><div class="line">/*原生bind函数</div><div class="line">    EventUtil.addHandler(btn, &quot;click&quot;,handler.handleClick.bind(handler))</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<h3 id="1.4">函数柯里化</h3>
+
+<p>调用另一个函数并为它传入要柯里化的函数和必要参数:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function bind(fn,context)&#123;</div><div class="line">	//获取柯里化的参数</div><div class="line">	var args = Array.prototype.slice.call(arguments,2);//&quot;zhangsan&quot;,12</div><div class="line">	return function()&#123;</div><div class="line">		//获取调用函数时传入的参数</div><div class="line">		var innerArgs = Array.prototype.slice.call(arguments);//event</div><div class="line">		var finalArgs = innerArgs.concat(args);//event,&quot;zhangsan&quot;,12</div><div class="line">		return fn.apply(context,finalArgs);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">handler = &#123;</div><div class="line">	message:&quot;hehe&quot;,</div><div class="line">	handleClick:function(event,name,age)&#123;</div><div class="line">		console.log(this.message);</div><div class="line">		console.log(event.type);</div><div class="line">		console.log(name+&quot;:&quot;+age);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var btn = document.getElementById(&quot;btn&quot;);</div><div class="line">btn.onclick = bind(handler.handleClick,handler,&quot;zhangsan&quot;,12);</div></pre></td></tr></table></figure></p>
+<p>bind()方法也实现了函数柯里化，只要在this的值后再传入另一个参数即可:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">handler = &#123;</div><div class="line">	message:&quot;hehe&quot;,</div><div class="line">	handleClick:function(name,age,event)&#123;//event对象作为最后一个参数传入</div><div class="line">		console.log(this.message);</div><div class="line">		console.log(event.type);</div><div class="line">		console.log(name+&quot;:&quot;+age);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">var btn = document.getElementById(&quot;btn&quot;);</div><div class="line">btn.onclick = handler.handleClick.bind(handler,&quot;zhangsan&quot;,12);</div></pre></td></tr></table></figure></p>
+<h3 id="1.5">防篡改对象</h3>
+
+<p>一旦将对象定义成防篡改，就无法撤销了。<br>默认情况下，所有对象都是可以扩展的，任何时候都可以向对象中添加属性和方法。<br>Object.preventExtensions()方法可以禁止给对象添加属性和方法。<br>Object.istExtensible()：检测对象是否可扩展</p>
+<p>密封对象不可扩展，而且已有成员的[[Configurable]]特性为false。不能删除属性和方法，可以修改:<br>Object.seal(person);</p>
+<p>最严格的防篡改级别是冻结对象(frozen object)。不可扩展，又是密封的，而且对象的属性的[[Writable]]特性会被设置为false。无法直接修改属性，但是如果定义[[Set]]函数，访问器属性任然可以修改。</p>
+<p>Object.freeze(person);//冻结对象</p>
+<h3 id="1.6">Yielding Processes</h3>
+
+<p>在浏览器中的JS都被分配了一个确定数量的资源。需要的内存大小和处理器时间都被严格限制了，防止恶意的Web程序员把用户机器资源耗尽。<br>脚本长时间运行的问题通常由两个原因之一造成：过长的，过深嵌套的函数调用或者是进行大量处理的循环。<br>对于后者，可以使用定时器分割这个循环。这是一种叫做数组分块(array  chunking)的技术，小块小块地处理数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function chunk(array,process,context)&#123;//处理的数据，执行函数，运行环境</div><div class="line">    setTimeout(function()&#123;</div><div class="line">        var item = array.shift();//待处理事项</div><div class="line">        process.call(context,item);</div><div class="line">        if(array.length&gt;0)&#123;//如果还有待办事项</div><div class="line">            setTimeout(arguments.callee,100);</div><div class="line">        &#125;</div><div class="line">    &#125;,100);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="1.7">函数节流</h3>
+
+
+<p>某些代码不可以在没有间断的情况连续重复执行。第一次调用函数，创建一个定时器，在指定的时间间隔之后运行代码。当第二次调用该函数时，它会清除前一次的定时器并设置另一个。如果前一个定时器已经执行过了，这个操作就没有任何意义。如果前一个定时器未执行，其实就是将其替换为一个新的定时器。目的是只有在执行函数的请求停止了一段时间之后才执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">var processor =&#123;</div><div class="line">	timeoutId:null,</div><div class="line">	//实际处理的程序</div><div class="line">	performProcessing:function()&#123;</div><div class="line">		//实际执行的代码</div><div class="line">	&#125;</div><div class="line">	//初始处理调用的方法</div><div class="line">	process:function()&#123;</div><div class="line">		//清除前一个定时器</div><div class="line">		clearTimeout(this.timeoutId);</div><div class="line">		//保留this当前执行环境</div><div class="line">		var processContext = this;</div><div class="line">		//设置新的处理程序定时器</div><div class="line">		this.timeoutId = setTimeout(function()&#123;</div><div class="line">			processContext.performProcessing();//调用实际处理程序</div><div class="line">		&#125;,100);</div><div class="line">	&#125;</div><div class="line">&#125; </div><div class="line">//开始执行</div><div class="line">processor.process();</div></pre></td></tr></table></figure></p>
+<p>使用throttle()函数来简化，该函数可自动进行定时器的设置和清除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function throttle(method,context)&#123;</div><div class="line">	clearTimeout(method.tId);</div><div class="line">	method.tId = setTimeout(function()&#123;</div><div class="line">		method.call(context);//如果没有给定执行环境，就会在全局作用域内执行</div><div class="line">	&#125;,1000);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function resizeDiv()&#123;</div><div class="line">	var div = document.getElementById(&quot;editDiv&quot;);</div><div class="line">	div.style.height = div.offsetWidth + &quot;px&quot;;</div><div class="line">&#125;</div><div class="line">window.onresize = function()&#123;</div><div class="line">	//resizeDiv();</div><div class="line">	throttle(resizeDiv);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="1.8">自定义事件</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">function EventTarget() &#123;</div><div class="line">    this.handlers = &#123;&#125;;//存储事件处理程序</div><div class="line">&#125;</div><div class="line">EventTarget.prototype = &#123;</div><div class="line">    constructor: EventTarget,</div><div class="line">    //type事件类型，handler处理该事件的函数</div><div class="line">    addHandler: function (type, handler) &#123;//注册给定类型事件的事件处理程序</div><div class="line">        if (typeof this.handlers[type] == &apos;undefined&apos;) &#123;</div><div class="line">            this.handlers[type] = [];</div><div class="line">        &#125;</div><div class="line">        this.handlers[type].push(handler);</div><div class="line">    &#125;,</div><div class="line">    //event,至少包含type属性的对象</div><div class="line">    fire: function (event) &#123;//触发一个事件</div><div class="line">        if (!event.target) &#123;//给event对象初始化设置一个target属性。</div><div class="line">            event.target = this;</div><div class="line">        &#125;</div><div class="line">        if (this.handlers[event.type] instanceof Array) &#123;//查找该事件类型的一组处理程序</div><div class="line">            var handlers = this.handlers[event.type];</div><div class="line">            for (var i = 0, len = handlers.length; i &lt; len; i++) &#123;//遍历调用所有的事件处理程序</div><div class="line">                handlers[i](event);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    removeHandler: function (type, handler) &#123;</div><div class="line">        if (this.handlers[type] instanceof Array) &#123;</div><div class="line">            var handlers = this.handlers[type];</div><div class="line">            for (var i = 0, len = handlers.length; i &lt; len; i++) &#123;</div><div class="line">                if (handlers[i] === handler) &#123;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            handlers.splice(i, 1);//从数组中删除该处理程序</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用自定义的事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function handlerMessage(event)&#123;</div><div class="line">	console.log(&quot;消息处理:&quot;+event.message);</div><div class="line">&#125;</div><div class="line">//创建一个新的对象</div><div class="line">var target = new EventTarget();</div><div class="line">//添加事件处理程序,类型是message</div><div class="line">target.addHandler(&quot;message&quot;,handlerMessage);</div><div class="line">//触发message类型的事件,并自定义event对象的message属性</div><div class="line">target.fire(&#123;type:&quot;message&quot;,message:&quot;消息事件处理&quot;&#125;);</div><div class="line">//删除事件处理程序</div><div class="line">target.removeHandler(&quot;message&quot;,handlerMessage);</div><div class="line">//再次触发事件，已删除</div><div class="line">target.fire(&#123;type:&quot;message&quot;,message:&quot;再次触发事件，已删除&quot;&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/03/09/JS-skill/">JS高级技巧</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
+        <p><span>发布时间:</span>2017-03-09, 19:57:34</p>
+        <p><span>最后更新:</span>2017-03-13, 22:24:14</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/09/JS-skill/" title="JS高级技巧">http://www.codingbalian.online/2017/03/09/JS-skill/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/03/09/JS-skill/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/03/14/jQuery-selector/">
+                    jQuery-selector
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/03/09/AJAX-Comet/">
+                    AJAX&amp;Comet
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">高级函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">安全类型检测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">安全作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.3.</span> <span class="toc-text">惰性载入函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.4.</span> <span class="toc-text">函数绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.4"><span class="toc-number">1.5.</span> <span class="toc-text">函数柯里化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.5"><span class="toc-number">1.6.</span> <span class="toc-text">防篡改对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.6"><span class="toc-number">1.7.</span> <span class="toc-text">Yielding Processes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.7"><span class="toc-number">1.8.</span> <span class="toc-text">函数节流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.8"><span class="toc-number">1.9.</span> <span class="toc-text">自定义事件</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"JS高级技巧　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/09/JS-skill/" data-title="JS高级技巧" data-url="http://www.codingbalian.online/2017/03/09/JS-skill/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"balian"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/03/14/jQuery-selector/" title="上一篇: jQuery-selector">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/03/09/AJAX-Comet/" title="下一篇: AJAX&amp;Comet">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/14/jQuery-selector/">jQuery-selector</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/JS-skill/">JS高级技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/AJAX-Comet/">AJAX&Comet</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-Error/">JS错误处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-API/">H5脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-Canvas/">JavaScript-Canvas</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/JavaScript-form/">JavaScript表单脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/JavaScript-event/">JavaScript-event</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/JavaScrpit-DOM2/">JavaScrpit-DOM2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-DOM/">JavaScript的文档对象模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-BOM/">BOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-Function/">JavaScript函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/JavaScript-object/">JavaScript对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/JavaScript-Note2/">JavaScript:学习笔记2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/jQuery-note/">jQuery学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/JavaScript-Note/">JavaScript:学习笔记1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/OS-File Management/">操作系统：文件管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/OS-Device Management/">操作系统:设备管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-Process/">操作系统：进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/OS-Storage Management/">操作系统:存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Balian Cheng
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
