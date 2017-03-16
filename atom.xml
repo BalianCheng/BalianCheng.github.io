@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.codingbalian.online/"/>
-  <updated>2017-03-14T11:07:37.695Z</updated>
+  <updated>2017-03-16T09:40:10.854Z</updated>
   <id>http://www.codingbalian.online/</id>
   
   <author>
@@ -14,6 +14,99 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jQuery-event</title>
+    <link href="http://www.codingbalian.online/2017/03/16/jQuery-event/"/>
+    <id>http://www.codingbalian.online/2017/03/16/jQuery-event/</id>
+    <published>2017-03-16T06:44:05.000Z</published>
+    <updated>2017-03-16T09:40:10.854Z</updated>
+    
+    <content type="html"><![CDATA[<p>jQuery中的事件和动画处理<br><a id="more"></a></p>
+<h2 id="1">jQuery中的事件</h2>
+
+<p><code>$(&quot;document&quot;).ready()</code>用来代替传统的<code>window.onload</code>，但是不需要再页面元素全部加载完成后再触发，而是在DOM载入就绪时就可以操作<br>如果需要某些元素加载完成后再触发元素可以对他们使用<code>load()</code>函数<br>且在调用<code>$(&quot;document&quot;).ready()</code>函数时，多次使用则是对现有函数内容的增加，而非覆盖。<br><code>$(&quot;document&quot;).ready(function(){})</code>可以简写成<code>$(function(){})</code>或者<code>$().ready(function(){})</code><br>因为<code>$()</code>就是<code>$(&quot;document&quot;)</code>的简写。</p>
+<h3 id="1.1">事件绑定</h3>
+
+<p><code>bind(type,[,data],fn)</code>接受三个参数，事件类型，作为event.data的属性值的数据，处理函数</p>
+<p>jQuery不支持事件捕获，但是可以阻止冒泡：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(&quot;.div&quot;).bind(&quot;click&quot;,function(event)&#123;</div><div class="line">	...</div><div class="line">	event.stopPropagation()//阻止冒泡</div><div class="line">	event.preventDefault()//阻止默认行为</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="1.2">移除事件与事件模拟</h3>
+
+<p>unbind()接受两个参数，如果没有参数默认移除所有事件，第一个参数是事件类型，第二个参数是要移除的函数</p>
+<p>one()方法与bind方法用法相同，但是使用过一次后就会被销毁</p>
+<p>tigger函数用于事件模拟：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&quot;#btn&quot;).tigger(&quot;click&quot;)</div><div class="line">$(&quot;#btn&quot;).bind(&quot;myClick&quot;,function()&#123;&#125;)</div><div class="line">$(&quot;#btn&quot;).tigger(&quot;myClick&quot;)//触发自定义事件</div></pre></td></tr></table></figure></p>
+<p>tigger()接受两个参数：事件类型，传给事件处理函数的附加数据</p>
+<p>tiggerHandler()用于触发事件而不执行浏览器默认操作</p>
+<h3 id="1.3">事件命名空间</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(&quot;.div&quot;).bind(&quot;click.plugin&quot;,function(event)&#123;</div><div class="line">	...</div><div class="line">&#125;)</div><div class="line">$(&quot;.div&quot;).bind(&quot;dbclick.plugin&quot;,function(event)&#123;</div><div class="line">	...</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>目标绑定的click与dbclick事件都属于plugin命名空间，可以进行统一管理：<code>unbind(&quot;.plugin&quot;)</code>解除所有plugin命名空间下的事件绑定<br>tigger(“click!”)匹配所有不含在命名空间中的click</p>
+<h2 id="2">动画</h2>
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;jQuery中的事件和动画处理&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+      <category term="jQuery" scheme="http://www.codingbalian.online/tags/jQuery/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>jQuery的DOM操作</title>
+    <link href="http://www.codingbalian.online/2017/03/15/jQuery-DOM/"/>
+    <id>http://www.codingbalian.online/2017/03/15/jQuery-DOM/</id>
+    <published>2017-03-15T07:53:22.000Z</published>
+    <updated>2017-03-15T09:44:01.937Z</updated>
+    
+    <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
+<h2 id="1">HTML-DOM</h2>
+
+<h3 id="1.1">查找节点</h3>
+
+<p><code>&lt;p title=&quot;test&quot;&gt;内容&lt;/p&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//获取元素节点</div><div class="line">var $p=$(&quot;p&quot;)</div><div class="line">//获取元素文本节点</div><div class="line">var p_text=$p.text()</div><div class="line">//获取属性节点</div><div class="line">var p_attr=$p.attr(&quot;title&quot;)</div></pre></td></tr></table></figure>
+<h3 id="1.2">创建插入节点</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//创建元素节点</div><div class="line">var $li=$(&quot;&lt;li&gt;&lt;/li&gt;&quot;)</div><div class="line">//创建文本节点，，只要符合html规范即可</div><div class="line">var $li=$(&quot;&lt;li&gt;&lt;em&gt;a&lt;/em&gt;&lt;b&gt;b&lt;/b&gt;&lt;/li&gt;&quot;)</div><div class="line">//创建属性节点</div><div class="line">var $li=$(&quot;&lt;li title=&quot;a&quot;&gt;a&lt;/li&gt;&quot;)</div></pre></td></tr></table></figure>
+<p>插入节点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$(&quot;p&quot;)append(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)appendTo(&quot;p&quot;)</div><div class="line">//&lt;p&gt;a&lt;b&gt;b&lt;/b&gt;&lt;/p&gt;</div><div class="line">$(&quot;p&quot;)prepend(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)prependTo(&quot;p&quot;)</div><div class="line">//&lt;p&gt;&lt;b&gt;b&lt;/b&gt;a&lt;/p&gt;</div><div class="line">$(&quot;p&quot;)after(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)insertafter(&quot;p&quot;)</div><div class="line">//&lt;p&gt;a&lt;/p&gt;&lt;b&gt;b&lt;/b&gt;</div><div class="line">$(&quot;p&quot;)before(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)insertbefore(&quot;p&quot;)</div><div class="line">//&lt;b&gt;b&lt;/b&gt;&lt;p&gt;a&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>移动节点时先将节点从文档删除，再将其插入指定位置</p>
+<h3 id="1.3">删除节点</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&quot;p&quot;).remove()</div><div class="line">//删除属性节点</div><div class="line">$(&quot;form&quot;).remove(&quot;input[name=add]&quot;)</div><div class="line">//删除指定form下的节点</div><div class="line">//detach()与remove用法相同，但是不会把元素从jQuery对象中删除，之前绑定的方法数据都会保留</div><div class="line">$(&quot;p&quot;).empty()</div><div class="line">//清空p的所有后代节点</div></pre></td></tr></table></figure>
+<h3 id="1.4">其他操作</h3>
+
+<p>clone()克隆节点，接受参数为true时复制所有被绑定的事件<br>replaceWith(“…”)替换节点，接受的参数是用于替换的内容<br>replaceAll()与replaceWith相同，接受的参数是被替换的节点<br>包裹节点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(&quot;strong&quot;).warp(&quot;&lt;b&gt;&lt;/b&gt;&quot;)</div><div class="line">//&lt;b&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/b&gt;单独包裹</div><div class="line">//warpAll将所有满足条件的元素全部一次性包裹进去</div><div class="line">//warpInner将被选中的元素的内部元素包裹</div></pre></td></tr></table></figure></p>
+<h3 id="1.5">属性和样式操作</h3>
+
+<p>attr(“”)获取属性<br>removeAttr(“”)删除属性<br>addClass()追加class的属性<br>removeClass()移除class属性<br>toggle()：隐藏/显示切换<br>toggleClass()：切换类<br>hasClass检查是否有指定的class</p>
+<h3 id="1.6">获取HTML，文本，值</h3>
+
+<p>html()获取html代码，可以设置内容<br>text()获取文本<br>val（）获取值<br>children()获取所有子元素<br>next()获取紧邻的下一个同辈元素<br>prev()获取紧邻的上一个同辈元素<br>siblings()获取所有的同辈元素<br>closest()获取最近的匹配元素，由自身向上寻找</p>
+<h2 id="2">CSS-DOM操作</h2>
+
+<p>css(“height”)获取元素的height值<br>css(“color”,”red”)<br>css({“color”:”red”,”fontSize”:”10px”})</p>
+<p>offset()获取元素相对视窗偏移量<br>position()获取元素相对父元素的偏移量<br>scrollTop(),scrollLeft()获取滚动条距离</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.codingbalian.online/categories/JavaScript/"/>
+    
+    
+      <category term="jQuery" scheme="http://www.codingbalian.online/tags/jQuery/"/>
+    
+  </entry>
   
   <entry>
     <title>jQuery选择器</title>
@@ -1795,290 +1888,6 @@
     
     
       <category term="设备管理" scheme="http://www.codingbalian.online/tags/%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>操作系统：处理机调度与死锁</title>
-    <link href="http://www.codingbalian.online/2017/01/04/OS-Deadlock/"/>
-    <id>http://www.codingbalian.online/2017/01/04/OS-Deadlock/</id>
-    <published>2017-01-04T08:43:56.000Z</published>
-    <updated>2017-01-09T14:27:18.583Z</updated>
-    
-    <content type="html"><![CDATA[<p>关于死锁的简单内容。<br><a id="more"></a></p>
-<h2 id="1">处理机调度</h2>
-
-<h3 id="1.1">高级、中级和低级调度</h3>
-
-<ul>
-<li>高级调度：也称为作业调度或长程调度，决定将外存上处于后备队列中的哪些作业调入内存，并为它们创建进程，排入就绪队列，准备执行。作业调度的时间尺度通常是分钟级。</li>
-<li>低级调度：也称进程调度、短程调度，它决定就绪队列中的哪个进程获得处理机。进程调度的时间尺度通常是毫秒级的。      </li>
-<li>中级调度：也称中程调度。引入中级调度的主要目的，是为了提高内存利用率和系统吞吐量。 </li>
-</ul>
-<p>中级调度的实现：把暂时不能运行的进程调至外存等待，此时的进程状态称为就绪驻外存状态或挂起状态。当又具备运行条件、且内存又稍有空闲时，由中级调度来决定把外存上的就绪进程重新调入内存，并修改其状态为就绪状态，挂在就绪队列上等待调度。涉及进程在内外存间的交换。</p>
-<h3 id="1.2">进程调度的作用</h3>
-
-<p>使用调度算法从就绪队列中选中一个进程，把CPU的使用权交给被选中的进程</p>
-<h3 id="1.3">确定算法原则</h3>
-
-<ul>
-<li>公平性</li>
-<li>资源利用率高</li>
-</ul>
-<h3 id="1.4">进程调度方式</h3>
-
-<ul>
-<li>非剥夺方式：分派程序把处理机分配给进程后便让它一直运行下去，直到进程完成或发生某事件而阻塞时，才把处理机分配给另一个进程。</li>
-<li>剥夺方式：当一个进程正在运行时，系统可以基于某种原则，剥夺已分配给它的处理机，将之分配给其它进程。剥夺原则有：优先权原则、短进程优先原则、时间片原则。</li>
-</ul>
-<h3 id="1.5">进程调度性能衡量的指标</h3>
-
-<ul>
-<li>周转时间</li>
-<li>响应时间</li>
-<li>CPU-I/O执行期</li>
-</ul>
-<h3 id="1.6">调度准则</h3>
-
-<ul>
-<li>面向用户的准则：<ul>
-<li>周转时间短，即作业从提交到完成（作业的周转时间T与系统为它提供服务的时间TS之比，即W=T/TS，称为带权周转时间）</li>
-<li>响应时间快</li>
-<li>截止时间的保证</li>
-<li>优先权准则</li>
-</ul>
-</li>
-<li>面向系统的准则：<ul>
-<li>系统吞吐量高</li>
-<li>处理机利用率好</li>
-<li>各类资源的平衡利用</li>
-</ul>
-</li>
-</ul>
-<h2 id="2">进程调度算法</h2>
-
-<h3 id="2.1">先进先出(FIFO)算法</h3>
-
-<p>把处理机分配给最先进入就绪队列的进程，一个进程一旦分得处理机，便执行下去，直到该进程完成或阻塞时，才释放处理机。<br>优点:实现简单,有利于长作业,CPU繁忙型作业<br>缺点:没考虑进程的优先级,不利于I/O繁忙型作业</p>
-<h3 id="2.2">短作业(进程)优先调度算法</h3>
-
-<ul>
-<li>短作业优先(SJF)的调度算法:从后备队列中选择一个或若干个估计运行时间最短的作业，将它们调入内存运行</li>
-<li>短进程优先(SPF)调度算法:从就绪队列中选出一估计运行时间最短的进程，使它立即执行</li>
-</ul>
-<p>缺点：对长作业不利；不能保证紧迫性作业(进程)会被及时处理；根据用户估计可能存在错误</p>
-<h3 id="2.3">最高优先权优先调度算法</h3>
-
-<p>把处理机分配给就绪队列中具有最高优先权的进程。<br>决定优先权的方法：</p>
-<ol>
-<li>静态优先数法：静态优先权是在创建进程时确定的，在整个运行期间不再改变。依据有：进程类型；进程对资源的要求；用户要求的优先权。</li>
-<li>动态优先数法：在进程创建时创立一个优先数，但在其生命周期内优先权可以随进程的推进或随其等待时间的增加而改变的，以便获得更好的调度性能。</li>
-</ol>
-<h3 id="2.4">高响应比优先调度算法</h3>
-
-<p>$$优先权={等待时间+要求服务时间 \over 要求服务时间}={响应时间  \over 要求服务时间}$$</p>
-<p>特点：</p>
-<ol>
-<li>作业等待时间相同，要求服务的时间愈短，其优先权愈高，有利于短作业</li>
-<li>要求服务的时间相同时，等待时间愈长，其优先权愈高，因而它实现的是先来先服务</li>
-<li>对于长作业，作业的优先级随等待时间的增加而提高，当其等待时间足够长时，其优先级便可升到很高， 从而也可获得处理机。  </li>
-</ol>
-<h3 id="2.5">转轮法</h3> 
-
-<p>把CPU划分成若干时间片,并且按顺序赋给就绪队列中的每一个进程，进程轮流占有CPU，当时间片用完时，即使进程未执行完毕，系统也剥夺该进程的CPU，将该进程排在就绪队列末尾。同时系统选择另一个进程运行。</p>
-<p>简单轮转法：系统将所有就绪进程按FIFO规则排队，按一定的时间间隔把处理机分配给队列中的进程。<br>多级队列方法：将系统中所有进程分成若干类，每类为一级。<br>时间片选择：固定时间片；可变时间片<br>与时间片大小有关的因素：系统响应时间(正比);就绪进程个数(反比);CPU能力 </p>
-<h3 id="2.6">多队列反馈调度算法</h3> 
-
-<ul>
-<li>系统中设置多个就绪队列，并为各个队列赋予不同的优先级。第一个队列的优先级最高，第二个队列次之，其余各队列的优先权逐个降低</li>
-<li>每个就绪队列分配给不同时间片，优先级高的为第一级队列，时间片最小，随着队列级别的降低，时间片加大</li>
-<li>各个队列按照先进先出调度算法</li>
-<li>一个新进程就绪后进入第一级队列</li>
-<li>进程由于等待而放弃CPU后，进入等待队列，一旦等待的事件发生，则回到原来的就绪队列</li>
-<li>当有一个优先级更高的进程就绪时，可以抢占CPU，被抢占进程回到原来一级就绪队列末尾</li>
-<li>当第一级队列空时，就去调度第二级队列，如此类推</li>
-<li>当时间片到后，进程放弃CPU，回到下一级队列，如此下去，一个长作业从第一队列依次降到第n队列</li>
-</ul>
-<h2 id="3">实时调度</h2>
-
-<h3 id="3.1">基本条件</h3>
-
-<ul>
-<li>提供必要的信息(就绪时间、截止时间、处理时间、资源、优先级)</li>
-<li>系统处理能力强</li>
-<li>采用抢占式调度机制</li>
-<li>具有快速切换机制</li>
-</ul>
-<h3 id="3.2">算法的分类</h3>
-
-<ol>
-<li>非抢占式调度算法:非抢占式轮转调度算法;非抢占式优先调度算法</li>
-<li>抢占式调度算法:基于时钟中断的抢占优先调度算法;立即抢占优先权调度算法</li>
-</ol>
-<p>常用算法：<br>最早截止时间优先即EDF算法：只考虑了进程的截止时间，未考虑其运行时间<br>最低松弛度优先(LLF)算法：该算法是根据任务紧急(或松弛)的程度，来确定任务的优先级。该算法主要用于可抢占调度方式中。<br>松弛度=必须完成时间-其本身的运行时间-当前时间 </p>
-<h3 id="3.2">多处理机系统中的调度</h3>
-
-<ol>
-<li>多处理器系统的类型<br>紧密耦合(Tightly Coupted)MPS:<br>通过高速总线或高速交叉开关，来实现多个处理器之间的互连的。它们共享主存储器系统和I/O设备，并要求将主存储器划分为若干个能独立访问的存储器模块，以便多个处理机能同时对主存进行访问。系统中的所有资源和进程，都由操作系统实施统一的控制和管理<br>松散耦合(Loosely Coupled)MPS:<br>通过通道或通信线路，来实现多台计算机之间的互连。每台计算机都有自己的存储器和I/O设备，并配置了OS来管理本地资源和在本地运行的进程,每一台计算机都能独立地工作， 必要时可通过通信线路与其它计算机交换信息，以及协调它们之间的工作</li>
-<li>对称多处理器系统:<br>系统中所包含的各处理器单元，在功能和结构上都是相同的<br>非对称多处理器系统:<br>在系统中有多种类型的处理单元， 它们的功能和结构各不相同，其中只有一个主处理器</li>
-<li>进程分配方式:<br>对称多处理器系统中的进程分配方式：<br>静态分配(Static Assigenment)方式<br>动态分配(Dynamic Assgement)方式<br>非对称MPS中的进程分配方式</li>
-<li>进程(线程)调度方式<br>自调度(Self-Scheduling)方式<br>成组调度(Gang Scheduling)方式</li>
-</ol>
-<h2 id="4">死锁</h2>
-
-<h3 id="4.1">死锁的概念</h3>
-
-<p>一组进程中，每个进程都无限等待被该组进程中另一进程所占有的资源，因而永远无法得到的资源，这种现象称为进程死锁，这一组进程就称为死锁进程。</p>
-<h3 id="4.2">死锁的原因</h3>
-
-<ol>
-<li>竞争系统资源<br>竞争非剥夺性资源<br>竞争临时性资源<br>只可使用一次的资源<br>“申请–分配–使用–释放”模式</li>
-<li>进程的推进顺序不当 </li>
-</ol>
-<p>在同时具备下列四个条件时，就会产生死锁:</p>
-<ul>
-<li>互斥条件（资源独占）<br>在一段时间内，一个资源只能由一个进程独占使用，若别的进程也要求该资源，则须等待，直至其占用者释放</li>
-<li>请求和保持条件<br>允许进程在不释放其已分得资源的情况下请求并等待分配新的资源</li>
-<li>不剥夺条件（不可强占）<br>进程所获得的资源在未使用完之前，不能被其它进程强行夺走，而只能由其自身释放</li>
-<li>环路等待条件<br>存在一个等待进程集合，P0正在等待一个P1占用的资源，P1正在等待一个P2占用的资源，…，Pn正在等待一个由PO占用的资源</li>
-</ul>
-<h2 id="5">解决死锁</h2>
-
-<h3 id="5.1">预防死锁</h3>
-
-<ol>
-<li>破坏请求和保持条件<br>资源一次性分配；要求每个进程在运行前必须一次性申请它所要求的所有资源，且仅当该进程所要资源均可满足时才给予一次性分配</li>
-<li>破坏不可剥夺条件<br>可剥夺资源:某进程新的资源未满足时，释放已占有的资源</li>
-<li>破坏环路等待条件<br>资源有序分配法；系统给每类资源赋予一个编号，每一个进程按编号递增的顺序请求资源，释放则相反</li>
-</ol>
-<p>缺点:影响系统性能</p>
-<h3 id="5.2">避免死锁</h3>
-
-<p>系统对进程发出的能够满足的资源申请进行动态检查，若分配后系统可能发生死锁，则不予分配，否则予以分配。这种方法把系统分为安全状态和不安全状态，安全状态就不会发生死锁。</p>
-<p><strong>安全状态与不安全状态</strong><br>安全状态指系统能按某种进程顺序来为每个进程分配其所需资源，直至最大需求，使每个进程都可顺序完成。若不存在这样的序列，则为不安全状态。</p>
-<p>使用银行家算法可避免死锁：<br>可利用资源向量Available:含m个元素代表每种资源可利用的数目<br>最大需求矩阵Max:n<em>m的矩阵，n代表进程，m代表对资源的最大需求<br>分配矩阵Allocation:n</em>m<br>需求矩阵Need:n*m<br>Need［i,j］=Max［i,j］-Allocation［i,j］<br>Requesti是进程Pi的请求向量</p>
-<ol>
-<li>Requesti［j］≤Need［i,j］</li>
-<li>如果Requesti［j］≤Available［j］，下一步；否则，Pi等待</li>
-<li>Available［j］∶=Available［j］-Requesti［j］;<br>Allocation［i,j］∶=Allocation［i,j］+Requesti［j］;<br>Need［i,j］∶=Need［i,j］-Requesti［j］;</li>
-<li>系统执行安全性算法，检查资源分配后，系统是否处于安全状态，若安全则分配</li>
-</ol>
-<h3 id="5.3">死锁检测</h3>
-
-<p>当为进程分配资源时，如果未采取任何限制措施，则必须提供死锁检测和解除功能:<br>允许死锁发生，操作系统不断监视系统进展情况，判断死锁是否发生。<br>一旦死锁发生则采取专门的措施，解除死锁并以最小的代价恢复操作系统运行。</p>
-<p>检测时机：</p>
-<ul>
-<li>进程等待时检测</li>
-<li>定时检测</li>
-<li>系统资源利用率下降时检测</li>
-</ul>
-<h3 id="5.4">死锁解除</h3>
-
-<ol>
-<li>重新启动</li>
-<li>撤消进程</li>
-<li>剥夺资源</li>
-<li>进程回退</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;关于死锁的简单内容。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="操作系统" scheme="http://www.codingbalian.online/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-      <category term="处理机" scheme="http://www.codingbalian.online/tags/%E5%A4%84%E7%90%86%E6%9C%BA/"/>
-    
-      <category term="调度" scheme="http://www.codingbalian.online/tags/%E8%B0%83%E5%BA%A6/"/>
-    
-      <category term="死锁" scheme="http://www.codingbalian.online/tags/%E6%AD%BB%E9%94%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JSP中Servlet的应用</title>
-    <link href="http://www.codingbalian.online/2016/12/29/JSP-Servlet/"/>
-    <id>http://www.codingbalian.online/2016/12/29/JSP-Servlet/</id>
-    <published>2016-12-29T08:04:09.000Z</published>
-    <updated>2017-01-02T05:49:03.965Z</updated>
-    
-    <content type="html"><![CDATA[<p>Servlet是Java编写的服务器端程序，动态的生成Web内容。<br><a id="more"></a></p>
-<p></p><h2 id="1">Servlet包的构成</h2><br>Servlet由服务器进行加载，是实现javax.servlet.Servlet接口的对象。大多数Servlet通过GenericServlet或者HttpServlet类来扩展实现。<br>Servlet API包含于javax.servlet和javax.servlet.http两个包中。javax.servlet包中定义了所有Servlet类都必须实现的接口和类：<p></p>
-<ul>
-<li>interface ServletConfig：定义Servlet config 对象，由Servlet 引擎用在 Servlet 初始化时，向 Servlet 传递信息。</li>
-<li>interface ServletContext：定义Servlet用于获取容器信息的方法。</li>
-<li>interface ServletRequest：向服务器请求信息。</li>
-<li>interface ServletResponse：响应客户端请求。</li>
-<li>interface Servlet：定义了所有 Servlet 必须实现的方法。</li>
-<li>interface SingleThreadModel:用于保证Servlet在任一时刻只处理一个请求。</li>
-<li>class ServletInputStream:用于读取客户请求的二进制数据。</li>
-<li>class ServletOutputStream:向客户发送二进制数据。</li>
-<li>class GenericServlet:继承Servlet接口，定义了一个通用的，独立协议的Servlet。</li>
-</ul>
-<p>javax.servle.http包中定义了采用HTTP通信的HttpServlet类：</p>
-<ul>
-<li>interface HttpServletRequest：提供http请求。</li>
-<li>interface HttpServletResponse：提供http相应。</li>
-<li>interface HttpSession：用于标识客户端并存储有关客户信息。</li>
-<li>interface HttpSessionAttributeListener：需要用户获取回话的属性列表实现这个监听接口。</li>
-<li>class HttpServlet：扩展GenericServlet用于创建HttpServlet。</li>
-<li>class Cookie：创建一个Cookie类，用于存储Servlet发送给客户端的信息。</li>
-</ul>
-<p>Servlet的工作模式：</p>
-<ol>
-<li>客户端发送请求至服务器。</li>
-<li>服务器启动并调用Servlet，根据客户端请求生成响应内容并传到服务器。</li>
-<li>服务器将响应返回客户端。</li>
-</ol>
-<p></p><h3 id="1.1">GenericServlet</h3><br>一般通用Servlet由javax.servle的GenericServlet实现Servlet接口。它定义了一个通用独立于底层协议的Servlet。通过使用或者继承来实现Servlet应用。<br>GenericServlet的主要方法：<p></p>
-<ul>
-<li>String getInitParameter(String name):返回具有指定名称的初始化参数。</li>
-<li>ServletConfig getServletConfig():返回传递到init()方法的ServletConfig对象。</li>
-<li>ServletContext gerServletContext():返回在config对象中引用的ServletContext。</li>
-<li>String getServletName():返回在web应用发布描述器(web.xml)中指定的Servlet名字。</li>
-</ul>
-<p></p><h3 id="1.2">HttpServlet</h3><br>javax.servle.http.HttpServlet实现了专门相应HTTP请求的Servlet。提供doGet(),doPost(),doDelete(),doOptions(),doPut(),doTrace()方法响应请求。<br>Web容器创建HttpServlet对象，并把HTTP请求封装到HttpServlet对象中。其相应web客户端的流程：<p></p>
-<ol>
-<li>web客户向web容器发送http请求</li>
-<li>web容器解析请求</li>
-<li>web容器创建一个HttpRequest对象，封装http请求信息</li>
-<li>web容器创建一个HttpResponse对象</li>
-<li>web容器调用service方法将之前两个对象作为service的参数传给HttpRequest对象</li>
-<li>HttpServlet调用HttpRequest对象获取请求信息</li>
-<li>HttpServlet调用HttpResponse生成响应数据】</li>
-<li>web容器把HttpServlet传给web客户</li>
-</ol>
-<p>创建HttpServlet:</p>
-<ol>
-<li>继承HttpServlet抽象类</li>
-<li>覆盖HttpServlet的部分方法</li>
-<li>获取HTTP的请求信息</li>
-<li>生成响应结果</li>
-</ol>
-<p></p><h3 id="1.3">Servlet生命周期</h3><br>Servlet框架的核心是javax.servlet.Servlet方法，它包含的三种方法代表了Servlet的生命周期：<p></p>
-<ul>
-<li>init():初始化Servlet。</li>
-<li>service():负责对客户端的请求。</li>
-<li>destory():当Servlet对象生命结束时释放占用的资源。</li>
-</ul>
-<p>Servlet只会在第一次请求到来时被加载和实例化。一旦被加载一般不会被删除，除非应用服务器关闭或者重新启动。当容器做内存回收动作时Servlet可能被删除。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/*初始化Servlet*/</div><div class="line">public void init(ServletConfig config) throws ServletException&#123;</div><div class="line">	...</div><div class="line">&#125;</div><div class="line">/*init(ServletConfig)代表配置信息在web.xml中修改。*/</div><div class="line">/*响应客户端请求*/</div><div class="line">public void doPost(ServletRequest request, ServletResponse response)throws ServletException, IOException &#123;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p></p><h3 id="1.4">配置web.xml</h3><br>建立mainServlet.java，配置web.xml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</div><div class="line">	xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee</div><div class="line">                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;</div><div class="line">	version=&quot;3.1&quot;&gt;</div><div class="line">	&lt;display-name&gt;&lt;/display-name&gt;</div><div class="line">	&lt;!-- Servlet可以被外部访问 访问它需要一个地址 通过WEB的地址映射解决 --&gt;</div><div class="line">	&lt;servlet&gt;</div><div class="line">		&lt;servlet-name&gt;mainServlet&lt;/servlet-name&gt; &lt;!--定义Servlet应用名字 --&gt;</div><div class="line">		&lt;servlet-class&gt;cn.edu.ccnu.imd.mainServlet&lt;/servlet-class&gt;&lt;!--自定义的Servlet应用名字对应的具体Servlet文件 --&gt;</div><div class="line">	&lt;/servlet&gt;</div><div class="line"></div><div class="line">	&lt;servlet-mapping&gt; &lt;!--地址映射 --&gt;</div><div class="line">		&lt;servlet-name&gt;mainServlet&lt;/servlet-name&gt;</div><div class="line">		&lt;url-pattern&gt;/service.do&lt;/url-pattern&gt;&lt;!--地址名 --&gt;</div><div class="line">	&lt;/servlet-mapping&gt;</div><div class="line">	&lt;!--输入地址：http://localhost:端口号/service.do定位servlet--&gt;</div><div class="line">&lt;/web-app&gt;</div></pre></td></tr></table></figure><p></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Servlet是Java编写的服务器端程序，动态的生成Web内容。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="JSP" scheme="http://www.codingbalian.online/categories/JSP/"/>
-    
-    
-      <category term="Servlet" scheme="http://www.codingbalian.online/tags/Servlet/"/>
     
   </entry>
   

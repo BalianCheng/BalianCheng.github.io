@@ -15,16 +15,13 @@
 
 
 
-<meta name="description" content="What man is a man who does not make the world better?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://www.codingbalian.online/tags/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery的DOM操作">
+<meta property="og:url" content="http://www.codingbalian.online/2017/03/15/jQuery-DOM/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="What man is a man who does not make the world better?">
-<meta property="og:updated_time" content="2016-12-24T06:22:19.156Z">
+<meta property="og:updated_time" content="2017-03-15T09:44:01.937Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="What man is a man who does not make the world better?">
+<meta name="twitter:title" content="jQuery的DOM操作">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +53,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>tags | Balian&#39;s Blog</title>
+<title>jQuery的DOM操作 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,7 +63,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -263,11 +260,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-jQuery-DOM" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-      <time datetime="2016-12-24T06:19:24.000Z" itemprop="datePublished">2016-12-24</time>
+      <a href="/2017/03/15/jQuery-DOM/" class="article-date">
+      <time datetime="2017-03-15T07:53:22.000Z" itemprop="datePublished">2017-03-15</time>
 </a>
 
 
@@ -282,7 +279,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      jQuery的DOM操作
     </h1>
   
 
@@ -290,8 +287,16 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -299,96 +304,100 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
+        <p>　<br><a id="more"></a></p>
+<h2 id="1">HTML-DOM</h2>
 
+<h3 id="1.1">查找节点</h3>
 
-    <!-- Tag Cloud Page -->
-    <hr>
-<br>
-<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/JSP/">JSP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/XML/">XML</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/github/">github</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a><span class="category-list-count">5</span></li></ul>
+<p><code>&lt;p title=&quot;test&quot;&gt;内容&lt;/p&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//获取元素节点</div><div class="line">var $p=$(&quot;p&quot;)</div><div class="line">//获取元素文本节点</div><div class="line">var p_text=$p.text()</div><div class="line">//获取属性节点</div><div class="line">var p_attr=$p.attr(&quot;title&quot;)</div></pre></td></tr></table></figure>
+<h3 id="1.2">创建插入节点</h3>
 
-<p class="count"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//创建元素节点</div><div class="line">var $li=$(&quot;&lt;li&gt;&lt;/li&gt;&quot;)</div><div class="line">//创建文本节点，，只要符合html规范即可</div><div class="line">var $li=$(&quot;&lt;li&gt;&lt;em&gt;a&lt;/em&gt;&lt;b&gt;b&lt;/b&gt;&lt;/li&gt;&quot;)</div><div class="line">//创建属性节点</div><div class="line">var $li=$(&quot;&lt;li title=&quot;a&quot;&gt;a&lt;/li&gt;&quot;)</div></pre></td></tr></table></figure>
+<p>插入节点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$(&quot;p&quot;)append(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)appendTo(&quot;p&quot;)</div><div class="line">//&lt;p&gt;a&lt;b&gt;b&lt;/b&gt;&lt;/p&gt;</div><div class="line">$(&quot;p&quot;)prepend(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)prependTo(&quot;p&quot;)</div><div class="line">//&lt;p&gt;&lt;b&gt;b&lt;/b&gt;a&lt;/p&gt;</div><div class="line">$(&quot;p&quot;)after(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)insertafter(&quot;p&quot;)</div><div class="line">//&lt;p&gt;a&lt;/p&gt;&lt;b&gt;b&lt;/b&gt;</div><div class="line">$(&quot;p&quot;)before(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)insertbefore(&quot;p&quot;)</div><div class="line">//&lt;b&gt;b&lt;/b&gt;&lt;p&gt;a&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>移动节点时先将节点从文档删除，再将其插入指定位置</p>
+<h3 id="1.3">删除节点</h3>
 
-<div class="tags">
-    <a href="/tags/CSS/" style="font-size: 16px; color: #808080">CSS</a> <a href="/tags/DOM/" style="font-size: 16px; color: #808080">DOM</a> <a href="/tags/DTD/" style="font-size: 16px; color: #808080">DTD</a> <a href="/tags/JAXP/" style="font-size: 16px; color: #808080">JAXP</a> <a href="/tags/Schema/" style="font-size: 16px; color: #808080">Schema</a> <a href="/tags/Servlet/" style="font-size: 16px; color: #808080">Servlet</a> <a href="/tags/XSL/" style="font-size: 16px; color: #808080">XSL</a> <a href="/tags/hexo/" style="font-size: 16px; color: #808080">hexo</a> <a href="/tags/jQuery/" style="font-size: 35px; color: #000">jQuery</a> <a href="/tags/处理机/" style="font-size: 16px; color: #808080">处理机</a> <a href="/tags/存储管理/" style="font-size: 16px; color: #808080">存储管理</a> <a href="/tags/文件管理/" style="font-size: 16px; color: #808080">文件管理</a> <a href="/tags/死锁/" style="font-size: 16px; color: #808080">死锁</a> <a href="/tags/设备管理/" style="font-size: 16px; color: #808080">设备管理</a> <a href="/tags/调度/" style="font-size: 16px; color: #808080">调度</a> <a href="/tags/进程/" style="font-size: 16px; color: #808080">进程</a> <a href="/tags/进程管理/" style="font-size: 16px; color: #808080">进程管理</a>
-</div>
-<style>
-    .category-list li{
-        display: inline-block;
-        margin: 0 1em .5em 0;
-        padding: 4px;
-        border: 1px solid lightgray;
-        font-size: 1.2rem;
-    }
-    .category-list a { color: gray; }
-    .category-list-item:hover a {
-        color: gray;
-        text-decoration: none;
-    }
-    .category-list-count {
-        margin-left: 2px;
-        font-size: .9rem;
-    }
-    .article-entry ul li:before{ display: none; }
-    .article-inner { text-align: center; }
-    .tags {
-        max-width: 42em;
-        margin: 2em auto;
-        margin-top: 0em;
-    }
-    .tags a {
-        margin-right: 1em;
-        line-height: 65px;
-        border-bottom: 1px solid gray;
-        white-space: nowrap;
-        transition: border-bottom .5s;
-    }
-    .tags a:hover {
-        border-bottom: 3px dotted gray;
-        text-decoration: none;
-    }
-    #count > span {
-        margin: auto .2em;
-        font-weight: bold;
-    }
-</style>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&quot;p&quot;).remove()</div><div class="line">//删除属性节点</div><div class="line">$(&quot;form&quot;).remove(&quot;input[name=add]&quot;)</div><div class="line">//删除指定form下的节点</div><div class="line">//detach()与remove用法相同，但是不会把元素从jQuery对象中删除，之前绑定的方法数据都会保留</div><div class="line">$(&quot;p&quot;).empty()</div><div class="line">//清空p的所有后代节点</div></pre></td></tr></table></figure>
+<h3 id="1.4">其他操作</h3>
 
-<!-- Count tags and categories -->
-<p id="count">
-        已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
-        共计<span><script>document.write($(".tags > a").length)</script></span>个标签
-</p>
-<script>
-    $('#count').appendTo('.count');
-</script>
+<p>clone()克隆节点，接受参数为true时复制所有被绑定的事件<br>replaceWith(“…”)替换节点，接受的参数是用于替换的内容<br>replaceAll()与replaceWith相同，接受的参数是被替换的节点<br>包裹节点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(&quot;strong&quot;).warp(&quot;&lt;b&gt;&lt;/b&gt;&quot;)</div><div class="line">//&lt;b&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/b&gt;单独包裹</div><div class="line">//warpAll将所有满足条件的元素全部一次性包裹进去</div><div class="line">//warpInner将被选中的元素的内部元素包裹</div></pre></td></tr></table></figure></p>
+<h3 id="1.5">属性和样式操作</h3>
 
-          
-        
+<p>attr(“”)获取属性<br>removeAttr(“”)删除属性<br>addClass()追加class的属性<br>removeClass()移除class属性<br>toggle()：隐藏/显示切换<br>toggleClass()：切换类<br>hasClass检查是否有指定的class</p>
+<h3 id="1.6">获取HTML，文本，值</h3>
+
+<p>html()获取html代码，可以设置内容<br>text()获取文本<br>val（）获取值<br>children()获取所有子元素<br>next()获取紧邻的下一个同辈元素<br>prev()获取紧邻的上一个同辈元素<br>siblings()获取所有的同辈元素<br>closest()获取最近的匹配元素，由自身向上寻找</p>
+<h2 id="2">CSS-DOM操作</h2>
+
+<p>css(“height”)获取元素的height值<br>css(“color”,”red”)<br>css({“color”:”red”,”fontSize”:”10px”})</p>
+<p>offset()获取元素相对视窗偏移量<br>position()获取元素相对父元素的偏移量<br>scrollTop(),scrollLeft()获取滚动条距离</p>
+
       
     </div>
     
   </div>
   
     
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/03/15/jQuery-DOM/">jQuery的DOM操作</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
+        <p><span>发布时间:</span>2017-03-15, 15:53:22</p>
+        <p><span>最后更新:</span>2017-03-15, 17:44:01</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/15/jQuery-DOM/" title="jQuery的DOM操作">http://www.codingbalian.online/2017/03/15/jQuery-DOM/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/03/15/jQuery-DOM/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
 
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/03/16/jQuery-event/">
+                    jQuery-event
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/03/14/jQuery-selector/">
+                    jQuery选择器
+                </a>
+            </div>
+        
+    </nav>
 
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">HTML-DOM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">查找节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">创建插入节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.3.</span> <span class="toc-text">删除节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.4"><span class="toc-number">1.4.</span> <span class="toc-text">其他操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.5"><span class="toc-number">1.5.</span> <span class="toc-text">属性和样式操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.6"><span class="toc-number">1.6.</span> <span class="toc-text">获取HTML，文本，值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">CSS-DOM操作</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -406,7 +415,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"tags　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"jQuery的DOM操作　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -419,6 +428,47 @@
 
 
 
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/15/jQuery-DOM/" data-title="jQuery的DOM操作" data-url="http://www.codingbalian.online/2017/03/15/jQuery-DOM/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"balian"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/03/16/jQuery-event/" title="上一篇: jQuery-event">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/03/14/jQuery-selector/" title="下一篇: jQuery选择器">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/jQuery-event/">jQuery-event</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/jQuery-DOM/">jQuery的DOM操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/14/jQuery-selector/">jQuery选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/JS-skill/">JS高级技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/AJAX-Comet/">AJAX&Comet</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-Error/">JS错误处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-API/">H5脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-Canvas/">JavaScript-Canvas</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/JavaScript-form/">JavaScript表单脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/JavaScript-event/">JavaScript事件处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/JavaScrpit-DOM2/">JavaScrpit-DOM2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-DOM/">JavaScript的文档对象模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-BOM/">BOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-Function/">JavaScript函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/JavaScript-object/">JavaScript对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/JavaScript-Note2/">JavaScript:学习笔记2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/jQuery-note/">jQuery学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/JavaScript-Note/">JavaScript:学习笔记1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/OS-File Management/">操作系统：文件管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/OS-Device Management/">操作系统:设备管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-Process/">操作系统：进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/OS-Storage Management/">操作系统:存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
 
 
 

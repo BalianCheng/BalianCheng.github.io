@@ -4,6 +4,67 @@
   
     
     <entry>
+      <title><![CDATA[jQuery-event]]></title>
+      <url>http://www.codingbalian.online/2017/03/16/jQuery-event/</url>
+      <content type="html"><![CDATA[<p>jQuery中的事件和动画处理<br><a id="more"></a></p>
+<h2 id="1">jQuery中的事件</h2>
+
+<p><code>$(&quot;document&quot;).ready()</code>用来代替传统的<code>window.onload</code>，但是不需要再页面元素全部加载完成后再触发，而是在DOM载入就绪时就可以操作<br>如果需要某些元素加载完成后再触发元素可以对他们使用<code>load()</code>函数<br>且在调用<code>$(&quot;document&quot;).ready()</code>函数时，多次使用则是对现有函数内容的增加，而非覆盖。<br><code>$(&quot;document&quot;).ready(function(){})</code>可以简写成<code>$(function(){})</code>或者<code>$().ready(function(){})</code><br>因为<code>$()</code>就是<code>$(&quot;document&quot;)</code>的简写。</p>
+<h3 id="1.1">事件绑定</h3>
+
+<p><code>bind(type,[,data],fn)</code>接受三个参数，事件类型，作为event.data的属性值的数据，处理函数</p>
+<p>jQuery不支持事件捕获，但是可以阻止冒泡：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(&quot;.div&quot;).bind(&quot;click&quot;,function(event)&#123;</div><div class="line">	...</div><div class="line">	event.stopPropagation()//阻止冒泡</div><div class="line">	event.preventDefault()//阻止默认行为</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="1.2">移除事件与事件模拟</h3>
+
+<p>unbind()接受两个参数，如果没有参数默认移除所有事件，第一个参数是事件类型，第二个参数是要移除的函数</p>
+<p>one()方法与bind方法用法相同，但是使用过一次后就会被销毁</p>
+<p>tigger函数用于事件模拟：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(&quot;#btn&quot;).tigger(&quot;click&quot;)</div><div class="line">$(&quot;#btn&quot;).bind(&quot;myClick&quot;,function()&#123;&#125;)</div><div class="line">$(&quot;#btn&quot;).tigger(&quot;myClick&quot;)//触发自定义事件</div></pre></td></tr></table></figure></p>
+<p>tigger()接受两个参数：事件类型，传给事件处理函数的附加数据</p>
+<p>tiggerHandler()用于触发事件而不执行浏览器默认操作</p>
+<h3 id="1.3">事件命名空间</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$(&quot;.div&quot;).bind(&quot;click.plugin&quot;,function(event)&#123;</div><div class="line">	...</div><div class="line">&#125;)</div><div class="line">$(&quot;.div&quot;).bind(&quot;dbclick.plugin&quot;,function(event)&#123;</div><div class="line">	...</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>目标绑定的click与dbclick事件都属于plugin命名空间，可以进行统一管理：<code>unbind(&quot;.plugin&quot;)</code>解除所有plugin命名空间下的事件绑定<br>tigger(“click!”)匹配所有不含在命名空间中的click</p>
+<h2 id="2">动画</h2>
+
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[jQuery的DOM操作]]></title>
+      <url>http://www.codingbalian.online/2017/03/15/jQuery-DOM/</url>
+      <content type="html"><![CDATA[<p>　<br><a id="more"></a></p>
+<h2 id="1">HTML-DOM</h2>
+
+<h3 id="1.1">查找节点</h3>
+
+<p><code>&lt;p title=&quot;test&quot;&gt;内容&lt;/p&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//获取元素节点</div><div class="line">var $p=$(&quot;p&quot;)</div><div class="line">//获取元素文本节点</div><div class="line">var p_text=$p.text()</div><div class="line">//获取属性节点</div><div class="line">var p_attr=$p.attr(&quot;title&quot;)</div></pre></td></tr></table></figure>
+<h3 id="1.2">创建插入节点</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">//创建元素节点</div><div class="line">var $li=$(&quot;&lt;li&gt;&lt;/li&gt;&quot;)</div><div class="line">//创建文本节点，，只要符合html规范即可</div><div class="line">var $li=$(&quot;&lt;li&gt;&lt;em&gt;a&lt;/em&gt;&lt;b&gt;b&lt;/b&gt;&lt;/li&gt;&quot;)</div><div class="line">//创建属性节点</div><div class="line">var $li=$(&quot;&lt;li title=&quot;a&quot;&gt;a&lt;/li&gt;&quot;)</div></pre></td></tr></table></figure>
+<p>插入节点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$(&quot;p&quot;)append(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)appendTo(&quot;p&quot;)</div><div class="line">//&lt;p&gt;a&lt;b&gt;b&lt;/b&gt;&lt;/p&gt;</div><div class="line">$(&quot;p&quot;)prepend(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)prependTo(&quot;p&quot;)</div><div class="line">//&lt;p&gt;&lt;b&gt;b&lt;/b&gt;a&lt;/p&gt;</div><div class="line">$(&quot;p&quot;)after(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)insertafter(&quot;p&quot;)</div><div class="line">//&lt;p&gt;a&lt;/p&gt;&lt;b&gt;b&lt;/b&gt;</div><div class="line">$(&quot;p&quot;)before(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)</div><div class="line">$(&quot;&lt;b&gt;b&lt;/b&gt;&quot;)insertbefore(&quot;p&quot;)</div><div class="line">//&lt;b&gt;b&lt;/b&gt;&lt;p&gt;a&lt;/p&gt;</div></pre></td></tr></table></figure></p>
+<p>移动节点时先将节点从文档删除，再将其插入指定位置</p>
+<h3 id="1.3">删除节点</h3>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$(&quot;p&quot;).remove()</div><div class="line">//删除属性节点</div><div class="line">$(&quot;form&quot;).remove(&quot;input[name=add]&quot;)</div><div class="line">//删除指定form下的节点</div><div class="line">//detach()与remove用法相同，但是不会把元素从jQuery对象中删除，之前绑定的方法数据都会保留</div><div class="line">$(&quot;p&quot;).empty()</div><div class="line">//清空p的所有后代节点</div></pre></td></tr></table></figure>
+<h3 id="1.4">其他操作</h3>
+
+<p>clone()克隆节点，接受参数为true时复制所有被绑定的事件<br>replaceWith(“…”)替换节点，接受的参数是用于替换的内容<br>replaceAll()与replaceWith相同，接受的参数是被替换的节点<br>包裹节点：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(&quot;strong&quot;).warp(&quot;&lt;b&gt;&lt;/b&gt;&quot;)</div><div class="line">//&lt;b&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/b&gt;单独包裹</div><div class="line">//warpAll将所有满足条件的元素全部一次性包裹进去</div><div class="line">//warpInner将被选中的元素的内部元素包裹</div></pre></td></tr></table></figure></p>
+<h3 id="1.5">属性和样式操作</h3>
+
+<p>attr(“”)获取属性<br>removeAttr(“”)删除属性<br>addClass()追加class的属性<br>removeClass()移除class属性<br>toggle()：隐藏/显示切换<br>toggleClass()：切换类<br>hasClass检查是否有指定的class</p>
+<h3 id="1.6">获取HTML，文本，值</h3>
+
+<p>html()获取html代码，可以设置内容<br>text()获取文本<br>val（）获取值<br>children()获取所有子元素<br>next()获取紧邻的下一个同辈元素<br>prev()获取紧邻的上一个同辈元素<br>siblings()获取所有的同辈元素<br>closest()获取最近的匹配元素，由自身向上寻找</p>
+<h2 id="2">CSS-DOM操作</h2>
+
+<p>css(“height”)获取元素的height值<br>css(“color”,”red”)<br>css({“color”:”red”,”fontSize”:”10px”})</p>
+<p>offset()获取元素相对视窗偏移量<br>position()获取元素相对父元素的偏移量<br>scrollTop(),scrollLeft()获取滚动条距离</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[jQuery选择器]]></title>
       <url>http://www.codingbalian.online/2017/03/14/jQuery-selector/</url>
       <content type="html"><![CDATA[<p>jQuery中选择器的使用<br><a id="more"></a></p>
