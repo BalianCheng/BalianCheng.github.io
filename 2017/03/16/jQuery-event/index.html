@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://www.codingbalian.online/2017/03/16/jQuery-event/index.html">
 <meta property="og:site_name" content="Balian's Blog">
 <meta property="og:description" content="jQuery中的事件和动画处理">
-<meta property="og:updated_time" content="2017-03-16T09:40:10.854Z">
+<meta property="og:updated_time" content="2017-03-16T12:47:16.172Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery-event">
 <meta name="twitter:description" content="jQuery中的事件和动画处理">
@@ -328,6 +328,11 @@
 <p>目标绑定的click与dbclick事件都属于plugin命名空间，可以进行统一管理：<code>unbind(&quot;.plugin&quot;)</code>解除所有plugin命名空间下的事件绑定<br>tigger(“click!”)匹配所有不含在命名空间中的click</p>
 <h2 id="2">动画</h2>
 
+<h3 id="2.1">自带动画</h3>
+
+<p>show(),hide()：显示，隐藏，隐藏后显示依然保留之前的样式<br>fadeIn(),fadeOut()：淡出，淡入效果<br>slideUp()，slideDown():元素由下至上，由上至下延伸<br>都可以接受详细的时间作为参数，也可接受”slow”,”normal”,”fast”分别代表0.6，0.4,0.2秒</p>
+<h3 id="2.2">自定义动画</h3>
+
 
       
     </div>
@@ -339,7 +344,7 @@
         <p><span>本文标题:</span><a href="/2017/03/16/jQuery-event/">jQuery-event</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
         <p><span>发布时间:</span>2017-03-16, 14:44:05</p>
-        <p><span>最后更新:</span>2017-03-16, 17:40:10</p>
+        <p><span>最后更新:</span>2017-03-16, 20:47:16</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/03/16/jQuery-event/" title="jQuery-event">http://www.codingbalian.online/2017/03/16/jQuery-event/</a>
             <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/03/16/jQuery-event/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -353,6 +358,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/03/30/RubyError/">
+                    Ruby淘宝镜像Error fetching解决
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -369,7 +380,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">jQuery中的事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">事件绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">移除事件与事件模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.3.</span> <span class="toc-text">事件命名空间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">动画</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">jQuery中的事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1.1"><span class="toc-number">1.1.</span> <span class="toc-text">事件绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.2"><span class="toc-number">1.2.</span> <span class="toc-text">移除事件与事件模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1.3"><span class="toc-number">1.3.</span> <span class="toc-text">事件命名空间</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text">自带动画</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text">自定义动画</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -444,7 +455,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/03/30/RubyError/" title="上一篇: Ruby淘宝镜像Error fetching解决">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -456,7 +469,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/jQuery-event/">jQuery-event</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/jQuery-DOM/">jQuery的DOM操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/14/jQuery-selector/">jQuery选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/JS-skill/">JS高级技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/AJAX-Comet/">AJAX&Comet</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-Error/">JS错误处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-API/">H5脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-Canvas/">JavaScript-Canvas</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/JavaScript-form/">JavaScript表单脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/JavaScript-event/">JavaScript事件处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/JavaScrpit-DOM2/">JavaScrpit-DOM2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-DOM/">JavaScript的文档对象模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-BOM/">BOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-Function/">JavaScript函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/JavaScript-object/">JavaScript对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/JavaScript-Note2/">JavaScript:学习笔记2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/jQuery-note/">jQuery学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/JavaScript-Note/">JavaScript:学习笔记1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/OS-File Management/">操作系统：文件管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/OS-Device Management/">操作系统:设备管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-Process/">操作系统：进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/OS-Storage Management/">操作系统:存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/RubyError/">Ruby淘宝镜像Error fetching解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/jQuery-event/">jQuery-event</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/jQuery-DOM/">jQuery的DOM操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/14/jQuery-selector/">jQuery选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/JS-skill/">JS高级技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/AJAX-Comet/">AJAX&Comet</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-Error/">JS错误处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-API/">H5脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-Canvas/">JavaScript-Canvas</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/JavaScript-form/">JavaScript表单脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/JavaScript-event/">JavaScript事件处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/JavaScrpit-DOM2/">JavaScrpit-DOM2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-DOM/">JavaScript的文档对象模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-BOM/">BOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-Function/">JavaScript函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/JavaScript-object/">JavaScript对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/JavaScript-Note2/">JavaScript:学习笔记2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/jQuery-note/">jQuery学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/JavaScript-Note/">JavaScript:学习笔记1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/OS-File Management/">操作系统：文件管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/OS-Device Management/">操作系统:设备管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-Process/">操作系统：进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/OS-Storage Management/">操作系统:存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
 
 
 

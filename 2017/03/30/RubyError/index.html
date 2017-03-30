@@ -15,15 +15,16 @@
 
 
 
-<meta name="description" content="What man is a man who does not make the world better?">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Balian's Blog">
-<meta property="og:url" content="http://www.codingbalian.online/archives/index.html">
+<meta name="description" content="Error fetching https://ruby.taobao.org:        SSL_connect returned=1 errno=0 state=error: certificate verify failed (https://gems.ruby-china.org/specs.4.8.gz) 失效解决">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby淘宝镜像Error fetching解决">
+<meta property="og:url" content="http://www.codingbalian.online/2017/03/30/RubyError/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="What man is a man who does not make the world better?">
+<meta property="og:description" content="Error fetching https://ruby.taobao.org:        SSL_connect returned=1 errno=0 state=error: certificate verify failed (https://gems.ruby-china.org/specs.4.8.gz) 失效解决">
+<meta property="og:updated_time" content="2017-03-30T11:48:01.492Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Balian's Blog">
-<meta name="twitter:description" content="What man is a man who does not make the world better?">
+<meta name="twitter:title" content="Ruby淘宝镜像Error fetching解决">
+<meta name="twitter:description" content="Error fetching https://ruby.taobao.org:        SSL_connect returned=1 errno=0 state=error: certificate verify failed (https://gems.ruby-china.org/specs.4.8.gz) 失效解决">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives | Balian&#39;s Blog</title>
+<title>Ruby淘宝镜像Error fetching解决 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,8 +66,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -262,361 +263,179 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-RubyError" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2017/03/30/RubyError/" class="article-date">
+      <time datetime="2017-03-30T11:43:46.000Z" itemprop="datePublished">2017-03-30</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ruby淘宝镜像Error fetching解决
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/30/RubyError/" class="archive-article-date">
-      <time datetime="2017-03-30T11:43:46.000Z" itemprop="datePublished">03-30</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/30/RubyError/">Ruby淘宝镜像Error fetching解决</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
+        <p>Error fetching <a href="https://ruby.taobao.org" target="_blank" rel="external">https://ruby.taobao.org</a>:<br>        SSL_connect returned=1 errno=0 state=error: certificate verify failed (<a href="https://gems.ruby-china.org/specs.4.8.gz" target="_blank" rel="external">https://gems.ruby-china.org/specs.4.8.gz</a>) 失效解决<br><a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">移除ruby的镜像地址</div><div class="line">gem sources --remove https://rubygems.org/</div><div class="line">使用淘宝的镜像</div><div class="line">gem source -a https://ruby.taobao.org </div><div class="line">报错Error fetching https://ruby.taobao.org:</div><div class="line">        SSL_connect returned=1 errno=0 state=error: certificate verify failed (https://gems.ruby-china.org/specs.4.8.gz)</div><div class="line">现在由 ruby-china 提供镜像服务：http://gems.ruby-china.org/</div><div class="line">gem sources -a http://gems.ruby-china.org/</div><div class="line">查看镜像</div><div class="line">gem source -v</div></pre></td></tr></table></figure>
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/16/jQuery-event/" class="archive-article-date">
-      <time datetime="2017-03-16T06:44:05.000Z" itemprop="datePublished">03-16</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/16/jQuery-event/">jQuery-event</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/03/30/RubyError/">Ruby淘宝镜像Error fetching解决</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
+        <p><span>发布时间:</span>2017-03-30, 19:43:46</p>
+        <p><span>最后更新:</span>2017-03-30, 19:48:01</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/30/RubyError/" title="Ruby淘宝镜像Error fetching解决">http://www.codingbalian.online/2017/03/30/RubyError/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/03/30/RubyError/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/15/jQuery-DOM/" class="archive-article-date">
-      <time datetime="2017-03-15T07:53:22.000Z" itemprop="datePublished">03-15</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/15/jQuery-DOM/">jQuery的DOM操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/14/jQuery-selector/" class="archive-article-date">
-      <time datetime="2017-03-14T07:04:01.490Z" itemprop="datePublished">03-14</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/14/jQuery-selector/">jQuery选择器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/09/JS-skill/" class="archive-article-date">
-      <time datetime="2017-03-09T11:57:34.000Z" itemprop="datePublished">03-09</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/09/JS-skill/">JS高级技巧</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/09/AJAX-Comet/" class="archive-article-date">
-      <time datetime="2017-03-09T06:26:32.000Z" itemprop="datePublished">03-09</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/09/AJAX-Comet/">AJAX&amp;Comet</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/07/JavaScript-Error/" class="archive-article-date">
-      <time datetime="2017-03-07T12:52:10.000Z" itemprop="datePublished">03-07</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/JavaScript-Error/">JS错误处理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/07/JavaScript-API/" class="archive-article-date">
-      <time datetime="2017-03-07T07:58:39.000Z" itemprop="datePublished">03-07</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/JavaScript-API/">H5脚本</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/07/JavaScript-Canvas/" class="archive-article-date">
-      <time datetime="2017-03-07T05:51:37.000Z" itemprop="datePublished">03-07</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/07/JavaScript-Canvas/">JavaScript-Canvas</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/03/06/JavaScript-form/" class="archive-article-date">
-      <time datetime="2017-03-06T08:18:50.000Z" itemprop="datePublished">03-06</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/06/JavaScript-form/">JavaScript表单脚本</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-
-          
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/03/16/jQuery-event/">
+                    jQuery-event
+                </a>
+            </div>
+        
     </nav>
-  
 
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Ruby淘宝镜像Error fetching解决　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/30/RubyError/" data-title="Ruby淘宝镜像Error fetching解决" data-url="http://www.codingbalian.online/2017/03/30/RubyError/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"balian"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/03/16/jQuery-event/" title="下一篇: jQuery-event">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/RubyError/">Ruby淘宝镜像Error fetching解决</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/16/jQuery-event/">jQuery-event</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/jQuery-DOM/">jQuery的DOM操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/14/jQuery-selector/">jQuery选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/JS-skill/">JS高级技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/09/AJAX-Comet/">AJAX&Comet</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-Error/">JS错误处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-API/">H5脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/07/JavaScript-Canvas/">JavaScript-Canvas</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/JavaScript-form/">JavaScript表单脚本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/JavaScript-event/">JavaScript事件处理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/JavaScrpit-DOM2/">JavaScrpit-DOM2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-DOM/">JavaScript的文档对象模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-BOM/">BOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/JavaScript-Function/">JavaScript函数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/27/JavaScript-object/">JavaScript对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/JavaScript-Note2/">JavaScript:学习笔记2</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/26/jQuery-note/">jQuery学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/21/JavaScript-Note/">JavaScript:学习笔记1</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/OS-File Management/">操作系统：文件管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/OS-Device Management/">操作系统:设备管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/OS-Deadlock/">操作系统：处理机调度与死锁</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/JSP-Servlet/">JSP中Servlet的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/25/OS-Process/">操作系统：进程管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/24/OS-Storage Management/">操作系统:存储管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/23/XML-DOM/">XML:DOM</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-XSL/">XML:XSL转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/22/XML-CSS/">用CSS显示XML</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/21/XML-Schema/">XML Schema</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML-DTD/">XML:DTD</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/XML/">XML：语法基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Github-Tutorial/">Github教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/20/Adaboost/">Adaboost</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/19/github-pages-Hexo/">github pages + Hexo + 域名绑定</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
