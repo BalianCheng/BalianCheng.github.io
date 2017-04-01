@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="JavaScript函数的闭包与变量。">
+<meta name="description" content="Autoprefixer可以实现css3代码自动补全。也可以轻松跟Sass，LESS及Stylus集成，在CSS编译前或编译后运行。https://github.com/postcss/autoprefixer">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript函数">
-<meta property="og:url" content="http://www.codingbalian.online/2017/02/28/JavaScript-Function/index.html">
+<meta property="og:title" content="Webstorm配置autoprefixer插件">
+<meta property="og:url" content="http://www.codingbalian.online/2017/03/30/WebstormAutoprefixer/index.html">
 <meta property="og:site_name" content="Balian's Blog">
-<meta property="og:description" content="JavaScript函数的闭包与变量。">
-<meta property="og:updated_time" content="2017-02-28T06:49:01.381Z">
+<meta property="og:description" content="Autoprefixer可以实现css3代码自动补全。也可以轻松跟Sass，LESS及Stylus集成，在CSS编译前或编译后运行。https://github.com/postcss/autoprefixer">
+<meta property="og:updated_time" content="2017-03-30T12:10:13.345Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript函数">
-<meta name="twitter:description" content="JavaScript函数的闭包与变量。">
+<meta name="twitter:title" content="Webstorm配置autoprefixer插件">
+<meta name="twitter:description" content="Autoprefixer可以实现css3代码自动补全。也可以轻松跟Sass，LESS及Stylus集成，在CSS编译前或编译后运行。https://github.com/postcss/autoprefixer">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>JavaScript函数 | Balian&#39;s Blog</title>
+<title>Webstorm配置autoprefixer插件 | Balian&#39;s Blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -263,11 +263,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-JavaScript-Function" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-WebstormAutoprefixer" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/28/JavaScript-Function/" class="article-date">
-      <time datetime="2017-02-28T05:54:04.000Z" itemprop="datePublished">2017-02-28</time>
+      <a href="/2017/03/30/WebstormAutoprefixer/" class="article-date">
+      <time datetime="2017-03-30T11:53:50.000Z" itemprop="datePublished">2017-03-30</time>
 </a>
 
 
@@ -282,7 +282,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      JavaScript函数
+      Webstorm配置autoprefixer插件
     </h1>
   
 
@@ -290,10 +290,6 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
 
         
         <div class="clearfix"></div>
@@ -303,32 +299,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>JavaScript函数的闭包与变量。<br><a id="more"></a></p>
-<h2 id="1">递归</h2>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function factorial(num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * factorial(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">var func = factorial</div><div class="line">factorial =null	</div><div class="line">alert(func(4))//error</div></pre></td></tr></table></figure>
-<p>在调用func时需要执行factorial函数，func指向factorial函数但由于factorial函数以及为空，因此无法执行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function factorial(num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * arguments.callee(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;</div><div class="line">var func = factorial</div><div class="line">factorial =null	</div><div class="line">alert(func(4))//24</div></pre></td></tr></table></figure>
-<p>arguments.callee指向正在执行的函数，因此不会出错，但是在严格模式下不能访问。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var factorial = (function f (num) &#123;//阶乘函数的递归</div><div class="line">       if (num &lt;= 1) &#123;</div><div class="line">           return 1</div><div class="line">       &#125;</div><div class="line">       else &#123;</div><div class="line">           return num * f(num - 1)</div><div class="line">       &#125;</div><div class="line">   &#125;)</div></pre></td></tr></table></figure></p>
-<p>严格模式下即使factorial为空但是f依旧存在。</p>
-<h2 id="2">闭包</h2>
-
-<p>闭包是指有权限访问另一个函数作用域的变量的函数。<br>函数执行完毕后局部活动对象会被销毁只保留全局的变量对象，但是闭包不同。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function funa(...)&#123;</div><div class="line">	...</div><div class="line">	return function()&#123;//闭包，匿名函数</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>在调用funa时，匿名函数会包含funa的活动对象和全局变量，而funa在执行完之后其环境的作用域链被销毁但是活动对象仍然存在，因匿名函数仍在调用它，直到匿名函数被销毁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a=funa()//创建函数</div><div class="line">...//执行</div><div class="line">a=null//解除对匿名函数的引用释放内存</div></pre></td></tr></table></figure></p>
-<p>同时闭包只能取得包含函数中的任何变量的最后一个值。</p>
-<h3 id="2.1">闭包的this对象</h3>
-
-<p>this在全局环境中指向window，在函数被作为对象的方法调用时指向那个对象，匿名函数具有全局性，因此指向window。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name = &apos;world&apos;</div><div class="line">var createFunction = &#123;</div><div class="line">    name: &quot;total&quot;,</div><div class="line">    getName: function () &#123;//返回函数</div><div class="line">        return function () &#123;</div><div class="line">            return this.name</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">alert(createFunction.getName()())//调用被返回的函数，world</div></pre></td></tr></table></figure></p>
-<p>this指向window。<br>使this指向对象本身。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &apos;world&apos;</div><div class="line">var createFunction = &#123;</div><div class="line">    name: &quot;total&quot;,</div><div class="line">    getName: function () &#123;</div><div class="line">        return function () &#123;</div><div class="line">var that = this </div><div class="line">            return that.name</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">alert(createFunction.getName()())//total</div></pre></td></tr></table></figure></p>
-<h3 id="2.2">内存泄漏</h3>
-
-<p>闭包的作用域链包含HTML元素，则该元素无法被销毁。，但改写函数可以释放所占用的内存。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function fun()&#123;</div><div class="line">	...</div><div class="line">	var ele=document.getElementById(&quot;...&quot;)</div><div class="line">	var id =ele.id</div><div class="line">	ele.onclick=function()&#123;</div><div class="line">		alert(id)</div><div class="line">	&#125;	</div><div class="line">	ele=null</div><div class="line">&#125;//即闭包不直接引用HTML元素，可以保证内存的正常回收</div></pre></td></tr></table></figure></p>
-<h3 id="2.3">块级作用域与私有变量</h3>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">function f()&#123;&#125;()//出错，函数声明不能直接调用</div><div class="line">(function f()&#123;&#125;)()//转换成表达式即可调用</div></pre></td></tr></table></figure>
-<p>f拥有私有的作用域又可以访问环境的对象，而且不会扰乱全局作用域。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function f(name)&#123;</div><div class="line">	this.getName=function()&#123;//特权方法</div><div class="line">		return name</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>name作为私有变量无法直接访问，但是可以通过getName方法访问。</p>
+        <p>Autoprefixer可以实现css3代码自动补全。也可以轻松跟Sass，LESS及Stylus集成，在CSS编译前或编译后运行。<a href="https://github.com/postcss/autoprefixer" target="_blank" rel="external">https://github.com/postcss/autoprefixer</a><br><a id="more"></a><br>安装node.js<br><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code><br>使用淘宝镜像<br><code>$ cnpm install autoprefixer -g</code><br><code>$ cnpm install postcss-cli -g</code><br>设置webstorm External Tools<br>name:autoprefixer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Program:C:\Users\username\AppData\Roaming\npm\postcss.cmd</div><div class="line">Parameters:-u autoprefixer -o $FileDir$/$FileName$  $FileDir$/$FileName$</div><div class="line">Working directory:$ProjectFileDir$</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -337,13 +308,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/28/JavaScript-Function/">JavaScript函数</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/30/WebstormAutoprefixer/">Webstorm配置autoprefixer插件</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Balian Cheng</a></p>
-        <p><span>发布时间:</span>2017-02-28, 13:54:04</p>
-        <p><span>最后更新:</span>2017-02-28, 14:49:01</p>
+        <p><span>发布时间:</span>2017-03-30, 19:53:50</p>
+        <p><span>最后更新:</span>2017-03-30, 20:10:13</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/28/JavaScript-Function/" title="JavaScript函数">http://www.codingbalian.online/2017/02/28/JavaScript-Function/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/02/28/JavaScript-Function/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/30/WebstormAutoprefixer/" title="Webstorm配置autoprefixer插件">http://www.codingbalian.online/2017/03/30/WebstormAutoprefixer/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://www.codingbalian.online/2017/03/30/WebstormAutoprefixer/　　作者: Balian Cheng" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -355,16 +326,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/28/JavaScript-BOM/">
-                    BOM
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/27/JavaScript-object/">
-                    JavaScript对象
+                <a href="/2017/03/30/RubyError/">
+                    Ruby淘宝镜像Error fetching解决
                 </a>
             </div>
         
@@ -376,7 +341,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1"><span class="toc-number">1.</span> <span class="toc-text">递归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2"><span class="toc-number">2.</span> <span class="toc-text">闭包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2.1"><span class="toc-number">2.1.</span> <span class="toc-text">闭包的this对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.2"><span class="toc-number">2.2.</span> <span class="toc-text">内存泄漏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2.3"><span class="toc-number">2.3.</span> <span class="toc-text">块级作用域与私有变量</span></a></li></ol></li></ol>
+            
         
     </div>
     <style>
@@ -412,7 +377,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"JavaScript函数　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Webstorm配置autoprefixer插件　| Balian's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -428,7 +393,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/28/JavaScript-Function/" data-title="JavaScript函数" data-url="http://www.codingbalian.online/2017/02/28/JavaScript-Function/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/30/WebstormAutoprefixer/" data-title="Webstorm配置autoprefixer插件" data-url="http://www.codingbalian.online/2017/03/30/WebstormAutoprefixer/"></div>
     <script>
         var duoshuoQuery = {short_name:"balian"};
         var loadComment = function(){
@@ -451,15 +416,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/28/JavaScript-BOM/" title="上一篇: BOM">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/27/JavaScript-object/" title="下一篇: JavaScript对象">
+            <a href="/2017/03/30/RubyError/" title="下一篇: Ruby淘宝镜像Error fetching解决">
                 <i class="fa fa-angle-right"></i>
             </a>
         
